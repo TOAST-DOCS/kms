@@ -22,8 +22,11 @@ https://api-keymanager.nhncloudservice.com
 | GET | /keymanager/v1.1/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Query the symmetric key stored in Secure Key Manager.|
 | POST | /keymanager/v1.1/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Sign data with the asymmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.1/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Verify data and signature with the asymmetric key stored in Secure Key Manager. |
-| GET | /keymanager/v1.1/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Query the private key stored in Secure Key Manager. |
+| GET | /keymanager/v1.1/apkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Query the private key stored in Secure Key Manager. |
 | GET | /keymanager/v1.1/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Query the public key stored in Secure Key Manager. |
+| POST | /keymanager/v1.1/appkey/{appkey}/keys/{secrets|symmetric-keys|asymmetric-keys}/create | Add a new key to Secure Key Manager. |
+| PUT | /keymanager/v1.1/appkey/{appkey}/keys/{keyid}/delete | Request deletion of a key stored in Secure Key Manager. |
+| DELETE | /keymanager/v1.1/appkey/{appkey}/keys/{keyid} | Immediately delete the key scheduled for deletion in Secure Key Manager. |
 
 [HTTP Header of API Request]
 
@@ -376,3 +379,213 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/a
 | key | String | Public key data (Hex string form) |
 | encodedKey | String | Public key data (Base64-encoded form) |
 | keyVersion | Number | Version of asymmetric key used for processing API requests |
+
+## Add/Delete Key
+
+### Add a key
+Add a new key to Secure Key Manager.
+
+#### Add confidential data
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/keys/secrets/create
+```
+
+[Http Header]
+
+```
+X-TC-AUTHENTICATION: Base64-encoded value of {User Access Key ID}:{Secret Access Key}.
+```
+
+[Request Body]
+
+```
+{
+    "keyStoreName" : "Store #1",
+    "name" : "Key Sample #1",
+    "description" : "Description #1",
+    "secretValue" : "data"
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyStoreName | String | Key store name where key is saved |
+| name | String | Key name |
+| description | String | Key description |
+| secretValue | String | Confidential data value |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "keyStatus": "ACTIVE"
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyId | String | Created key ID |
+| keyStatus | String | Key status message |
+
+#### Add a symmetric key
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/keys/symmetric-key/create
+```
+
+[Http Header]
+
+```
+X-TC-AUTHENTICATION: Base64-encoded value of {User Access Key ID}:{Secret Access Key}.
+```
+
+[Request Body]
+
+```
+{
+    "keyStoreName" : "Store #1",
+    "name" : "Key Sample #2",
+    "description" : "Description #2",
+    "autoRotationPeriod" : 0
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyStoreName | String | Key store name where key is saved |
+| name | String | Key name |
+| description | String | Key description |
+| autoRotationPeriod | Integer | Rotation period |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "c2c49d986dfb4ca6afeaf67c39354c12",
+        "keyStatus": "ACTIVE"
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyId | String | Created key ID |
+| keyStatus | String | Key status message |
+
+#### Add asymmetric key
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/keys/asymmetric-key/create
+```
+
+[Http Header]
+
+```
+X-TC-AUTHENTICATION: Base64-encoded value of {User Access Key ID}:{Secret Access Key}.
+```
+
+[Request Body]
+
+```
+{
+    "keyStoreName" : "Store #1",
+    "name" : "Key Sample #2",
+    "description" : "Description #2",
+    "autoRotationPeriod" : 0
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyStoreName | String | Key store name where key is saved |
+| name | String | Key name |
+| description | String | Key description |
+| autoRotationPeriod | Integer | Rotation period |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "ddd7d5275dfa462799418062bd25b49d",
+        "keyStatus": "ACTIVE"
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyId | String | Created key ID |
+| keyStatus | String | Key status message |
+
+### Delete a key
+You can change the status of a key stored in Secure Key Manager to **To be deleted**, or **delete it immediately**.
+
+#### Request to delete a key
+Change the key status to **To be deleted**.
+The key is automatically deleted after 7 days, and you can't view a key in the **To be deleted** status.
+```text
+PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/keys/{keyid}/delete
+```
+
+[Http Header]
+
+```
+X-TC-AUTHENTICATION: Base64-encoded value of {User Access Key ID}:{Secret Access Key}.
+```
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "deletionDateTime": "2023-11-20T22:00:00.00"
+    }
+}
+
+```
+| Name | Type | Description |
+|---|---|---|
+| keyId | String | Created key ID |
+| deletionDateTime | String | Date when key is to be deleted |
+
+#### Immediately delete a key
+The key that is to be **deleted immediately** can only be **deleted immediately** in the status of **To be deleted**.
+You cannot **immediately delete** a key that is activated.
+```text
+DELETE https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/keys/{keyid}
+```
+
+[Http Header]
+
+```
+X-TC-AUTHENTICATION: Base64-encoded value of {User Access Key ID}:{Secret Access Key}.
+```
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "deletionDateTime": "2023-11-14T10:05:24.312"
+    }
+}
+
+```
+| Name | Type | Description |
+|---|---|---|
+| keyId | String | Created key ID |
+| deletionDateTime | String | Time when key is deleted |

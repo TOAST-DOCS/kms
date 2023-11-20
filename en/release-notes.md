@@ -1,5 +1,10 @@
 ## Security > Secure Key Manager > Release Notes
 
+### November 28, 2023
+#### Added Add/Delete Keys API
+* Added the feature to add or delete keys using APIs
+* To add or delete keys using APIs, you must need a User Access Key ID and a Secret Access Key. For more information, see [the console user guide](https://docs.nhncloud.com/en/Security/Secure%20Key%20Manager/en/console-guide/#_15)
+
 ### September 26, 2023
 #### Added IPv4 Bandwidth Authentication Feature
 * Added a feature to authenticate bandwith using CIDR notation when authentication with IPv4
