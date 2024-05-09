@@ -49,6 +49,10 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 
 ![console-guide-09](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-09.png)
 
+> [참고]
+>
+> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.beta-nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하세요.
+
 ### 키 가져오기
 Secure Key Manager는 대칭키(AES-256)를 가져오는 기능을 지원합니다.
 
