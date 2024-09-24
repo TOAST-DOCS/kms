@@ -38,7 +38,7 @@ Secure Key Managerのメンバー管理から承認者(APPROVAL ADMIN)、要請�
 
 キー保存場所の**承認リクエスト**ボタンで承認をリクエストし、該当プロジェクトの承認リクエストは**承認リスト**タブで確認できます。
 
-![console-guide-35](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-35.png)
+![console-guide-35](http://static.toastoven.net/prod_kms/2024-09-25-en/console-guide-35.png)
 
 ### 承認リクエストの反映
 承認者は、**承認リスト**からキー保存場所の変更承認リクエストを確認し、**承認**または**拒否**を選択して反映するかどうかを決定します。

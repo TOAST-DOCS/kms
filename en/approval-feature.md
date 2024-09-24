@@ -38,11 +38,13 @@ On the **Key Store Management** tab, the approver and requester make a request f
 
 Make a request for approval with the **Request Approval** button in the key store, and the requests made for a project can be found in the **Approval List** tab.
 
-![console-guide-35](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-35.png)
+![console-guide-35](http://static.toastoven.net/prod_kms/2024-09-25-en/console-guide-35.png)
 
 ### Apply Approval Requests
 On the  **Approval List** tab, the approver confirms the requst for approval of changes and determines whether to apply the request by selecting **Approve** or **Deny**.
 
+ For requests made by users themseleves, there are no approval permission.
+ 
 ![console-guide-36](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-36.png)
 
 The request is applied immediately upon clicking Approve. The change can be found in the **Key Depository** or the **Key Store Management** tab.
