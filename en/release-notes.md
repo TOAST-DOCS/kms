@@ -1,5 +1,9 @@
 ## Security > Secure Key Manager > Release Notes
 
+### September 25, 2024
+#### Feature Updates
+  * Deleted the Number column from the table in the approval list
+
 ### August 27, 2024
 #### Feature Updates
   * Removed the self-approval feature
