@@ -1,5 +1,9 @@
 ## Security > Secure Key Manager > Release Notes
 
+### September 25, 2024
+#### Feature Updates
+  * Deleted the Number column from the table in the approval list
+  
 ### April 23, 2024
 #### Bug Fixes
 * Fixed an error where, when deleting data (keys, credentials) uisng APIs and retrieving deleted data, even undeleted data cannot be retrieved until refreshing after the error window appeared
