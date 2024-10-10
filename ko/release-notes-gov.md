@@ -1,5 +1,9 @@
 ## Security > Secure Key Manager > 릴리스 노트
 
+### 2024. 10. 29.
+#### 신규 기능 추가
+  * Resource Watcher 서비스를 통해 Secure Key Manager에서 발생하는 이벤트에 대한 알림을 받을 수 있습니다.
+
 ### 2024. 09. 25.
 #### 기능 개선/변경
   * 승인리스트의 표에서 Number 열 삭제
