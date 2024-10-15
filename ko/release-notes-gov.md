@@ -6,7 +6,7 @@
   
 ### 2024. 08. 27.
 #### 신규 기능 추가
-  * Resource Watcher 서비스를 통해 Secure Key Manager에서 발생하는 이벤트에 대한 알림을 받을 수 있습니다.
+  * Secure Key Manager의 이벤트 알림을 Resource Watcher 서비스에서 받을 수 있는 기능 추가
 #### 기능 개선/변경
   * 승인 프로세스 자가 승인 기능 제거
     * 본인이 요청한 건에 대해 승인을 하지 못하도록 변경
