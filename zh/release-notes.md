@@ -3,7 +3,14 @@
 ### September 25, 2024
 #### Feature Updates
   * Deleted the Number column from the table in the approval list
-  
+
+### August 27, 2024
+### Added New Features
+  * Added the feature to receive event notifications for Secure Key Manager in the Resource Watcher service
+#### Feature Updates
+  * Removed the self-approval feature
+    * Made modifications to prevent approvals for requests made by users themselves
+
 ### April 23, 2024
 #### Bug Fixes
 * Fixed an error where, when deleting data (keys, credentials) uisng APIs and retrieving deleted data, even undeleted data cannot be retrieved until refreshing after the error window appeared
