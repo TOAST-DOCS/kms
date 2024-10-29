@@ -5,6 +5,8 @@
   * Deleted the Number column from the table in the approval list
 
 ### August 27, 2024
+### Added New Features
+  * Added the feature to receive event notifications for Secure Key Manager in the Resource Watcher service
 #### Feature Updates
   * Removed the self-approval feature
     * Made modifications to prevent approvals for requests made by users themselves
