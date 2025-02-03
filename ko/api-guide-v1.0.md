@@ -412,7 +412,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
 ## 키 저장소
 
 ### 키 저장소 목록 조회
-Secure Key Manager에 생성한 키 저장소들의 ID목록을 조회할 수 있습니다.
+Secure Key Manager에 생성한 키 저장소의 ID목록을 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores
 ```
@@ -437,7 +437,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | keyStoreIds | List | 키 저장소 아이디 리스트 |
 
 ### 키 저장소 상세 조회
-Secure Key Manager에 생성한 키 저장소의 정보를 조회할 수 있습니다.
+Secure Key Manager에 생성한 키 저장소의 정보를 상세 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}
 ```
@@ -477,7 +477,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 
 ## 키
 
-### 키 저장소 목록 조회
+### 키 목록 조회
 Secure Key Manager에 생성한 키의 ID목록을 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys
@@ -503,7 +503,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | keyIdList | List | 키 아이디 리스트 |
 
 ### 키 상세 조회
-Secure Key Manager에 생성한 키의 정보를 조회할 수 있습니다.
+Secure Key Manager에 생성한 키의 정보를 상세 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys/{keyId}
 ```
@@ -518,7 +518,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
         "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
         "name": "키 이름",
         "description": "키 설명",
-        "keyType": "SYMMETRIC_KEY"
+        "keyType": "SYMMETRIC_KEY",
         "currentKeyValueVersion": 2,
         "autoRotationPeriod": 0,
         "nextAutoRotationDate": null,
@@ -549,7 +549,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ## 인증 정보
 
 ### IPv4 인증 정보 목록 조회
-Secure Key Manager에서 설정한 키 저장소의 IPv4 목록을 조회할 수 있습니다.
+Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보 목록을 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips
 ```
@@ -590,7 +590,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
             {
                 "value": "127.0.0.1",
                 "description": "IPv4 설명",
-                "lastAccessDatetime": 2025-01-25T13:00:00,
+                "lastAccessDatetime": "2025-01-25T13:00:00",
                 "deletionDatetime": null,
                 "creationUser": "SECURE_KEY_MANAGER",
                 "creationDatetime": "2025-01-25T12:00:00",
@@ -655,7 +655,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
             {
                 "value": "aa:aa:aa:aa:aa:aa",
                 "description": "MAC 설명",
-                "lastAccessDatetime": 2025-01-25T13:00:00,
+                "lastAccessDatetime": "2025-01-25T13:00:00",
                 "deletionDatetime": null,
                 "creationUser": "SECURE_KEY_MANAGER",
                 "creationDatetime": "2025-01-25T12:00:00",
@@ -693,7 +693,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
      "body": {
         "certificateList": [
             "certificate1",
-            "certtificate2"
+            "certtificate2",
             ...
         ]
     }
@@ -722,7 +722,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
                 "password": "password1",
                 "description": "인증서 설명",
                 "expirationDate": "2029-07-21T10:26:47",
-                "lastAccessDatetime": 2025-01-25T13:00:00,
+                "lastAccessDatetime": "2025-01-25T13:00:00",
                 "deletionDatetime": null,
                 "creationUser": "SECURE_KEY_MANAGER",
                 "creationDatetime": "2025-01-25T12:00:00",
