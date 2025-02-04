@@ -32,6 +32,16 @@ https://api-keymanager.gov-nhncloudservice.com
 | POST | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates} | Secure Key Manager에 인증 정보를 추가합니다. |
 | PUT | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Secure Key Manager에 인증 정보 삭제를 요청합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Secure Key Manager에 인증 정보를 즉시 삭제합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores | Secure Key Manager에 저장된 키 저장소들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId} | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/keys/{keyId} | Secure Key Manager에 저장된 키 저장소의 키를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/ips | Secure Key Manager에 저장된 키 저장소의 Ipv4 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/ips?value={ipv4Value} | Secure Key Manager에 저장된 키 저장소의 Ipv4 인증 정보를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/macs | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/macs?value={macValue} | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/certificates | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/certificates?value={certificateName} | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보를 상세 조회합니다. |
 
 [API 요청의 HTTP 헤더]
 
@@ -584,7 +594,7 @@ Secure Key Manager에 인증 정보를 추가할 수 있습니다.
 
 #### IPv4 주소 추가
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s
+POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s
 ```
 
 [Request Body]
@@ -622,7 +632,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 
 #### MAC 주소 추가
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/macs
+POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/macs
 ```
 
 [Request Body]
@@ -660,7 +670,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 
 #### 인증서 추가
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/certificates
+POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/certificates
 ```
 
 [Request Body]
@@ -709,7 +719,7 @@ Secure Key Manager에 저장된 인증 정보의 상태를 **삭제 예정** 상
 
 #### IPv4 주소 삭제 요청
 ```text
-PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
+PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
 ```
 
 [Request Body]
@@ -745,7 +755,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 
 #### MAC 주소 삭제 요청
 ```text
-PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
+PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
 ```
 
 [Request Body]
@@ -781,7 +791,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 
 #### 인증서 삭제 요청
 ```text
-PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
+PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
 ```
 
 [Request Body]
@@ -821,7 +831,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 
 #### IPv4 주소 즉시 삭제
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
+POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
 ```
 
 [Request Body]
@@ -857,7 +867,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 
 #### MAC 주소 즉시 삭제
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
+POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
 ```
 
 [Request Body]
@@ -893,7 +903,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 
 #### 인증서 즉시 삭제
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
+POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
 ```
 
 [Request Body]
@@ -926,3 +936,358 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 |---|---|---|
 | value | String | 삭제한 인증서 이름|
 | deletionDateTime | String | 인증서의 삭제 시간 |
+
+## 키 저장소
+
+### 키 저장소 목록 조회
+Secure Key Manager에 생성한 키 저장소의 ID목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreIdList": [
+            1,
+            2,
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyStoreIds | List | 키 저장소 아이디 리스트 |
+
+### 키 저장소 상세 조회
+Secure Key Manager에 생성한 키 저장소의 정보를 상세 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreId": 1,
+        "name": "키 저장소 이름",
+        "description": "키 저장소 설명",
+        "ip4AuthUse": "Y",
+        "macAuthUse": "N",
+        "certificateAuthUse": "Y",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyStoreId | Number | 키 저장소 아이디 |
+| name | String | 키 저장소 이름 |
+| description | String | 키 저장소 설명 |
+| ip4AuthUse | String | 키 저장소 IPv4 인증 사용 여부 (Y/N) |
+| macAuthUse | String | 키 저장소 MAC 인증 사용 여부 (Y/N) |
+| certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부 (Y/N) |
+| creationUser | String | 키 저장소 생성 유저 |
+| creationDatetime | String | 키 저장소 생성 일시 |
+| lastChangeUser | String | 키 저장소 마지막 수정 유저 |
+| lastChangeDatetime | String | 키 저장소 마지막 수정 일시 |
+
+## 키
+
+### 키 목록 조회
+Secure Key Manager에 생성한 키의 ID목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyIdList": [
+            "035a0ffa16a64bbf8171c4bdcea37bbf",
+            "04fde6d8ee604cbe8fa7abe135a7dc3e",
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyIdList | List | 키 아이디 리스트 |
+
+### 키 상세 조회
+Secure Key Manager에 생성한 키의 정보를 상세 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
+        "name": "키 이름",
+        "description": "키 설명",
+        "keyType": "SYMMETRIC_KEY",
+        "currentKeyValueVersion": 2,
+        "autoRotationPeriod": 0,
+        "nextAutoRotationDate": null,
+        "lastAccessDatetime": "2021-12-13T15:13:13.377",
+        "deletionDatetime": null,
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyId | Number | 키 아이디 |
+| name | String | 키 이름 |
+| description | String | 키 설명 |
+| keyType | String | 키 타입 (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
+| currentKeyValueVersion | String | 현재 키 버전 |
+| autoRotationPeriod | String | 키 회전 주기 |
+| nextAutoRotationDate | String | 다음 키 회전 일 |
+| lastAccessDatetime | String | 키 마지막 사용 일시 |
+| creationUser | String | 키 생성 유저 |
+| creationDatetime | String | 키 생성 일시 |
+| lastChangeUser | String | 키 마지막 수정 유저 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
+
+## 인증 정보
+
+### IPv4 인증 정보 목록 조회
+Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보 목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "ipv4List": [
+            "127.0.0.1",
+            "127.0.0.2",
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| ipv4List | List | IPv4 인증 정보 리스트 |
+
+### IPv4 인증 정보 상세 조회
+Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보를 상세 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
+```
+
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| value | String | 조회하려는 IPv4 주소 |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "ipv4List": [
+            {
+                "value": "127.0.0.1",
+                "description": "IPv4 설명",
+                "lastAccessDatetime": "2025-01-25T13:00:00",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-01-25T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-01-30T15:00:00.000"
+            }
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| ipv4List | List | IPv4 인증 정보 리스트 |
+| value | String | IPv4 값 |
+| description | String | IPv4 설명 |
+| lastAccessDatetime | String | IPv4 마지막 사용 일시 |
+| deletionDatetime | String | IPv4 삭제 예정 일시 |
+| creationUser | String | IPv4 생성 유저 |
+| creationDatetime | String | IPv4 생성 일시 |
+| lastChangeUser | String | IPv4 마지막 수정 유저 |
+| lastChangeDatetime | String | IPv4 마지막 수정 일시 |
+
+### MAC 인증 정보 목록 조회
+Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보 목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "macList": [
+            "aa:aa:aa:aa:aa:aa",
+            "bb:bb:bb:bb:bb:bb",
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| macList | List | MAC 인증 정보 리스트 |
+
+### MAC 인증 정보 상세 조회
+Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보를 상세 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
+```
+
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| value | String | 조회하려는 MAC 이름 |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "macList": [
+            {
+                "value": "aa:aa:aa:aa:aa:aa",
+                "description": "MAC 설명",
+                "lastAccessDatetime": "2025-01-25T13:00:00",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-01-25T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-01-30T15:00:00.000"
+            }
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| macList | List | MAC 인증 정보 리스트 |
+| value | String | MAC 값 |
+| description | String | MAC 설명 |
+| lastAccessDatetime | String | MAC 마지막 사용 일시 |
+| deletionDatetime | String | MAC 삭제 예정 일시 |
+| creationUser | String | MAC 생성 유저 |
+| creationDatetime | String | MAC 생성 일시 |
+| lastChangeUser | String | MAC 마지막 수정 유저 |
+| lastChangeDatetime | String | MAC 마지막 수정 일시 |
+
+### 인증서 인증 정보 목록 조회
+Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보 목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "certificateList": [
+            "certificate1",
+            "certtificate2",
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| certificateList | List | 인증서 인증 정보 리스트 |
+
+### 인증서 인증 정보 상세 조회
+Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보를 상세 조회할 수 있습니다.
+```text
+GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
+```
+
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| value | String | 조회하려는 인증서 이름 |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "certificateList": [
+            {
+                "name": "certificate1",
+                "password": "password1",
+                "description": "인증서 설명",
+                "expirationDate": "2029-07-21T10:26:47",
+                "lastAccessDatetime": "2025-01-25T13:00:00",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-01-25T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-01-30T15:00:00.000"
+            }
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| certificateList | List | 인증서 인증 정보 리스트 |
+| name | String | 인증서 이름 |
+| password | String | 인증서 비밀번호 |
+| description | String | 인증서 설명 |
+| lastAccessDatetime | String | 인증서 마지막 사용 일시 |
+| deletionDatetime | String | 인증서 삭제 예정 일시 |
+| creationUser | String | 인증서 생성 유저 |
+| creationDatetime | String | 인증서 생성 일시 |
+| lastChangeUser | String | 인증서 마지막 수정 유저 |
+| lastChangeDatetime | String | 인증서 마지막 수정 일시 |
