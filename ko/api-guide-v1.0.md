@@ -26,13 +26,13 @@ https://api-keymanager.nhncloudservice.com
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Secure Key Manager에 저장한 공개 키를 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores | Secure Key Manager에 저장된 키 저장소들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId} | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores{keystoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
+| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys/{keyId} | Secure Key Manager에 저장된 키 저장소의 키를 상세 조회합니다. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores{keystoreId}/ips | Secure Key Manager에 저장된 키 저장소의 Ipv4 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips | Secure Key Manager에 저장된 키 저장소의 Ipv4 인증 정보들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips?value={ipv4Value} | Secure Key Manager에 저장된 키 저장소의 Ipv4 인증 정보를 상세 조회합니다. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores{keystoreId}/macs | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/macs | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/macs?value={macValue} | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보를 상세 조회합니다. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores{keystoreId}/certificates | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/certificates | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/certificates?value={certificateName} | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보를 상세 조회합니다. |
 
 [API 요청의 HTTP 헤더]
@@ -424,7 +424,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
         ...
     },
      "body": {
-        "keyStoreIds": [
+        "keyStoreIdList": [
             1,
             2,
             ...
@@ -439,7 +439,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 키 저장소 상세 조회
 Secure Key Manager에 생성한 키 저장소의 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}
 ```
 
 [Response Body]
@@ -471,16 +471,16 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | macAuthUse | String | 키 저장소 MAC 인증 사용 여부 (Y/N) |
 | certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부 (Y/N) |
 | creationUser | String | 키 저장소 생성 유저 |
-| creationDatetime | String | 키 저장소 생성 날짜 |
+| creationDatetime | String | 키 저장소 생성 일시 |
 | lastChangeUser | String | 키 저장소 마지막 수정 유저 |
-| lastChangeDatetime | String | 키 저장소 마지막 수정 날짜 |
+| lastChangeDatetime | String | 키 저장소 마지막 수정 일시 |
 
 ## 키
 
 ### 키 목록 조회
 Secure Key Manager에 생성한 키의 ID목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys
 ```
 
 [Response Body]
@@ -505,7 +505,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 키 상세 조회
 Secure Key Manager에 생성한 키의 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys/{keyId}
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
 ```
 
 [Response Body]
@@ -537,21 +537,21 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | name | String | 키 이름 |
 | description | String | 키 설명 |
 | keyType | String | 키 타입 (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | String | 최근 키 버전 |
+| currentKeyValueVersion | String | 버전 |
 | autoRotationPeriod | String | 키 회전 주기 |
-| nextAutoRotationDate | String | 다음 회전 일 |
-| lastAccessDatetime | String | 마지막 사용 일시 |
+| nextAutoRotationDate | String | 다음 키 회전 일 |
+| lastAccessDatetime | String | 키 마지막 사용 일시 |
 | creationUser | String | 키 생성 유저 |
-| creationDatetime | String | 키 생성 날짜 |
+| creationDatetime | String | 키 생성 일시 |
 | lastChangeUser | String | 키 마지막 수정 유저 |
-| lastChangeDatetime | String | 키 마지막 수정 날짜 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
 
 ## 인증 정보
 
 ### IPv4 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips
 ```
 
 [Response Body]
@@ -576,7 +576,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### IPv4 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips?value={ipv4}
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
 ```
 
 [Response Body]
@@ -606,17 +606,17 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | ipv4List | List | IPv4 인증 정보 리스트 |
 | value | String | IPv4 값 |
 | description | String | IPv4 설명 |
-| lastAccessDatetime | String | 마지막 사용 일시 |
-| deletionDatetime | String | 삭제 예정 일시 |
+| lastAccessDatetime | String | IPv4 마지막 사용 일시 |
+| deletionDatetime | String | IPv4 삭제 예정 일시 |
 | creationUser | String | IPv4 생성 유저 |
-| creationDatetime | String | IPv4 생성 날짜 |
+| creationDatetime | String | IPv4 생성 일시 |
 | lastChangeUser | String | IPv4 마지막 수정 유저 |
-| lastChangeDatetime | String | IPv4 마지막 수정 날짜 |
+| lastChangeDatetime | String | IPv4 마지막 수정 일시 |
 
 ### MAC 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/macs
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs
 ```
 
 [Response Body]
@@ -641,7 +641,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### MAC 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/macs?value={mac}
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
 ```
 
 [Response Body]
@@ -671,17 +671,17 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | macList | List | MAC 인증 정보 리스트 |
 | value | String | MAC 값 |
 | description | String | MAC 설명 |
-| lastAccessDatetime | String | 마지막 사용 일시 |
-| deletionDatetime | String | 삭제 예정 일시 |
+| lastAccessDatetime | String | MAC 마지막 사용 일시 |
+| deletionDatetime | String | MAC 삭제 예정 일시 |
 | creationUser | String | MAC 생성 유저 |
-| creationDatetime | String | MAC 생성 날짜 |
+| creationDatetime | String | MAC 생성 일시 |
 | lastChangeUser | String | MAC 마지막 수정 유저 |
-| lastChangeDatetime | String | MAC 마지막 수정 날짜 |
+| lastChangeDatetime | String | MAC 마지막 수정 일시 |
 
 ### 인증서 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/certificates
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates
 ```
 
 [Response Body]
@@ -706,7 +706,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 인증서 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/certificates?value={certificateName}
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
 ```
 
 [Response Body]
@@ -739,9 +739,9 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | name | String | 인증서 이름 |
 | password | String | 인증서 비밀번호 |
 | description | String | 인증서 설명 |
-| lastAccessDatetime | String | 마지막 사용 일시 |
-| deletionDatetime | String | 삭제 예정 일시 |
+| lastAccessDatetime | String | 인증서 마지막 사용 일시 |
+| deletionDatetime | String | 인증서 삭제 예정 일시 |
 | creationUser | String | 인증서 생성 유저 |
-| creationDatetime | String | 인증서 생성 날짜 |
+| creationDatetime | String | 인증서 생성 일시 |
 | lastChangeUser | String | 인증서 마지막 수정 유저 |
-| lastChangeDatetime | String | 인증서 마지막 수정 날짜 |
+| lastChangeDatetime | String | 인증서 마지막 수정 일시 |
