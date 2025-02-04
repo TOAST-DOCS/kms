@@ -1105,6 +1105,12 @@ Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보를 상세
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
 ```
 
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| value | String | 조회하려는 IPv4 주소 |
+
 [Response Body]
 ```
 {
@@ -1170,6 +1176,12 @@ Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보를 상세 
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
 ```
 
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| value | String | 조회하려는 MAC 주소 |
+
 [Response Body]
 ```
 {
@@ -1234,6 +1246,12 @@ Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보를 �
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
 ```
+
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| value | String | 조회하려는 인증서 이름 |
 
 [Response Body]
 ```
