@@ -412,7 +412,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ## 키 저장소
 
 ### 키 저장소 목록 조회
-Secure Key Manager에 생성한 키 저장소의 ID목록을 조회할 수 있습니다.
+Secure Key Manager에 생성한 키 저장소의 ID 목록을 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores
 ```
@@ -434,10 +434,10 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyStoreIds | List | 키 저장소 아이디 리스트 |
+| keyStoreIds | List | 키 저장소 ID 목록 |
 
 ### 키 저장소 상세 조회
-Secure Key Manager에 생성한 키 저장소의 정보를 상세 조회할 수 있습니다.
+Secure Key Manager에 생성한 키 저장소 정보를 상세 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}
 ```
@@ -464,12 +464,12 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyStoreId | Number | 키 저장소 아이디 |
+| keyStoreId | Number | 키 저장소 ID |
 | name | String | 키 저장소 이름 |
 | description | String | 키 저장소 설명 |
-| ip4AuthUse | String | 키 저장소 IPv4 인증 사용 여부 (Y/N) |
-| macAuthUse | String | 키 저장소 MAC 인증 사용 여부 (Y/N) |
-| certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부 (Y/N) |
+| ip4AuthUse | String | 키 저장소 IPv4 인증 사용 여부(Y/N) |
+| macAuthUse | String | 키 저장소 MAC 인증 사용 여부(Y/N) |
+| certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
 | creationUser | String | 키 저장소 생성 유저 |
 | creationDatetime | String | 키 저장소 생성 일시 |
 | lastChangeUser | String | 키 저장소 마지막 수정 유저 |
@@ -478,7 +478,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ## 키
 
 ### 키 목록 조회
-Secure Key Manager에 생성한 키의 ID목록을 조회할 수 있습니다.
+Secure Key Manager에 생성한 키의 ID 목록을 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys
 ```
@@ -500,10 +500,10 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyIdList | List | 키 아이디 리스트 |
+| keyIdList | List | 키 ID 목록 |
 
 ### 키 상세 조회
-Secure Key Manager에 생성한 키의 정보를 상세 조회할 수 있습니다.
+Secure Key Manager에 생성한 키 정보를 상세 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
 ```
@@ -533,13 +533,13 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyId | Number | 키 아이디 |
+| keyId | Number | 키 ID |
 | name | String | 키 이름 |
 | description | String | 키 설명 |
-| keyType | String | 키 타입 (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
+| keyType | String | 키 타입(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
 | currentKeyValueVersion | String | 현재 키 버전 |
 | autoRotationPeriod | String | 키 회전 주기 |
-| nextAutoRotationDate | String | 다음 키 회전 일 |
+| nextAutoRotationDate | String | 다음 키 회전일 |
 | lastAccessDatetime | String | 키 마지막 사용 일시 |
 | creationUser | String | 키 생성 유저 |
 | creationDatetime | String | 키 생성 일시 |
@@ -571,7 +571,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| ipv4List | List | IPv4 인증 정보 리스트 |
+| ipv4List | List | IPv4 인증 정보 목록 |
 
 ### IPv4 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보를 상세 조회할 수 있습니다.
@@ -609,7 +609,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| ipv4List | List | IPv4 인증 정보 리스트 |
+| ipv4List | List | IPv4 인증 정보 목록 |
 | value | String | IPv4 값 |
 | description | String | IPv4 설명 |
 | lastAccessDatetime | String | IPv4 마지막 사용 일시 |
@@ -642,7 +642,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| macList | List | MAC 인증 정보 리스트 |
+| macList | List | MAC 인증 정보 목록 |
 
 ### MAC 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보를 상세 조회할 수 있습니다.
@@ -654,7 +654,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 조회하려는 MAC 이름 |
+| value | String | 조회하려는 MAC 주소 |
 
 [Response Body]
 ```
@@ -680,7 +680,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| macList | List | MAC 인증 정보 리스트 |
+| macList | List | MAC 인증 정보 목록 |
 | value | String | MAC 값 |
 | description | String | MAC 설명 |
 | lastAccessDatetime | String | MAC 마지막 사용 일시 |
@@ -713,7 +713,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| certificateList | List | 인증서 인증 정보 리스트 |
+| certificateList | List | 인증서 인증 정보 목록 |
 
 ### 인증서 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보를 상세 조회할 수 있습니다.
@@ -753,7 +753,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.0/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| certificateList | List | 인증서 인증 정보 리스트 |
+| certificateList | List | 인증서 인증 정보 목록 |
 | name | String | 인증서 이름 |
 | password | String | 인증서 비밀번호 |
 | description | String | 인증서 설명 |
