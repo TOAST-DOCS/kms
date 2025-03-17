@@ -28,8 +28,8 @@ https://api-keymanager.gncloud.go.kr
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId} | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/keys/{keyId} | Secure Key Manager에 저장된 키 저장소의 키를 상세 조회합니다. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips | Secure Key Manager에 저장된 키 저장소의 Ipv4 인증 정보들을 조회합니다. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips?value={ipv4Value} | Secure Key Manager에 저장된 키 저장소의 Ipv4 인증 정보를 상세 조회합니다. |
+| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips | Secure Key Manager에 저장된 키 저장소의 IPv4 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/ips?value={ipv4Value} | Secure Key Manager에 저장된 키 저장소의 IPv4 인증 정보를 상세 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/macs | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/macs?value={macValue} | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보를 상세 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keystoreId}/certificates | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보들을 조회합니다. |
