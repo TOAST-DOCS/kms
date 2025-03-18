@@ -33,15 +33,15 @@ https://api-keymanager.gncloud.go.kr
 | PUT | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Secure Key Manager에 인증 정보 삭제를 요청합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Secure Key Manager에 인증 정보를 즉시 삭제합니다. |
 | GET | /keymanager/v1.2/appkey/{appkey}/keystores | Secure Key Manager에 저장된 키 저장소들을 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId} | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/keys/{keyId} | Secure Key Manager에 저장된 키 저장소의 키를 상세 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/ips | Secure Key Manager에 저장된 키 저장소의 IPv4 인증 정보들을 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/ips?value={ipv4Value} | Secure Key Manager에 저장된 키 저장소의 IPv4 인증 정보를 상세 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/macs | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보들을 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/macs?value={macValue} | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보를 상세 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/certificates | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보들을 조회합니다. |
-| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keystoreId}/certificates?value={certificateName} | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId} | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId} | Secure Key Manager에 저장된 키 저장소의 키를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips | Secure Key Manager에 저장된 키 저장소의 IPv4 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value} | Secure Key Manager에 저장된 키 저장소의 IPv4 인증 정보를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue} | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보를 상세 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보들을 조회합니다. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName} | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보를 상세 조회합니다. |
 
 [API 요청의 HTTP 헤더]
 
@@ -962,7 +962,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyStoreIds | List | 키 저장소 ID 목록 |
+| keyStoreIdList | List | 키 저장소 ID 목록 |
 
 ### 키 저장소 상세 조회
 Secure Key Manager에 생성한 키 저장소 정보를 상세 조회할 수 있습니다.
@@ -1111,7 +1111,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 조회하려는 IPv4 주소 |
+| ipv4Value | String | 조회하려는 IPv4 주소 |
 
 [Response Body]
 ```
@@ -1182,7 +1182,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 조회하려는 MAC 주소 |
+| macValue | String | 조회하려는 MAC 주소 |
 
 [Response Body]
 ```
@@ -1253,7 +1253,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 조회하려는 인증서 이름 |
+| certificateName | String | 조회하려는 인증서 이름 |
 
 [Response Body]
 ```
