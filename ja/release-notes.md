@@ -1,5 +1,10 @@
 ## Security > Secure Key Manager > リリースノート
 
+### 2025. 04. 28.
+#### 機能改善/変更
+  * データ保管期限を3年から1年に変更
+    * [関連告知](https://www.nhncloud.com/kr/support/notice/detail/6493)
+
 ### 2024. 09. 25.
 #### 機能改善/変更
   * 承認リストの表からNumber列を削除
