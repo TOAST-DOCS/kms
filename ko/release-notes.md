@@ -1,5 +1,10 @@
 ## Security > Secure Key Manager > 릴리스 노트
 
+### 2025. 04. 28.
+#### 기능 개선/변경
+  * 데이터 보관 기한이 3년에서 1년으로 변경
+    * [관련 공지](https://www.nhncloud.com/kr/support/notice/detail/6493)
+
 ### 2025. 03. 25.
 #### 신규 기능 추가
   * 키 저장소 목록/상세 조회 API 추가
