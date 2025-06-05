@@ -3,7 +3,7 @@
 ### 2025.06. 24.
 #### 기능 개선/변경
   * 신규 오류 메세지 추가
-    * 유효하지 않은 URI로 API 요청 시 오류 메세지 추가. 자세한 내용은 [문제 해결 가이드](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide)를 참고.
+    * 유효하지 않은 URI로 API 요청 시 오류 메세지 추가. 자세한 내용은 [문제 해결 가이드](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found)를 참고.
     
 ### 2025. 04. 28.
 #### 기능 개선/변경
