@@ -1,5 +1,10 @@
 ## Security > Secure Key Manager > リリースノート
 
+### 2025. 06. 24.
+#### 機能改善/変更
+  * 新規エラーメッセージ追加
+    * 有効ではないURIでAPIリクエストを行った際のエラーメッセージを追加。詳細は[トラブルシューティング](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found)を参照。
+
 ### 2025. 04. 28.
 #### 機能改善/変更
   * データ保管期限を3年から1年に変更
