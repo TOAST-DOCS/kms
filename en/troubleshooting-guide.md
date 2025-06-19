@@ -51,4 +51,8 @@ The following describes the solutions for main issues that may arise while using
     * Check if the certificate has been issued by Secure Key Manager.
     * Check valid period of the certificate.
 
+### API call failure returns URL NOT FOUND error message.
+* Occurs when a request is made with an invalid URL.
+    * Check if the URL is correct.
+
 ##### For any other errors that occur during an API request, contact Customer Center ([support@toast.com](mailto:support@toast.com)).
