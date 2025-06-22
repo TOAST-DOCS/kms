@@ -32,7 +32,16 @@ https://api-keymanager.nhncloudservice.com
 | POST | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates} | Add credentials to Secure Key Manager. |
 | PUT | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Request deletion of credentials in Secure Key Manager. |
 | POST | /keymanager/v1.2/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Immediately delete credentials in Secure Key Manager. |
-
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores | Query the key stores stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId} | Query the details of the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys | Query the keys in the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId} | Query the details of the key in the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips | Query the IPv4 authentication information in the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value} | Query the details of the IPv4 authentication information in the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs | Query the MAC authentication information in the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue} | Query the details of the MAC authentication information in the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates | Query the certificate authentication information in the key store stored in Secure Key Manager. |
+| GET | /keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName} | Query the details of the certificate authentication information in the key store stored in Secure Key Manager. |
 
 [HTTP Header of API Request]
 
@@ -922,3 +931,358 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 |---|---|---|
 | value | String | Deleted certificate name|
 | deletionDateTime | String | Deletion time for the certificate |
+
+## Key Store
+
+### Query the List of Key stores
+Users can query the list of IDs for key stores created in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreIdList": [
+            1,
+            2,
+            ...
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyStoreIdList | List | List of key store IDs |
+
+### Query the Details of the Key Store
+Users can query detailed information about the key store created in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreId": 1,
+        "name": "Key store name",
+        "description": "Key store description",
+        "ip4AuthUse": "Y",
+        "macAuthUse": "N",
+        "certificateAuthUse": "Y",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyStoreId | Number | Key store ID |
+| name | String | Key store name |
+| description | String | Key store descriptions |
+| ip4AuthUse | String | Whether IPv4 authentication is enabled for the key store or not (Y/N) |
+| macAuthUse | String | Whether MAC authentication is enabled for the key store or not (Y/N) |
+| certificateAuthUse | String | Whether the certificate authentication is enabled for the key store or not (Y/N) |
+| creationUser | String | User who created the key store |
+| creationDatetime | String | Key store creation date and time |
+| lastChangeUser | String | Key store last modified user |
+| lastChangeDatetime | String | Key store last modified date and time |
+
+## Key
+
+### Query the List of Keys
+Users can query the list of key IDs created in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyIdList": [
+            "035a0ffa16a64bbf8171c4bdcea37bbf",
+            "04fde6d8ee604cbe8fa7abe135a7dc3e",
+            ...
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyIdList | List | Key ID list |
+
+### Query the details of keys
+Users can query detailed information about the key created in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
+        "name": "Key name",
+        "description": "Key descriptions",
+        "keyType": "SYMMETRIC_KEY",
+        "currentKeyValueVersion": 2,
+        "autoRotationPeriod": 0,
+        "nextAutoRotationDate": null,
+        "lastAccessDatetime": "2021-12-13T15:13:13.377",
+        "deletionDatetime": null,
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyId | Number | Key ID |
+| name | String | Key name |
+| description | String | Key descriptions |
+| keyType | String | Key type(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
+| currentKeyValueVersion | String | Current key version |
+| autoRotationPeriod | String | Key rotation cycle |
+| nextAutoRotationDate | String | Key next rotation date |
+| lastAccessDatetime | String | Key last used date and time |
+| creationUser | String | User who created the key |
+| creationDatetime | String | Key creation date and time |
+| lastChangeUser | String | Key last modified user |
+| lastChangeDatetime | String | Key last modified date and time |
+
+## Authentication Information
+
+### Query the List of IPv4 Authentication Information
+Users can query the list of IPv4 authentication information in the key store configured in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "ipv4List": [
+            "127.0.0.1",
+            "127.0.0.2",
+            ...
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| ipv4List | List | IPv4 authentication information list |
+
+### Query the details of IPv4 Authentication Information
+Users can query detailed information about the IPv4 authentication in the key store configured in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
+```
+
+[Request Parameter]
+
+| Name | Type | Description |
+|---|---|---|
+| ipv4Value | String | IPv4 address to query |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "ipv4List": [
+            {
+                "value": "127.0.0.1",
+                "description": "IPv4 descriptions",
+                "lastAccessDatetime": "2025-01-25T13:00:00",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-01-25T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-01-30T15:00:00.000"
+            }
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| ipv4List | List | IPv4 authentication information list |
+| value | String | IPv4 value |
+| description | String | IPv4 descriptions |
+| lastAccessDatetime | String | IPv4 last used date and time |
+| deletionDatetime | String | IPv4 deletion scheduled date and time |
+| creationUser | String | User who created the IPv4 |
+| creationDatetime | String | IPv4 creation date and time |
+| lastChangeUser | String | IPv4 last modified user |
+| lastChangeDatetime | String | IPv4 last modified date and time |
+
+### Query the List of MAC Authentication Information
+Users can query the list of MAC authentication information in the key store configured in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "macList": [
+            "aa:aa:aa:aa:aa:aa",
+            "bb:bb:bb:bb:bb:bb",
+            ...
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| macList | List | MAC authentication information list |
+
+### Query the details of MAC Authentication Information
+Users can query detailed information about the MAC authentication in the key store configured in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
+```
+
+[Request Parameter]
+
+| Name | Type | Description |
+|---|---|---|
+| macValue | String | MAC address to query |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "macList": [
+            {
+                "value": "aa:aa:aa:aa:aa:aa",
+                "description": "MAC descriptions",
+                "lastAccessDatetime": "2025-01-25T13:00:00",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-01-25T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-01-30T15:00:00.000"
+            }
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| macList | List | MAC authentication information list |
+| value | String | MAC value |
+| description | String | MAC descriptions |
+| lastAccessDatetime | String | MAC last used date and time |
+| deletionDatetime | String | MAC deletion scheduled date and time |
+| creationUser | String | User who created the MAC |
+| creationDatetime | String | MAC creation date and time |
+| lastChangeUser | String | MAC last modified user |
+| lastChangeDatetime | String | MAC last modified date and time |
+
+### Query the List of Certificate Authentication Information
+Users can query the list of the certifacate authentication information in the key store configured in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates
+```
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "certificateList": [
+            "certificate1",
+            "certtificate2",
+            ...
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| certificateList | List | Certifacate authentication information list |
+
+### Query the details of Certifacate Authentication Information
+Users can query detailed information about the certifacate authentication in the key store configured in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
+```
+
+[Request Parameter]
+
+| Name | Type | Description |
+|---|---|---|
+| certificateName | String | Certificate name to query |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "certificateList": [
+            {
+                "name": "certificate1",
+                "password": "password1",
+                "description": "Certificate descriptions",
+                "expirationDate": "2029-07-21T10:26:47",
+                "lastAccessDatetime": "2025-01-25T13:00:00",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-01-25T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-01-30T15:00:00.000"
+            }
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| certificateList | List | Certificate authentication information list |
+| name | String | Certificate name |
+| password | String | Certificate password |
+| description | String | Certificate descriptions |
+| lastAccessDatetime | String | Certificate last used date and time |
+| deletionDatetime | String | Certificate deletion scheduled date and time |
+| creationUser | String | User who created the certificate |
+| creationDatetime | String | Certificate creation date and time |
+| lastChangeUser | String | Certificate last modified user |
+| lastChangeDatetime | String | Certificate last modified date and time |

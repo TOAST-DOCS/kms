@@ -1,5 +1,24 @@
 ## Security > Secure Key Manager > Release Notes
 
+### June 24, 2025
+#### Feature Updates
+  * Added new error message
+    * Added an error message for API requests with invalid URIs. For more information, see the [Troubleshooting Guide](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found).
+    
+### April 28, 2025
+#### Feature Updates
+  * Changed the data retention period from 3 years to 1 year
+    * [Related Notice](https://www.nhncloud.com/kr/support/notice/detail/6493)
+
+### March 25, 2025
+#### Added New Features
+  * Added APIs to query key store list and details
+    * Added API for querying detailed key stores using a list of key store IDs or key store IDs
+  * Added APIs to query key list and details
+    * Added API for querying detailed keys using a list of key IDs or key IDs
+  * Added APIs to query authentication information list and details
+    * Added API for querying detailed authentication information using a list of authentication information values or values
+    
 ### September 25, 2024
 #### Feature Updates
   * Deleted the Number column from the table in the approval list
