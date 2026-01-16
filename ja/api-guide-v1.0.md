@@ -533,12 +533,12 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| keyId | Number | キーID |
+| keyId | String | キーID |
 | name | String | キー名 |
 | description | String | キーの説明 |
 | keyType | String | キータイプ(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | String | 現在キーバージョン |
-| autoRotationPeriod | String | キーのローテーション周期 |
+| currentKeyValueVersion | Number | 現在キーバージョン |
+| autoRotationPeriod | Number | キーのローテーション周期 |
 | nextAutoRotationDate | String | 次のキーのローテーション日 |
 | lastAccessDatetime | String | キーの最終使用日時 |
 | creationUser | String | キー作成ユーザー |
