@@ -533,12 +533,12 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.0/appkey/{appkey}/keystores/
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyId | Number | 키 ID |
+| keyId | String | 키 ID |
 | name | String | 키 이름 |
 | description | String | 키 설명 |
 | keyType | String | 키 타입(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | String | 현재 키 버전 |
-| autoRotationPeriod | String | 키 회전 주기 |
+| currentKeyValueVersion | Number | 현재 키 버전 |
+| autoRotationPeriod | Number | 키 회전 주기 |
 | nextAutoRotationDate | String | 다음 키 회전일 |
 | lastAccessDatetime | String | 키 마지막 사용 일시 |
 | creationUser | String | 키 생성 유저 |

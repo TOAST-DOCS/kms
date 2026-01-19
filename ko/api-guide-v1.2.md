@@ -469,7 +469,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | keyStoreName | String | 키를 저장할 키 저장소 이름 |
 | name | String | 키 이름 |
 | description | String | 키 설명 |
-| autoRotationPeriod | Integer | 회전 주기 |
+| autoRotationPeriod | Number | 회전 주기 |
 
 [Response Body]
 
@@ -509,7 +509,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | keyStoreName | String | 키를 저장할 키 저장소 이름 |
 | name | String | 키 이름 |
 | description | String | 키 설명 |
-| autoRotationPeriod | Integer | 회전 주기 |
+| autoRotationPeriod | Number | 회전 주기 |
 
 [Response Body]
 
@@ -1059,12 +1059,12 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/k
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyId | Number | 키 ID |
+| keyId | String | 키 ID |
 | name | String | 키 이름 |
 | description | String | 키 설명 |
 | keyType | String | 키 타입(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | String | 현재 키 버전 |
-| autoRotationPeriod | String | 키 회전 주기 |
+| currentKeyValueVersion | Number | 현재 키 버전 |
+| autoRotationPeriod | Number | 키 회전 주기 |
 | nextAutoRotationDate | String | 다음 키 회전일 |
 | lastAccessDatetime | String | 키 마지막 사용 일시 |
 | creationUser | String | 키 생성 유저 |

@@ -468,7 +468,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | keyStoreName | String | Key store name where key is saved |
 | name | String | Key name |
 | description | String | Key description |
-| autoRotationPeriod | Integer | Rotation period |
+| autoRotationPeriod | Number | Rotation period |
 
 [Response Body]
 
@@ -508,7 +508,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | keyStoreName | String | Key store name where key is saved |
 | name | String | Key name |
 | description | String | Key description |
-| autoRotationPeriod | Integer | Rotation period |
+| autoRotationPeriod | Number | Rotation period |
 
 [Response Body]
 
@@ -1057,12 +1057,12 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/k
 ```
 | Name | Type | Description |
 |---|---|---|
-| keyId | Number | Key ID |
+| keyId | String | Key ID |
 | name | String | Key name |
 | description | String | Key descriptions |
 | keyType | String | Key type(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | String | Current key version |
-| autoRotationPeriod | String | Key rotation cycle |
+| currentKeyValueVersion | Number | Current key version |
+| autoRotationPeriod | Number | Key rotation cycle |
 | nextAutoRotationDate | String | Key next rotation date |
 | lastAccessDatetime | String | Key last used date and time |
 | creationUser | String | User who created the key |
