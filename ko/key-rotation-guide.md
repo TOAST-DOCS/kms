@@ -1,5 +1,5 @@
-# 키 회전을 통한 보안 강화 가이드
-**Security > Secure Key Manager > 키 회전을 통한 보안 강화 가이드**
+# 키 회전을 이용한 보안 강화 가이드
+**Security > Secure Key Manager > 키 회전을 이용한 보안 강화 가이드**
 
 이 가이드는 Secure Key Manager(SKM)의 키 회전 기능을 활용하여 실제 서비스 환경에서 보안 수준을 향상시키는 방법을 설명합니다.
 
@@ -65,7 +65,7 @@ SKM의 키 회전 기능을 사용하면 키 ID를 변경하지 않고 키값만
 
 * **키 노출 범위 최소화**: KEK는 SKM에서 안전하게 보관되며 사용자의 코드로 노출되지 않습니다.
 * **키 관리 집중화**: 중요한 KEK는 SKM에서 중앙 집중 관리되고, DEK는 각 데이터마다 다르게 생성할 수 있어 피해 범위를 최소화할 수 있습니다.
-* **감사 추적 강화**: SKM을 통한 모든 KEK 사용 내역이 기록되므로, 키 사용에 대한 감사 추적이 용이합니다.
+* **감사 추적 강화**: SKM이 모든 KEK 사용 내역을 기록하므로, 키 사용에 대한 감사 추적이 용이합니다.
 
 #### 비유로 이해하기
 
@@ -132,7 +132,7 @@ sequenceDiagram
 
     App->>DB: 1. 저장된 DEK 암호문을 조회
     DB-->>App: DEK 암호문을 반환
-    App->>SKM: 2. SKM의 복호화 API를 통해서 DEK 암호문 복호화
+    App->>SKM: 2. SKM 복호화 API로 DEK 암호문 복호화
     SKM-->>App: 복호화된 평문 DEK를 반환
     App->>App: 3. 평문 DEK로<br/>사용자 데이터 암/복호화
     end
@@ -147,9 +147,9 @@ sequenceDiagram
     note right of App: 키 회전 후 DEK 암호문 변경 반영
     App->>DB: 1. 기존 DEK 암호문 조회
     DB-->>App: DEK 암호문 반환
-    App->>SKM: 2. SKM의 복호화 API를 통해서 DEK 암호문 복호화
+    App->>SKM: 2. SKM 복호화 API로 DEK 암호문 복호화
     SKM-->>App: 평문 DEK 반환
-    App->>SKM: 3. SKM의 암호화 API를 통해서<br/>평문 DEK를 회전된 신규 KEK로 암호화
+    App->>SKM: 3. SKM 암호화 API로<br/>평문 DEK를 회전된 신규 KEK로 암호화
     SKM-->>App: 신규 DEK 암호문 반환
     App->>DB: 4. 저장했던 DEK 암호문을 신규 DEK 암호문으로 수정
 
@@ -299,7 +299,7 @@ DEK 1개 유출 시 → 10만 건만 위험 노출(피해 90% 감소)
 
 ## 자동 키 회전 설정
 
-### 1. 콘솔을 통한 자동 회전 활성화
+### 1. 콘솔에서 자동 회전 활성화
 
 **단계별 설정 방법**
 
@@ -347,7 +347,7 @@ DEK 1개 유출 시 → 10만 건만 위험 노출(피해 90% 감소)
 
 ![console-guide-27](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-27.png)
 
-### 3. API를 통한 키 회전 모니터링
+### 3. API로 키 회전 모니터링
 
 키 회전 후 변경 사항을 API로 확인할 수 있습니다.
 
