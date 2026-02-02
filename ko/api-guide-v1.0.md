@@ -436,6 +436,56 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 |---|---|---|
 | keyStoreIdList | List | 키 저장소 ID 목록 |
 
+### 키 저장소 목록 상세 조회
+Secure Key Manager에 생성한 키 저장소의 상세 정보 목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores?detail={detail}
+```
+
+[Request Parameter]
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| detail | Boolean | 상세 정보 포함 여부 (기본값: false) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreList": [
+            {
+                "keyStoreId": 1,
+                "name": "키 저장소 이름",
+                "description": "키 저장소 설명",
+                "ip4AuthUse": "Y",
+                "macAuthUse": "N",
+                "certificateAuthUse": "Y",
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyStoreList | List | 키 저장소 상세 정보 목록 |
+| keyStoreId | Number | 키 저장소 ID |
+| name | String | 키 저장소 이름 |
+| description | String | 키 저장소 설명 |
+| ip4AuthUse | String | 키 저장소 IPv4 인증 사용 여부(Y/N) |
+| macAuthUse | String | 키 저장소 MAC 인증 사용 여부(Y/N) |
+| certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
+| creationUser | String | 키 저장소 생성 유저 |
+| creationDatetime | String | 키 저장소 생성 일시 |
+| lastChangeUser | String | 키 저장소 마지막 수정 유저 |
+| lastChangeDatetime | String | 키 저장소 마지막 수정 일시 |
+
 ### 키 저장소 상세 조회
 Secure Key Manager에 생성한 키 저장소 정보를 상세 조회할 수 있습니다.
 ```text
@@ -501,6 +551,67 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyIdList | List | 키 ID 목록 |
+
+### 키 목록 상세 조회
+Secure Key Manager에 생성한 키의 상세 정보 목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
+```
+
+[Request Parameter]
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| detail | Boolean | 상세 정보 포함 여부 (기본값: false) |
+| type | String | 키 타입 필터 (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY, 기본값: all, 멀티 선택 불가) |
+| name | String | 키 이름 필터 (최대 100자) |
+| status | String | 키 상태 필터 (active/inactive, 기본값: all) |
+| pageNumber | Number | 페이지 번호 (기본값: 1, 양수) |
+| pageSize | Number | 페이지 크기 (기본값: 10, 10~100) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyList": [
+            {
+                "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
+                "name": "키 이름",
+                "description": "키 설명",
+                "keyType": "SYMMETRIC_KEY",
+                "currentKeyValueVersion": 2,
+                "autoRotationPeriod": 0,
+                "nextAutoRotationDate": null,
+                "lastAccessDatetime": "2025-02-10T15:13:13.377",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyList | List | 키 상세 정보 목록 |
+| keyId | String | 키 ID |
+| name | String | 키 이름 |
+| description | String | 키 설명 |
+| keyType | String | 키 타입(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
+| currentKeyValueVersion | Number | 현재 키 버전 |
+| autoRotationPeriod | Number | 키 회전 주기 |
+| nextAutoRotationDate | String | 다음 키 회전일 |
+| lastAccessDatetime | String | 키 마지막 사용 일시 |
+| deletionDatetime | String | 키 삭제 예정 일시 |
+| creationUser | String | 키 생성 유저 |
+| creationDatetime | String | 키 생성 일시 |
+| lastChangeUser | String | 키 마지막 수정 유저 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
 
 ### 키 상세 조회
 Secure Key Manager에 생성한 키 정보를 상세 조회할 수 있습니다.

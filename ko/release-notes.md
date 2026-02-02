@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > 릴리스 노트
 
+### 2026. 02. 10.
+#### 신규 기능 추가
+- 키 저장소 목록 상세 조회 API 추가
+  - API를 이용하여 키 저장소의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
+- 키 목록 상세 조회 API 추가
+  - API를 이용하여 키의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
+    
 ### 2025. 06. 24.
 #### 기능 개선/변경
   * 신규 오류 메시지 추가
