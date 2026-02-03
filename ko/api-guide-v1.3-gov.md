@@ -2,15 +2,22 @@
 
 Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API를 제공합니다. 클라이언트는 키 저장소에 설정한 인증을 통과한 후 Secure Key Manager에 저장한 데이터를 사용할 수 있습니다.
 
-Secure Key Manager API v1.3에서는 토큰 인증 방식의 HTTP 헤더 필드가 추가되어 API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
+## Secure Key Manager API 공통 정보
 
-## 기본 정보
+### API 엔드포인트
 
-### EndPoint
+| 리전 | 엔드포인트 |
+|---|---|
+| Global | https://api-keymanager.gov-nhncloudservice.com |
 
-```text
-https://api-keymanager.gov-nhncloudservice.com
-```
+### 인증 및 권한
+
+Secure Key Manager API v1.3은 API 호출 및 인증을 위한 인증 방법으로 Appkey, 프로젝트 통합 Appkey, User Access Key 토큰을 지원합니다.
+
+Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용되며, Appkey 대신 프로젝트 통합 Appkey를 사용할 수도 있습니다.
+User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰으로, API 호출 시 인증/인가를 위해 사용합니다.
+
+각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/nhncloud/ko/public-api/appkey/), [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey/), [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token/)를 참고하세요.
 
 ### API 목록
 

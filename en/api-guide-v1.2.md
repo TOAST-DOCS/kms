@@ -3,14 +3,22 @@
 
 Secure Key Manager provides various APIs to access user data. Clients must be authenticated via key store to get access to data stored in Secure Kay Manager.
 
-In v1.2, **required HTTP header fields related to user authentication** have been added, and **the feature to add or delete keys using APIs** added.
+## Secure Key Manager API Common Information
 
-## Basic Information
+### API Endpoint
 
-### EndPoint
-```text
-https://api-keymanager.nhncloudservice.com
-```
+| Region | Endpoint |
+|---|---|
+| Global | https://api-keymanager.nhncloudservice.com |
+
+### Authentication and Authorization
+
+Secure Key Manager API v1.2 supports Appkey, Project Integrated Appkey, and User Access Key as authentication methods for API calls.
+
+Appkey is included in the request URL when calling the API to identify and point to a specific resource. Alternatively, a Project-integrated Appkey can be used in place of Appkey.
+A User Access Key is an authentication key issued based on an NHN Cloud or IAM account. It is used in conjunction with a Secret Access Key to authenticate API requests.
+
+For more information on how to check and use each authentication method, see [Appkey](/nhncloud/en/public-api/appkey/), [Project-integrated Appkey](/nhncloud/en/public-api/project-integrated-appkey/), and [User Access Key](/nhncloud/en/public-api/user-access-key/).
 
 ### List of APIs
 
@@ -49,12 +57,6 @@ https://api-keymanager.nhncloudservice.com
 To use MAC address authentication of Secure Key Manager, you must make a request by setting the client's MAC address in the HTTP header.
 ```
 X-TOAST-CLIENT-MAC-ADDR: {MAC Address}
-```
-
-In v1.2, essential fields will be added to the HTTP header.
-```
-X-TC-AUTHENTICATION-ID: {User Access Key ID}
-X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
 ```
 
 For more information, please see [the console user guide](/Security/Secure%20Key%20Manager/en/getting-started/#authorization-for-adddelete-keys-api).
