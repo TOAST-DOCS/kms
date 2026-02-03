@@ -3,12 +3,19 @@
 
 Secure Key Manager provides various APIs to access user data. Clients must be authenticated via key store to get access to data stored in Secure Kay Manager.
 
-## Basic Information
+## Secure Key Manager API Common Information
 
-### EndPoint
-```text
-https://api-keymanager.nhncloudservice.com
-```
+### API Endpoint
+
+| Region | Endpoint |
+|---|---|
+| Global | https://api-keymanager.nhncloudservice.com |
+
+### Authentication and Authorization
+
+Appkey is required to use the Secure Key Manager API. The Appkey is included in the request URL to identify and specify a particular resource when making API calls.
+
+For more information on checking and using Appkeys, please refer to the [Appkey](https://docs.nhncloud.com/en/nhncloud/en/public-api/appkey).
 
 ### List of APIs
 

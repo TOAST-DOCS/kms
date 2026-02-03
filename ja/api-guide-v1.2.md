@@ -5,12 +5,25 @@ Secure Key Managerは、ユーザーデータにアクセスできる多様なAP
 
 v1.2では、**ユーザー認証に関連する必須のHTTPヘッダーフィールド**が追加され、**キーの追加/削除API**が導入されました。
 
-## 基本情報
+## Secure Key Manager API共通情報
 
-### EndPoint
-```text
-https://api-keymanager.nhncloudservice.com
-```
+### APIエンドポイント
+
+| リージョン | エンドポイント |
+|---|---|
+| Global | https://api-keymanager.nhncloudservice.com |
+
+### 認証および権限
+
+Secure Key Manager APIを使用するには、AppkeyとUser Access Keyが必要です。
+
+Appkeyは、API呼び出し時にリクエストURLに含めて特定のリソースを指定し、識別するために使用されます。
+
+Appkeyの確認及び使用に関する詳細は、[Appkey](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/appkey)を参照してください。
+
+Secure Key Manager APIを使用するには、User Access Keyが必要です。User Access Keyは、NHN CloudアカウントまたはIAMアカウントに基づいて発行される認証キーであり、Secret Access Keyと共に使用してAPIリクエストに対する認証手段として利用されます。
+
+User Access KeyとSecret Access Keyは、コンソールの**APIセキュリティ設定**で発行できます。User Access Keyの発行及び使用に関する詳細は、[User Access Key](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/user-access-key)を参照してください。
 
 ### APIリスト
 
@@ -48,12 +61,6 @@ https://api-keymanager.nhncloudservice.com
 Secure Key ManagerのMACアドレス認証を使用するには、HTTPヘッダにクライアントMACアドレスを設定してリクエストする必要があります。
 ```
 X-TOAST-CLIENT-MAC-ADDR: {MACアドレス}
-```
-
-v1.2では、HTTPヘッダーに必須フィールドが追加されます。
-```
-X-TC-AUTHENTICATION-ID: {User Access Key ID}
-X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
 ```
 
 詳細は[コンソール使用ガイド](/Security/Secure%20Key%20Manager/ja/getting-started/#api)を参照。
