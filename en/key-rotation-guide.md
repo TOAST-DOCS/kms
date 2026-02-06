@@ -107,60 +107,7 @@ This structure allows envelope cryptography to **minimize the operational burden
 
 When using Secure Key Manager in the form of envelope encryption, we recommend having the following flow:
 
-![Inline-image-2026-01-13 20.17.32.006.png](../images/Inline-image-2026-01-13%2020.17.32.006.png)
-
-<details>
-<summary><span>Mermaid chart</span></summary>
-
-```mermaid
-sequenceDiagram
-    participant App as user application
-    participant DB as Data Store
-    participant SKM as Secure Key Manager
-
-    rect rgb(200, 230, 255)
-    note right of App: Encryption key generation process
-
-    App->>SKM: 1. Generate KEK (symmetric key generation)
-    SKM->>SKM: Generate KEK
-    App->>SKM: 2. Request DEK generation (create-local-key)
-    SKM->>SKM: Generate DEK
-    SKM-->>App: Return plain DEK and DEK ciphertext
-    App->>DB: 3. Save DEK passphrase<br/>(can be saved in SKM or user DB)
-    end
-
-    rect rgb(248, 244, 211)
-    note left of SKM: Data arm/decryption process
-
-    App->>DB: 1. Retrieve the saved DEK passphrase
-    DB-->>App: Return DEK passphrase
-    App->>SKM: 2. Decrypt DEK passphrase with SKM decryption API
-    SKM-->>App: Return the decrypted plain text DEK
-    App->>App: 3. Decrypt the plain DEK to<br/>user data
-    end
-
-    rect rgb(230, 255, 230)
-    note left of SKM: Auto-rotate key
-    SKM->>SKM: Rotate KEK v1 → KEK v2<br/>(Auto-rotate)
-
-    note right of App: Rotate keys manually
-    App->>SKM: Request key rotation (KEK v1 → KEK v2)<br/>(manual rotation)
-
-    note right of App: Reflect DEK passphrase change after key rotation
-    App->>DB: 1. Get existing DEK passphrase
-    DB-->>App: Return DEK passphrase
-    App->>SKM: 2. Decrypt DEK passphrase with SKM decryption API
-    SKM-->>App: Return plaintext DEK
-    App->>SKM: 3. Encrypt the<br/>plaintext DEK with the SKM encryption API into a new rotated KEK
-    SKM-->>App: Return new DEK ciphertext
-    App->>DB: 4. Modify the saved DEK passphrase with the new DEK passphrase
-
-    note over App, SKM: ✅ DEK passphrase encrypted with old version (KEK v1): Can be decrypted if KEK v1 is kept<br/>✅ New DEK passphrase after rotation: Encrypted/decrypted with KEK v2<br/>✅ Application code: no change required<br/>✅ Real user data: no re-encryption required
-
-    end
-```
-
-</details>
+![key-rotation.png](http://static.toastoven.net/prod_kms/2026-02-06/NHN%20Cloud_SKM_key-rotation_en_900.png)
 
 !!! danger "Caution"
     Calling the Secure Key Manager API directly for every request that requires a key can cause response delays. Use appropriate caching to optimize performance.
