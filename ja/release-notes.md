@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > リリースノート
     
+### 2026. 02. 10.
+#### 新機能の追加
+- キーストアリスト詳細照会APIの追加
+  - APIを利用して、キーストアの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
+- キーリスト詳細照会APIの追加
+  - APIを利用して、キーの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
+      
 ### 2025. 06. 24.
 #### 機能改善/変更
   * 新規エラーメッセージ追加
