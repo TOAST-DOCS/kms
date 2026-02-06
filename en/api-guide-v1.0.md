@@ -435,6 +435,56 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 |---|---|---|
 | keyStoreIdList | List | List of key store IDs |
 
+### Retrieve Key Store List Details
+You can retrieve a detailed list of key stores created in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores?detail={detail}
+```
+
+[Request Parameter]
+| Name | Type | Description |
+|---|---|---|
+| detail | Boolean | Include details (default: false) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreList": [
+            {
+                "keyStoreId": 1,
+                "name": "key store name",
+                "description": "key store description",
+                "ip4AuthUse": "Y",
+                "macAuthUse": "N",
+                "certificateAuthUse": "Y",
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyStoreList | List | Key store list details |
+| keyStoreId | Number | Key store ID |
+| name | String | Key store name |
+| description | String | Key store description |
+| ip4AuthUse | String | Whether to use IPv4 authentication for the key store (Y/N) |
+| macAuthUse | String | Whether to use MAC authentication for the key store (Y/N) |
+| certificateAuthUse | String | Whether to use certificate authentication for the key store (Y/N) |
+| creationUser | String | User who created the key store |
+| creationDatetime | String | Creation date and time of the key store |
+| lastChangeUser | String | User who last modified the key store |
+| lastChangeDatetime | String | Last modification date and time of the key store |
+
 ### Query the Details of the Key Store
 Users can query detailed information about the key store created in Secure Key Manager.
 ```text
@@ -500,6 +550,67 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | Name | Type | Description |
 |---|---|---|
 | keyIdList | List | Key ID list |
+
+### Retrieve Key List Details
+You can retrieve a detailed list of keys created in Secure Key Manager.
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
+```
+
+[Request Parameter]
+| Name | Type | Description |
+|---|---|---|
+| detail | Boolean | Whether to include detailed information (default: false) |
+| type | String | Key type filter (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY, default: all, multiple selections not allowed) |
+| name | String | Key name filter (maximum 100 characters) |
+| status | String | Key status filter (active/inactive, default: all) |
+| pageNumber | Number | Page number (default: 1, must be a positive integer) |
+| pageSize | Number | Page size (default: 10, 10-100) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyList": [
+            {
+                "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
+                "name": "key name",
+                "description": "key description",
+                "keyType": "SYMMETRIC_KEY",
+                "currentKeyValueVersion": 2,
+                "autoRotationPeriod": 0,
+                "nextAutoRotationDate": null,
+                "lastAccessDatetime": "2025-02-10T15:13:13.377",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyList | List | Key list details |
+| keyId | String | Key ID |
+| name | String | Key name |
+| description | String | Key description |
+| keyType | String | Key type (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
+| currentKeyValueVersion | Number | Current key version |
+| autoRotationPeriod | Number | Key rotation period |
+| nextAutoRotationDate | String | Next scheduled key rotation date |
+| lastAccessDatetime | String | Last accessed date and time of the key |
+| deletionDatetime | String | Scheduled deletion date and time of the key |
+| creationUser | String | User who created the key |
+| creationDatetime | String | Creation date and time of the key |
+| lastChangeUser | String | User who last modified the key |
+| lastChangeDatetime | String | Last modification date and time of the key |
 
 ### Query the details of keys
 Users can query detailed information about the key created in Secure Key Manager.
