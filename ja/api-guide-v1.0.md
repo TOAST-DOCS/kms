@@ -436,6 +436,56 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 |---|---|---|
 | keyStoreIdList | List | キーストアIDリスト |
 
+### キーストアリスト詳細照会
+Secure Key Managerに作成したキーストアの詳細情報リストを照会できます。
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores?detail={detail}
+```
+
+[Request Parameter]
+| 名前 | タイプ | 説明 |
+|---|---|---|
+| detail | Boolean | 詳細情報の包含有無(デフォルト値: false) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreList": [
+            {
+                "keyStoreId": 1,
+                "name": "キーストア名",
+                "description": "キーストアの説明",
+                "ip4AuthUse": "Y",
+                "macAuthUse": "N",
+                "certificateAuthUse": "Y",
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| 名前 | タイプ | 説明 |
+|---|---|---|
+| keyStoreList | List | キーストア詳細情報リスト |
+| keyStoreId | Number | キーストアID |
+| name | String | キーストア名 |
+| description | String | キーストアの説明 |
+| ip4AuthUse | String | キーストアIPv4認証の使用有無(Y/N) |
+| macAuthUse | String | キーストアMAC認証の使用有無(Y/N) |
+| certificateAuthUse | String | キーストア証明書認証の使用有無(Y/N) |
+| creationUser | String | キーストア作成ユーザー |
+| creationDatetime | String | キーストア作成日時 |
+| lastChangeUser | String | キーストア最終修正ユーザー |
+| lastChangeDatetime | String | キーストア最終修正日時 |
+
 ### キーストア詳細照会
 Secure Key Managerに作成したキーストア情報を詳細照会できます。
 ```text
@@ -502,6 +552,67 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 |---|---|---|
 | keyIdList | List | キーIDリスト |
 
+### キーリスト詳細照会
+Secure Key Managerに作成したキーの詳細情報リストを照会できます。
+```text
+GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
+```
+
+[Request Parameter]
+| 名前 | タイプ | 説明 |
+|---|---|---|
+| detail | Boolean | 詳細情報の包含有無(デフォルト値: false) |
+| type | String | キータイプフィルタ(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY、デフォルト値: all、複数選択不可) |
+| name | String | キー名フィルタ(最大100文字) |
+| status | String | キー状態フィルタ(active/inactive、デフォルト値: all) |
+| pageNumber | Number | ページ番号(デフォルト値: 1、正の数) |
+| pageSize | Number | ページサイズ(デフォルト値: 10、10～100) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyList": [
+            {
+                "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
+                "name": "キー名",
+                "description": "キーの説明",
+                "keyType": "SYMMETRIC_KEY",
+                "currentKeyValueVersion": 2,
+                "autoRotationPeriod": 0,
+                "nextAutoRotationDate": null,
+                "lastAccessDatetime": "2025-02-10T15:13:13.377",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| 名前 | タイプ | 説明 |
+|---|---|---|
+| keyList | List | キー詳細情報リスト |
+| keyId | String | キーID |
+| name | String | キー名 |
+| description | String | キーの説明 |
+| keyType | String | キータイプ(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
+| currentKeyValueVersion | Number | 現在のキーバージョン |
+| autoRotationPeriod | Number | キーローテーション周期 |
+| nextAutoRotationDate | String | 次回キーローテーション日 |
+| lastAccessDatetime | String | キー最終使用日時 |
+| deletionDatetime | String | キー削除予定日時 |
+| creationUser | String | キー作成ユーザー |
+| creationDatetime | String | キー作成日時 |
+| lastChangeUser | String | キー最終修正ユーザー |
+| lastChangeDatetime | String | キー最終修正日時 |
+
 ### キー詳細照会
 Secure Key Managerに作成したキー情報を詳細に照会できます。
 ```text
@@ -533,12 +644,12 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| keyId | Number | キーID |
+| keyId | String | キーID |
 | name | String | キー名 |
 | description | String | キーの説明 |
 | keyType | String | キータイプ(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | String | 現在キーバージョン |
-| autoRotationPeriod | String | キーのローテーション周期 |
+| currentKeyValueVersion | Number | 現在キーバージョン |
+| autoRotationPeriod | Number | キーのローテーション周期 |
 | nextAutoRotationDate | String | 次のキーのローテーション日 |
 | lastAccessDatetime | String | キーの最終使用日時 |
 | creationUser | String | キー作成ユーザー |
