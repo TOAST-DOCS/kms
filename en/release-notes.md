@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > Release Notes
 
+### February 10, 2026
+#### New Features
+- Added API for retrieving detailed key store lists
+  - Added a feature to retrieve detailed key store information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+- Added API for retrieving detailed key lists
+  - Added a feature to retrieve detailed key information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+    
 ### June 24, 2025
 #### Feature Updates
   * Added new error message
