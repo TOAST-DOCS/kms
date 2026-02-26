@@ -18,6 +18,7 @@ https://api-keymanager.gov-nhncloudservice.com
 |---|---|---|
 | GET | /keymanager/v1.2/appkey/{appkey}/confirm | API를 호출한 클라이언트 정보를 제공합니다. |
 | GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 조회합니다. |
+| PUT | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 수정합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 암호화합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 복호화합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | 클라이언트가 로컬 환경에서 데이터 암/복호화에 사용할 수 있는 ARIA-256 대칭 키를 생성합니다. |
@@ -131,6 +132,53 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | secret | String | 기밀 데이터 조회 결과 |
+
+### 기밀 데이터 수정
+Secure Key Manager에 저장한 기밀 데이터를 수정할 때 사용합니다.
+```text
+PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+```
+
+[Request Body]
+
+```
+{
+    "secretValue": "data"
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| secretValue | String | 변경할 기밀데이터 내용 |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "name": "키 이름",
+        "description": "키 설명",
+        "secretValue": "data",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyId | String | 키 ID |
+| name | String | 키 이름 |
+| description | String | 키 설명 |
+| secretValue | String | 변경된 기밀데이터 내용 |
+| creationUser | String | 키 생성 유저 |
+| creationDatetime | String | 키 생성 일시 |
+| lastChangeUser | String | 키 마지막 수정 유저 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
 
 ## 대칭 키
 
