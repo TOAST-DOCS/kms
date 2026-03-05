@@ -148,7 +148,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| secretValue | String | 변경할 기밀데이터 내용 |
+| secretValue | String | 변경할 기밀 데이터 내용 |
 
 [Response Body]
 
