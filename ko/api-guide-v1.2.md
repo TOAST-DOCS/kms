@@ -174,7 +174,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 | keyId | String | 키 ID |
 | name | String | 키 이름 |
 | description | String | 키 설명 |
-| secretValue | String | 변경된 기밀데이터 내용 |
+| secretValue | String | 변경된 기밀 데이터 내용 |
 | creationUser | String | 키 생성 유저 |
 | creationDatetime | String | 키 생성 일시 |
 | lastChangeUser | String | 키 마지막 수정 유저 |
