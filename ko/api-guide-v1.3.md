@@ -471,7 +471,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 | 이름       | 타입   | 설명                      |
 | ---------- | ------ | ------------------------- |
-| keyVersion | Number | 조회하려는 비대칭 키 버전 |
+| keyVersion | Number | 조회할 비대칭 키 버전 |
 
 [Response Body]
 
