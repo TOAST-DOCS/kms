@@ -1472,7 +1472,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 
 | 이름     | 타입   | 설명                |
 | -------- | ------ | ------------------- |
-| macValue | String | 조회하려는 MAC 주소 |
+| macValue | String | 조회할 MAC 주소 |
 
 [Response Body]
 
