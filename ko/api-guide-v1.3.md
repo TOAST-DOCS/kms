@@ -1082,7 +1082,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 ### 키 저장소 목록 조회
 
-Secure Key Manager에 생성한 키 저장소의 ID목록을 조회할 수 있습니다.
+Secure Key Manager에 생성한 키 저장소의 ID 목록을 조회할 수 있습니다.
 
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores
