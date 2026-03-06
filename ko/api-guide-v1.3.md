@@ -697,7 +697,7 @@ DELETE https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey
 
 ## 인증 정보 추가/삭제
 
-Secure Key Manager에서 사용자 데이터를 보호하기 위하여 클라이언트의 IPv4 주소를 확인하는 **IPv4 주소 인증**, 클라이언트의 MAC 주소를 확인하는 **MAC 주소 인증**, 클라이언트가 통신에 사용하는 인증서를 확인하는 **클라이언트 인증서 인증**의 인증 방법을 제공하고 있습니다.
+Secure Key Manager는 사용자 데이터 보호를 위한 인증 방법으로 클라이언트의 IPv4 주소를 확인하는 **IPv4 주소 인증**, 클라이언트의 MAC 주소를 확인하는 **MAC 주소 인증**, 클라이언트가 통신에 사용하는 인증서를 확인하는 **클라이언트 인증서 인증**을 제공하고 있습니다.
 
 ### 인증 정보 추가
 
