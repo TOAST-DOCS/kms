@@ -1251,7 +1251,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 | detail | Boolean | 상세 정보 포함 여부(기본값: false) |
 | type | String | 키 타입 필터(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY, 기본값: all, 멀티 선택 불가) |
 | name | String | 키 이름 필터(최대 100자) |
-| status | String | 키 상태 필터 (active/inactive, 기본값: all) |
+| status | String | 키 상태 필터(active/inactive, 기본값: all) |
 | pageNumber | Number | 페이지 번호 (기본값: 1, 양수) |
 | pageSize | Number | 페이지 크기 (기본값: 10, 10~100) |
 
