@@ -1551,7 +1551,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 
 | 이름            | 타입   | 설명                   |
 | --------------- | ------ | ---------------------- |
-| certificateName | String | 조회하려는 인증서 이름 |
+| certificateName | String | 조회할 인증서 이름 |
 
 [Response Body]
 
