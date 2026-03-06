@@ -1120,7 +1120,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 [Request Parameter]
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| detail | Boolean | 상세 정보 포함 여부 (기본값: false) |
+| detail | Boolean | 상세 정보 포함 여부(기본값: false) |
 
 [Response Body]
 
