@@ -895,7 +895,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 | 이름         | 타입   | 설명                                   |
 | ------------ | ------ | -------------------------------------- |
-| keyStoreName | String | MAC 주소를 삭제 요청 할 키 저장소 이름 |
+| keyStoreName | String | MAC 주소를 삭제 요청할 키 저장소 이름 |
 | value        | String | 삭제 요청할 MAC 주솟값                 |
 
 [Response Body]
