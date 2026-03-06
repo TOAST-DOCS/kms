@@ -1393,7 +1393,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 
 | 이름      | 타입   | 설명                 |
 | --------- | ------ | -------------------- |
-| ipv4Value | String | 조회하려는 IPv4 주소 |
+| ipv4Value | String | 조회할 IPv4 주소 |
 
 [Response Body]
 
