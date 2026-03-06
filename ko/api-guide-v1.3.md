@@ -2,7 +2,7 @@
 
 Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API를 제공합니다. 클라이언트는 키 저장소에 설정한 인증을 통과한 후 Secure Key Manager에 저장한 데이터를 사용할 수 있습니다.
 
-Secure Key Manager API v1.3에서는 토큰 인증 방식의 HTTP 헤더 필드가 추가되어 API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key](nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
+Secure Key Manager API v1.3에서는 토큰 인증 방식의 HTTP 헤더 필드가 추가되어 API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
 ## 기본 정보
 
@@ -160,8 +160,8 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/s
 }
 ```
 
-| 이름        | 타입   | 설명                   |
-| ----------- | ------ | ---------------------- |
+| 이름        | 타입   | 설명                    |
+| ----------- | ------ | ----------------------- |
 | secretValue | String | 변경할 기밀 데이터 내용 |
 
 [Response Body]
@@ -184,16 +184,16 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/s
 }
 ```
 
-| 이름               | 타입   | 설명                   |
-| ------------------ | ------ | ---------------------- |
-| keyId              | String | 키 ID                  |
-| name               | String | 키 이름                |
-| description        | String | 키 설명                |
+| 이름               | 타입   | 설명                    |
+| ------------------ | ------ | ----------------------- |
+| keyId              | String | 키 ID                   |
+| name               | String | 키 이름                 |
+| description        | String | 키 설명                 |
 | secretValue        | String | 변경된 기밀 데이터 내용 |
-| creationUser       | String | 키 생성 유저           |
-| creationDatetime   | String | 키 생성 일시           |
-| lastChangeUser     | String | 키 마지막 수정 유저    |
-| lastChangeDatetime | String | 키 마지막 수정 일시    |
+| creationUser       | String | 키 생성 유저            |
+| creationDatetime   | String | 키 생성 일시            |
+| lastChangeUser     | String | 키 마지막 수정 유저     |
+| lastChangeDatetime | String | 키 마지막 수정 일시     |
 
 ## 대칭 키
 
@@ -314,8 +314,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/s
 
 [Request Parameter]
 
-| 이름       | 타입   | 설명                    |
-| ---------- | ------ | ----------------------- |
+| 이름       | 타입   | 설명                |
+| ---------- | ------ | ------------------- |
 | keyVersion | Number | 조회할 대칭 키 버전 |
 
 [Response Body]
@@ -429,8 +429,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 [Request Parameter]
 
-| 이름       | 타입   | 설명                      |
-| ---------- | ------ | ------------------------- |
+| 이름       | 타입   | 설명                  |
+| ---------- | ------ | --------------------- |
 | keyVersion | Number | 조회할 비대칭 키 버전 |
 
 [Response Body]
@@ -469,8 +469,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 [Request Parameter]
 
-| 이름       | 타입   | 설명                      |
-| ---------- | ------ | ------------------------- |
+| 이름       | 타입   | 설명                  |
+| ---------- | ------ | --------------------- |
 | keyVersion | Number | 조회할 비대칭 키 버전 |
 
 [Response Body]
@@ -893,10 +893,10 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 }
 ```
 
-| 이름         | 타입   | 설명                                   |
-| ------------ | ------ | -------------------------------------- |
+| 이름         | 타입   | 설명                                  |
+| ------------ | ------ | ------------------------------------- |
 | keyStoreName | String | MAC 주소를 삭제 요청할 키 저장소 이름 |
-| value        | String | 삭제 요청할 MAC 주솟값                 |
+| value        | String | 삭제 요청할 MAC 주솟값                |
 
 [Response Body]
 
@@ -1391,8 +1391,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 
 [Request Parameter]
 
-| 이름      | 타입   | 설명                 |
-| --------- | ------ | -------------------- |
+| 이름      | 타입   | 설명             |
+| --------- | ------ | ---------------- |
 | ipv4Value | String | 조회할 IPv4 주소 |
 
 [Response Body]
@@ -1470,8 +1470,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 
 [Request Parameter]
 
-| 이름     | 타입   | 설명                |
-| -------- | ------ | ------------------- |
+| 이름     | 타입   | 설명            |
+| -------- | ------ | --------------- |
 | macValue | String | 조회할 MAC 주소 |
 
 [Response Body]
@@ -1549,8 +1549,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 
 [Request Parameter]
 
-| 이름            | 타입   | 설명                   |
-| --------------- | ------ | ---------------------- |
+| 이름            | 타입   | 설명               |
+| --------------- | ------ | ------------------ |
 | certificateName | String | 조회할 인증서 이름 |
 
 [Response Body]
