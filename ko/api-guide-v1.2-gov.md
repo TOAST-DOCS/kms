@@ -148,7 +148,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| secretValue | String | 변경할 기밀데이터 내용 |
+| secretValue | String | 변경할 기밀 데이터 내용 |
 
 [Response Body]
 
@@ -174,7 +174,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 | keyId | String | 키 ID |
 | name | String | 키 이름 |
 | description | String | 키 설명 |
-| secretValue | String | 변경된 기밀데이터 내용 |
+| secretValue | String | 변경된 기밀 데이터 내용 |
 | creationUser | String | 키 생성 유저 |
 | creationDatetime | String | 키 생성 일시 |
 | lastChangeUser | String | 키 마지막 수정 유저 |
@@ -286,7 +286,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyVersion | Number | 조회하려는 대칭 키 버전 |
+| keyVersion | Number | 조회할 대칭 키 버전 |
 
 [Response Body]
 ```
@@ -389,7 +389,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyVersion | Number | 조회하려는 비대칭 키 버전 |
+| keyVersion | Number | 조회할 비대칭 키 버전 |
 
 [Response Body]
 ```
@@ -427,7 +427,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyVersion | Number | 조회하려는 비대칭 키 버전 |
+| keyVersion | Number | 조회할 비대칭 키 버전 |
 
 [Response Body]
 ```
@@ -635,7 +635,7 @@ DELETE https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{ap
 | deletionDateTime | String | 키 삭제 시각 |
 
 ## 인증 정보 추가/삭제
-Secure Key Manager에서 사용자 데이터를 보호하기 위하여 클라이언트의 IPv4 주소를 확인하는 **IPv4 주소 인증**, 클라이언트의 MAC 주소를 확인하는 **MAC 주소 인증**, 클라이언트가 통신에 사용하는 인증서를 확인하는 **클라이언트 인증서 인증**의 인증 방법을 제공하고 있습니다.
+Secure Key Manager는 사용자 데이터 보호를 위한 인증 방법으로 클라이언트의 IPv4 주소를 확인하는 **IPv4 주소 인증**, 클라이언트의 MAC 주소를 확인하는 **MAC 주소 인증**, 클라이언트가 통신에 사용하는 인증서를 확인하는 **클라이언트 인증서 인증**을 제공하고 있습니다.
 
 ### 인증 정보 추가
 Secure Key Manager에 인증 정보를 추가할 수 있습니다.
@@ -816,7 +816,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyStoreName | String | MAC 주소를 삭제 요청 할 키 저장소 이름 |
+| keyStoreName | String | MAC 주소를 삭제 요청할 키 저장소 이름 |
 | value | String | 삭제 요청할 MAC 주솟값|
 
 [Response Body]
@@ -988,7 +988,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 ## 키 저장소
 
 ### 키 저장소 목록 조회
-Secure Key Manager에 생성한 키 저장소의 ID목록을 조회할 수 있습니다.
+Secure Key Manager에 생성한 키 저장소의 ID 목록을 조회할 수 있습니다.
 ```text
 GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/keystores
 ```
@@ -1159,7 +1159,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| ipv4Value | String | 조회하려는 IPv4 주소 |
+| ipv4Value | String | 조회할 IPv4 주소 |
 
 [Response Body]
 ```
@@ -1230,7 +1230,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| macValue | String | 조회하려는 MAC 주소 |
+| macValue | String | 조회할 MAC 주소 |
 
 [Response Body]
 ```
@@ -1301,7 +1301,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| certificateName | String | 조회하려는 인증서 이름 |
+| certificateName | String | 조회할 인증서 이름 |
 
 [Response Body]
 ```

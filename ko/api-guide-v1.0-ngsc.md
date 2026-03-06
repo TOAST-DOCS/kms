@@ -243,7 +243,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.1/appkey/{appkey}/symmetric-
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyVersion | Number | 조회하려는 대칭 키 버전 |
+| keyVersion | Number | 조회할 대칭 키 버전 |
 
 [Response Body]
 ```
@@ -346,7 +346,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.0/appkey/{appkey}/asymmetric
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyVersion | Number | 조회하려는 비대칭 키 버전 |
+| keyVersion | Number | 조회할 비대칭 키 버전 |
 
 [Response Body]
 ```
@@ -384,7 +384,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.0/appkey/{appkey}/asymmetric
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| keyVersion | Number | 조회하려는 비대칭 키 버전 |
+| keyVersion | Number | 조회할 비대칭 키 버전 |
 
 [Response Body]
 ```
@@ -583,7 +583,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.0/appkey/{appkey}/keystores/
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| ipv4Value | String | 조회하려는 IPv4 주소 |
+| ipv4Value | String | 조회할 IPv4 주소 |
 
 [Response Body]
 ```
@@ -654,7 +654,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.0/appkey/{appkey}/keystores/
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| macValue | String | 조회하려는 MAC 주소 |
+| macValue | String | 조회할 MAC 주소 |
 
 [Response Body]
 ```
@@ -725,7 +725,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.0/appkey/{appkey}/keystores/
 
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| certificateName | String | 조회하려는 인증서 이름 |
+| certificateName | String | 조회할 인증서 이름 |
 
 [Response Body]
 ```
