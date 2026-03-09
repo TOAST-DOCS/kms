@@ -3,12 +3,19 @@
 
 Secure Key Managerは、ユーザーデータにアクセスできる多様なAPIを提供します。クライアントは鍵の保存場所に設定した認証をパスした後に、Secure Key Managerに保存したデータを使用できます。
 
-## 基本情報
+## Secure Key Manager API共通情報
 
-### EndPoint
-```text
-https://api-keymanager.nhncloudservice.com
-```
+### APIエンドポイント
+
+| リージョン | エンドポイント |
+|---|---|
+| Global | https://api-keymanager.nhncloudservice.com |
+
+### 認証および権限
+
+Secure Key Manager APIを使用するには、Appkeyが必要です。Appkeyは、API呼び出し時にリクエストURLに含めて特定のリソースを指定し、識別するために使用されます。
+
+Appkeyの確認及び使用に関する詳細は、[Appkey](https://docs.nhncloud.com/ja/nhncloud/ja/public-api/appkey)を参照してください。
 
 ### APIリスト
 
