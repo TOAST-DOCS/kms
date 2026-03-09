@@ -18,6 +18,7 @@ https://api-keymanager.nhncloudservice.com
 |---|---|---|
 | GET | /keymanager/v1.2/appkey/{appkey}/confirm | Provide information of the client that called API. |
 | GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Query confidential data stored in Secure Key Manager. |
+| PUT | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 수정합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Encrypt data with the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Decrypt data with the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | Create AES-256 symmetric keys that can be used by a client for data encryption/decryption in local environment. |
@@ -132,6 +133,53 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 |---|---|---|
 | secret | String | Query result of confidential data |
 
+### Modify Confidential Data
+Use this feature to edit confidential data stored in Secure Key Manager.
+```text
+PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+```
+
+[Request Body]
+
+```
+{
+    "secretValue": "data"
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| secretValue | String | Confidential data to be changed |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "name": "Key name",
+        "description": "Key description",
+        "secretValue": "data",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| Name | Type | Description |
+|---|---|---|
+| keyId | String | Key ID |
+| name | String | Key name |
+| description | String | Key description |
+| secretValue | String | Changed confidential data content |
+| creationUser | String | Key creation user |
+| creationDatetime | String | Key creation date and time |
+| lastChangeUser | String | Key last modified user |
+| lastChangeDatetime | String | Key last modified date and time |
+
 ## Symmetric Key
 
 ### Encrypt Symmetric Keys
@@ -238,7 +286,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of the symmetric key to query |
+| keyVersion | Number | Symmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -341,7 +389,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of the asymmetric key to query |
+| keyVersion | Number | Asymmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -378,7 +426,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of asymmetric key to query |
+| keyVersion | Number | Asymmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -583,7 +631,7 @@ DELETE https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey
 | deletionDateTime | String | Time when key is deleted |
 
 ## Add and Delete Credentials
-To protect user data, Secure Key Manager provides the following authentication methods: **IPv4 address authentication** to verify the client's IPv4 address, **MAC address authentication** to verify the client's MAC address, and **client certificate authentication** to verify the certificate the client uses to communicate.
+For authentication to protect user data, Secure Key Manager provides the following authentication methods: **IPv4 address authentication** to verify the client's IPv4 address, **MAC address authentication** to verify the client's MAC address, and **client certificate authentication** to verify the certificate the client uses to communicate.
 
 ### Add credentials
 You can add credentials to Secure Key Manager.

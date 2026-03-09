@@ -18,6 +18,7 @@ https://api-keymanager.nhncloudservice.com
 |---|---|---|
 | GET | /keymanager/v1.2/appkey/{appkey}/confirm | APIを呼び出したクライアント情報を提供します。|
 | GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Managerに保存した機密データを照会します。|
+| PUT | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Managerに保存した機密データを修正します。 |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Managerに保存した対称鍵でデータを暗号化します。|
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Managerに保存した対称鍵でデータを復号します。|
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | クライアントがローカル環境でデータの暗号化/復号に使用できるAES-256対称鍵を作成します。|
@@ -131,6 +132,53 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | secret | String | 機密データ照会結果 |
+
+### 機密データの修正
+Secure Key Managerに保存した機密データを修正する際に使用します。
+```text
+PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+```
+
+[Request Body]
+
+```
+{
+    "secretValue": "data"
+}
+```
+| 名前 | タイプ | 説明 |
+|---|---|---|
+| secretValue | String | 変更する機密データの内容 |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "name": "キー名",
+        "description": "キーの説明",
+        "secretValue": "data",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| 名前 | タイプ | 説明 |
+|---|---|---|
+| keyId | String | キーID |
+| name | String | キー名 |
+| description | String | キーの説明 |
+| secretValue | String | 変更された機密データの内容 |
+| creationUser | String | キー作成ユーザー |
+| creationDatetime | String | キー作成日時 |
+| lastChangeUser | String | キー最終修正ユーザー |
+| lastChangeDatetime | String | キー最終修正日時 |
 
 ## 対称鍵
 
@@ -585,7 +633,7 @@ DELETE https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey
 | deletionDateTime | String | キーの削除時刻 |
 
 ## 認証情報の追加/削除
-Secure Key Managerでユーザーデータを保護するために、クライアントのIPv4アドレスを確認する**IPv4アドレス認証**、クライアントのMACアドレスを確認する**MACアドレス認証**、クライアントが通信に使用する証明書を確認する**クライアント証明書認証**の認証方法を提供しています。
+Secure Key Managerはユーザーデータを保護するための認証方法として、クライアントのIPv4アドレスを確認する**IPv4アドレス認証**、クライアントのMACアドレスを確認する**MACアドレス認証**、クライアントが通信に使用する証明書を確認する**クライアント証明書認証**の認証方法を提供しています。
 
 ### 認証情報の追加/削除
 Secure Key Managerに認証情報を追加できます。
