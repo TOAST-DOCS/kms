@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > Release Notes
 
+### March 10, 2026
+#### Added Features
+  * Added API v1.3
+    * Added a token authentication method via the `X-NHN-AUTHORIZATION` header. For details, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+  * Added a confidential data editing API (v1.2, v1.3)
+    * Added a feature to edit confidential data stored in Secure Key Manager using the API. For details, see [API v1.2 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.2/) or [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+
 ### February 10, 2026
 #### New Features
   * Added API for retrieving detailed key store lists
