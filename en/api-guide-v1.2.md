@@ -18,6 +18,7 @@ https://api-keymanager.nhncloudservice.com
 |---|---|---|
 | GET | /keymanager/v1.2/appkey/{appkey}/confirm | Provide information of the client that called API. |
 | GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Query confidential data stored in Secure Key Manager. |
+| PUT | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 수정합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Encrypt data with the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Decrypt data with the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | Create AES-256 symmetric keys that can be used by a client for data encryption/decryption in local environment. |
@@ -132,6 +133,53 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 |---|---|---|
 | secret | String | Query result of confidential data |
 
+### 기밀 데이터 수정
+Secure Key Manager에 저장한 기밀 데이터를 수정할 때 사용합니다.
+```text
+PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+```
+
+[Request Body]
+
+```
+{
+    "secretValue": "data"
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| secretValue | String | 변경할 기밀 데이터 내용 |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "name": "키 이름",
+        "description": "키 설명",
+        "secretValue": "data",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyId | String | 키 ID |
+| name | String | 키 이름 |
+| description | String | 키 설명 |
+| secretValue | String | 변경된 기밀 데이터 내용 |
+| creationUser | String | 키 생성 유저 |
+| creationDatetime | String | 키 생성 일시 |
+| lastChangeUser | String | 키 마지막 수정 유저 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
+
 ## Symmetric Key
 
 ### Encrypt Symmetric Keys
@@ -238,7 +286,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of the symmetric key to query |
+| keyVersion | Number | Symmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -341,7 +389,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of the asymmetric key to query |
+| keyVersion | Number | Asymmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -378,7 +426,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of asymmetric key to query |
+| keyVersion | Number | Asymmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -583,7 +631,7 @@ DELETE https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey
 | deletionDateTime | String | Time when key is deleted |
 
 ## Add and Delete Credentials
-To protect user data, Secure Key Manager provides the following authentication methods: **IPv4 address authentication** to verify the client's IPv4 address, **MAC address authentication** to verify the client's MAC address, and **client certificate authentication** to verify the certificate the client uses to communicate.
+For authentication to protect user data, Secure Key Manager provides the following authentication methods: **IPv4 address authentication** to verify the client's IPv4 address, **MAC address authentication** to verify the client's MAC address, and **client certificate authentication** to verify the certificate the client uses to communicate.
 
 ### Add credentials
 You can add credentials to Secure Key Manager.
