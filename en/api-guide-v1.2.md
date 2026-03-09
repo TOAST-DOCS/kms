@@ -133,8 +133,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
 |---|---|---|
 | secret | String | Query result of confidential data |
 
-### 기밀 데이터 수정
-Secure Key Manager에 저장한 기밀 데이터를 수정할 때 사용합니다.
+### Modify Confidential Data
+Use this feature to edit confidential data stored in Secure Key Manager.
 ```text
 PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
 ```
@@ -146,9 +146,9 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
     "secretValue": "data"
 }
 ```
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 |---|---|---|
-| secretValue | String | 변경할 기밀 데이터 내용 |
+| secretValue | String | Confidential data to be changed |
 
 [Response Body]
 
@@ -159,8 +159,8 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
     },
     "body": {
         "keyId": "071dcc5c25614dffa52357e5cae3471f",
-        "name": "키 이름",
-        "description": "키 설명",
+        "name": "Key name",
+        "description": "Key description",
         "secretValue": "data",
         "creationUser": "SECURE_KEY_MANAGER",
         "creationDatetime": "2025-01-25T12:00:00",
@@ -169,16 +169,16 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/s
     }
 }
 ```
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 |---|---|---|
-| keyId | String | 키 ID |
-| name | String | 키 이름 |
-| description | String | 키 설명 |
-| secretValue | String | 변경된 기밀 데이터 내용 |
-| creationUser | String | 키 생성 유저 |
-| creationDatetime | String | 키 생성 일시 |
-| lastChangeUser | String | 키 마지막 수정 유저 |
-| lastChangeDatetime | String | 키 마지막 수정 일시 |
+| keyId | String | Key ID |
+| name | String | Key name |
+| description | String | Key description |
+| secretValue | String | Changed confidential data content |
+| creationUser | String | Key creation user |
+| creationDatetime | String | Key creation date and time |
+| lastChangeUser | String | Key last modified user |
+| lastChangeDatetime | String | Key last modified date and time |
 
 ## Symmetric Key
 
