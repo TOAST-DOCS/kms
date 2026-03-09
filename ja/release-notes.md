@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > リリースノート
 
+### 2026. 03. 10.
+#### 新規機能の追加
+  * API v1.3の追加
+    * `X-NHN-AUTHORIZATION`ヘッダによるトークン認証方式の追加。詳細は[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)を参照。
+  * 機密データ修正APIの追加(v1.2、v1.3)
+    * APIを利用してSecure Key Managerに保存した機密データを修正できる機能の追加。詳細は[API v1.2 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)または[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)を参照。
+    
 ### 2026. 02. 10.
 #### 新機能の追加
   * キーストアリスト詳細照会APIの追加
