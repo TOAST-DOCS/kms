@@ -14,8 +14,8 @@ To help you follow along more easily, please review these key terms first.
 | --- | --- |
 | Key rotation | Key rotation is the process of periodically replacing encryption keys with new ones to strengthen security. It is similar to the concept of regularly changing your passwords. |
 | Envelope encryption | This is a method of encrypting data in two stages. It provides double protection, much like placing a sensitive document in an envelope and then securing that envelope inside a safe. |
-| Data encryption key (DEK) | The key used to encrypt the actual data. It acts as the "envelope" in envelope encryption. |
-| Key encryption key (KEK) | The key used to encrypt the DEK. The symmetric key managed by Secure Key Manager plays this role. It acts as the 'vault' in envelope encryption. |
+| Data encryption key(DEK) | The key used to encrypt the actual data. It acts as the "envelope" in envelope encryption. |
+| Key encryption key(KEK) | The key used to encrypt the DEK. The symmetric key managed by Secure Key Manager plays this role. It acts as the 'vault' in envelope encryption. |
 | Key segmentation | A strategy for encrypting data with multiple keys, rather than encrypting all data with a single key. This can be by time of day, by region, by user group, and so on. It's the same principle as not putting all your eggs in one basket. |
 
 ## Why key rotation is necessary
@@ -365,10 +365,10 @@ If you apply key rotation while maintaining single-key encryption, the following
 
 Please verify the following items before applying key rotation:
 
-* [ ] Is the Envelope Encryption method currently in use?
-* [ ] Are the Key ID and Key Version information stored alongside the data?
-* [ ] Have you validated key rotation scenarios in a test environment?
-* [ ] Have you confirmed that existing data decrypts correctly after a key rotation?
+* Is the Envelope Encryption method currently in use?
+* Are the Key ID and Key Version information stored alongside the data?
+* Have you validated key rotation scenarios in a test environment?
+* Have you confirmed that existing data decrypts correctly after a key rotation?
 
 !!! danger "Caution"
     Before applying key rotation to a production environment, you must validate the entire scenario in a test environment. A single mistake can lead to a critical system failure.

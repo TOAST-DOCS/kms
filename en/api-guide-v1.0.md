@@ -5,7 +5,7 @@ Secure Key Manager provides various APIs to access user data. Clients must be au
 
 ## Basic Information
 
-### EndPoint
+### Endpoint
 ```text
 https://api-keymanager.nhncloudservice.com
 ```
@@ -243,7 +243,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/s
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of the symmetric key to query |
+| keyVersion | Number | Symmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -346,7 +346,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of the asymmetric key to query |
+| keyVersion | Number | Asymmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -383,7 +383,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
 
 | Name | Type | Description |
 |---|---|---|
-| keyVersion | Number | Version of asymmetric key to query |
+| keyVersion | Number | Asymmetric key version to retrieve |
 
 [Response Body]
 ```
@@ -693,7 +693,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 
 | Name | Type | Description |
 |---|---|---|
-| ipv4Value | String | IPv4 address to query |
+| ipv4Value | String | IPv4 address to retrieve |
 
 [Response Body]
 ```
@@ -764,7 +764,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 
 | Name | Type | Description |
 |---|---|---|
-| macValue | String | MAC address to query |
+| macValue | String | MAC address to retrieve |
 
 [Response Body]
 ```
@@ -835,7 +835,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 
 | Name | Type | Description |
 |---|---|---|
-| certificateName | String | Certificate name to query |
+| certificateName | String | Certificate name to retrieve |
 
 [Response Body]
 ```

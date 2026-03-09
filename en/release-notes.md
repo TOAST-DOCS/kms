@@ -1,17 +1,24 @@
 ## Security > Secure Key Manager > Release Notes
 
+### March 10, 2026
+#### Added Features
+  * Added API v1.3
+    * Added a token authentication method via the `X-NHN-AUTHORIZATION` header. For details, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+  * Added a confidential data editing API (v1.2, v1.3)
+    * Added a feature to edit confidential data stored in Secure Key Manager using the API. For details, see [API v1.2 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.2/) or [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+
 ### February 10, 2026
 #### New Features
-- Added API for retrieving detailed key store lists
-  - Added a feature to retrieve detailed key store information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
-- Added API for retrieving detailed key lists
-  - Added a feature to retrieve detailed key information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
-    
+  * Added API for retrieving detailed key store lists
+    * Added a feature to retrieve detailed key store information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+  * Added API for retrieving detailed key lists
+    * Added a feature to retrieve detailed key information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+
 ### June 24, 2025
 #### Feature Updates
   * Added new error message
     * Added an error message for API requests with invalid URIs. For more information, see the [Troubleshooting Guide](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found).
-    
+
 ### April 28, 2025
 #### Feature Updates
   * Changed the data retention period from 3 years to 1 year
@@ -52,8 +59,8 @@
   * Added notification mail recipient settings
      * Added the feature to set email recipient address in Organization/Project Dashboard > Manage Notifications.
 #### Feature Updates
-   * Exposed keystore ID 
-     * Exposed area to view keystore ID in keystore details 
+   * Exposed keystore ID
+     * Exposed area to view keystore ID in keystore details
      * Added the feature to copy keystore ID via the More button to the right of the keystore ID
 
 ### November 28, 2023
@@ -114,7 +121,7 @@
  * Fixed Total Appkey Error
    * Fixed an issue where calling APIs with a project total appkey does not work properly.
  * Fixed Approval Feature Error
-   * Fixed an issue where deletion does not work properly for each key version when using approval feature 
+   * Fixed an issue where deletion does not work properly for each key version when using approval feature
 
 ### September 27, 2022
 ### Added New Features
@@ -137,7 +144,7 @@
 #### Added New Features
   * Added a Key Import Feature
     * Added a symmetric key import feature
-#### Feature Updates    
+#### Feature Updates
   * Updated the Confidential Data Query Feature
     * Modified the feature so that, when the user queries confidential data in the web console, the data is provided after masking the fields
 #### Bug Fixes

@@ -1,12 +1,19 @@
 ## Security > Secure Key Manager > リリースノート
+
+### 2026. 03. 10.
+#### 新規機能の追加
+  * API v1.3の追加
+    * `X-NHN-AUTHORIZATION`ヘッダによるトークン認証方式の追加。詳細は[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)を参照。
+  * 機密データ修正APIの追加(v1.2、v1.3)
+    * APIを利用してSecure Key Managerに保存した機密データを修正できる機能の追加。詳細は[API v1.2 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)または[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)を参照。
     
 ### 2026. 02. 10.
 #### 新機能の追加
-- キーストアリスト詳細照会APIの追加
-  - APIを利用して、キーストアの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
-- キーリスト詳細照会APIの追加
-  - APIを利用して、キーの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
-      
+  * キーストアリスト詳細照会APIの追加
+    * APIを利用して、キーストアの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
+  * キーリスト詳細照会APIの追加
+    * APIを利用して、キーの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
+
 ### 2025. 06. 24.
 #### 機能改善/変更
   * 新規エラーメッセージ追加
@@ -25,11 +32,11 @@
     * APIを利用してキーIDリスト及びキーIDを通じてキーの詳細情報を照会する機能を追加
   * 認証情報リスト/詳細照会APIを追加
     * APIを利用して認証情報の値リスト及び認証情報の値を通じて認証情報を詳細に照会する機能を追加
-    
+
 ### 2024. 09. 25.
 #### 機能改善/変更
   * 承認リストの表からNumber列を削除
-  
+
 ### 2024. 08. 27.
 #### 新機能追加
   * Secure Key Managerのイベント通知をResource Watcherサービスで受信できる機能を追加
@@ -49,7 +56,7 @@
 
 ### 2024. 02. 27.
 #### 新規機能追加
-  * 通知メール受信対象設定機能を追加 
+  * 通知メール受信対象設定機能を追加
     * 組織/プロジェクトダッシュボード > 通知管理で、受信メールのアドレス名を設定できる機能が追加されました。
 #### 機能改善/変更
   * キーストアID表示
@@ -78,12 +85,12 @@
     * 承認権限を持つ一部の管理者が通知(メール)を受信できないエラーを修正
   * 承認プロセスIP/MAC大容量登録機能のエラーを修正
     * 承認プロセスIP/MAC大容量登録時、画面にすぐに反映されないエラーを修正
-  
+
 ### 2023. 04. 25.
 #### 新規機能追加
   * 承認プロセス通知(メール)機能の追加
     * 承認リクエスト登録時、承認権限を持っている権限者にメールを転送する機能を追加
-  
+
 ### 2023. 02. 28.
 #### バグ修正
   * テンプレートファイルのダウンロードエラーを修正

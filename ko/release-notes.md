@@ -1,17 +1,24 @@
 ## Security > Secure Key Manager > 릴리스 노트
 
+### 2026. 03. 10.
+#### 신규 기능 추가
+  * API v1.3 추가
+    * `X-NHN-AUTHORIZATION` 헤더를 통한 토큰 인증 방식 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
+  * 기밀 데이터 수정 API 추가 (v1.2, v1.3)
+    * API를 이용하여 Secure Key Manager에 저장한 기밀 데이터를 수정할 수 있는 기능 추가. 자세한 내용은 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/) 또는 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
+
 ### 2026. 02. 10.
 #### 신규 기능 추가
-- 키 저장소 목록 상세 조회 API 추가
-  - API를 이용하여 키 저장소의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
-- 키 목록 상세 조회 API 추가
-  - API를 이용하여 키의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
-    
+  * 키 저장소 목록 상세 조회 API 추가
+    * API를 이용하여 키 저장소의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
+  * 키 목록 상세 조회 API 추가
+    * API를 이용하여 키의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
+
 ### 2025. 06. 24.
 #### 기능 개선/변경
   * 신규 오류 메시지 추가
     * 유효하지 않은 URI로 API 요청 시 오류 메시지 추가. 자세한 내용은 [문제 해결 가이드](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found)를 참고.
-    
+
 ### 2025. 04. 28.
 #### 기능 개선/변경
   * 데이터 보관 기한이 3년에서 1년으로 변경
@@ -25,7 +32,7 @@
     * API를 이용하여 키 ID 목록 및 키 ID를 통해 키를 상세 조회할 수 있는 기능 추가
   * 인증 정보 목록/상세 조회 API 추가
     * API를 이용하여 인증 정보의 값 목록 및 인증 정보의 값을 통해 인증 정보를 상세 조회할 수 있는 기능 추가
-    
+
 ### 2024. 09. 25.
 #### 기능 개선/변경
   * 승인리스트의 표에서 Number 열 삭제
@@ -49,7 +56,7 @@
 
 ### 2024. 02. 27.
 #### 신규 기능 추가
-  * 알림 메일 수신 대상 설정 기능 추가 
+  * 알림 메일 수신 대상 설정 기능 추가
     * 조직/프로젝트 대시보드 > 알림 관리에서 수신 메일 주소명을 설정할 수 있도록 기능이 추가되었습니다.
 #### 기능 개선/변경
   * 키 저장소 ID 노출
