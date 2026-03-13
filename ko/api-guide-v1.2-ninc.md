@@ -971,6 +971,7 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores?
 ```
 
 [Request Parameter]
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | detail | Boolean | 상세 정보 포함 여부(기본값: false) |
@@ -1087,6 +1088,7 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ```
 
 [Request Parameter]
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | detail | Boolean | 상세 정보 포함 여부(기본값: false) |
