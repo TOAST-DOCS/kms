@@ -443,6 +443,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ```
 
 [Request Parameter]
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | detail | Boolean | 詳細情報の包含有無(デフォルト値: false) |
@@ -559,6 +560,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ```
 
 [Request Parameter]
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | detail | Boolean | 詳細情報の包含有無(デフォルト値: false) |

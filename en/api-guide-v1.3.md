@@ -378,7 +378,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | signature  | String | Signature value of signing the data with the asymmetric key    |
 | keyVersion | Number | Version of the asymmetric key used for processing the API request |
 
-### 	
+###
 Verify Data with the Asymmetric Key
 
 This API is used to verify data with the asymmetric key created in Secure Key Manager. Users can pass data and signature value, and use asymmetric keys stored in Secure Key Manager to verify that data has not been forged.
@@ -472,7 +472,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 | Name       | Type   | Description                  |
 | ---------- | ------ | --------------------- |
-| keyVersion | Number | 	
+| keyVersion | Number |
 Version of the asymmetric key to query |
 
 [Response Body]
@@ -504,7 +504,7 @@ Version of the asymmetric key to query |
 
 ### Add Keys
 
-	
+
 Add a new key to Secure Key Manager.
 
 #### Add Confidential Data
@@ -786,7 +786,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | Name        | Type   | Description                 |
 | ----------- | ------ | -------------------- |
 | value       | String | Created MAC address value    |
-| description | String | 	
+| description | String |
 Created MAC address description |
 
 #### Add Certificates
@@ -1060,7 +1060,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | Name         | Type   | Description                                |
 | ------------ | ------ | ----------------------------------- |
-| keyStoreName | String | 	
+| keyStoreName | String |
 Key store name to immediately delete certificate |
 | name         | String | Certificate name to delete immediately             |
 
@@ -1123,6 +1123,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 ```
 
 [Request Parameter]
+
 | Name | Type | Description |
 |---|---|---|
 | detail | Boolean | Details included or not (Default: false) |
@@ -1251,6 +1252,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 ```
 
 [Request Parameter]
+
 | Name | Type | Description |
 |---|---|---|
 | detail | Boolean | Include details (default: false) |
