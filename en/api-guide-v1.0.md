@@ -442,6 +442,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ```
 
 [Request Parameter]
+
 | Name | Type | Description |
 |---|---|---|
 | detail | Boolean | Include details (default: false) |
@@ -558,6 +559,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ```
 
 [Request Parameter]
+
 | Name | Type | Description |
 |---|---|---|
 | detail | Boolean | Whether to include detailed information (default: false) |
