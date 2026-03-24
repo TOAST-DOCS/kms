@@ -2,7 +2,7 @@
 
 Secure Key Manager provides various APIs to access user data. Clients must be authenticated via key store to get access to data stored in Secure Kay Manager.
 
-In v1.3, HTTP header fields for token-based authentication have been added, and a User Access Key token is used for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information about how to issue and use User Access Key tokens, see [User Access Key Token](nhncloud/ko/public-api/user-access-key-token).
+In v1.3, HTTP header fields for token-based authentication have been added, and a User Access Key token is used for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key. For more information about how to issue and use User Access Key tokens, see [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
 ## Basic Information
 
