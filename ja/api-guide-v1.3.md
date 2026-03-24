@@ -2,7 +2,7 @@
 
 Secure Key Managerは、ユーザーデータにアクセスできる様々なAPIを提供します。クライアントはキーストアに設定した認証を通過した後、Secure Key Managerに保存したデータを使用できます。
 
-Secure Key Manager API v1.3ではトークン認証方式のHTTPヘッダフィールドが追加され、API呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Key](nhncloud/ko/public-api/user-access-key-token)を参照してください。
+Secure Key Manager API v1.3ではトークン認証方式のHTTPヘッダフィールドが追加され、API呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。User Access Keyトークンの発行及び使用に関する詳細は、[User Access Key](/nhncloud/en/public-api/user-access-key-token)を参照してください。
 
 ## 基本情報
 
