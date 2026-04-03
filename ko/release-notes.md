@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > 릴리스 노트
 
+### 2026. 04. 14.
+#### 기능 개선/변경
+  * `APPROVAL MEMBER` 역할 삭제
+    * Secure Key Manager APPROVAL MEMBER 역할을 Secure Key Manager ADMIN 역할로 마이그레이션하여 역할 체계 단순화
+  * 권한 세분화
+    * `SecureKeyManager:API.ADMIN`, `SecureKeyManager:API.VIEWER` 권한을 추가하여 콘솔 및 API 권한을 세분화하여 관리하도록 변경
+
 ### 2026. 03. 10.
 #### 신규 기능 추가
   * API v1.3 추가
