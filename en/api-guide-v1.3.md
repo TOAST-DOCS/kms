@@ -17,7 +17,7 @@ Secure Key Manager API v1.3 supports Appkey, Project-integrated Appkey, and User
 Appkey is included in the request URL when calling the API to identify and point to a specific resource. Alternatively, a Project-integrated Appkey can be used in place of Appkey.
 A User Access Key token is a temporary, Bearer-type access token issued from a User Access Key, used for authentication and authorization when calling the API.
 
-For more information on how to check and use each authentication method, see [Appkey](/nhncloud/en/public-api/appkey/), [Project Integrated Appkey](/nhncloud/en/public-api/project-integrated-appkey/), and [User Access Key Token](/nhncloud/en/public-api/user-access-key-token/).
+For more information on how to check and use each authentication method, see [Appkey](/nhncloud/en/public-api/appkey), [Project Integrated Appkey](/nhncloud/en/public-api/project-integrated-appkey), and [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
 ### API List
 
@@ -58,14 +58,6 @@ To use MAC address authentication of Secure Key Manager, you must make a request
 ```
 X-TOAST-CLIENT-MAC-ADDR: {MAC addess}
 ```
-
-In v1.3, HTTP header fields for token-based authentication are added.
-
-```
-X-NHN-AUTHORIZATION: {token}
-```
-
-For more information, see [Console User Guide](/Security/Secure%20Key%20Manager/ko/getting-started/#api).
 
 [Path Variables of API Request]
 

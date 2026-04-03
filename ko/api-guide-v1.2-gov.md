@@ -18,7 +18,7 @@ Secure Key Manager API v1.2는 API 호출 및 인증을 위해 Appkey, 프로젝
 Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용되며, Appkey 대신 프로젝트 통합 Appkey를 사용할 수도 있습니다.
 User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다.
 
-각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/nhncloud/ko/public-api/appkey/), [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey/), [User Access Key](/nhncloud/ko/public-api/user-access-key/)를 참고하세요.
+각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/nhncloud/ko/public-api/appkey-gov), [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey-gov), [User Access Key](/nhncloud/ko/public-api/user-access-key-gov)를 참고하세요.
 
 ### API 목록
 
@@ -58,8 +58,6 @@ Secure Key Manager의 MAC 주소 인증을 사용하려면 HTTP 헤더에 클라
 ```
 X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
 ```
-
-자세한 사항은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/getting-started/#api)를 참고하세요.
 
 [API 요청의 경로 변수]
 

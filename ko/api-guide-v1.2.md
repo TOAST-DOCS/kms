@@ -59,8 +59,6 @@ Secure Key Manager의 MAC 주소 인증을 사용하려면 HTTP 헤더에 클라
 X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
 ```
 
-자세한 사항은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/getting-started/#api)를 참고하세요.
-
 [API 요청의 경로 변수]
 
 | 이름 | 타입 | 설명 |
