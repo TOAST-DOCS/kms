@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > リリースノート
 
+### 2026. 04. 14.
+#### 機能改善・変更
+  * `APPROVAL MEMBER` ロールの削除
+    * Secure Key Manager APPROVAL MEMBERロールをSecure Key Manager ADMINロールに移行し、ロール体系を簡素化
+  * 権限の細分化
+    * `SecureKeyManager:API.ADMIN`、`SecureKeyManager:API.VIEWER`権限を追加し、コンソールおよびAPIの権限を細分化して管理できるよう変更
+
 ### 2026. 03. 10.
 #### 新規機能の追加
   * API v1.3の追加
