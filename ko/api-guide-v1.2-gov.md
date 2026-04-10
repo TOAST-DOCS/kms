@@ -3,14 +3,22 @@
 
 Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API를 제공합니다. 클라이언트는 키 저장소에 설정한 인증을 통과한 후 Secure Key Manager에 저장한 데이터를 사용할 수 있습니다.
 
-v1.2에서는 **유저 인증 관련 필수 HTTP 헤더 필드**가 추가되고, **키 추가/삭제 API**가 추가됐습니다.
+## Secure Key Manager API 공통 정보
 
-## 기본 정보
+### API 엔드포인트
 
-### EndPoint
-```text
-https://api-keymanager.gov-nhncloudservice.com
-```
+| 리전 | 엔드포인트 |
+|---|---|
+| Global | https://api-keymanager.gov-nhncloudservice.com |
+
+### 인증 및 권한
+
+Secure Key Manager API v1.2는 API 호출 및 인증을 위해 Appkey, 프로젝트 통합 Appkey, User Access Key를 지원합니다.
+
+Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용되며, Appkey 대신 프로젝트 통합 Appkey를 사용할 수도 있습니다.
+User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다.
+
+각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/nhncloud/ko/public-api/appkey-gov), [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey-gov), [User Access Key](/nhncloud/ko/public-api/user-access-key-gov)를 참고하세요.
 
 ### API 목록
 
@@ -50,14 +58,6 @@ Secure Key Manager의 MAC 주소 인증을 사용하려면 HTTP 헤더에 클라
 ```
 X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
 ```
-
-v1.2에서는 HTTP 헤더에 필수 필드가 추가됩니다.
-```
-X-TC-AUTHENTICATION-ID: {User Access Key ID}
-X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
-```
-
-자세한 사항은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/getting-started/#api)를 참고하세요.
 
 [API 요청의 경로 변수]
 

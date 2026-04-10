@@ -1,5 +1,12 @@
 ## Security > Secure Key Manager > Release Notes
 
+### April 14, 2026
+#### Feature Updates
+  * Removed `APPROVAL MEMBER` role
+    * Simplified the role structure by migrating the Secure Key Manager APPROVAL MEMBER role to the Secure Key Manager ADMIN role.
+  * Granular permissions
+    * Added `SecureKeyManager:API.ADMIN` and `SecureKeyManager:API.VIEWER` permissions to enable more granular management of console and API permissions.
+
 ### March 10, 2026
 #### Added Features
   * Added API v1.3
