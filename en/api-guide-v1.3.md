@@ -32,6 +32,8 @@ For more information on how to check and use each authentication method, see [Ap
 | GET | /keymanager/v1.3/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Query the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Sign data with the asymmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Verify data and signature with the asymmetric key stored in Secure Key Manager. |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard                       | Signs data according to the standard scheme (RSASSA-PSS, RSASSA-PKCS1-v1_5) using the asymmetric key stored in Secure Key Manager. |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard                     | Verifies data and a signature according to the standard scheme (RSASSA-PSS, RSASSA-PKCS1-v1_5) using the asymmetric key stored in Secure Key Manager. |
 | GET | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Query the private key stored in Secure Key Manager. |
 | GET | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Query the public key stored in Secure Key Manager. |
 | POST | /keymanager/v1.3/appkey/{appkey}/keys/{secrets\|symmetric-keys\|asymmetric-keys}/create | Add a new key to Secure Key Manager. |
@@ -417,6 +419,118 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | ---------- | ------- | ----------------------------------------- |
 | result | Boolean | Result of verifying data and signature value with the asymmetric key |
 | keyVersion | Number | Version of the asymmetric key used for processing the API request |
+
+### Sign with Asymmetric Key (Standard Scheme)
+
+Used to sign data according to the standard RSA signing scheme (RSASSA-PSS, RSASSA-PKCS1-v1_5) using the asymmetric key created in Secure Key Manager. Users can sign data with the asymmetric key stored in Secure Key Manager by providing Base64-encoded data and a signing scheme.
+
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard
+```
+
+[Request Body]
+
+```
+{
+    "plaintext": "Base64(...)",
+    "algorithm": "RSASSA-PSS"
+}
+```
+
+| Name      | Type   | Description                                                          |
+| --------- | ------ | --------------------------------------------------------------------- |
+| plaintext | String | Base64-encoded string of the data to sign. Up to 64 KB after decoding |
+| algorithm | String | Signing scheme. One of RSASSA-PSS or RSASSA-PKCS1-v1_5 |
+
+[Response Body]
+
+RSASSA-PSS
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "signature": "Base64(...)",
+        "algorithm": "RSASSA-PSS",
+        "hashAlgorithm": "SHA-256",
+        "mgfAlgorithm": "MGF1-SHA-256",
+        "saltLength": 32,
+        "keyVersion": 0
+    }
+}
+```
+
+RSASSA-PKCS1-v1_5
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "signature": "Base64(...)",
+        "algorithm": "RSASSA-PKCS1-v1_5",
+        "hashAlgorithm": "SHA-256",
+        "keyVersion": 0
+    }
+}
+```
+
+| Name          | Type   | Description                                                |
+| ------------- | ------ | ---------------------------------------------------------- |
+| signature     | String | Signature value of the data signed with the asymmetric key (Base64-encoded) |
+| algorithm     | String | Scheme used for signing. Same as the request value |
+| hashAlgorithm | String | Hash algorithm used for signing. Fixed value: SHA-256 |
+| mgfAlgorithm  | String | MGF algorithm. Fixed value: MGF1-SHA-256 (RSASSA-PSS only) |
+| saltLength    | Number | Salt length (bytes). Fixed value: 32 (RSASSA-PSS only) |
+| keyVersion    | Number | Version of the asymmetric key used to process the API request |
+
+### Verify Data with Asymmetric Key (Standard Scheme)
+
+Used to verify data and a signature according to the standard RSA signing scheme (RSASSA-PSS, RSASSA-PKCS1-v1_5) using the asymmetric key created in Secure Key Manager. Users can verify that the data has not been forged or tampered with using the asymmetric key stored in Secure Key Manager by providing Base64-encoded data, a signature value, a signing scheme, and a key version.
+
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard
+```
+
+[Request Body]
+
+```
+{
+    "plaintext": "Base64(...)",
+    "signature": "Base64(...)",
+    "algorithm": "RSASSA-PSS",
+    "keyVersion": 0
+}
+```
+
+| Name       | Type   | Description                                                          |
+| ---------- | ------ | --------------------------------------------------------------------- |
+| plaintext  | String | Base64-encoded string of the data to verify. Up to 64 KB after decoding |
+| signature  | String | Base64-encoded string of the signature value to verify |
+| algorithm  | String | Signing scheme. One of RSASSA-PSS or RSASSA-PKCS1-v1_5 |
+| keyVersion | Number | Version of the asymmetric key to use for verification |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "result": true,
+        "keyVersion": 0
+    }
+}
+```
+
+| Name       | Type    | Description                                      |
+| ---------- | ------- | ------------------------------------------------ |
+| result     | Boolean | Result of verifying the data and signature value with the asymmetric key |
+| keyVersion | Number  | Version of the asymmetric key used to process the API request |
 
 ### Query the Private Key
 

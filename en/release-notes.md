@@ -1,5 +1,13 @@
 ## Security > Secure Key Manager > Release Notes
 
+### May 27, 2026
+#### Added Features
+* Added asymmetric key standard scheme signing/verification API (v1.3)
+    * Added an API to sign and verify data with an asymmetric key according to standard RSA signing schemes (RSASSA-PSS, RSASSA-PKCS1-v1_5). For more information, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+#### Feature Updates
+  * Added key store authentication method combination option
+    * Added a feature to select the method for combining multiple authentication methods (IPv4 address, MAC address, client certificate) enabled in the key store. Users can select either all pass (AND, default) or any pass (OR). Existing key stores remain configured as all pass (AND). For more information, see [Console User Guide](/Security/Secure%20Key%20Manager/en/console-guide/).
+
 ### April 14, 2026
 #### Feature Updates
   * Removed `APPROVAL MEMBER` role
