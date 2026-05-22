@@ -32,6 +32,8 @@ User Access Keyトークンは、User Access Keyをもとに発行されるBeare
 | GET | /keymanager/v1.3/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Secure Key Managerに保存した共通鍵を照会します。 |
 | POST | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Secure Key Managerに保存した非対称鍵でデータに署名します。 |
 | POST | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Secure Key Managerに保存した非対称鍵でデータと署名を検証します。 |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard                       | Secure Key Managerに保存した非対称鍵で、標準スキーム(RSASSA-PSS、RSASSA-PKCS1-v1_5)に従ってデータを署名します。 |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard                     | Secure Key Managerに保存した非対称鍵で、標準スキーム(RSASSA-PSS、RSASSA-PKCS1-v1_5)に従ってデータと署名を検証します。 |
 | GET | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Secure Key Managerに保存した秘密鍵を照会します。 |
 | GET | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Secure Key Managerに保存した公開鍵を照会します。 |
 | POST | /keymanager/v1.3/appkey/{appkey}/keys/{secrets\|symmetric-keys\|asymmetric-keys}/create | Secure Key Managerに新規キーを追加します。 |
@@ -417,6 +419,118 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | ---------- | ------- | ----------------------------------------- |
 | result | Boolean | 非対称鍵でデータと署名値を検証した結果 |
 | keyVersion | Number | APIリクエストの処理に使用した非対称鍵バージョン |
+
+### 非対称鍵による署名(標準スキーム)
+
+Secure Key Managerに作成した非対称鍵で、標準RSA署名スキーム(RSASSA-PSS、RSASSA-PKCS1-v1_5)に従ってデータを署名する際に使用します。ユーザーはBase64でエンコードしたデータと署名スキームを渡し、Secure Key Managerに保存した非対称鍵で署名できます。
+
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard
+```
+
+[Request Body]
+
+```
+{
+    "plaintext": "Base64(...)",
+    "algorithm": "RSASSA-PSS"
+}
+```
+
+| 名前      | タイプ   | 説明                                                          |
+| --------- | ------ | ------------------------------------------------------------- |
+| plaintext | String | 署名するデータをBase64でエンコードした文字列、デコード後64KB以下 |
+| algorithm | String | 署名スキーム、RSASSA-PSSまたはRSASSA-PKCS1-v1_5のいずれか          |
+
+[Response Body]
+
+RSASSA-PSS
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "signature": "Base64(...)",
+        "algorithm": "RSASSA-PSS",
+        "hashAlgorithm": "SHA-256",
+        "mgfAlgorithm": "MGF1-SHA-256",
+        "saltLength": 32,
+        "keyVersion": 0
+    }
+}
+```
+
+RSASSA-PKCS1-v1_5
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "signature": "Base64(...)",
+        "algorithm": "RSASSA-PKCS1-v1_5",
+        "hashAlgorithm": "SHA-256",
+        "keyVersion": 0
+    }
+}
+```
+
+| 名前          | タイプ   | 説明                                                |
+| ------------- | ------ | --------------------------------------------------- |
+| signature     | String | 非対称鍵でデータを署名した署名値(Base64エンコード)   |
+| algorithm     | String | 署名に使用されたスキーム、リクエスト値と同じ                  |
+| hashAlgorithm | String | 署名に使用されたハッシュアルゴリズム、固定値SHA-256         |
+| mgfAlgorithm  | String | MGFアルゴリズム、固定値MGF1-SHA-256(RSASSA-PSS専用)  |
+| saltLength    | Number | salt長(バイト)、固定値32(RSASSA-PSS専用)       |
+| keyVersion    | Number | APIリクエスト処理に使用した非対称鍵のバージョン               |
+
+### 非対称鍵によるデータ検証(標準スキーム)
+
+Secure Key Managerに作成した非対称鍵で、標準RSA署名スキーム(RSASSA-PSS、RSASSA-PKCS1-v1_5)に従ってデータと署名を検証する際に使用します。ユーザーはBase64でエンコードしたデータと署名値、署名スキーム、キーバージョンを渡し、Secure Key Managerに保存した非対称鍵でデータが改ざんされていないかを検証できます。
+
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard
+```
+
+[Request Body]
+
+```
+{
+    "plaintext": "Base64(...)",
+    "signature": "Base64(...)",
+    "algorithm": "RSASSA-PSS",
+    "keyVersion": 0
+}
+```
+
+| 名前       | タイプ   | 説明                                                          |
+| ---------- | ------ | ------------------------------------------------------------- |
+| plaintext  | String | 検証するデータをBase64でエンコードした文字列、デコード後64KB以下 |
+| signature  | String | 検証する署名値をBase64でエンコードした文字列                      |
+| algorithm  | String | 署名スキーム、RSASSA-PSSまたはRSASSA-PKCS1-v1_5のいずれか          |
+| keyVersion | Number | 検証に使用する非対称鍵のバージョン                                  |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "result": true,
+        "keyVersion": 0
+    }
+}
+```
+
+| 名前       | タイプ    | 説明                                      |
+| ---------- | ------- | ----------------------------------------- |
+| result     | Boolean | 非対称鍵でデータと署名値を検証した結果 |
+| keyVersion | Number  | APIリクエスト処理に使用した非対称鍵のバージョン     |
 
 ### 秘密鍵照会
 
