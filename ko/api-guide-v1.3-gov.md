@@ -444,8 +444,6 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
 
 [Response Body]
 
-RSASSA-PSS
-
 ```
 {
     "header": {
