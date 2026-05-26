@@ -32,8 +32,8 @@ User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer �
 | GET    | /keymanager/v1.3/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key                        | Secure Key Manager에 저장한 대칭 키를 조회합니다.                                           |
 | POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign                                | Secure Key Manager에 저장한 비대칭 키로 데이터를 서명합니다.                                |
 | POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify                              | Secure Key Manager에 저장한 비대칭 키로 데이터와 서명을 검증합니다.                         |
-| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard                       | Secure Key Manager에 저장한 비대칭 키로 표준 스킴(RSASSA-PSS, RSASSA-PKCS1-v1_5)에 따라 데이터를 서명합니다. |
-| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard                     | Secure Key Manager에 저장한 비대칭 키로 표준 스킴(RSASSA-PSS, RSASSA-PKCS1-v1_5)에 따라 데이터와 서명을 검증합니다. |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard                       | Secure Key Manager에 저장한 비대칭 키로 표준 스킴에 따라 데이터를 서명합니다. |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard                     | Secure Key Manager에 저장한 비대칭 키로 표준 스킴에 따라 데이터와 서명을 검증합니다. |
 | GET    | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey                          | Secure Key Manager에 저장한 개인 키를 조회합니다.                                           |
 | GET    | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey                           | Secure Key Manager에 저장한 공개 키를 조회합니다.                                           |
 | POST   | /keymanager/v1.3/appkey/{appkey}/keys/{secrets\|symmetric-keys\|asymmetric-keys}/create      | Secure Key Manager에 신규 키를 추가합니다.                                                  |
@@ -422,7 +422,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
 
 ### 비대칭 키로 서명(표준 스킴)
 
-Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS, RSASSA-PKCS1-v1_5)에 따라 데이터를 서명할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명 스킴을 전달해서 Secure Key Manager에 저장한 비대칭 키로 서명할 수 있습니다.
+Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS)에 따라 데이터를 서명할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명 스킴을 전달해서 Secure Key Manager에 저장한 비대칭 키로 서명할 수 있습니다.
 
 ```text
 POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard
@@ -440,7 +440,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
 | 이름      | 타입   | 설명                                                          |
 | --------- | ------ | ------------------------------------------------------------- |
 | plaintext | String | 서명할 데이터를 Base64로 인코딩한 문자열, 디코딩 후 64KB 이하 |
-| algorithm | String | 서명 스킴, RSASSA-PSS 또는 RSASSA-PKCS1-v1_5 중 하나          |
+| algorithm | String | 서명 스킴, 고정값 RSASSA-PSS         |
 
 [Response Body]
 
@@ -462,34 +462,18 @@ RSASSA-PSS
 }
 ```
 
-RSASSA-PKCS1-v1_5
-
-```
-{
-    "header": {
-        ...
-    },
-    "body": {
-        "signature": "Base64(...)",
-        "algorithm": "RSASSA-PKCS1-v1_5",
-        "hashAlgorithm": "SHA-256",
-        "keyVersion": 0
-    }
-}
-```
-
 | 이름          | 타입   | 설명                                                |
 | ------------- | ------ | --------------------------------------------------- |
 | signature     | String | 비대칭 키로 데이터를 서명한 서명값(Base64 인코딩)   |
 | algorithm     | String | 서명에 사용된 스킴, 요청 값과 동일                  |
 | hashAlgorithm | String | 서명에 사용된 해시 알고리즘, 고정값 SHA-256         |
-| mgfAlgorithm  | String | MGF 알고리즘, 고정값 MGF1-SHA-256(RSASSA-PSS 전용)  |
-| saltLength    | Number | salt 길이(바이트), 고정값 32(RSASSA-PSS 전용)       |
+| mgfAlgorithm  | String | MGF 알고리즘, 고정값 MGF1-SHA-256  |
+| saltLength    | Number | salt 길이(바이트), 고정값 32       |
 | keyVersion    | Number | API 요청 처리에 사용한 비대칭 키 버전               |
 
 ### 비대칭 키로 데이터 검증(표준 스킴)
 
-Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS, RSASSA-PKCS1-v1_5)에 따라 데이터와 서명을 검증할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명값, 서명 스킴, 키 버전을 전달해서 Secure Key Manager에 저장한 비대칭 키로 데이터가 위변조되지 않았음을 검증할 수 있습니다.
+Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS)에 따라 데이터와 서명을 검증할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명값, 서명 스킴, 키 버전을 전달해서 Secure Key Manager에 저장한 비대칭 키로 데이터가 위변조되지 않았음을 검증할 수 있습니다.
 
 ```text
 POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard
@@ -510,7 +494,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
 | ---------- | ------ | ------------------------------------------------------------- |
 | plaintext  | String | 검증할 데이터를 Base64로 인코딩한 문자열, 디코딩 후 64KB 이하 |
 | signature  | String | 검증할 서명값을 Base64로 인코딩한 문자열                      |
-| algorithm  | String | 서명 스킴, RSASSA-PSS 또는 RSASSA-PKCS1-v1_5 중 하나          |
+| algorithm  | String | 서명 스킴, 고정값 RSASSA-PSS          |
 | keyVersion | Number | 검증에 사용할 비대칭 키 버전                                  |
 
 [Response Body]
