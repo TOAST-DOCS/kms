@@ -16,7 +16,14 @@ Click **Add Key Store**, and a window to create a key store shows up.
 
 ![console-guide-02](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-02.png)
 
-Enter name and description, select one or more authentication method, and then click **Add**, and a key store is created. The newly created key store shows up on the list of key stores like below:
+Enter a name and description, and select one or more authentication methods. The **Authentication method combination** option is required and must be selected even when only one authentication method is enabled.
+
+- **All pass (AND)**: Authentication succeeds only when all enabled authentication methods are passed (default).
+- **Any pass (OR)**: Authentication succeeds when only one of the enabled authentication methods is passed. This is useful for zero-downtime migration when gradually transitioning from one authentication method to another while two or more authentication methods are enabled.
+
+![console-guide-auth-mode](이미지 경로)
+
+Click **Add** creates a key store. The created key store displays the key store list as follows:
 
 ![console-guide-03](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-03.png)
 
