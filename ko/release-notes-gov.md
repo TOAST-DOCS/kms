@@ -1,5 +1,13 @@
 ## Security > Secure Key Manager > 릴리스 노트
 
+### 2026. 05. 27.
+#### 신규 기능 추가
+  * 비대칭 키 표준 스킴 서명/검증 API 추가 (v1.3)
+    * 표준 RSA 서명 스킴(RSASSA-PSS)에 따라 비대칭 키로 데이터를 서명하고 검증할 수 있는 API 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3-gov/)를 참고.
+#### 기능 개선/변경
+  * 키 저장소 인증 방식 결합 옵션 추가
+    * 키 저장소에 활성화된 여러 인증 방법(IPv4 주소, MAC 주소, 클라이언트 인증서)을 결합하는 방식을 선택할 수 있는 기능 추가. 모두 통과(AND, 기본값) 또는 하나만 통과(OR) 중 선택할 수 있으며, 기존 키 저장소는 모두 통과(AND)로 유지됩니다. 자세한 내용은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/console-guide-gov/)를 참고.
+
 ### 2026. 04. 14.
 #### 기능 개선/변경
   * `APPROVAL MEMBER` 역할 삭제
