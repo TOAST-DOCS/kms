@@ -42,6 +42,9 @@ User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer �
 | POST   | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}                           | Secure Key Manager에 인증 정보를 추가합니다.                                                |
 | PUT    | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete                    | Secure Key Manager에 인증 정보 삭제를 요청합니다.                                           |
 | POST   | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete                    | Secure Key Manager에 인증 정보를 즉시 삭제합니다.                                           |
+| POST   | /keymanager/v1.3/appkey/{appkey}/keystores                                                   | Secure Key Manager에 키 저장소를 생성합니다.                                                |
+| PUT    | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}                                      | Secure Key Manager에 저장된 키 저장소를 수정합니다.                                         |
+| DELETE | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}                                      | Secure Key Manager에 저장된 키 저장소를 삭제(비활성화)합니다.                               |
 | GET    | /keymanager/v1.3/appkey/{appkey}/keystores                                                   | Secure Key Manager에 저장된 키 저장소들을 조회합니다.                                       |
 | GET    | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}                                      | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다.                                    |
 | GET    | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}/keys                                 | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다.                                  |
@@ -1176,6 +1179,127 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
 | deletionDateTime | String | 인증서의 삭제 시간 |
 
 ## 키 저장소
+
+### 키 저장소 생성
+
+Secure Key Manager에 키 저장소를 생성할 수 있습니다.
+
+```text
+POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores
+```
+
+[Request Body]
+
+```
+{
+    "name": "myKeyStore",
+    "description": "사용자 정의 설명",
+    "ip4AuthUse": "Y",
+    "macAuthUse": "N",
+    "certificateAuthUse": "N",
+    "authMode": "AND"
+}
+```
+
+| 이름               | 타입   | 설명                                                                                       |
+| ------------------ | ------ | ------------------------------------------------------------------------------------------ |
+| name               | String | 키 저장소 이름(필수, 1~100자)                                                              |
+| description        | String | 키 저장소 설명(최대 1000자)                                                                |
+| ip4AuthUse         | String | IPv4 인증 사용 여부(Y/N), ip4AuthUse/macAuthUse/certificateAuthUse 중 최소 1개는 Y         |
+| macAuthUse         | String | MAC 인증 사용 여부(Y/N)                                                                    |
+| certificateAuthUse | String | 인증서 인증 사용 여부(Y/N)                                                                 |
+| authMode           | String | 인증 조합 방식(필수, AND/OR, 기본값: AND)                                                  |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyStoreId": 12345,
+        "name": "myKeyStore",
+        "ip4AuthUse": "Y",
+        "macAuthUse": "N",
+        "certificateAuthUse": "N",
+        "authMode": "AND"
+    }
+}
+```
+
+| 이름               | 타입   | 설명                                 |
+| ------------------ | ------ | ------------------------------------ |
+| keyStoreId         | Number | 생성된 키 저장소 ID                  |
+| name               | String | 키 저장소 이름                       |
+| ip4AuthUse         | String | 키 저장소 IPv4 인증 사용 여부(Y/N)   |
+| macAuthUse         | String | 키 저장소 MAC 인증 사용 여부(Y/N)    |
+| certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
+| authMode           | String | 인증 조합 방식(AND/OR)               |
+
+### 키 저장소 수정
+
+Secure Key Manager에 저장된 키 저장소를 수정할 수 있습니다.
+
+```text
+PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Request Body]
+
+```
+{
+    "name": "renamedKeyStore",
+    "description": "변경된 설명",
+    "ip4AuthUse": "Y",
+    "macAuthUse": "Y",
+    "certificateAuthUse": "N",
+    "authMode": "OR"
+}
+```
+
+| 이름               | 타입   | 설명                                                                                       |
+| ------------------ | ------ | ------------------------------------------------------------------------------------------ |
+| name               | String | 키 저장소 이름(필수, 1~100자)                                                              |
+| description        | String | 키 저장소 설명(최대 1000자)                                                                |
+| ip4AuthUse         | String | IPv4 인증 사용 여부(Y/N), ip4AuthUse/macAuthUse/certificateAuthUse 중 최소 1개는 Y         |
+| macAuthUse         | String | MAC 인증 사용 여부(Y/N)                                                                    |
+| certificateAuthUse | String | 인증서 인증 사용 여부(Y/N)                                                                 |
+| authMode           | String | 인증 조합 방식(필수, AND/OR, 기본값: AND)                                                  |
+
+[Response Body]
+
+```
+{
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "success"
+    },
+    "body": null
+}
+```
+
+### 키 저장소 삭제
+
+Secure Key Manager에 저장된 키 저장소를 삭제(비활성화)할 수 있습니다.
+
+```text
+DELETE https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Response Body]
+
+```
+{
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "success"
+    },
+    "body": null
+}
+```
 
 ### 키 저장소 목록 조회
 
