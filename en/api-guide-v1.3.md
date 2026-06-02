@@ -940,7 +940,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | Name | Type | Description |
 | ----------- | ------ | ------------------ |
-| value | String | Created certificate name |
+| name  | String | Created certificate name |
 | description | String | Created certificate description |
 
 ### Delete Credentials
@@ -1066,7 +1066,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 | Name | Type | Description |
 | ---------------- | ------ | ----------------------- |
-| value | String | Certificate name that requested deletion |
+| name  | String | Certificate name that requested deletion |
 | deletionDateTime | String | Scheduled deletion time for the certificate |
 
 #### Immediately Delete Credentials
@@ -1188,7 +1188,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | Name | Type | Description |
 | ---------------- | ------ | ------------------ |
-| value | String | Deleted certificate name |
+| name  | String | Deleted certificate name |
 | deletionDateTime | String | Deletion time of certificate |
 
 ## Key Store

@@ -940,7 +940,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | 名前 | タイプ | 説明 |
 | ----------- | ------ | ------------------ |
-| value | String | 作成された証明書名 |
+| name  | String | 作成された証明書名 |
 | description | String | 作成された証明書の説明 |
 
 ### 認証情報の削除
@@ -1066,7 +1066,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 | 名前 | タイプ | 説明 |
 | ---------------- | ------ | ----------------------- |
-| value | String | 削除リクエストした証明書名 |
+| name  | String | 削除リクエストした証明書名 |
 | deletionDateTime | String | 証明書の削除予定時間 |
 
 #### 認証情報即時削除
@@ -1188,7 +1188,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | 名前 | タイプ | 説明 |
 | ---------------- | ------ | ------------------ |
-| value | String | 削除した証明書名 |
+| name  | String | 削除した証明書名 |
 | deletionDateTime | String | 証明書の削除時間 |
 
 ## キーストア
