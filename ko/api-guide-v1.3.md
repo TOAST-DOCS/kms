@@ -943,7 +943,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | 이름        | 타입   | 설명               |
 | ----------- | ------ | ------------------ |
-| value       | String | 생성된 인증서 이름 |
+| name        | String | 생성된 인증서 이름 |
 | description | String | 생성된 인증서 설명 |
 
 ### 인증 정보 삭제
@@ -1069,7 +1069,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 | 이름             | 타입   | 설명                    |
 | ---------------- | ------ | ----------------------- |
-| value            | String | 삭제 요청한 인증서 이름 |
+| name             | String | 삭제 요청한 인증서 이름 |
 | deletionDateTime | String | 인증서의 삭제 예정 시간 |
 
 #### 인증 정보 즉시 삭제
@@ -1191,7 +1191,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | 이름             | 타입   | 설명               |
 | ---------------- | ------ | ------------------ |
-| value            | String | 삭제한 인증서 이름 |
+| name             | String | 삭제한 인증서 이름 |
 | deletionDateTime | String | 인증서의 삭제 시간 |
 
 ## 키 저장소

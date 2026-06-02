@@ -107,7 +107,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | clientIp | String | API를 호출한 클라이언트의 IP 주소 |
-| clientMacHeader | String |API를 호출한 클라이언트의 MAC 주소 헤더값 |
+| clientMacHeader | String | API를 호출한 클라이언트의 MAC 주소 헤더값 |
 | clientSentCertificate | Boolean | API를 호출한 클라이언트가 인증서를 사용하고 있는지 여부 |
 
 ## 기밀 데이터
@@ -657,7 +657,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | IPv4 주소를 저장할 키 저장소 이름 |
-| value | String | IPv4 주솟값|
+| value | String | IPv4 주솟값 |
 | description | String | IPv4 주소 설명 |
 
 [Response Body]
@@ -695,7 +695,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | MAC 주소를 저장할 키 저장소 이름 |
-| value | String | MAC 주솟값|
+| value | String | MAC 주솟값 |
 | description | String | MAC 주소 설명 |
 
 [Response Body]
@@ -713,7 +713,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 생성된 MAC 주솟값|
+| value | String | 생성된 MAC 주솟값 |
 | description | String | 생성된 MAC 주소 설명 |
 
 #### 인증서 추가
@@ -735,9 +735,9 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 인증서를 저장할 키 저장소 이름 |
-| name | String | 인증서 이름|
-| password | String | 인증서 비밀번호|
-| lifeTime | int | 인증서 사용 기간(일)|
+| name | String | 인증서 이름 |
+| password | String | 인증서 비밀번호 |
+| lifeTime | int | 인증서 사용 기간(일) |
 | description | String | 인증서 설명 |
 
 [Response Body]
@@ -755,7 +755,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 생성된 인증서 이름|
+| name | String | 생성된 인증서 이름 |
 | description | String | 생성된 인증서 설명 |
 
 ### 인증 정보 삭제
@@ -781,7 +781,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | IPv4 주소를 삭제 요청할 키 저장소 이름 |
-| value | String | 삭제 요청할 IPv4 주솟값|
+| value | String | 삭제 요청할 IPv4 주솟값 |
 
 [Response Body]
 
@@ -817,7 +817,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | MAC 주소를 삭제 요청할 키 저장소 이름 |
-| value | String | 삭제 요청할 MAC 주솟값|
+| value | String | 삭제 요청할 MAC 주솟값 |
 
 [Response Body]
 
@@ -834,7 +834,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 삭제 요청한 MAC 주솟값|
+| value | String | 삭제 요청한 MAC 주솟값 |
 | deletionDateTime | String | MAC 주소의 삭제 예정 시간 |
 
 #### 인증서 삭제 요청
@@ -853,7 +853,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 인증서를 삭제 요청할 키 저장소 이름 |
-| name | String | 삭제 요청할 인증서 이름|
+| name | String | 삭제 요청할 인증서 이름 |
 
 [Response Body]
 
@@ -870,7 +870,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 삭제 요청한 인증서 이름|
+| name | String | 삭제 요청한 인증서 이름 |
 | deletionDateTime | String | 인증서의 삭제 예정 시간 |
 
 #### 인증 정보 즉시 삭제
@@ -893,7 +893,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | IPv4 주소를 즉시 삭제할 키 저장소 이름 |
-| value | String | 즉시 삭제할 IPv4 주솟값|
+| value | String | 즉시 삭제할 IPv4 주솟값 |
 
 [Response Body]
 
@@ -910,7 +910,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 삭제한 IPv4 주솟값|
+| value | String | 삭제한 IPv4 주솟값 |
 | deletionDateTime | String | IPv4 주소의 삭제 시간 |
 
 #### MAC 주소 즉시 삭제
@@ -929,7 +929,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | MAC 주소를 즉시 삭제할 키 저장소 이름 |
-| value | String | 즉시 삭제할 MAC 주솟값|
+| value | String | 즉시 삭제할 MAC 주솟값 |
 
 [Response Body]
 
@@ -946,7 +946,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 삭제한 MAC 주솟값|
+| value | String | 삭제한 MAC 주솟값 |
 | deletionDateTime | String | MAC 주소의 삭제 시간 |
 
 #### 인증서 즉시 삭제
@@ -965,7 +965,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 인증서를 즉시 삭제할 키 저장소 이름 |
-| name | String | 즉시 삭제할 인증서 이름|
+| name | String | 즉시 삭제할 인증서 이름 |
 
 [Response Body]
 
@@ -982,7 +982,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| value | String | 삭제한 인증서 이름|
+| name | String | 삭제한 인증서 이름 |
 | deletionDateTime | String | 인증서의 삭제 시간 |
 
 ## 키 저장소
