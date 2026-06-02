@@ -24,15 +24,15 @@ User Access Keyは、NHN CloudアカウントまたはIAMアカウントに紐�
 
 | Method | URI | 説明 |
 |---|---|---|
-| GET | /keymanager/v1.2/appkey/{appkey}/confirm | APIを呼び出したクライアント情報を提供します。|
-| GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Managerに保存した機密データを照会します。|
+| GET | /keymanager/v1.2/appkey/{appkey}/confirm | APIを呼び出したクライアント情報を提供します。 |
+| GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Managerに保存した機密データを照会します。 |
 | PUT | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Managerに保存した機密データを修正します。 |
-| POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Managerに保存した対称鍵でデータを暗号化します。|
-| POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Managerに保存した対称鍵でデータを復号します。|
-| POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | クライアントがローカル環境でデータの暗号化/復号に使用できるAES-256対称鍵を作成します。|
+| POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Managerに保存した対称鍵でデータを暗号化します。 |
+| POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Managerに保存した対称鍵でデータを復号します。 |
+| POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | クライアントがローカル環境でデータの暗号化/復号に使用できるAES-256対称鍵を作成します。 |
 | GET | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Secure Key Managerに保存した対称鍵を照会します。 |
-| POST | /keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Secure Key Managerに保存した非対称鍵でデータを署名します。|
-| POST | /keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Secure Key Managerに保存した非対称鍵でデータと署名を検証します。|
+| POST | /keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Secure Key Managerに保存した非対称鍵でデータを署名します。 |
+| POST | /keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Secure Key Managerに保存した非対称鍵でデータと署名を検証します。 |
 | GET | /keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Secure Key Managerに保存した秘密鍵を照会します。 |
 | GET | /keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Secure Key Managerに保存した公開鍵を照会します。 |
 | POST | /keymanager/v1.0/appkey/{appkey}/keys/{secrets\|symmetric-keys\|asymmetric-keys}/create | Secure Key Managerに新規キーを追加します。 |
@@ -107,7 +107,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/c
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | clientIp | String | APIを呼び出したクライアントのIPアドレス |
-| clientMacHeader | String |APIを呼び出したクライアントのMACアドレスヘッダ値 |
+| clientMacHeader | String | APIを呼び出したクライアントのMACアドレスヘッダ値 |
 | clientSentCertificate | Boolean | APIを呼び出したクライアントが証明書を使用しているかどうか |
 
 ## 機密データ
@@ -655,7 +655,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | IPv4アドレスを保存するキーストア名 |
-| value | String | IPv4アドレス値|
+| value | String | IPv4アドレス値 |
 | description | String | IPv4アドレスの説明 |
 
 [Response Body]
@@ -693,7 +693,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | MACアドレスを保存するキーストア名 |
-| value | String | MACアドレス値|
+| value | String | MACアドレス値 |
 | description | String | MACアドレスの説明
 
 [Response Body]
@@ -711,7 +711,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| value | String | 作成されたMACアドレス値|
+| value | String | 作成されたMACアドレス値 |
 | description | String | 作成されたMACアドレスの説明 |
 
 #### 証明書の追加
@@ -733,9 +733,9 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | 証明書を保存するキーストア名 |
-| name | String | 証明書の名前|
-| password | String | 証明書のパスワード|
-| lifeTime | int | 証明書の使用期間(日)|
+| name | String | 証明書の名前 |
+| password | String | 証明書のパスワード |
+| lifeTime | int | 証明書の使用期間(日) |
 | description | String | 証明書の説明 |
 
 [Response Body]
@@ -753,7 +753,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| name  | String | 作成された証明書の名前|
+| name | String | 作成された証明書の名前 |
 | description | String | 作成された証明書の説明 |
 
 ### 認証情報の削除
@@ -779,7 +779,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | IPv4アドレスを削除リクエストするキーストア名 |
-| value | String | 削除リクエストするIPv4アドレス値|
+| value | String | 削除リクエストするIPv4アドレス値 |
 
 [Response Body]
 
@@ -815,7 +815,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | MACアドレスを削除リクエストするキーストアの名前 |
-| value | String | 削除リクエストするMACアドレス値|
+| value | String | 削除リクエストするMACアドレス値 |
 
 [Response Body]
 
@@ -832,7 +832,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| value | String | 削除リクエストしたMACアドレス値|
+| value | String | 削除リクエストしたMACアドレス値 |
 | deletionDateTime | String | MACアドレスの削除予定時間 |
 
 #### 証明書の削除リクエスト
@@ -851,7 +851,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | 証明書を削除リクエストするキーストア名 |
-| name | String | 削除リクエストする証明書の名前|
+| name | String | 削除リクエストする証明書の名前 |
 
 [Response Body]
 
@@ -868,7 +868,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/a
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| name  | String | 削除リクエストした証明書の名前|
+| name | String | 削除リクエストした証明書の名前 |
 | deletionDateTime | String | 証明書の削除予定時間 |
 
 #### 認証情報の即時削除
@@ -891,7 +891,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | IPv4アドレスを即時削除するキーストア名 |
-| value | String | 即時削除するIPv4アドレス値|
+| value | String | 即時削除するIPv4アドレス値 |
 
 [Response Body]
 
@@ -927,7 +927,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | MACアドレスを即時削除するキーストア名 |
-| value | String | 即時削除するMACアドレス値|
+| value | String | 即時削除するMACアドレス値 |
 
 [Response Body]
 
@@ -944,7 +944,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| value | String | 削除したMACアドレス値|
+| value | String | 削除したMACアドレス値 |
 | deletionDateTime | String | MACアドレスの削除時間 |
 
 #### 証明書の即時削除
@@ -963,7 +963,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyStoreName | String | 証明書を即時削除するキーストア名 |
-| name | String | 即時削除する証明書の名前|
+| name | String | 即時削除する証明書の名前 |
 
 [Response Body]
 
@@ -980,7 +980,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 ```
 | 名前 | タイプ | 説明 |
 |---|---|---|
-| name  | String | 削除した証明書の名前|
+| name | String | 削除した証明書の名前 |
 | deletionDateTime | String | 証明書の削除時間 |
 
 ## キーストア
