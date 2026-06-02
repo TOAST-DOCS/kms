@@ -7,7 +7,7 @@
 
 ### 2026. 05. 27.
 #### 신규 기능 추가
-  * 비대칭 키 표준 스킴 서명/검증 API 추가 (v1.3)
+  * 비대칭 키 표준 스킴 서명/검증 API 추가(v1.3)
     * 표준 RSA 서명 스킴(RSASSA-PSS)에 따라 비대칭 키로 데이터를 서명하고 검증할 수 있는 API 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3-gov/)를 참고.
 #### 기능 개선/변경
   * 키 저장소 인증 방식 결합 옵션 추가
@@ -24,7 +24,7 @@
 #### 신규 기능 추가
   * API v1.3 추가
     * `X-NHN-AUTHORIZATION` 헤더를 통한 토큰 인증 방식 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3-gov/)를 참고.
-  * 기밀 데이터 수정 API 추가 (v1.2, v1.3)
+  * 기밀 데이터 수정 API 추가(v1.2, v1.3)
     * API를 이용하여 Secure Key Manager에 저장한 기밀 데이터를 수정할 수 있는 기능 추가. 자세한 내용은 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2-gov/) 또는 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3-gov/)를 참고.
 
 ### 2025. 06. 24.

@@ -3,7 +3,7 @@
 
 Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API를 제공합니다. 클라이언트는 키 저장소에 설정한 인증을 통과한 후 Secure Key Manager에 저장한 데이터를 사용할 수 있습니다.
 
-v1.2에서는 **유저 인증 관련 필수 HTTP 헤더 필드**가 추가되고, **키 추가/삭제 API**가 추가됐습니다.
+v1.2에서는 **사용자 인증 관련 필수 HTTP 헤더 필드**가 추가되고, **키 추가/삭제 API**가 추가됐습니다.
 
 ## 기본 정보
 
@@ -99,7 +99,7 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/confirm
     "body": {
         "clientIp": "0.0.0.0",
         "clientMacHeader": "00:00:00:00:00:00",
-        "clientSentCerfificate": false
+        "clientSentCertificate": false
     }
 }
 ```
@@ -603,7 +603,7 @@ POST https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv
 {
     "keyStoreName" : "Store #1",
     "value" : "127.0.0.1",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 | 이름 | 타입 | 설명 |
@@ -641,7 +641,7 @@ POST https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/mac
 {
     "keyStoreName" : "Store #1",
     "value" : "aa:aa:aa:aa:aa:aa",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 | 이름 | 타입 | 설명 |
@@ -680,8 +680,8 @@ POST https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/cer
     "keyStoreName" : "Store #1",
     "name" : "Certificate Name #1",
     "password" : "Password",
-    "lifeTime" : 365
-    "description" : "Description #1",
+    "lifeTime" : 365,
+    "description" : "Description #1"
 }
 ```
 | 이름 | 타입 | 설명 |
@@ -1010,9 +1010,9 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores?
 | ip4AuthUse | String | 키 저장소 IPv4 인증 사용 여부(Y/N) |
 | macAuthUse | String | 키 저장소 MAC 인증 사용 여부(Y/N) |
 | certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
-| creationUser | String | 키 저장소 생성 유저 |
+| creationUser | String | 키 저장소 생성 사용자 |
 | creationDatetime | String | 키 저장소 생성 일시 |
-| lastChangeUser | String | 키 저장소 마지막 수정 유저 |
+| lastChangeUser | String | 키 저장소 마지막 수정 사용자 |
 | lastChangeDatetime | String | 키 저장소 마지막 수정 일시 |
 
 ### 키 저장소 상세 조회
@@ -1049,9 +1049,9 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 | ip4AuthUse | String | 키 저장소 IPv4 인증 사용 여부(Y/N) |
 | macAuthUse | String | 키 저장소 MAC 인증 사용 여부(Y/N) |
 | certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
-| creationUser | String | 키 저장소 생성 유저 |
+| creationUser | String | 키 저장소 생성 사용자 |
 | creationDatetime | String | 키 저장소 생성 일시 |
-| lastChangeUser | String | 키 저장소 마지막 수정 유저 |
+| lastChangeUser | String | 키 저장소 마지막 수정 사용자 |
 | lastChangeDatetime | String | 키 저장소 마지막 수정 일시 |
 
 ## 키
@@ -1138,9 +1138,9 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 | nextAutoRotationDate | String | 다음 키 회전일 |
 | lastAccessDatetime | String | 키 마지막 사용 일시 |
 | deletionDatetime | String | 키 삭제 예정 일시 |
-| creationUser | String | 키 생성 유저 |
+| creationUser | String | 키 생성 사용자 |
 | creationDatetime | String | 키 생성 일시 |
-| lastChangeUser | String | 키 마지막 수정 유저 |
+| lastChangeUser | String | 키 마지막 수정 사용자 |
 | lastChangeDatetime | String | 키 마지막 수정 일시 |
 
 ### 키 상세 조회
@@ -1182,9 +1182,9 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 | autoRotationPeriod | Number | 키 회전 주기 |
 | nextAutoRotationDate | String | 다음 키 회전일 |
 | lastAccessDatetime | String | 키 마지막 사용 일시 |
-| creationUser | String | 키 생성 유저 |
+| creationUser | String | 키 생성 사용자 |
 | creationDatetime | String | 키 생성 일시 |
-| lastChangeUser | String | 키 마지막 수정 유저 |
+| lastChangeUser | String | 키 마지막 수정 사용자 |
 | lastChangeDatetime | String | 키 마지막 수정 일시 |
 
 ## 인증 정보
@@ -1255,9 +1255,9 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 | description | String | IPv4 설명 |
 | lastAccessDatetime | String | IPv4 마지막 사용 일시 |
 | deletionDatetime | String | IPv4 삭제 예정 일시 |
-| creationUser | String | IPv4 생성 유저 |
+| creationUser | String | IPv4 생성 사용자 |
 | creationDatetime | String | IPv4 생성 일시 |
-| lastChangeUser | String | IPv4 마지막 수정 유저 |
+| lastChangeUser | String | IPv4 마지막 수정 사용자 |
 | lastChangeDatetime | String | IPv4 마지막 수정 일시 |
 
 ### MAC 인증 정보 목록 조회
@@ -1326,9 +1326,9 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 | description | String | MAC 설명 |
 | lastAccessDatetime | String | MAC 마지막 사용 일시 |
 | deletionDatetime | String | MAC 삭제 예정 일시 |
-| creationUser | String | MAC 생성 유저 |
+| creationUser | String | MAC 생성 사용자 |
 | creationDatetime | String | MAC 생성 일시 |
-| lastChangeUser | String | MAC 마지막 수정 유저 |
+| lastChangeUser | String | MAC 마지막 수정 사용자 |
 | lastChangeDatetime | String | MAC 마지막 수정 일시 |
 
 ### 인증서 인증 정보 목록 조회
@@ -1346,7 +1346,7 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
      "body": {
         "certificateList": [
             "certificate1",
-            "certtificate2",
+            "certificate2",
             ...
         ]
     }
@@ -1400,7 +1400,7 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 | description | String | 인증서 설명 |
 | lastAccessDatetime | String | 인증서 마지막 사용 일시 |
 | deletionDatetime | String | 인증서 삭제 예정 일시 |
-| creationUser | String | 인증서 생성 유저 |
+| creationUser | String | 인증서 생성 사용자 |
 | creationDatetime | String | 인증서 생성 일시 |
-| lastChangeUser | String | 인증서 마지막 수정 유저 |
+| lastChangeUser | String | 인증서 마지막 수정 사용자 |
 | lastChangeDatetime | String | 인증서 마지막 수정 일시 |

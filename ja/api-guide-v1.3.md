@@ -107,7 +107,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/c
     "body": {
         "clientIp": "0.0.0.0",
         "clientMacHeader": "00:00:00:00:00:00",
-        "clientSentCerfificate": false
+        "clientSentCertificate": false
     }
 }
 ```
@@ -828,7 +828,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 {
     "keyStoreName" : "Store #1",
     "value" : "127.0.0.1",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 
@@ -869,7 +869,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 {
     "keyStoreName" : "Store #1",
     "value" : "aa:aa:aa:aa:aa:aa",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 
@@ -911,8 +911,8 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
     "keyStoreName" : "Store #1",
     "name" : "Certificate Name #1",
     "password" : "Password",
-    "lifeTime" : 365
-    "description" : "Description #1",
+    "lifeTime" : 365,
+    "description" : "Description #1"
 }
 ```
 
@@ -1643,7 +1643,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
      "body": {
         "certificateList": [
             "certificate1",
-            "certtificate2",
+            "certificate2",
             ...
         ]
     }
@@ -1700,6 +1700,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 | name | String | 証明書名 |
 | password | String | 証明書のパスワード |
 | description | String | 証明書の説明 |
+| expirationDate | String | 証明書有効期限 |
 | lastAccessDatetime | String | 証明書最終使用日時 |
 | deletionDatetime | String | 証明書削除予定日時 |
 | creationUser | String | 証明書作成ユーザー |

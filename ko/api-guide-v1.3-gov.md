@@ -110,7 +110,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
     "body": {
         "clientIp": "0.0.0.0",
         "clientMacHeader": "00:00:00:00:00:00",
-        "clientSentCerfificate": false
+        "clientSentCertificate": false
     }
 }
 ```
@@ -194,9 +194,9 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | name               | String | 키 이름                 |
 | description        | String | 키 설명                 |
 | secretValue        | String | 변경된 기밀 데이터 내용 |
-| creationUser       | String | 키 생성 유저            |
+| creationUser       | String | 키 생성 사용자            |
 | creationDatetime   | String | 키 생성 일시            |
-| lastChangeUser     | String | 키 마지막 수정 유저     |
+| lastChangeUser     | String | 키 마지막 수정 사용자     |
 | lastChangeDatetime | String | 키 마지막 수정 일시     |
 
 ## 대칭 키
@@ -815,7 +815,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
 {
     "keyStoreName" : "Store #1",
     "value" : "127.0.0.1",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 
@@ -856,7 +856,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
 {
     "keyStoreName" : "Store #1",
     "value" : "aa:aa:aa:aa:aa:aa",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 
@@ -898,8 +898,8 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appk
     "keyStoreName" : "Store #1",
     "name" : "Certificate Name #1",
     "password" : "Password",
-    "lifeTime" : 365
-    "description" : "Description #1",
+    "lifeTime" : 365,
+    "description" : "Description #1"
 }
 ```
 
@@ -1380,9 +1380,9 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | ip4AuthUse         | String | 키 저장소 IPv4 인증 사용 여부(Y/N)   |
 | macAuthUse         | String | 키 저장소 MAC 인증 사용 여부(Y/N)    |
 | certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
-| creationUser       | String | 키 저장소 생성 유저                  |
+| creationUser       | String | 키 저장소 생성 사용자                  |
 | creationDatetime   | String | 키 저장소 생성 일시                  |
-| lastChangeUser     | String | 키 저장소 마지막 수정 유저           |
+| lastChangeUser     | String | 키 저장소 마지막 수정 사용자           |
 | lastChangeDatetime | String | 키 저장소 마지막 수정 일시           |
 
 ### 키 저장소 상세 조회
@@ -1423,9 +1423,9 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | ip4AuthUse         | String | 키 저장소 IPv4 인증 사용 여부(Y/N)   |
 | macAuthUse         | String | 키 저장소 MAC 인증 사용 여부(Y/N)    |
 | certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
-| creationUser       | String | 키 저장소 생성 유저                  |
+| creationUser       | String | 키 저장소 생성 사용자                  |
 | creationDatetime   | String | 키 저장소 생성 일시                  |
-| lastChangeUser     | String | 키 저장소 마지막 수정 유저           |
+| lastChangeUser     | String | 키 저장소 마지막 수정 사용자           |
 | lastChangeDatetime | String | 키 저장소 마지막 수정 일시           |
 
 ## 키
@@ -1520,9 +1520,9 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | nextAutoRotationDate   | String | 다음 키 회전일                               |
 | lastAccessDatetime     | String | 키 마지막 사용 일시                          |
 | deletionDatetime       | String | 키 삭제 예정 일시                            |
-| creationUser           | String | 키 생성 유저                                 |
+| creationUser           | String | 키 생성 사용자                                 |
 | creationDatetime       | String | 키 생성 일시                                 |
-| lastChangeUser         | String | 키 마지막 수정 유저                          |
+| lastChangeUser         | String | 키 마지막 수정 사용자                          |
 | lastChangeDatetime     | String | 키 마지막 수정 일시                          |
 
 ### 키 상세 조회
@@ -1568,9 +1568,9 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | autoRotationPeriod     | Number | 키 회전 주기                                 |
 | nextAutoRotationDate   | String | 다음 키 회전일                               |
 | lastAccessDatetime     | String | 키 마지막 사용 일시                          |
-| creationUser           | String | 키 생성 유저                                 |
+| creationUser           | String | 키 생성 사용자                                 |
 | creationDatetime       | String | 키 생성 일시                                 |
-| lastChangeUser         | String | 키 마지막 수정 유저                          |
+| lastChangeUser         | String | 키 마지막 수정 사용자                          |
 | lastChangeDatetime     | String | 키 마지막 수정 일시                          |
 
 ## 인증 정보
@@ -1649,9 +1649,9 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | description        | String | IPv4 설명             |
 | lastAccessDatetime | String | IPv4 마지막 사용 일시 |
 | deletionDatetime   | String | IPv4 삭제 예정 일시   |
-| creationUser       | String | IPv4 생성 유저        |
+| creationUser       | String | IPv4 생성 사용자        |
 | creationDatetime   | String | IPv4 생성 일시        |
-| lastChangeUser     | String | IPv4 마지막 수정 유저 |
+| lastChangeUser     | String | IPv4 마지막 수정 사용자 |
 | lastChangeDatetime | String | IPv4 마지막 수정 일시 |
 
 ### MAC 인증 정보 목록 조회
@@ -1728,9 +1728,9 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | description        | String | MAC 설명             |
 | lastAccessDatetime | String | MAC 마지막 사용 일시 |
 | deletionDatetime   | String | MAC 삭제 예정 일시   |
-| creationUser       | String | MAC 생성 유저        |
+| creationUser       | String | MAC 생성 사용자        |
 | creationDatetime   | String | MAC 생성 일시        |
-| lastChangeUser     | String | MAC 마지막 수정 유저 |
+| lastChangeUser     | String | MAC 마지막 수정 사용자 |
 | lastChangeDatetime | String | MAC 마지막 수정 일시 |
 
 ### 인증서 인증 정보 목록 조회
@@ -1751,7 +1751,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
      "body": {
         "certificateList": [
             "certificate1",
-            "certtificate2",
+            "certificate2",
             ...
         ]
     }
@@ -1808,9 +1808,10 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.3/appkey/{appke
 | name               | String | 인증서 이름             |
 | password           | String | 인증서 비밀번호         |
 | description        | String | 인증서 설명             |
+| expirationDate     | String | 인증서 만료 일시        |
 | lastAccessDatetime | String | 인증서 마지막 사용 일시 |
 | deletionDatetime   | String | 인증서 삭제 예정 일시   |
-| creationUser       | String | 인증서 생성 유저        |
+| creationUser       | String | 인증서 생성 사용자        |
 | creationDatetime   | String | 인증서 생성 일시        |
-| lastChangeUser     | String | 인증서 마지막 수정 유저 |
+| lastChangeUser     | String | 인증서 마지막 수정 사용자 |
 | lastChangeDatetime | String | 인증서 마지막 수정 일시 |
