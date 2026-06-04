@@ -467,7 +467,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.2/appkey/{appkey}/
 {
     "keyStoreName" : "Store #1",
     "name" : "Key Sample #1",
-    "description" : "Description #1",
+    "description" : "Description #1"
     "secretValue" : "data"
 }
 ```
