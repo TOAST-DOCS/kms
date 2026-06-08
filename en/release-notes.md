@@ -1,5 +1,10 @@
 ## Security > Secure Key Manager > Release Notes
 
+### June 9, 2026
+#### Added Features
+  * Added key store creation/modification/deletion API (v1.3)
+    * Added a feature to create, modify, and delete a key store using API. For more information, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/).
+
 ### May 27, 2026
 #### Added Features
 * Added asymmetric key standard scheme signing/verification API (v1.3)
