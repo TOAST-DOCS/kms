@@ -42,6 +42,9 @@ For more information on how to check and use each authentication method, see [Ap
 | POST | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates} | Add credentials to Secure Key Manager. |
 | PUT | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Request deletion of credentials in Secure Key Manager. |
 | POST | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Immediately delete credentials in Secure Key Manager. |
+| POST   | /keymanager/v1.3/appkey/{appkey}/keystores                                                   | Create a key store in Secure Key Manager.                                               |
+| PUT    | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}                                      | Modify a key store stored in Secure Key Manager.                                        |
+| DELETE | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}                                      | Delete or disable a key store stored in Secure Key Manager.                              |
 | GET | /keymanager/v1.3/appkey/{appkey}/keystores | Query the key stores in Secure Key Manager. |
 | GET | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId} | Query the details of the key stores in Secure Key Manager. |
 | GET | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}/keys | Query the keys of the key stores in Secure Key Manager. |
@@ -1192,6 +1195,127 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | deletionDateTime | String | Deletion time of certificate |
 
 ## Key Store
+
+### Create Key Store
+
+Creates a key store in Secure Key Manager.
+
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores
+```
+
+[Request Body]
+
+```
+{
+    "name": "myKeyStore",
+    "description": "사용자 정의 설명",
+    "ip4AuthUse": "Y",
+    "macAuthUse": "N",
+    "certificateAuthUse": "N",
+    "authMode": "AND"
+}
+```
+
+| Name               | Type   | Description                                                                                       |
+| ------------------ | ------ | ------------------------------------------------------------------------------------------ |
+| name               | String | Key store name (required, 1–100 characters)                                                              |
+| description        | String | Key store description (up to 1,000 characters)                                                                |
+| ip4AuthUse         | String | Whether to use IPv4 authentication (Y/N); at least one of ip4AuthUse/macAuthUse/certificateAuthUse must be Y         |
+| macAuthUse         | String | Whether to use MAC authentication (Y/N)                                                                    |
+| certificateAuthUse | String | Whether to use certificate authentication (Y/N)                                                                 |
+| authMode           | String | Authentication combination method (required, AND/OR, default: AND)                                                  |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyStoreId": 12345,
+        "name": "myKeyStore",
+        "ip4AuthUse": "Y",
+        "macAuthUse": "N",
+        "certificateAuthUse": "N",
+        "authMode": "AND"
+    }
+}
+```
+
+| Name               | Type   | Description                                 |
+| ------------------ | ------ | ------------------------------------ |
+| keyStoreId         | Number | ID of the created key store                  |
+| name               | String | Key store name                       |
+| ip4AuthUse         | String | Whether the key store uses IPv4 authentication (Y/N)   |
+| macAuthUse         | String | Whether the key store uses MAC authentication (Y/N)    |
+| certificateAuthUse | String | Whether the key store uses certificate authentication (Y/N) |
+| authMode           | String | Authentication combination method (AND/OR)               |
+
+### Update Key Store
+
+Updates a key store stored in Secure Key Manager.
+
+```text
+PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Request Body]
+
+```
+{
+    "name": "renamedKeyStore",
+    "description": "변경된 설명",
+    "ip4AuthUse": "Y",
+    "macAuthUse": "Y",
+    "certificateAuthUse": "N",
+    "authMode": "OR"
+}
+```
+
+| Name               | Type   | Description                                                                                       |
+| ------------------ | ------ | ------------------------------------------------------------------------------------------ |
+| name               | String | Key store name (required, 1–100 characters)                                                              |
+| description        | String | Key store description (up to 1,000 characters)                                                                |
+| ip4AuthUse         | String | Whether to use IPv4 authentication (Y/N); at least one of ip4AuthUse/macAuthUse/certificateAuthUse must be Y         |
+| macAuthUse         | String | Whether to use MAC authentication (Y/N)                                                                    |
+| certificateAuthUse | String | Whether to use certificate authentication (Y/N)                                                                 |
+| authMode           | String | Authentication combination method (required, AND/OR, default: AND)                                                  |
+
+[Response Body]
+
+```
+{
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "success"
+    },
+    "body": null
+}
+```
+
+### Delete Key Store
+
+Deletes (deactivates) a key store stored in Secure Key Manager.
+
+```text
+DELETE https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Response Body]
+
+```
+{
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "success"
+    },
+    "body": null
+}
+```
 
 ### Retrieve a Key Store List
 
