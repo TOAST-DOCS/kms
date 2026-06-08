@@ -92,7 +92,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/c
     "body": {
         "clientIp": "0.0.0.0",
         "clientMacHeader": "00:00:00:00:00:00",
-        "clientSentCerfificate": false
+        "clientSentCertificate": false
     }
 }
 ```
@@ -827,7 +827,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
      "body": {
         "certificateList": [
             "certificate1",
-            "certtificate2",
+            "certificate2",
             ...
         ]
     }
