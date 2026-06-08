@@ -1209,7 +1209,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 ```
 {
     "name": "myKeyStore",
-    "description": "사용자 정의 설명",
+    "description": "Custom description",
     "ip4AuthUse": "Y",
     "macAuthUse": "N",
     "certificateAuthUse": "N",
@@ -1236,6 +1236,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
     "body": {
         "keyStoreId": 12345,
         "name": "myKeyStore",
+        "description": "Custom description",
         "ip4AuthUse": "Y",
         "macAuthUse": "N",
         "certificateAuthUse": "N",
@@ -1248,6 +1249,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | ------------------ | ------ | ------------------------------------ |
 | keyStoreId         | Number | ID of the created key store                  |
 | name               | String | Key store name                       |
+| description        | String | Key store description                |
 | ip4AuthUse         | String | Whether the key store uses IPv4 authentication (Y/N)   |
 | macAuthUse         | String | Whether the key store uses MAC authentication (Y/N)    |
 | certificateAuthUse | String | Whether the key store uses certificate authentication (Y/N) |
@@ -1266,7 +1268,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 ```
 {
     "name": "renamedKeyStore",
-    "description": "변경된 설명",
+    "description": "Updated description",
     "ip4AuthUse": "Y",
     "macAuthUse": "Y",
     "certificateAuthUse": "N",

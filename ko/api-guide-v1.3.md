@@ -1236,6 +1236,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
     "body": {
         "keyStoreId": 12345,
         "name": "myKeyStore",
+        "description": "사용자 정의 설명",
         "ip4AuthUse": "Y",
         "macAuthUse": "N",
         "certificateAuthUse": "N",
@@ -1248,6 +1249,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | ------------------ | ------ | ------------------------------------ |
 | keyStoreId         | Number | 생성된 키 저장소 ID                  |
 | name               | String | 키 저장소 이름                       |
+| description        | String | 키 저장소 설명                       |
 | ip4AuthUse         | String | 키 저장소 IPv4 인증 사용 여부(Y/N)   |
 | macAuthUse         | String | 키 저장소 MAC 인증 사용 여부(Y/N)    |
 | certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |

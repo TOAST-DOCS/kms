@@ -1236,6 +1236,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
     "body": {
         "keyStoreId": 12345,
         "name": "myKeyStore",
+        "description": "ユーザー定義の説明",
         "ip4AuthUse": "Y",
         "macAuthUse": "N",
         "certificateAuthUse": "N",
@@ -1248,6 +1249,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 | ------------------ | ------ | ------------------------------------ |
 | keyStoreId         | Number | 作成されたキーストアID                  |
 | name               | String | キーストア名                       |
+| description        | String | キーストアの説明                     |
 | ip4AuthUse         | String | キーストアのIPv4認証の使用有無(Y/N)   |
 | macAuthUse         | String | キーストアのMAC認証の使用有無(Y/N)    |
 | certificateAuthUse | String | キーストアの証明書認証の使用有無(Y/N) |
