@@ -42,6 +42,9 @@ User Access Keyトークンは、User Access Keyをもとに発行されるBeare
 | POST | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates} | Secure Key Managerに認証情報を追加します。 |
 | PUT | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Secure Key Managerに認証情報の削除をリクエストします。 |
 | POST | /keymanager/v1.3/appkey/{appkey}/auths/{ipv4s\|macs\|certificates}/delete | Secure Key Managerの認証情報を即時削除します。 |
+| POST   | /keymanager/v1.3/appkey/{appkey}/keystores                                           | Secure Key Managerにキーストアを作成します。                                           |
+| PUT    | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}                               | Secure Key Managerに保存されたキーストアを変更します。                                        |
+| DELETE | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}                               | Secure Key Managerに保存されたキーストアを削除(無効化)します。                              |
 | GET | /keymanager/v1.3/appkey/{appkey}/keystores | Secure Key Managerに保存されたキーストア一覧を照会します。 |
 | GET | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId} | Secure Key Managerに保存されたキーストアを詳細照会します。 |
 | GET | /keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}/keys | Secure Key Managerに保存されたキーストアのキー一覧を照会します。 |
@@ -107,7 +110,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/c
     "body": {
         "clientIp": "0.0.0.0",
         "clientMacHeader": "00:00:00:00:00:00",
-        "clientSentCerfificate": false
+        "clientSentCertificate": false
     }
 }
 ```
@@ -828,7 +831,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 {
     "keyStoreName" : "Store #1",
     "value" : "127.0.0.1",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 
@@ -869,7 +872,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 {
     "keyStoreName" : "Store #1",
     "value" : "aa:aa:aa:aa:aa:aa",
-    "description" : "Description #1",
+    "description" : "Description #1"
 }
 ```
 
@@ -911,8 +914,8 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
     "keyStoreName" : "Store #1",
     "name" : "Certificate Name #1",
     "password" : "Password",
-    "lifeTime" : 365
-    "description" : "Description #1",
+    "lifeTime" : 365,
+    "description" : "Description #1"
 }
 ```
 
@@ -940,7 +943,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | 名前 | タイプ | 説明 |
 | ----------- | ------ | ------------------ |
-| value | String | 作成された証明書名 |
+| name | String | 作成された証明書名 |
 | description | String | 作成された証明書の説明 |
 
 ### 認証情報の削除
@@ -1066,7 +1069,7 @@ PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/a
 
 | 名前 | タイプ | 説明 |
 | ---------------- | ------ | ----------------------- |
-| value | String | 削除リクエストした証明書名 |
+| name | String | 削除リクエストした証明書名 |
 | deletionDateTime | String | 証明書の削除予定時間 |
 
 #### 認証情報即時削除
@@ -1188,10 +1191,133 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/
 
 | 名前 | タイプ | 説明 |
 | ---------------- | ------ | ------------------ |
-| value | String | 削除した証明書名 |
+| name | String | 削除した証明書名 |
 | deletionDateTime | String | 証明書の削除時間 |
 
 ## キーストア
+
+### キーストアの作成
+
+Secure Key Managerにキーストアを作成できます。
+
+```text
+POST https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores
+```
+
+[Request Body]
+
+```
+{
+    "name": "myKeyStore",
+    "description": "ユーザー定義の説明",
+    "ip4AuthUse": "Y",
+    "macAuthUse": "N",
+    "certificateAuthUse": "N",
+    "authMode": "AND"
+}
+```
+
+| 名前               | タイプ   | 説明                                                                                         |
+| ------------------ | ------ | ------------------------------------------------------------------------------------------ |
+| name               | String | キーストア名(必須、1～100文字)                                                                |
+| description        | String | キーストアの説明(最大1000文字)                                                                  |
+| ip4AuthUse         | String | IPv4認証の使用有無(Y/N)、ip4AuthUse/macAuthUse/certificateAuthUseのうち少なくとも1つはY         |
+| macAuthUse         | String | MAC認証の使用有無(Y/N)                                                                      |
+| certificateAuthUse | String | 証明書認証の使用有無(Y/N)                                                                   |
+| authMode           | String | 認証の組み合わせ方式(必須、AND/OR、デフォルト値: AND)                                                  |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyStoreId": 12345,
+        "name": "myKeyStore",
+        "description": "ユーザー定義の説明",
+        "ip4AuthUse": "Y",
+        "macAuthUse": "N",
+        "certificateAuthUse": "N",
+        "authMode": "AND"
+    }
+}
+```
+
+| 名前               | タイプ   | 説明                                 |
+| ------------------ | ------ | ------------------------------------ |
+| keyStoreId         | Number | 作成されたキーストアID                  |
+| name               | String | キーストア名                       |
+| description        | String | キーストアの説明                     |
+| ip4AuthUse         | String | キーストアのIPv4認証の使用有無(Y/N)   |
+| macAuthUse         | String | キーストアのMAC認証の使用有無(Y/N)    |
+| certificateAuthUse | String | キーストアの証明書認証の使用有無(Y/N) |
+| authMode           | String | 認証の組み合わせ方式(AND/OR)               |
+
+### キーストアの変更
+
+Secure Key Managerに保存されたキーストアを変更できます。
+
+```text
+PUT https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Request Body]
+
+```
+{
+    "name": "renamedKeyStore",
+    "description": "変更された説明",
+    "ip4AuthUse": "Y",
+    "macAuthUse": "Y",
+    "certificateAuthUse": "N",
+    "authMode": "OR"
+}
+```
+
+| 名前               | タイプ   | 説明                                                                                         |
+| ------------------ | ------ | ------------------------------------------------------------------------------------------ |
+| name               | String | キーストア名(必須、1～100文字)                                                                |
+| description        | String | キーストアの説明(最大1000文字)                                                                  |
+| ip4AuthUse         | String | IPv4認証の使用有無(Y/N)、ip4AuthUse/macAuthUse/certificateAuthUseのうち少なくとも1つはY         |
+| macAuthUse         | String | MAC認証の使用有無(Y/N)                                                                      |
+| certificateAuthUse | String | 証明書認証の使用有無(Y/N)                                                                   |
+| authMode           | String | 認証の組み合わせ方式(必須、AND/OR、デフォルト値: AND)                                                  |
+
+[Response Body]
+
+```
+{
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "success"
+    },
+    "body": null
+}
+```
+
+### キーストアの削除
+
+Secure Key Managerに保存されたキーストアを削除(無効化)できます。
+
+```text
+DELETE https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/keystores/{keyStoreId}
+```
+
+[Response Body]
+
+```
+{
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "success"
+    },
+    "body": null
+}
+```
 
 ### キーストア一覧照会
 
@@ -1643,7 +1769,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
      "body": {
         "certificateList": [
             "certificate1",
-            "certtificate2",
+            "certificate2",
             ...
         ]
     }
@@ -1700,6 +1826,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 | name | String | 証明書名 |
 | password | String | 証明書のパスワード |
 | description | String | 証明書の説明 |
+| expirationDate | String | 証明書有効期限 |
 | lastAccessDatetime | String | 証明書最終使用日時 |
 | deletionDatetime | String | 証明書削除予定日時 |
 | creationUser | String | 証明書作成ユーザー |
