@@ -18,7 +18,7 @@ Secure Key Manager API v1.2는 API 호출 및 인증을 위해 Appkey, 프로젝
 Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용되며, Appkey 대신 프로젝트 통합 Appkey를 사용할 수도 있습니다.
 User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다.
 
-각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey), [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#project-integrated-appkey), [User Access Key](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#user-access-key)를 참고하세요.
+각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey), [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey_2), [User Access Key](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#user-access-key)를 참고하세요.
 
 ### API 목록
 
