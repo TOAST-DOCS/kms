@@ -4,7 +4,7 @@ This document describes the approval features of Secure Key Manager that you use
 
 The document explores how to **Enable Approval Feature**, setting up approval-related roles, the differences between before and after, and the **Approval Process** after enabling the feature.
 
-![approval-feature](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2024-02-27-en/approval-feature.png)
+![approval-feature](http://static.toastoven.net/prod_kms/2024-02-27-en/approval-feature.png)
 
 ## Enable Approval Feature
 
