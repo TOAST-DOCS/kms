@@ -83,7 +83,7 @@ Secure Key Manager에서 생성한 키는 인증에 성공한 클라이언트만
 
 IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 등록할 수 있습니다.
 
-![console-guide-38](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-09-26-ko/consoe-guide-38.png)
+![console-guide-38](http://static.toastoven.net/prod_kms/2023-09-26-ko/consoe-guide-38.png)
 
 클라이언트 IPv4 주소와 설명을 입력한 후 **추가**를 클릭하면 IPv4 주소를 추가합니다. 이때 IPv4 주소에는 클라이언트가 Secure Key Manager에 접속할 때 사용하는 IPv4 주소를 입력해야 합니다. 추가한 IPv4 주소는 다음 그림과 같이 IPv4 주소 관리 화면에 표시합니다.
 

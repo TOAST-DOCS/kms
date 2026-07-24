@@ -9,7 +9,7 @@ Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API�
 
 | 리전 | 엔드포인트 |
 |---|---|
-| Global | https://api-keymanager.ngsc.go.kr |
+| Global | https://api-keymanager.ngovc.com |
 
 ### 인증 및 권한
 
@@ -88,7 +88,7 @@ X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
 ## 클라이언트 정보 조회
 API를 호출한 클라이언트 정보를 조회할 때 사용합니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/confirm
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/confirm
 ```
 [Response Body]
 
@@ -115,7 +115,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/confirm
 ### 기밀 데이터 조회
 Secure Key Manager에 저장한 기밀 데이터를 조회할 때 사용합니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
 ```
 
 [Response Body]
@@ -136,7 +136,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/secrets/{k
 ### 기밀 데이터 수정
 Secure Key Manager에 저장한 기밀 데이터를 수정할 때 사용합니다.
 ```text
-PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+PUT https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
 ```
 
 [Request Body]
@@ -185,7 +185,7 @@ PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/secrets/{k
 ### 대칭 키 암호화
 Secure Key Manager에 생성한 대칭 키로 데이터를 암호화할 때 사용합니다. 사용자는 32KB 이하의 텍스트 데이터를 전달해서 Secure Key Manager에 저장한 대칭 키로 암호화할 수 있습니다.
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
 ```
 
 [Request Body]
@@ -219,7 +219,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric
 ### 대칭 키 복호화
 Secure Key Manager에 생성한 대칭 키로 데이터를 복호화할 때 사용합니다. 사용자는 암호화된 텍스트를 전달해서 Secure Key Manager에 저장한 대칭 키로 복호화할 수 있습니다.
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
 ```
 
 [Request Body]
@@ -252,7 +252,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric
 ### 대칭 키로 암호화한 로컬 대칭 키 생성
 클라이언트가 로컬 환경에서 사용할 수 있는 ARIA-256 대칭 키를 생성할 때 사용합니다. localKeyPlaintext는 생성한 대칭 키를 Base64 인코딩한 형태이며 Base64 디코딩 후 바로 사용할 수 있습니다. localKeyCiphertext는 생성한 대칭 키를 Secure Key Manager에 저장한 대칭 키로 암호화한 후 Base64 인코딩한 형태이며 스토리지에 저장할 때 사용합니다. 스토리지에 저장한 대칭 키는 복호화 API를 사용해서 복호화한 후 사용할 수 있습니다.
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
 ```
 
 [Response Body]
@@ -279,7 +279,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric
 Secure Key Manager에 저장한 대칭 키(ARIA-256)를 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -310,7 +310,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-
 ### 비대칭 키로 서명
 Secure Key Manager에 생성한 비대칭 키로 데이터를 서명할 때 사용합니다. 사용자는 245 Byte 이하의 텍스트 데이터를 전달해서 Secure Key Manager에 저장한 비대칭 키로 서명할 수 있습니다.
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/sign
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/sign
 ```
 
 [Request Body]
@@ -343,7 +343,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetri
 ### 비대칭 키로 데이터 검증
 Secure Key Manager에 생성한 비대칭 키로 데이터를 검증할 때 사용합니다. 사용자는 데이터와 서명값을 전달해서 Secure Key Manager에 저장한 비대칭 키로 데이터가 위변조되지 않았음을 검증할 수 있습니다.
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/verify
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/verify
 ```
 
 [Request Body]
@@ -382,7 +382,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetri
 Secure Key Manager에 저장한 비대칭 키 중 개인 키를 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey?keyVersion={keyVersion}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -420,7 +420,7 @@ Secure Key Manager에 저장한 비대칭 키 중 공개 키를 조회할 수 �
 인증에 상관없이 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey?keyVersion={keyVersion}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -459,7 +459,7 @@ Secure Key Manager에 신규 키를 추가할 수 있습니다.
 
 #### 기밀 데이터 추가
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/secrets/create
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keys/secrets/create
 ```
 
 [Request Body]
@@ -501,7 +501,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/secr
 Secure Key Manager에 ARIA-256 대칭 키를 생성합니다.
 
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/symmetric-keys/create
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keys/symmetric-keys/create
 ```
 
 [Request Body]
@@ -541,7 +541,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/symm
 
 #### 비대칭 키 추가
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/asymmetric-keys/create
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keys/asymmetric-keys/create
 ```
 
 [Request Body]
@@ -586,7 +586,7 @@ Secure Key Manager에 저장된 키의 상태를 **삭제 예정** 상태로 변
 키를 **삭제 예정** 상태로 변경합니다.
 키는 7일 후 자동으로 삭제되며, **삭제 예정** 상태의 키는 조회할 수 없습니다.
 ```text
-PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/{keyid}/delete
+PUT https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keys/{keyid}/delete
 ```
 
 [Response Body]
@@ -612,7 +612,7 @@ PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/{keyi
 즉시 삭제할 키의 상태는 **삭제 예정** 상태여야 합니다.
 사용 중 상태인 키는 **즉시 삭제**할 수 없습니다.
 ```text
-DELETE https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keys/{keyid}
+DELETE https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keys/{keyid}
 ```
 
 [Response Body]
@@ -642,7 +642,7 @@ Secure Key Manager에 인증 정보를 추가할 수 있습니다.
 
 #### IPv4 주소 추가
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv4s
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s
 ```
 
 [Request Body]
@@ -680,7 +680,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv
 
 #### MAC 주소 추가
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/macs
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/macs
 ```
 
 [Request Body]
@@ -718,7 +718,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/mac
 
 #### 인증서 추가
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/certificates
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/certificates
 ```
 
 [Request Body]
@@ -767,7 +767,7 @@ Secure Key Manager에 저장된 인증 정보의 상태를 **삭제 예정** 상
 
 #### IPv4 주소 삭제 요청
 ```text
-PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
+PUT https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
 ```
 
 [Request Body]
@@ -803,7 +803,7 @@ PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv4
 
 #### MAC 주소 삭제 요청
 ```text
-PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
+PUT https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
 ```
 
 [Request Body]
@@ -839,7 +839,7 @@ PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/macs
 
 #### 인증서 삭제 요청
 ```text
-PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
+PUT https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
 ```
 
 [Request Body]
@@ -879,7 +879,7 @@ PUT https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/cert
 
 #### IPv4 주소 즉시 삭제
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
 ```
 
 [Request Body]
@@ -915,7 +915,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv
 
 #### MAC 주소 즉시 삭제
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
 ```
 
 [Request Body]
@@ -951,7 +951,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/mac
 
 #### 인증서 즉시 삭제
 ```text
-POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
+POST https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
 ```
 
 [Request Body]
@@ -990,7 +990,7 @@ POST https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/auths/cer
 ### 키 저장소 목록 조회
 Secure Key Manager에 생성한 키 저장소의 ID 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores
 ```
 
 [Response Body]
@@ -1015,7 +1015,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores
 ### 키 저장소 목록 상세 조회
 Secure Key Manager에 생성한 키 저장소의 상세 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores?detail={detail}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores?detail={detail}
 ```
 
 [Request Parameter]
@@ -1066,7 +1066,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores?
 ### 키 저장소 상세 조회
 Secure Key Manager에 생성한 키 저장소 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}
 ```
 
 [Response Body]
@@ -1107,7 +1107,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### 키 목록 조회
 Secure Key Manager에 생성한 키의 ID 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys
 ```
 
 [Response Body]
@@ -1132,7 +1132,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### 키 목록 상세 조회
 Secure Key Manager에 생성한 키의 상세 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
 ```
 
 [Request Parameter]
@@ -1194,7 +1194,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### 키 상세 조회
 Secure Key Manager에 생성한 키 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
 ```
 
 [Response Body]
@@ -1240,7 +1240,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### IPv4 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips
 ```
 
 [Response Body]
@@ -1265,7 +1265,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### IPv4 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
 ```
 
 [Request Parameter]
@@ -1311,7 +1311,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### MAC 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs
 ```
 
 [Response Body]
@@ -1336,7 +1336,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### MAC 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
 ```
 
 [Request Parameter]
@@ -1382,7 +1382,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### 인증서 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates
 ```
 
 [Response Body]
@@ -1407,7 +1407,7 @@ GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/
 ### 인증서 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.ngsc.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
+GET https://api-keymanager.ngovc.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
 ```
 
 [Request Parameter]

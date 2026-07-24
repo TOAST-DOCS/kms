@@ -3,14 +3,22 @@
 
 Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API를 제공합니다. 클라이언트는 키 저장소에 설정한 인증을 통과한 후 Secure Key Manager에 저장한 데이터를 사용할 수 있습니다.
 
-v1.2에서는 **사용자 인증 관련 필수 HTTP 헤더 필드**가 추가되고, **키 추가/삭제 API**가 추가됐습니다.
+## Secure Key Manager API 공통 정보
 
-## 기본 정보
+### API 엔드포인트
 
-### EndPoint
-```text
-https://api-keymanager.gncloud.go.kr
-```
+| 리전 | 엔드포인트 |
+|---|---|
+| Global | https://api-keymanager.ngoic.com |
+
+### 인증 및 권한
+
+Secure Key Manager API v1.2는 API 호출 및 인증을 위해 Appkey, 프로젝트 통합 Appkey, User Access Key를 지원합니다.
+
+Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용되며, Appkey 대신 프로젝트 통합 Appkey를 사용할 수도 있습니다.
+User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다.
+
+각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey), [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey_2), [User Access Key](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#user-access-key)를 참고하세요.
 
 ### API 목록
 
@@ -18,6 +26,7 @@ https://api-keymanager.gncloud.go.kr
 |---|---|---|
 | GET | /keymanager/v1.2/appkey/{appkey}/confirm | API를 호출한 클라이언트 정보를 제공합니다. |
 | GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 조회합니다. |
+| PUT | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 수정합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 암호화합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 복호화합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | 클라이언트가 로컬 환경에서 데이터 암/복호화에 사용할 수 있는 ARIA-256 대칭 키를 생성합니다. |
@@ -50,14 +59,6 @@ Secure Key Manager의 MAC 주소 인증을 사용하려면 HTTP 헤더에 클라
 X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
 ```
 
-v1.2에서는 HTTP 헤더에 필수 필드가 추가됩니다.
-```
-X-TC-AUTHENTICATION-ID: {User Access Key ID}
-X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
-```
-
-자세한 사항은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/getting-started-ppp/#api)를 참고하세요.
-
 [API 요청의 경로 변수]
 
 | 이름 | 타입 | 설명 |
@@ -87,7 +88,7 @@ X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
 ## 클라이언트 정보 조회
 API를 호출한 클라이언트 정보를 조회할 때 사용합니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/confirm
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/confirm
 ```
 [Response Body]
 
@@ -114,7 +115,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/confirm
 ### 기밀 데이터 조회
 Secure Key Manager에 저장한 기밀 데이터를 조회할 때 사용합니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
 ```
 
 [Response Body]
@@ -132,12 +133,59 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/secrets
 |---|---|---|
 | secret | String | 기밀 데이터 조회 결과 |
 
+### 기밀 데이터 수정
+Secure Key Manager에 저장한 기밀 데이터를 수정할 때 사용합니다.
+```text
+PUT https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+```
+
+[Request Body]
+
+```
+{
+    "secretValue": "data"
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| secretValue | String | 변경할 기밀 데이터 내용 |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "name": "키 이름",
+        "description": "키 설명",
+        "secretValue": "data",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyId | String | 키 ID |
+| name | String | 키 이름 |
+| description | String | 키 설명 |
+| secretValue | String | 변경된 기밀 데이터 내용 |
+| creationUser | String | 키 생성 사용자 |
+| creationDatetime | String | 키 생성 일시 |
+| lastChangeUser | String | 키 마지막 수정 사용자 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
+
 ## 대칭 키
 
 ### 대칭 키 암호화
 Secure Key Manager에 생성한 대칭 키로 데이터를 암호화할 때 사용합니다. 사용자는 32KB 이하의 텍스트 데이터를 전달해서 Secure Key Manager에 저장한 대칭 키로 암호화할 수 있습니다.
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
 ```
 
 [Request Body]
@@ -171,7 +219,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmet
 ### 대칭 키 복호화
 Secure Key Manager에 생성한 대칭 키로 데이터를 복호화할 때 사용합니다. 사용자는 암호화된 텍스트를 전달해서 Secure Key Manager에 저장한 대칭 키로 복호화할 수 있습니다.
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
 ```
 
 [Request Body]
@@ -204,7 +252,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmet
 ### 대칭 키로 암호화한 로컬 대칭 키 생성
 클라이언트가 로컬 환경에서 사용할 수 있는 ARIA-256 대칭 키를 생성할 때 사용합니다. localKeyPlaintext는 생성한 대칭 키를 Base64 인코딩한 형태이며 Base64 디코딩 후 바로 사용할 수 있습니다. localKeyCiphertext는 생성한 대칭 키를 Secure Key Manager에 저장한 대칭 키로 암호화한 후 Base64 인코딩한 형태이며 스토리지에 저장할 때 사용합니다. 스토리지에 저장한 대칭 키는 복호화 API를 사용해서 복호화한 후 사용할 수 있습니다.
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
 ```
 
 [Response Body]
@@ -231,7 +279,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmet
 Secure Key Manager에 저장한 대칭 키(ARIA-256)를 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -262,7 +310,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/symmetr
 ### 비대칭 키로 서명
 Secure Key Manager에 생성한 비대칭 키로 데이터를 서명할 때 사용합니다. 사용자는 245 Byte 이하의 텍스트 데이터를 전달해서 Secure Key Manager에 저장한 비대칭 키로 서명할 수 있습니다.
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/sign
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/sign
 ```
 
 [Request Body]
@@ -295,7 +343,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/asymme
 ### 비대칭 키로 데이터 검증
 Secure Key Manager에 생성한 비대칭 키로 데이터를 검증할 때 사용합니다. 사용자는 데이터와 서명값을 전달해서 Secure Key Manager에 저장한 비대칭 키로 데이터가 위변조되지 않았음을 검증할 수 있습니다.
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/verify
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/verify
 ```
 
 [Request Body]
@@ -334,7 +382,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/asymme
 Secure Key Manager에 저장한 비대칭 키 중 개인 키를 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey?keyVersion={keyVersion}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -372,7 +420,7 @@ Secure Key Manager에 저장한 비대칭 키 중 공개 키를 조회할 수 �
 인증에 상관없이 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey?keyVersion={keyVersion}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -411,7 +459,7 @@ Secure Key Manager에 신규 키를 추가할 수 있습니다.
 
 #### 기밀 데이터 추가
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/secrets/create
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keys/secrets/create
 ```
 
 [Request Body]
@@ -453,7 +501,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/s
 Secure Key Manager에 ARIA-256 대칭 키를 생성합니다.
 
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/symmetric-keys/create
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keys/symmetric-keys/create
 ```
 
 [Request Body]
@@ -493,7 +541,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/s
 
 #### 비대칭 키 추가
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/asymmetric-keys/create
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keys/asymmetric-keys/create
 ```
 
 [Request Body]
@@ -538,7 +586,7 @@ Secure Key Manager에 저장된 키의 상태를 **삭제 예정** 상태로 변
 키를 **삭제 예정** 상태로 변경합니다.
 키는 7일 후 자동으로 삭제되며, **삭제 예정** 상태의 키는 조회할 수 없습니다.
 ```text
-PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/{keyid}/delete
+PUT https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keys/{keyid}/delete
 ```
 
 [Response Body]
@@ -564,7 +612,7 @@ PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/{k
 즉시 삭제할 키의 상태는 **삭제 예정** 상태여야 합니다.
 사용 중 상태인 키는 **즉시 삭제**할 수 없습니다.
 ```text
-DELETE https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keys/{keyid}
+DELETE https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keys/{keyid}
 ```
 
 [Response Body]
@@ -594,7 +642,7 @@ Secure Key Manager에 인증 정보를 추가할 수 있습니다.
 
 #### IPv4 주소 추가
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv4s
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s
 ```
 
 [Request Body]
@@ -632,7 +680,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/
 
 #### MAC 주소 추가
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/macs
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/macs
 ```
 
 [Request Body]
@@ -670,7 +718,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/
 
 #### 인증서 추가
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/certificates
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/certificates
 ```
 
 [Request Body]
@@ -719,7 +767,7 @@ Secure Key Manager에 저장된 인증 정보의 상태를 **삭제 예정** 상
 
 #### IPv4 주소 삭제 요청
 ```text
-PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
+PUT https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
 ```
 
 [Request Body]
@@ -755,7 +803,7 @@ PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/i
 
 #### MAC 주소 삭제 요청
 ```text
-PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
+PUT https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
 ```
 
 [Request Body]
@@ -791,7 +839,7 @@ PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/m
 
 #### 인증서 삭제 요청
 ```text
-PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
+PUT https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
 ```
 
 [Request Body]
@@ -831,7 +879,7 @@ PUT https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/c
 
 #### IPv4 주소 즉시 삭제
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/ipv4s/delete
 ```
 
 [Request Body]
@@ -867,7 +915,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/
 
 #### MAC 주소 즉시 삭제
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/macs/delete
 ```
 
 [Request Body]
@@ -903,7 +951,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/
 
 #### 인증서 즉시 삭제
 ```text
-POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
+POST https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/auths/certificates/delete
 ```
 
 [Request Body]
@@ -942,7 +990,7 @@ POST https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/auths/
 ### 키 저장소 목록 조회
 Secure Key Manager에 생성한 키 저장소의 ID 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores
 ```
 
 [Response Body]
@@ -964,10 +1012,61 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 |---|---|---|
 | keyStoreIdList | List | 키 저장소 ID 목록 |
 
+### 키 저장소 목록 상세 조회
+Secure Key Manager에 생성한 키 저장소의 상세 정보 목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores?detail={detail}
+```
+
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| detail | Boolean | 상세 정보 포함 여부(기본값: false) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyStoreList": [
+            {
+                "keyStoreId": 1,
+                "name": "키 저장소 이름",
+                "description": "키 저장소 설명",
+                "ip4AuthUse": "Y",
+                "macAuthUse": "N",
+                "certificateAuthUse": "Y",
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyStoreList | List | 키 저장소 상세 정보 목록 |
+| keyStoreId | Number | 키 저장소 ID |
+| name | String | 키 저장소 이름 |
+| description | String | 키 저장소 설명 |
+| ip4AuthUse | String | 키 저장소 IPv4 인증 사용 여부(Y/N) |
+| macAuthUse | String | 키 저장소 MAC 인증 사용 여부(Y/N) |
+| certificateAuthUse | String | 키 저장소 인증서 인증 사용 여부(Y/N) |
+| creationUser | String | 키 저장소 생성 사용자 |
+| creationDatetime | String | 키 저장소 생성 일시 |
+| lastChangeUser | String | 키 저장소 마지막 수정 사용자 |
+| lastChangeDatetime | String | 키 저장소 마지막 수정 일시 |
+
 ### 키 저장소 상세 조회
 Secure Key Manager에 생성한 키 저장소 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}
 ```
 
 [Response Body]
@@ -1008,7 +1107,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ### 키 목록 조회
 Secure Key Manager에 생성한 키의 ID 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys
 ```
 
 [Response Body]
@@ -1030,10 +1129,72 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 |---|---|---|
 | keyIdList | List | 키 ID 목록 |
 
+### 키 목록 상세 조회
+Secure Key Manager에 생성한 키의 상세 정보 목록을 조회할 수 있습니다.
+```text
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
+```
+
+[Request Parameter]
+
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| detail | Boolean | 상세 정보 포함 여부(기본값: false) |
+| type | String | 키 타입 필터(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY, 기본값: all, 멀티 선택 불가) |
+| name | String | 키 이름 필터(최대 100자) |
+| status | String | 키 상태 필터(active/inactive, 기본값: all) |
+| pageNumber | Number | 페이지 번호(기본값: 1, 양수) |
+| pageSize | Number | 페이지 크기(기본값: 10, 10~100) |
+
+[Response Body]
+```
+{
+    "header": {
+        ...
+    },
+     "body": {
+        "keyList": [
+            {
+                "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
+                "name": "키 이름",
+                "description": "키 설명",
+                "keyType": "SYMMETRIC_KEY",
+                "currentKeyValueVersion": 2,
+                "autoRotationPeriod": 0,
+                "nextAutoRotationDate": null,
+                "lastAccessDatetime": "2025-02-10T15:13:13.377",
+                "deletionDatetime": null,
+                "creationUser": "SECURE_KEY_MANAGER",
+                "creationDatetime": "2025-02-10T12:00:00",
+                "lastChangeUser": "SECURE_KEY_MANAGER",
+                "lastChangeDatetime": "2025-02-10T15:00:00.000"
+            },
+            ...
+        ]
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyList | List | 키 상세 정보 목록 |
+| keyId | String | 키 ID |
+| name | String | 키 이름 |
+| description | String | 키 설명 |
+| keyType | String | 키 타입(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
+| currentKeyValueVersion | Number | 현재 키 버전 |
+| autoRotationPeriod | Number | 키 회전 주기 |
+| nextAutoRotationDate | String | 다음 키 회전일 |
+| lastAccessDatetime | String | 키 마지막 사용 일시 |
+| deletionDatetime | String | 키 삭제 예정 일시 |
+| creationUser | String | 키 생성 사용자 |
+| creationDatetime | String | 키 생성 일시 |
+| lastChangeUser | String | 키 마지막 수정 사용자 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
+
 ### 키 상세 조회
 Secure Key Manager에 생성한 키 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
 ```
 
 [Response Body]
@@ -1079,7 +1240,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ### IPv4 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips
 ```
 
 [Response Body]
@@ -1104,7 +1265,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ### IPv4 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
 ```
 
 [Request Parameter]
@@ -1150,7 +1311,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ### MAC 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs
 ```
 
 [Response Body]
@@ -1175,7 +1336,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ### MAC 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
 ```
 
 [Request Parameter]
@@ -1221,7 +1382,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ### 인증서 인증 정보 목록 조회
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates
 ```
 
 [Response Body]
@@ -1246,7 +1407,7 @@ GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystor
 ### 인증서 인증 정보 상세 조회
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.gncloud.go.kr/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
+GET https://api-keymanager.ngoic.com/keymanager/v1.2/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
 ```
 
 [Request Parameter]

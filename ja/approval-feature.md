@@ -4,7 +4,7 @@
 
 **承認機能の有効化**方法と、承認機能有効化後の承認関連のロール設定と有効化前と有効化後の違い、そして**承認プロセス**について説明します。
 
-![approval-feature](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2024-02-27-ja/approval-feature.png)
+![approval-feature](http://static.toastoven.net/prod_kms/2024-02-27-ja/approval-feature.png)
 
 ## 承認機能の有効化
 

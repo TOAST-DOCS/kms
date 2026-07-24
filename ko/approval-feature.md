@@ -4,7 +4,7 @@
 
 **승인 기능 활성화** 방법과 승인 기능 활성화 이후 승인 관련 역할 설정과 활성화 전과 후의 차이점 그리고 **승인 과정**에 대해 알아보겠습니다.
 
-![approval-feature](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2024-02-27-ko/approval-feature.png)
+![approval-feature](http://static.toastoven.net/prod_kms/2024-02-27-ko/approval-feature.png)
 
 ## 승인 기능 활성화
 
