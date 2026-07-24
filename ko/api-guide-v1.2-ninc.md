@@ -3,14 +3,22 @@
 
 Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API를 제공합니다. 클라이언트는 키 저장소에 설정한 인증을 통과한 후 Secure Key Manager에 저장한 데이터를 사용할 수 있습니다.
 
-v1.2에서는 **사용자 인증 관련 필수 HTTP 헤더 필드**가 추가되고, **키 추가/삭제 API**가 추가됐습니다.
+## Secure Key Manager API 공통 정보
 
-## 기본 정보
+### API 엔드포인트
 
-### EndPoint
-```text
-https://api-keymanager.ninc.go.kr
-```
+| 리전 | 엔드포인트 |
+|---|---|
+| Global | https://api-keymanager.ninc.go.kr |
+
+### 인증 및 권한
+
+Secure Key Manager API v1.2는 API 호출 및 인증을 위해 Appkey, 프로젝트 통합 Appkey, User Access Key를 지원합니다.
+
+Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용되며, Appkey 대신 프로젝트 통합 Appkey를 사용할 수도 있습니다.
+User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다.
+
+각 인증 방법의 확인 및 사용에 대한 자세한 내용은 각각 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey), [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey_2), [User Access Key](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#user-access-key)를 참고하세요.
 
 ### API 목록
 
@@ -18,6 +26,7 @@ https://api-keymanager.ninc.go.kr
 |---|---|---|
 | GET | /keymanager/v1.2/appkey/{appkey}/confirm | API를 호출한 클라이언트 정보를 제공합니다. |
 | GET | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 조회합니다. |
+| PUT | /keymanager/v1.2/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 수정합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 암호화합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 복호화합니다. |
 | POST | /keymanager/v1.2/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | 클라이언트가 로컬 환경에서 데이터 암/복호화에 사용할 수 있는 ARIA-256 대칭 키를 생성합니다. |
@@ -49,14 +58,6 @@ Secure Key Manager의 MAC 주소 인증을 사용하려면 HTTP 헤더에 클라
 ```
 X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
 ```
-
-v1.2에서는 HTTP 헤더에 필수 필드가 추가됩니다.
-```
-X-TC-AUTHENTICATION-ID: {User Access Key ID}
-X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
-```
-
-자세한 사항은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/getting-started-ppp/#api)를 참고하세요.
 
 [API 요청의 경로 변수]
 
@@ -131,6 +132,53 @@ GET https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/secrets/{k
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | secret | String | 기밀 데이터 조회 결과 |
+
+### 기밀 데이터 수정
+Secure Key Manager에 저장한 기밀 데이터를 수정할 때 사용합니다.
+```text
+PUT https://api-keymanager.ninc.go.kr/keymanager/v1.2/appkey/{appkey}/secrets/{keyid}
+```
+
+[Request Body]
+
+```
+{
+    "secretValue": "data"
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| secretValue | String | 변경할 기밀 데이터 내용 |
+
+[Response Body]
+
+```
+{
+    "header": {
+        ...
+    },
+    "body": {
+        "keyId": "071dcc5c25614dffa52357e5cae3471f",
+        "name": "키 이름",
+        "description": "키 설명",
+        "secretValue": "data",
+        "creationUser": "SECURE_KEY_MANAGER",
+        "creationDatetime": "2025-01-25T12:00:00",
+        "lastChangeUser": "SECURE_KEY_MANAGER",
+        "lastChangeDatetime": "2025-01-30T15:00:00.000"
+    }
+}
+```
+| 이름 | 타입 | 설명 |
+|---|---|---|
+| keyId | String | 키 ID |
+| name | String | 키 이름 |
+| description | String | 키 설명 |
+| secretValue | String | 변경된 기밀 데이터 내용 |
+| creationUser | String | 키 생성 사용자 |
+| creationDatetime | String | 키 생성 일시 |
+| lastChangeUser | String | 키 마지막 수정 사용자 |
+| lastChangeDatetime | String | 키 마지막 수정 일시 |
 
 ## 대칭 키
 
