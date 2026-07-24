@@ -2,7 +2,7 @@
 
 시작하기에서는 Secure Key Manager를 사용하는 데 필요한 기본적인 내용을 설명합니다.
 
-![getting-started](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2024-02-27-ko/getting-started.png)
+![getting-started](http://static.toastoven.net/prod_kms/2024-02-27-ko/getting-started.png)
 
 ## 키 저장소 생성
 Secure Key Manager는 키 저장소 단위로 인증 정보와 키를 관리합니다. 키 저장소가 없으면 다음과 같은 화면이 나타납니다.
@@ -75,7 +75,7 @@ Secure Key Manager에서 생성한 키는 인증에 성공한 클라이언트만
 
 IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 등록할 수 있습니다.
 
-![console-guide-38](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-09-26-ko/consoe-guide-38.png)
+![console-guide-38](http://static.toastoven.net/prod_kms/2023-09-26-ko/consoe-guide-38.png)
 
 클라이언트 IPv4 주소와 설명을 입력한 후 **추가**를 클릭하면 IPv4 주소를 추가합니다. 이때 IPv4 주소에는 클라이언트가 Secure Key Manager에 접속할 때 사용하는 IPv4 주소를 입력해야 합니다. 추가한 IPv4 주소는 다음 그림과 같이 IPv4 주소 관리 화면에 표시합니다.
 
@@ -147,24 +147,100 @@ Secure Key Manager에서는 대칭 키/비대칭 키를 회전할 수 있습니�
 
 ![console-guide-28](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-28-gov.png)
 
-## 키 추가/삭제 API 자격 관련
+## API 인증 방법
+Secure Key Manager는 API 호출 및 인증을 위해 User Access Key, Appkey, 프로젝트 통합 Appkey를 지원합니다.
+사용 중인 버전의 API 가이드에서 지원하는 인증 방법을 확인하세요.
 
-### User Access Key ID, Secret Access Key 생성
+### User Access Key
+User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다. API 요청 시 사용자 단위로 접근 권한을 인증할 수 있으며, 사용자별 세밀한 권한 제어가 가능합니다. 인증된 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한에 따라 API 호출이 제한되지만, API 버전에 따라 인가 기능이 적용되지 않을 수도 있습니다.
 
-콘솔 우측 상단의 ID 영역을 클릭하면 다음과 같은 **API 보안 설정** 메뉴를 확인할 수 있습니다.
+> [주의]
+> * User Access Key와 Secret Access Key는 유효 기간이 없는 고정 키 기반 인증 방식으로 키가 외부에 노출될 경우 해당 계정의 역할 및 권한 범위 내 모든 API가 무단 호출될 수 있습니다.
+> * 키는 외부 저장소 또는 코드에 포함되지 않도록 안전하게 보관하고, 유출이 의심될 경우 즉시 폐기하고 재발급해야 합니다.
 
-![console-guide-38](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-ko/console-guide-01.png)
+#### User Access Key 발급하기
+User Access Key는 NHN Cloud 콘솔의 **API 보안 설정**에서 발급할 수 있습니다.
 
-**API 보안 설정**에서 **User Access Key ID 생성**을 클릭하여 Secure Key Manager 키 추가/삭제 API에 입력해야 하는 **User Access Key ID**와 **Secret Access Key**를 생성할 수 있습니다.
+1) NHN Cloud 콘솔에서 우측 상단의 계정에 마우스 포인터를 올리면 표시되는 드롭다운 메뉴에서 **API 보안 설정**을 클릭합니다.
 
-![console-guide-39](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-ko/console-guide-02.png)
+2) **+ User Access Key 생성**을 클릭합니다.<br>
+![C_userAccessKey_1_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ko.png)
 
-![console-guide-40](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-ko/console-guide-03.png)
+3) **User Access Key 생성** 모달 창에서 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
+![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
 
-**User Access Key ID**, **Secret Access Key**를 생성하면 아래와 같이 **비밀 키 발급 완료** 화면이 표시됩니다. 비밀 키는 해당 팝업 화면에서 한 번만 알려주므로 이 값을 잘 기록하여 사용합니다.
+4) **User Access Key 발급 완료** 모달 창에서 **Secret Access Key**를 복사한 뒤 **확인**을 클릭합니다.<br>
+![C_userAccessKey_3_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_ko.png)
 
-![console-guide-41](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-ko/console-guide-04.png)
+> [주의]
+> * 모달 창을 닫은 뒤에는 Secret Access Key를 다시 확인할 수 없습니다. Secret Access Key를 잊어버릴 경우 재생성해야 하므로 반드시 복사한 뒤 별도로 관리하세요.
+> * User Access Key 또는 Secret Access Key 중 하나라도 유출되었거나 유출이 의심되는 경우 해당 키를 폐기하고 새로 발급 받아야 합니다.
 
-API 요청 시 필요한 **User Access Key ID**는 비밀 키 발급 완료 팝업을 닫으면 확인할 수 있습니다.
+> [참고]
+> * User Access Key는 NHN Cloud 계정과 IAM 계정당 각각 5개까지 발급할 수 있습니다.
+> * User Access Key ID는 90일마다 변경할 것을 권장합니다.
 
-![console-guide-42](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-ko/console-guide-05.png)
+#### API 호출하기
+User Access Key는 HTTP 요청 헤더에 포함하여 전달합니다. API 호출 시 아래 예시와 같이 헤더에 User Access Key를 설정해 호출하세요.
+
+* HTTP 헤더 형식 예시
+```
+X-TC-AUTHENTICATION-ID: {User Access Key}
+X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
+```
+
+사용자가 HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버는 해당 키의 유효성 및 권한을 확인한 뒤 요청을 승인하거나 거부합니다.
+
+### Appkey
+Appkey는 NHN Cloud의 각 서비스별로 발급되는 고유 인증 키로 API 요청 시 서비스 식별과 유효성 검증에 사용됩니다. 인증을 위한 별도의 사용자 등록, 토큰 요청 또는 갱신 절차 없이 API 요청 시 Appkey만 포함하면 되므로 인증 과정이 비교적 간단합니다.
+
+#### Appkey 확인하기
+Appkey는 서비스별로 발급되며, NHN Cloud 콘솔의 각 서비스 화면에서 확인할 수 있습니다.
+
+1) NHN Cloud 콘솔 우측 상단에서 **URL & Appkey**를 클릭합니다.
+
+2) **URL & Appkey - Secure Key Manager** 모달 창에서 Appkey를 확인하거나 복사한 뒤 **확인**을 클릭합니다.
+
+> [주의]
+> Appkey가 유출되었거나 유출이 의심되는 경우 NHN Cloud 고객 센터로 연락해 주시면 적합한 조치를 안내해 드리겠습니다.
+
+#### API 호출하기
+API 요청 시 Appkey는 path 파라미터로 포함하여 서비스 유효성을 검증합니다. API 요청 시 사용하는 path 형식은 해당 서비스의 API 가이드를 참고하세요.
+
+* 예시
+```
+POST /v1.0/appkeys/{appKey}/
+```
+
+> [주의]
+> Appkey는 유효 기간이 없는 고정 키 기반 인증 방식으로 인가 기능이 없어 키가 외부에 노출될 경우 무단으로 API가 호출될 수 있습니다. 키는 외부 저장소 또는 코드에 포함되지 않도록 안전하게 보관하고, 유출이 의심될 경우 즉시 재발급을 요청해야 합니다. Appkey가 유출되었거나 유출이 의심되는 경우 NHN Cloud 고객 센터로 연락해 주시면 적합한 조치를 안내해 드리겠습니다.
+
+### 프로젝트 통합 Appkey
+프로젝트 통합 Appkey는 NHN Cloud에서 하나의 프로젝트 내 여러 서비스에 대해 공통으로 사용할 수 있는 인증 키입니다. 각 서비스마다 Appkey를 개별로 관리할 필요 없이 프로젝트 통합 Appkey 하나로 해당 프로젝트에서 사용 중인 모든 서비스의 API를 효율적으로 호출할 수 있습니다. 따라서 관리 대상 키의 수를 줄이고, 사용자가 직접 Appkey를 생성하거나 삭제할 수 있어 키 관리가 유연하고 효율적입니다.
+
+#### 프로젝트 통합 Appkey 생성하기
+NHN Cloud 콘솔의 각 프로젝트 화면에서 프로젝트 통합 Appkey를 생성하고 관리할 수 있습니다.
+
+1) NHN Cloud 콘솔에서 프로젝트를 선택한 뒤 **프로젝트 관리** 탭을 클릭합니다.
+
+2) **API 보안 설정**에서 **+ Appkey 생성**을 클릭합니다.<br>
+![C_project_API_security_ko](http://static.toastoven.net/toast/public_api/C_project_API_security_ko.png)
+
+3) **Appkey 생성** 모달 창에서 **Appkey 이름** 입력 필드에 생성할 프로젝트 통합 Appkey의 이름을 입력한 뒤 **확인**을 클릭합니다.<br>
+![C_project_API_security_2_ko](http://static.toastoven.net/toast/public_api/C_project_API_security_2_ko.png)
+
+> [주의]
+> * 프로젝트 통합 Appkey가 외부에 노출될 경우 해당 프로젝트 내 모든 서비스 API가 무단 호출될 수 있으므로 보안 관리에 각별한 주의가 필요합니다. 프로젝트 통합 Appkey를 외부 저장소 또는 코드에 포함하지 않도록 안전하게 보관하고, 유출되었거나 유출이 의심되는 경우 기존 Appkey를 삭제한 뒤 새로운 Appkey를 생성해 교체하세요.
+
+> [참고]
+> * 프로젝트 통합 Appkey는 프로젝트당 최대 3개까지 생성할 수 있습니다.
+
+#### API 호출하기
+API 요청 시 프로젝트 통합 Appkey는 path 파라미터로 포함하여 서비스 유효성을 검증합니다. API 요청 시 사용하는 path 형식은 해당 서비스의 API 가이드를 참고하세요.
+
+* 예시
+```
+POST /v1.0/appkeys/{프로젝트 통합 appKey}/
+```
+
+

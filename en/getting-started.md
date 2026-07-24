@@ -2,7 +2,7 @@
 
 Getting Started describes basics for the use of Secure Key Manager.
 
-![getting-started](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2024-02-27-en/getting-started.png)
+![getting-started](http://static.toastoven.net/prod_kms/2024-02-27-en/getting-started.png)
 
 ## Create a Key Store
 Secure Key Manager manages authentication information and keys in key store unit. If there is no key store, the following screen is displayed:
@@ -85,7 +85,7 @@ Click **Add IPv4 Address**, and a window to add IPv4 address shows up as below:
 
 You can register not just IPv4 in the IP format and also IPv4 band using CIDR notation.
 
-![console-guide-38](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-09-26-en/console-guide-38.png)
+![console-guide-38](http://static.toastoven.net/prod_kms/2023-09-26-en/console-guide-38.png)
 
 Enter client IPv4 address and description, and click **Add**, then the IPv4 address is added. Note that such IPv4 address must be same as the address that clients use to access Secure Key Manager. The newly added address is displayed on the IPv4 address management page.
 
