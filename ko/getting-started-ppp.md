@@ -164,13 +164,13 @@ User Access Key는 NHN Cloud 콘솔의 **API 보안 설정**에서 발급할 수
 1) NHN Cloud 콘솔에서 우측 상단의 계정에 마우스 포인터를 올리면 표시되는 드롭다운 메뉴에서 **API 보안 설정**을 클릭합니다.
 
 2) **+ User Access Key 생성**을 클릭합니다.<br>
-![C_userAccessKey_1_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_1_ko.png)
+![C_userAccessKey_1_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_userAccessKey_1_ko.png)
 
 3) **User Access Key 생성** 모달 창에서 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
-![C_userAccessKey_2_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_2_ko.png)
+![C_userAccessKey_2_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_userAccessKey_2_ko.png)
 
 4) **User Access Key 발급 완료** 모달 창에서 **Secret Access Key**를 복사한 뒤 **확인**을 클릭합니다.<br>
-![C_userAccessKey_3_ko](http://static.toastoven.net/toast/public_api/C_userAccessKey_3_ko.png)
+![C_userAccessKey_3_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_userAccessKey_3_ko.png)
 
 > [주의]
 > * 모달 창을 닫은 뒤에는 Secret Access Key를 다시 확인할 수 없습니다. Secret Access Key를 잊어버릴 경우 재생성해야 하므로 반드시 복사한 뒤 별도로 관리하세요.
@@ -224,10 +224,10 @@ NHN Cloud 콘솔의 각 프로젝트 화면에서 프로젝트 통합 Appkey를 
 1) NHN Cloud 콘솔에서 프로젝트를 선택한 뒤 **프로젝트 관리** 탭을 클릭합니다.
 
 2) **API 보안 설정**에서 **+ Appkey 생성**을 클릭합니다.<br>
-![C_project_API_security_ko](http://static.toastoven.net/toast/public_api/C_project_API_security_ko.png)
+![C_project_API_security_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_project_API_security_ko.png)
 
 3) **Appkey 생성** 모달 창에서 **Appkey 이름** 입력 필드에 생성할 프로젝트 통합 Appkey의 이름을 입력한 뒤 **확인**을 클릭합니다.<br>
-![C_project_API_security_2_ko](http://static.toastoven.net/toast/public_api/C_project_API_security_2_ko.png)
+![C_project_API_security_2_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_project_API_security_2_ko.png)
 
 > [주의]
 > * 프로젝트 통합 Appkey가 외부에 노출될 경우 해당 프로젝트 내 모든 서비스 API가 무단 호출될 수 있으므로 보안 관리에 각별한 주의가 필요합니다. 프로젝트 통합 Appkey를 외부 저장소 또는 코드에 포함하지 않도록 안전하게 보관하고, 유출되었거나 유출이 의심되는 경우 기존 Appkey를 삭제한 뒤 새로운 Appkey를 생성해 교체하세요.
