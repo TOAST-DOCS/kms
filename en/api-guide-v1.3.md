@@ -1751,7 +1751,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.3/appkey/{appkey}/k
 | lastChangeUser | String | MAC last modification user |
 | lastChangeDatetime | String | MAC last modification date and time |
 
-### ### View Certificate Credential List
+### View Certificate Credential List
 
 You can view the list of certificate credentials configured for a key store in Secure Key Manager.
 
