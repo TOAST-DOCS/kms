@@ -1,4 +1,7 @@
-## Security > Secure Key Manager > 콘솔 사용 가이드
+<!-- pre-align:aligned sig=590559cc5f7a -->
+
+<a id="security-secure-key-manager-console-user-guide"></a>
+## Security > Secure Key Manager > 콘솔 사용 가이드 { #security-secure-key-manager-console-user-guide }
 
 콘솔 사용 가이드에서는 Secure Key Manager를 사용하는 데 필요한 기본적인 내용을 설명합니다.
 - **키 저장소 생성**
@@ -7,7 +10,8 @@
 - **사용자 데이터 관리**
 - **승인 기능**
 
-### 키 저장소 생성
+<a id="create-a-key-store"></a>
+### 키 저장소 생성 { #create-a-key-store }
 Secure Key Manager는 키 저장소 단위로 인증 정보와 키를 관리합니다. 키 저장소가 없으면 다음과 같은 화면이 나타납니다.
 
 ![console-guide-01](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-01.png)
@@ -34,7 +38,8 @@ Secure Key Manager는 키 저장소 단위로 인증 정보와 키를 관리합�
 
 ![console-guide-04](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-04.png)
 
-### 키 생성
+<a id="create-a-key"></a>
+### 키 생성 { #create-a-key }
 Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이터는 문자열 데이터를 저장하고 API를 사용한 조회 기능을 제공합니다. 대칭 키는 API를 사용한 데이터 암/복호화 기능을 제공합니다. 비대칭 키는 API를 사용한 데이터 서명/검증 기능을 제공합니다. 사용자는 사용 목적에 맞는 키 유형을 선택한 후 키를 생성할 수 있습니다.
 
 **키 관리** 메뉴를 클릭하면 다음 그림과 같이 키를 관리할 수 있는 화면을 표시합니다.
@@ -60,7 +65,8 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 >
 > NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
 
-### 키 가져오기
+<a id="import-a-key"></a>
+### 키 가져오기 { #import-a-key }
 Secure Key Manager는 대칭 키(AES-256)를 가져오는 기능을 지원합니다.
 
 ![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10.png)
@@ -73,9 +79,11 @@ Secure Key Manager는 대칭 키(AES-256)를 가져오는 기능을 지원합니
 
 위와 같은 32개의 Hex String을 쉼표(`,`) 또는 공백(` `)을 구분자로 구분하여 입력하여 키를 업로드합니다.
 
-### 인증 정보 등록
+<a id="register-authentication-information"></a>
+### 인증 정보 등록 { #register-authentication-information }
 Secure Key Manager에서 생성한 키는 인증에 성공한 클라이언트만 사용할 수 있습니다. 클라이언트 인증에 사용하는 인증 정보는 **IPv4 주소 관리**, **MAC 주소 관리**, **인증서 관리** 메뉴에서 등록합니다.
 
+<a id="register-authentication-information-register-ipv4-address"></a>
 #### IPv4 주소 등록
 **IPv4 주소 관리**를 클릭하면 다음 그림과 같이 클라이언트 인증에 사용하는 IPv4 주소 관리 화면이 나타납니다.
 
@@ -93,6 +101,7 @@ IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 �
 
 ![console-guide-13](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-13.png)
 
+<a id="register-authentication-information-register-mac-address"></a>
 #### MAC 주소 등록
 **MAC 주소 관리**를 클릭하면 클라이언트 인증에 사용하는 MAC 주소 관리 화면이 나타납니다.
 ![console-guide-14](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-14.png)
@@ -105,6 +114,7 @@ IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 �
 
 ![console-guide-16](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-16.png)
 
+<a id="register-authentication-information-register-client-certificates"></a>
 #### 클라이언트 인증서 등록
 **인증서 관리**를 클릭하면 클라이언트 인증에 사용하는 인증서 관리 화면이 나타납니다.
 
@@ -118,11 +128,13 @@ IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 �
 
 ![console-guide-19](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-19.png)
 
-### 사용자 데이터 관리
+<a id="manage-user-data"></a>
+### 사용자 데이터 관리 { #manage-user-data }
 Secure Key Manager는 사용자가 생성한 데이터(키, 인증 정보)의 상세 정보를 제공합니다. 사용자 데이터 목록에서 **상세 정보 아이콘**을 클릭하면 다음 그림과 같이 상세 정보를 표시합니다.
 
 ![console-guide-20](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-20.png)
 
+<a id="manage-user-data-delete-user-data"></a>
 #### 사용자 데이터 삭제
 
 사용자가 생성한 데이터의 초기 상태는 **사용 중**입니다. 불필요한 데이터를 삭제하려면 다음 그림과 같이 **상세 정보** 창에서 **삭제 요청**을 클릭합니다.
@@ -137,6 +149,7 @@ Secure Key Manager는 사용자가 생성한 데이터(키, 인증 정보)의 �
 
 ![console-guide-23](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-23.png)
 
+<a id="manage-user-data-rotate-symmetricasymmetric-keys"></a>
 #### 대칭 키/비대칭 키 회전
 
 Secure Key Manager에서는 대칭 키/비대칭 키를 회전할 수 있습니다. 다음 그림과 같이 대칭 키/비대칭 키 상세 정보 창에서 자동 회전 주기를 설정할 수 있습니다. 회전 주기를 '0'으로 설정하면 자동 회전을 사용하지 않습니다.
@@ -159,18 +172,22 @@ Secure Key Manager에서는 대칭 키/비대칭 키를 회전할 수 있습니�
 
 ![console-guide-28](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-28.png)
 
-### 승인 기능
+<a id="approval-feature"></a>
+### 승인 기능 { #approval-feature }
 
+<a id="approval-feature-enable-approval-feature"></a>
 #### 승인 기능 활성화
 조직 관리 화면의 거버넌스 설정에서 승인 프로세스 관리 설정을 통해 Secure Key Manager의 승인 기능을 활성화합니다.
 
 ![console-guide-29](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-29.png)
 
+<a id="approval-feature-set-up-roles-for-approval-feature"></a>
 #### 승인 기능 역할 설정
 Secure Key Manager의 멤버 관리를 통해 승인자(APPROVAL ADMIN), 요청자(APPROVAL MEMBER) 역할을 획득하여 승인 절차를 진행합니다.
 
 ![console-guide-30](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-30.png)
 
+<a id="approval-feature-differences-with-approval-feature-enabled"></a>
 #### 승인 기능 활성화 여부에 따른 차이점
 승인 기능을 활성화하고 승인자 또는 요청자 역할을 획득하면 Secure Key Manager에 **승인리스트**와 **키 저장소 관리** 탭이 추가됩니다. 두 탭은 승인자, 요청자만 접근할 수 있습니다.
 
@@ -180,6 +197,7 @@ Secure Key Manager의 멤버 관리를 통해 승인자(APPROVAL ADMIN), 요청�
 
 ![console-guide-32](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-32.png)
 
+<a id="approval-feature-make-approval-requests"></a>
 #### 승인 요청 작성
 승인자와 요청자는 **키 저장소 관리** 탭에서 키 저장소별로 변경 내용을 승인 요청할 수 있습니다. 기존의 키 저장소와 유사한 동작을 통해 추가, 수정, 삭제를 진행합니다. 키, 인증 정보의 변경 상태에 대해서는 다음과 같이 상태에 표시됩니다.
 
@@ -191,6 +209,7 @@ Secure Key Manager의 멤버 관리를 통해 승인자(APPROVAL ADMIN), 요청�
 
 ![console-guide-35](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-35.png)
 
+<a id="approval-feature-apply-approval-requests"></a>
 #### 승인 요청 반영
 승인자는 **승인리스트**에서 키 저장소의 변경 승인 요청을 확인하고 **승인** 또는 **거절**을 선택해 반영 여부를 결정합니다.
 
@@ -200,8 +219,10 @@ Secure Key Manager의 멤버 관리를 통해 승인자(APPROVAL ADMIN), 요청�
 
 ![console-guide-37](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-37.png)
 
-### 키 추가/삭제 API 자격 관련
+<a id="authorization-for-adddelete-keys-api"></a>
+### 키 추가/삭제 API 자격 관련 { #authorization-for-adddelete-keys-api }
 
+<a id="authorization-for-adddelete-keys-api-create-user-access-key-id-secret-access-key"></a>
 #### User Access Key ID, Secret Access Key 생성
 
 콘솔 우측 상단의 ID 영역을 클릭하면 다음과 같은 **API 보안 설정** 메뉴를 확인할 수 있습니다.

@@ -1,10 +1,14 @@
-## Security > Secure Key Manager > コンソール使用ガイド > はじめに
+<!-- pre-align:aligned sig=76d6e0cfc969 -->
+
+<a id="security-secure-key-manager-console-user-guide-getting-started"></a>
+## Security > Secure Key Manager > コンソール使用ガイド > はじめに { #security-secure-key-manager-console-user-guide-getting-started }
 
 はじめにではSecure Key Managerを使用するのに必要な基本的な内容を説明します。
 
 ![getting-started](http://static.toastoven.net/prod_kms/2024-02-27-ja/getting-started.png)
 
-## キー保存場所の作成
+<a id="create-a-key-store"></a>
+## キー保存場所の作成 { #create-a-key-store }
 Secure Key Managerは、キー保存場所の単位として認証情報とキーを管理します。キー保存場所がない場合は次のような画面が表示されます。
 
 ![console-guide-01](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-01.png)
@@ -26,13 +30,15 @@ Secure Key Managerは、キー保存場所の単位として認証情報とキ�
 
 ![console-guide-04](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-04.png)
 
-### キー保存場所詳細情報
+<a id="key-store-details"></a>
+### キー保存場所詳細情報 { #key-store-details }
 
 キーストア右上にある「さらに表示」ボタンをクリックして、詳細情報メニューから選択したキーストアの情報を確認できます。
 
 ![console-guide-43](http://static.toastoven.net/prod_kms/2024-02-27-en/console-guide-01.png)
 
-## キーの作成
+<a id="create-a-key"></a>
+## キーの作成 { #create-a-key }
 Secure Key Managerは、キーを3つのタイプに区分します。機密データは文字列データを保存し、APIを使用した照会機能を提供します。対称鍵はAPIを使用したデータ暗号化/復号機能を提供します。非対称鍵はAPIを使用したデータ署名/検証機能を提供します。ユーザーは使用目的に合ったキータイプを選択してキーを作成できます。
 
 **キー管理**メニューをクリックすると、次の図のようにキーを管理できる画面が表示されます。
@@ -58,7 +64,8 @@ Secure Key Managerは、キーを3つのタイプに区分します。機密デ�
 >
 > NASサービスで暗号化ストレージを作成する際に設定したキーストアに対称鍵が保存されます。詳細は[NASユーザーガイド](https://docs.nhncloud.com/ja/Storage/NAS/ja/console-guide/#_2)を参照してください。
 
-### キーのインポート
+<a id="import-a-key"></a>
+### キーのインポート { #import-a-key }
 Secure Key Managerは、対称鍵(AES-256)をインポートする機能をサポートします。
 
 ![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-10.png)
@@ -71,10 +78,12 @@ Secure Key Managerは、対称鍵(AES-256)をインポートする機能をサ�
 
 上記のように32個のHex Stringをカンマ(`,`)またはスペース(` `)で区切って入力してキーをアップロードします。
 
-## 認証情報の登録
+<a id="register-authentication-information"></a>
+## 認証情報の登録 { #register-authentication-information }
 Secure Key Managerで作成したキーは、認証に成功したクライアントのみ使用できます。クライアント認証に使用する認証情報は**IPv4アドレス管理**、**MACアドレス管理**、**証明書管理**メニューで登録します。
 
-### IPv4アドレスの登録
+<a id="register-ipv4-address"></a>
+### IPv4アドレスの登録 { #register-ipv4-address }
 **IPv4アドレス管理**をクリックすると、次の図のようにクライアント認証に使用するIPv4アドレス管理画面が表示されます。
 
 ![console-guide-11](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-11.png)
@@ -91,7 +100,8 @@ IPv4アドレス追加**をクリックすると、図のようにIPv4アドレ�
 
 ![console-guide-13](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-13.png)
 
-### MACアドレスの登録
+<a id="register-mac-address"></a>
+### MACアドレスの登録 { #register-mac-address }
 **MACアドレス管理**をクリックすると、クライアント認証に使用するMACアドレス管理画面が表示されます。
 ![console-guide-14](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-14.png)
 
@@ -103,7 +113,8 @@ IPv4アドレス追加**をクリックすると、図のようにIPv4アドレ�
 
 ![console-guide-16](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-16.png)
 
-### クライアント証明書の登録
+<a id="register-client-certificates"></a>
+### クライアント証明書の登録 { #register-client-certificates }
 **証明書管理**をクリックすると、クライアント認証に使用する証明書管理画面が表示されます。
 
 ![console-guide-17](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-17.png)
@@ -116,12 +127,14 @@ IPv4アドレス追加**をクリックすると、図のようにIPv4アドレ�
 
 ![console-guide-19](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-19.png)
 
-## ユーザーデータの管理
+<a id="manage-user-data"></a>
+## ユーザーデータの管理 { #manage-user-data }
 Secure Key Managerは、ユーザーが作成したデータ(キー、認証情報)の詳細情報を提供します。ユーザーデータリストで**詳細情報アイコン**をクリックすると、次の図のように詳細情報が表示されます。
 
 ![console-guide-20](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-20.png)
 
-### ユーザーデータの削除
+<a id="delete-user-data"></a>
+### ユーザーデータの削除 { #delete-user-data }
 
 ユーザーが作成したデータの初期状態は**使用中**です。不要なデータを削除するには次の図のように**詳細情報**ウィンドウで**削除リクエスト**をクリックします。
 
@@ -135,7 +148,8 @@ Secure Key Managerは、ユーザーが作成したデータ(キー、認証情�
 
 ![console-guide-23](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-23.png)
 
-### 対称鍵/非対称鍵のローテーション
+<a id="rotate-symmetricasymmetric-keys"></a>
+### 対称鍵/非対称鍵のローテーション { #rotate-symmetricasymmetric-keys }
 
 Secure Key Managerでは対称鍵/非対称鍵をローテーションできます。次の図のように対称鍵/非対称鍵詳細情報ウィンドウで自動ローテーション周期を設定できます。ローテーション周期を「0」に設定すると、自動ローテーションを行いません。
 
