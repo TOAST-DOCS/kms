@@ -451,4 +451,4 @@ Key rotation is a continuous security process, not a one-time task. By selecting
 
 * [Secure Key Manager Console Guide](./console-guide)
 * [Secure Key Manager API v1.2 Guide](./api-guide-v1.2)
-* [Envelope Encryption using Symmetric Key Management](./overview/#reference-envelope-encryption-with-symmetric-key-management-of-secure-key-manager)
+* [Envelope Encryption using Symmetric Key Management](./overview/#envelope-encryption-with-symmetric-key-management-of-secure-key-manager)
