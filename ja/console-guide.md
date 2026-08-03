@@ -218,27 +218,3 @@ Secure Key Managerのメンバー管理から承認者(APPROVAL ADMIN)、要請�
 承認を押すとすぐにキー保存場所に反映されます。**キー保存場所**または**キー保存場所管理**タブで変更内容を確認できます。
 
 ![console-guide-37](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-37.png)
-
-<a id="authorization-for-adddelete-keys-api"></a>
-### キーの追加/削除API資格関連 { #authorization-for-adddelete-keys-api }
-
-<a id="authorization-for-adddelete-keys-api-create-user-access-key-id-secret-access-key"></a>
-#### User Access Key ID, Secret Access Key作成
-
-コンソール右上のID領域をクリックすると、次のような**APIセキュリティー設定**メニューを確認できます。
-
-![console-guide-38](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-01.png)
-
-**APIセキュリティー設定**で**User Access Key ID作成**をクリックしてSecure Key Managerキーの追加/削除APIに入力する必要がある**User Access Key ID**と**Secret Access Key**を生成できます。
-
-![console-guide-39](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-02.png)
-
-![console-guide-40](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-03.png)
-
-**User Access Key ID**、**Secret Access Key**を生成すると、下記のように**シークレットキー発行完了**画面が表示されます。秘密鍵はそのポップアップ画面で一度だけ教えてくれるので、この値をよく記録して使います。
-
-![console-guide-41](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-04.png)
-
-APIリクエスト時に必要な**User Access Key ID**は秘密鍵発行完了ポップアップを閉じると確認できます。
-
-![console-guide-42](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-05.png)

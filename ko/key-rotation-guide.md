@@ -451,4 +451,4 @@ Secure Key Manager의 키 회전 기능을 적절히 활용하면 다음과 같�
 
 * [Secure Key Manager 콘솔 가이드](./console-guide)
 * [Secure Key Manager API v1.2 가이드](./api-guide-v1.2)
-* [대칭 키 관리 기능을 활용한 봉투 암호화](./overview/#secure-key-manager)
+* [대칭 키 관리 기능을 활용한 봉투 암호화](./overview/#reference-envelope-encryption-with-symmetric-key-management-of-secure-key-manager)

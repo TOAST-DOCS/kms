@@ -451,4 +451,4 @@ Secure Key Managerのキーローテーション機能を適切に活用する�
 
 * [Secure Key Managerコンソールガイド](./console-guide)
 * [Secure Key Manager API v1.2ガイド](./api-guide-v1.2)
-* [対称鍵管理機能を活用したエンベロープ暗号化](./overview/#secure-key-manager)
+* [対称鍵管理機能を活用したエンベロープ暗号化](./overview/#reference-envelope-encryption-with-symmetric-key-management-of-secure-key-manager)

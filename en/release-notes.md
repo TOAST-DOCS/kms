@@ -53,7 +53,7 @@
 <a id="june-24-2025-feature-updates"></a>
 #### Feature Updates
   * Added new error message
-    * Added an error message for API requests with invalid URIs. For more information, see the [Troubleshooting Guide](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found).
+    * Added an error message for API requests with invalid URIs. For more information, see the [Troubleshooting Guide](/Security/Secure%20Key%20Manager/en/troubleshooting-guide/#api-call-failure-returns-url-not-found-error-message).
 
 <a id="april-28-2025"></a>
 ### April 28, 2025 { #april-28-2025 }
@@ -101,7 +101,7 @@
 #### Added New Features
   * Added Add/Delete Credentials API
      * Added the feature to add or delete credentials to use a key using APIs.
-     * To add or delete credentials using APIs, you must need **User Access Key ID** and **Secret Access Key**. For more information, see the [console user guide](/Security/Secure%20Key%20Manager/ko/getting-started/#api).
+     * To add or delete credentials using APIs, you must need **User Access Key ID** and **Secret Access Key**. For more information, see [User Access Key](/nhncloud/en/public-api/user-access-key).
 
 <a id="february-27-2024"></a>
 ### February 27, 2024 { #february-27-2024 }
@@ -121,7 +121,7 @@
 #### Added New Features
   * Added Add/Delete Key APIs
     * Added the feature to add or delete keys using APIs
-    * To add or delete keys using APIs, you must need a User Access Key ID and a Secret Access Key. For more information, see [the console user guide](/Security/Secure%20Key%20Manager/en/getting-started/#authorization-for-adddelete-keys-api)
+    * To add or delete keys using APIs, you must need a User Access Key ID and a Secret Access Key. For more information, see [User Access Key](/nhncloud/en/public-api/user-access-key)
 
 <a id="september-26-2023"></a>
 ### September 26, 2023 { #september-26-2023 }

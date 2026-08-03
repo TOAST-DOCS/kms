@@ -53,7 +53,7 @@
 <a id="june-24-2025-feature-updates"></a>
 #### 機能改善/変更
   * 新規エラーメッセージ追加
-    * 有効ではないURIでAPIリクエストを行った際のエラーメッセージを追加。詳細は[トラブルシューティング](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found)を参照。
+    * 有効ではないURIでAPIリクエストを行った際のエラーメッセージを追加。詳細は[トラブルシューティング](/Security/Secure%20Key%20Manager/ja/troubleshooting-guide/#api-call-failure-returns-url-not-found-error-message)を参照。
 
 <a id="april-28-2025"></a>
 ### 2025. 04. 28. { #april-28-2025 }
@@ -101,7 +101,7 @@
 #### 新規機能追加
   * 認証情報登録/削除API追加
     * PIを利用してキーを使用するための認証情報を登録または削除する機能を追加しました。
-    * APIを利用して認証情報を追加または削除するには、**User Access Key ID** と **Secret Access Key** が必要です。詳細は[コンソール使用ガイド](/Security/Secure%20Key%20Manager/ja/getting-started/#api)を参照してください。
+    * APIを利用して認証情報を追加または削除するには、**User Access Key ID** と **Secret Access Key** が必要です。詳細は[User Access Key](/nhncloud/ja/public-api/user-access-key)を参照してください。
 
 <a id="february-27-2024"></a>
 ### 2024. 02. 27. { #february-27-2024 }
@@ -121,7 +121,7 @@
 #### 新規機能追加
   * キー追加/削除API追加
     * APIを利用してキーを追加または削除する機能を追加
-    * APIを利用してキーを追加または削除するには **User Access Key ID** と **Secret Access Key** が必要。詳細は[コンソール使用ガイド](/Security/Secure%20Key%20Manager/ja/getting-started/#api)を参照。
+    * APIを利用してキーを追加または削除するには **User Access Key ID** と **Secret Access Key** が必要。詳細は[User Access Key](/nhncloud/ja/public-api/user-access-key)を参照。
 
 <a id="september-26-2023"></a>
 ### 2023. 09. 26. { #september-26-2023 }
