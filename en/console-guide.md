@@ -1,4 +1,7 @@
-## Security > Secure Key Manager > Console User Guide
+<!-- pre-align:aligned sig=590559cc5f7a -->
+
+<a id="security-secure-key-manager-console-user-guide"></a>
+## Security > Secure Key Manager > Console User Guide { #security-secure-key-manager-console-user-guide }
 
 Console User Guide describes basics for the use of Secure Key Manager:
 - **Create a Key Store**
@@ -7,7 +10,8 @@ Console User Guide describes basics for the use of Secure Key Manager:
 - **Manage User Data**
 - **Approval Feature**
 
-### Create a Key Store
+<a id="create-a-key-store"></a>
+### Create a Key Store { #create-a-key-store }
 Secure Key Manager manages authentication information and keys in key store unit. If there is no key store, the following screen is displayed:
 
 ![console-guide-01](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-01.png)
@@ -34,7 +38,8 @@ Click a key store from the list, and a menu to manage the key store is displayed
 
 ![console-guide-04](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-04.png)
 
-### Create a Key
+<a id="create-a-key"></a>
+### Create a Key { #create-a-key }
 In Secure Key Manager, keys are categorized into three types: Confidential Data, Symmetric Key, and Asymmetric Key. For Confidential Data, Secure Key Manager stores string data and provides query feature using APIs. For Symmetric key, data encryption/decryption using APIs is provided. For Asymmetric Key, data signing/verification using APIs is provided. Users can select a key type appropriate for purpose and create keys.
 
 Click **Key Management**, and a page to manage keys shows up like below:
@@ -61,7 +66,8 @@ If you select Confidential Data, you can enter name, description, and data. If y
 > The symmetric key is stored in the key store enabled when creating encrypted storage in the NAS service. For more information, see [NAS User Guide](https://docs.nhncloud.com/en/Storage/NAS/en/console-guide/#_2).
 
 
-### Import a Key
+<a id="import-a-key"></a>
+### Import a Key { #import-a-key }
 Secure Key Manager supports a feature to import a symmetric key (AES-256).
 
 ![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-10.png)
@@ -74,9 +80,11 @@ You can upload a key by entering a key value in the **Key Data** area, and the f
 
 Upload the key by entering 32 hexadecimal strings separated by comma (`,`) or space (` `) used as delimiters, as shown above.
 
-### Register Authentication Information
+<a id="register-authentication-information"></a>
+### Register Authentication Information { #register-authentication-information }
 Keys that are created in Secure Key Manager are available only for successfully authenticated clients. You may register authentication information for client authentication from the menu of **IPv4 Address Management**, **MAC Address Management**, and **Certificate Management**.
 
+<a id="register-authentication-information-register-ipv4-address"></a>
 #### Register IPv4 Address
 Click **IPv4 Address Management**, and a page to manage IPv4 address for client authentication shows up.
 
@@ -94,6 +102,7 @@ Enter client IPv4 address and description, and click **Add**, then the IPv4 addr
 
 ![console-guide-13](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-13.png)
 
+<a id="register-authentication-information-register-mac-address"></a>
 #### Register MAC Address
 Click **MAC Address Management**, and the MAC address management page for client authentication shows up.
 ![console-guide-14](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-14.png)
@@ -106,6 +115,7 @@ Enter Client MAC Address and description, and click **Add**, then the MAC addres
 
 ![console-guide-16](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-16.png)
 
+<a id="register-authentication-information-register-client-certificates"></a>
 #### Register Client Certificates
 Click **Certificate Management**, and the certificate management page for client authentication shows up.
 
@@ -119,11 +129,13 @@ Enter certificate name, password, and description, select usage period, and clic
 
 ![console-guide-19](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-19.png)
 
-### Manage User Data
+<a id="manage-user-data"></a>
+### Manage User Data { #manage-user-data }
 Secure Key Manager provides detailed information on user-created data (e.g. key or authentication information). Click **Detail Key Information** on the list of user data, and details are displayed like below:
 
 ![console-guide-20](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-20.png)
 
+<a id="manage-user-data-delete-user-data"></a>
 #### Delete User Data
 
 The initial status of user-created data is **In Service**. To delete unnecessary data, click **Request for Deletion** in the **Detail Key Information** window.
@@ -138,6 +150,7 @@ You may click **Immediately Delete** for data in **Scheduled to be Deleted** sta
 
 ![console-guide-23](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-23.png)
 
+<a id="manage-user-data-rotate-symmetricasymmetric-keys"></a>
 #### Rotate Symmetric/Asymmetric Keys
 
 In Secure Key Manager, symmetric/asymmetric keys can be rotated. Like shown below, auto rotation cycle can be set from the details page of Symmetric/Asymmetric Key. If you set the rotation cycle to '0', auto rotation is not enabled.
@@ -160,18 +173,22 @@ As an exception, keys generated through key import do not provide the key rotati
 
 ![console-guide-28](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-28.png)
 
-### Approval Feature
+<a id="approval-feature"></a>
+### Approval Feature { #approval-feature }
 
+<a id="approval-feature-enable-approval-feature"></a>
 #### Enable Approval Feature
 Enable Approval Feature of Secure Key Manager in Approval Process Management Setting on Governance Setting under Organization Management.
 
 ![console-guide-29](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-29.png)
 
+<a id="approval-feature-set-up-roles-for-approval-feature"></a>
 #### Set up Roles for Approval Feature
 On Member Management in Secure Key Manager, perform the approval process by obtaining the approver role (APPROVAL ADMIN) and the requester role (APPROVAL MEMBER).
 
 ![console-guide-30](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-30.png)
 
+<a id="approval-feature-differences-with-approval-feature-enabled"></a>
 #### Differences with Approval Feature enabled
 When you obtain the approver or requester role after enabling the approval feature, the **Approval List** and **Key Store Management** tabs are added to Secure Key Manager. Only the approver and requester can access these tabs.
 
@@ -181,6 +198,7 @@ When you enable the approval feature, data can no longer be added, modified, or 
 
 ![console-guide-32](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-32.png)
 
+<a id="approval-feature-make-approval-requests"></a>
 #### Make Approval Requests
 On the **Key Store Management** tab, the approver and requester make a request for approval of changes for each key store. Addition, modification, and deletion are performed through a similar operation to the existing keystore. Changes to keys and authentication information are displayed in Status as follows.
 
@@ -192,6 +210,7 @@ Make a request for approval with the **Request Approval** button in the key stor
 
 ![console-guide-35](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-35.png)
 
+<a id="approval-feature-apply-approval-requests"></a>
 #### Apply Approval Requests
 On the  **Approval List** tab, the approver confirms the requst for approval of changes and determines whether to apply the request by selecting **Approve** or **Deny**.
 
@@ -200,25 +219,3 @@ On the  **Approval List** tab, the approver confirms the requst for approval of 
 The request is applied immediately upon clicking Approve. The change can be found in the **Key Depository** or the **Key Store Management** tab.
 
 ![console-guide-37](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-37.png)
-
-### Authorization for Add/Delete Keys API
-
-#### Create User Access Key ID, Secret Access Key
-
-Click the ID area in the upper-right corner of the console to see the **API Security Settings** menu as follows.
-
-![console-guide-38](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-01.png)
-
-In **API Security Setting**, you can click **Create User Access Key ID**to create a **User Access Key ID** and **Secret Access Key**that must be entered into the Secure Key Manager Add/Delete Keys API.
-
-![console-guide-39](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-02.png)
-
-![console-guide-40](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-03.png)
-
-After creating **User Access Key ID** and **Secret Access Key**, the **Completed to Issue Secret Key** screen is displayed as shown below. The secret key is only given to you once in that popup screen, so make sure to keep a good record of this value.
-
-![console-guide-41](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-04.png)
-
-The **User Access Key ID**, which is required for API requests, can be found by closing the secret key successfully issued popup.
-
-![console-guide-42](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_kms/2023-11-28-en/console-guide-05.png)

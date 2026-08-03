@@ -1,10 +1,14 @@
-## Security > Secure Key Manager > Console User Guide > Getting Started
+<!-- pre-align:aligned sig=76d6e0cfc969 -->
+
+<a id="security-secure-key-manager-console-user-guide-getting-started"></a>
+## Security > Secure Key Manager > Console User Guide > Getting Started { #security-secure-key-manager-console-user-guide-getting-started }
 
 Getting Started describes basics for the use of Secure Key Manager.
 
 ![getting-started](http://static.toastoven.net/prod_kms/2024-02-27-en/getting-started.png)
 
-## Create a Key Store
+<a id="create-a-key-store"></a>
+## Create a Key Store { #create-a-key-store }
 Secure Key Manager manages authentication information and keys in key store unit. If there is no key store, the following screen is displayed:
 
 ![console-guide-01](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-01.png)
@@ -26,13 +30,15 @@ Click a key store from the list, and a menu to manage the key store is displayed
 
 ![console-guide-04](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-04.png)
 
-### Key Store Details
+<a id="key-store-details"></a>
+### Key Store Details { #key-store-details }
 
 Click the View more button in the top right on the keystore to view information about the selected keystore through the Details menu.
 
 ![console-guide-43](http://static.toastoven.net/prod_kms/2024-02-27-en/console-guide-01.png)
 
-## Create a Key
+<a id="create-a-key"></a>
+## Create a Key { #create-a-key }
 In Secure Key Manager, keys are categorized into three types: Confidential Data, Symmetric Key, and Asymmetric Key. For Confidential Data, Secure Key Manager stores string data and provides query feature using APIs. For Symmetric key, data encryption/decryption using APIs is provided. For Asymmetric Key, data signing/verification using APIs is provided. Users can select a key type appropriate for purpose and create keys.
 
 Click **Key Management**, and a page to manage keys shows up like below:
@@ -58,7 +64,8 @@ If you select Confidential Data, you can enter name, description, and data. If y
 >
 > The symmetric key is stored in the key store enabled when creating encrypted storage in the NAS service. For more information, see [NAS User Guide](https://docs.nhncloud.com/en/Storage/NAS/en/console-guide/#_2).
 
-### Import a Key
+<a id="import-a-key"></a>
+### Import a Key { #import-a-key }
 Secure Key Manager supports a feature to import a symmetric key (AES-256).
 
 ![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-10.png)
@@ -71,10 +78,12 @@ You can upload a key by entering a key value in the **Key Data** area, and the f
 
 Upload the key by entering 32 hexadecimal strings separated by comma (`,`) or space (` `) used as delimiters, as shown above.
 
-## Register Authentication Information
+<a id="register-authentication-information"></a>
+## Register Authentication Information { #register-authentication-information }
 Keys that are created in Secure Key Manager are available only for successfully authenticated clients. You may register authentication information for client authentication from the menu of **IPv4 Address Management**, **MAC Address Management**, and **Certificate Management**.
 
-### Register IPv4 Address
+<a id="register-ipv4-address"></a>
+### Register IPv4 Address { #register-ipv4-address }
 Click **IPv4 Address Management**, and a page to manage IPv4 address for client authentication shows up.
 
 ![console-guide-11](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-11.png)
@@ -91,7 +100,8 @@ Enter client IPv4 address and description, and click **Add**, then the IPv4 addr
 
 ![console-guide-13](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-13.png)
 
-### Register MAC Address
+<a id="register-mac-address"></a>
+### Register MAC Address { #register-mac-address }
 Click **MAC Address Management**, and the MAC address management page for client authentication shows up.
 ![console-guide-14](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-14.png)
 
@@ -103,7 +113,8 @@ Enter Client MAC Address and description, and click **Add**, then the MAC addres
 
 ![console-guide-16](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-16.png)
 
-### Register Client Certificates
+<a id="register-client-certificates"></a>
+### Register Client Certificates { #register-client-certificates }
 Click **Certificate Management**, and the certificate management page for client authentication shows up.
 
 ![console-guide-17](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-17.png)
@@ -116,12 +127,14 @@ Enter certificate name, password, and description, select usage period, and clic
 
 ![console-guide-19](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-19.png)
 
-## Manage User Data
+<a id="manage-user-data"></a>
+## Manage User Data { #manage-user-data }
 Secure Key Manager provides detailed information on user-created data (e.g. key or authentication information). Click **Detail Key Information** on the list of user data, and details are displayed like below:
 
 ![console-guide-20](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-20.png)
 
-### Delete User Data
+<a id="delete-user-data"></a>
+### Delete User Data { #delete-user-data }
 
 The initial status of user-created data is **In Service**. To delete unnecessary data, click **Request for Deletion** in the **Detail Key Information** window.
 
@@ -135,7 +148,8 @@ You may click **Immediately Delete** for data in **Scheduled to be Deleted** sta
 
 ![console-guide-23](http://static.toastoven.net/prod_kms/2023-03-28-en/console-guide-23.png)
 
-### Rotate Symmetric/Asymmetric Keys
+<a id="rotate-symmetricasymmetric-keys"></a>
+### Rotate Symmetric/Asymmetric Keys { #rotate-symmetricasymmetric-keys }
 
 In Secure Key Manager, symmetric/asymmetric keys can be rotated. Like shown below, auto rotation cycle can be set from the details page of Symmetric/Asymmetric Key. If you set the rotation cycle to '0', auto rotation is not enabled.
 
