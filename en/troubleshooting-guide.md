@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=483335a1acdc -->
+<!-- pre-align:aligned sig=c775a568be8f -->
 
 # Solution Guide
 **Security > Secure Key Manager > Solution Guide**
@@ -70,4 +70,5 @@ The following describes the solutions for main issues that may arise while using
 * Occurs when a request is made with an invalid URL.
     * Check if the URL is correct.
 
+<a id="api-call-failure-returns-url-not-found-error-message-for-any-other-errors-that-occur-during-an-api-request-contact-us-at-customer-support-contact-us"></a>
 #### For any other errors that occur during an API request, contact us at Customer Support > [Contact us](https://www.nhncloud.com/KR/support/inquiry)

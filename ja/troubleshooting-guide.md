@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=483335a1acdc -->
+<!-- pre-align:aligned sig=c775a568be8f -->
 
 # 問題解決ガイド
 **Security > Secure Key Manager > 問題解決ガイド**
@@ -70,4 +70,5 @@ Secure Key Managerを使用中に発生することがある主な問題に対�
 * 正しくないURLでリクエストした場合に発生します。
     * 正しいURLを使用しているかご確認ください。
         
+<a id="api-call-failure-returns-url-not-found-error-message-for-any-other-errors-that-occur-during-an-api-request-contact-us-at-customer-support-contact-us"></a>
 #### その他のAPIリクエスト中に発生したエラーについては、顧客サポート > [お問い合わせ](https://www.nhncloud.com/KR/support/inquiry)へお問い合わせください
