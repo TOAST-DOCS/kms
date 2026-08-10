@@ -70,7 +70,7 @@ The problem with this approach is that if the key is compromised, all data is at
 
 ```
 [User Data] → [Encrypt with DEK] → [Encrypted Data]   (Save to DB)
-[DEK] → [Encrypt with KEK] → [DEK passphrase]            (KEK stored in Secure Key Manager, DEK passphrase stored in DB or Secure Key Manager)
+[DEK] → [Encrypt with KEK] → [DEK ciphertext]            (KEK stored in Secure Key Manager, DEK ciphertext stored in DB or Secure Key Manager)
 ```
 
 Envelope encryption offers the following security advantages over regular encryption methods:
@@ -100,7 +100,7 @@ Think about the process of periodically updating the access code for your home�
 #### Workarounds for Envelope Encryption
 
 * **Two-level encryption structure**: Data is encrypted with a data encryption key (DEK), and only the DEK is encrypted with a key encryption key (KEK).
-* **Advantage of KEK rotation**: Even when you rotate the KEK, the actual user data remains the same, and you only need to process the DEK passphrase.
+* **Advantage of KEK rotation**: Even when you rotate the KEK, the actual user data remains the same, and you only need to process the DEK ciphertext.
 * **Backward compatibility**: Secure Key Manager manages multiple versions of KEKs simultaneously, enabling the automatic decryption of DEK ciphertexts encrypted with previous KEK versions.
 
 <a id="why-envelope-encryption-favors-key-rotation-real-world-impact"></a>
