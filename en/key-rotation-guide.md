@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=c10e7e66fdb0 -->
+
 # Key Rotation Guide for Enhanced Security
 **Security > Secure Key Manager > Key Rotation Guide for Enhanced Security**
 
@@ -6,7 +8,8 @@ This guide explains how to enhance security in production environments by levera
 !!! TIP "Note"
 This guide is intended for current users of the Secure Key Manager (SKM) service. If you are a new user, please refer to the [Secure Key Manager Overview](./overview) first.
 
-## Glossary
+<a id="glossary"></a>
+## Glossary { #glossary }
 
 To help you follow along more easily, please review these key terms first.
 
@@ -18,7 +21,8 @@ To help you follow along more easily, please review these key terms first.
 | Key encryption key(KEK) | The key used to encrypt the DEK. The symmetric key managed by Secure Key Manager plays this role. It acts as the 'vault' in envelope encryption. |
 | Key segmentation | A strategy for encrypting data with multiple keys, rather than encrypting all data with a single key. This can be by time of day, by region, by user group, and so on. It's the same principle as not putting all your eggs in one basket. |
 
-## Why key rotation is necessary
+<a id="why-key-rotation-is-necessary"></a>
+## Why key rotation is necessary { #why-key-rotation-is-necessary }
 
 Prolonged use of encryption keys increases the following security risks:
 
@@ -28,11 +32,13 @@ Prolonged use of encryption keys increases the following security risks:
 
 Secure Key Manager's key rotation feature allows you to renew only the key value without changing the key ID, increasing security without modifying your application code.
 
-## Create a Key Rotation Strategy
+<a id="create-a-key-rotation-strategy"></a>
+## Create a Key Rotation Strategy { #create-a-key-rotation-strategy }
 
 Your key rotation strategy should be based on the business impact and security requirements of your service.
 
-### Considerations
+<a id="considerations"></a>
+### Considerations { #considerations }
 
 * **Service impact**: Develop a strategy to minimize the impact of key rotation on services.
 * **Operational complexity**: Consider the range of possible operations, such as setting up automatic rotation cycles and re-encryption strategies.
@@ -40,14 +46,17 @@ Your key rotation strategy should be based on the business impact and security r
 !!! TIP "Note"
 You can set the auto-rotation interval to as little as 30 days.
 
-## Key Rotation in an Envelope Encryption Environment
+<a id="key-rotation-in-an-envelope-encryption-environment"></a>
+## Key Rotation in an Envelope Encryption Environment { #key-rotation-in-an-envelope-encryption-environment }
 
 Envelope encryption is an encryption pattern that can efficiently implement key rotation.
 
-### What is envelope encryption?
+<a id="what-is-envelope-encryption"></a>
+### What is envelope encryption? { #what-is-envelope-encryption }
 
 Envelope encryption is a method of encrypting data through a two-step process. Let's compare how it differs from traditional encryption methods.
 
+<a id="what-is-envelope-encryption-common-encryption-method"></a>
 #### Common encryption method
 
 ```
@@ -56,11 +65,12 @@ Envelope encryption is a method of encrypting data through a two-step process. L
 
 The problem with this approach is that if the key is compromised, all data is at risk, and changing the key requires re-encrypting all data.
 
+<a id="what-is-envelope-encryption-envelope-encryption-method"></a>
 #### Envelope encryption method
 
 ```
 [User Data] → [Encrypt with DEK] → [Encrypted Data]   (Save to DB)
-[DEK] → [Encrypt with KEK] → [DEK passphrase]            (KEK stored in Secure Key Manager, DEK passphrase stored in DB or Secure Key Manager)
+[DEK] → [Encrypt with KEK] → [DEK ciphertext]            (KEK stored in Secure Key Manager, DEK ciphertext stored in DB or Secure Key Manager)
 ```
 
 Envelope encryption offers the following security advantages over regular encryption methods:
@@ -69,6 +79,7 @@ Envelope encryption offers the following security advantages over regular encryp
 * **Centralize key management**: Critical KEKs are managed centrally in Secure Key Manager, and DEKs can be generated differently for each piece of data to minimize the scope of compromise.
 * **Enhanced audit trail**: Secure Key Manager logs all KEK usage, making it easy to audit trail key usage.
 
+<a id="what-is-envelope-encryption-understanding-with-analogies"></a>
 #### Understanding with Analogies
 
 Think about the process of periodically updating the access code for your home’s smart lock.
@@ -76,19 +87,23 @@ Think about the process of periodically updating the access code for your home�
 * **Traditional method**: Direct passcode (Key) on the front door (Data) → Changing the passcode requires resetting all 100 units.
 * **Envelope method**: Front door (Data) locked with a fixed key (DEK), with that key stored in a lockbox secured by a passcode (KEK) → Security updates only require changing the lockbox passcode.
 
-### Why Envelope Encryption Favors Key Rotation
+<a id="why-envelope-encryption-favors-key-rotation"></a>
+### Why Envelope Encryption Favors Key Rotation { #why-envelope-encryption-favors-key-rotation }
 
+<a id="why-envelope-encryption-favors-key-rotation-problems-with-traditional-single-key-encryption"></a>
 #### Problems with traditional single-key encryption
 
 * If you encrypt all your data directly with a single key, you'll need to re-encrypt the entire data when you rotate the key.
 * With 1 million records, key rotation requires re-encrypting all 1 million entries.
 
+<a id="why-envelope-encryption-favors-key-rotation-workarounds-for-envelope-encryption"></a>
 #### Workarounds for Envelope Encryption
 
 * **Two-level encryption structure**: Data is encrypted with a data encryption key (DEK), and only the DEK is encrypted with a key encryption key (KEK).
-* **Advantage of KEK rotation**: Even when you rotate the KEK, the actual user data remains the same, and you only need to process the DEK passphrase.
+* **Advantage of KEK rotation**: Even when you rotate the KEK, the actual user data remains the same, and you only need to process the DEK ciphertext.
 * **Backward compatibility**: Secure Key Manager manages multiple versions of KEKs simultaneously, enabling the automatic decryption of DEK ciphertexts encrypted with previous KEK versions.
 
+<a id="why-envelope-encryption-favors-key-rotation-real-world-impact"></a>
 #### Real-world Impact
 
 ```
@@ -103,7 +118,8 @@ Upon key rotation → Actual user data remains intact, no re-encryption required
 
 This structure allows envelope cryptography to **minimize the operational burden of key rotation** while **maintaining a high level of security**.
 
-### Implementation Example
+<a id="implementation-example"></a>
+### Implementation Example { #implementation-example }
 
 When using Secure Key Manager in the form of envelope encryption, we recommend having the following flow:
 
@@ -112,12 +128,15 @@ When using Secure Key Manager in the form of envelope encryption, we recommend h
 !!! danger "Caution"
     Calling the Secure Key Manager API directly for every request that requires a key can cause response delays. Use appropriate caching to optimize performance.
 
-## Minimize the damage with a key splitting strategy
+<a id="minimize-the-damage-with-a-key-splitting-strategy"></a>
+## Minimize the damage with a key splitting strategy { #minimize-the-damage-with-a-key-splitting-strategy }
 
 If you encrypt all your data with a single key, it is at risk if that key is leaked. To avoid this, you can use a key segmentation strategy to minimize the scope of damage.
 
-### 1. The need for key segmentation
+<a id="the-need-for-key-segmentation"></a>
+### 1. The need for key segmentation { #the-need-for-key-segmentation }
 
+<a id="the-need-for-key-segmentation-problems-with-using-a-single-key"></a>
 #### Problems with using a single key
 
 ```
@@ -128,6 +147,7 @@ If you encrypt all your data with a single key, it is at risk if that key is lea
 In the event of a key compromise → Full exposure of 1 million records
 ```
 
+<a id="the-need-for-key-segmentation-when-applying-key-splitting"></a>
 #### When applying key splitting
 
 ```
@@ -138,8 +158,10 @@ In the event of a key compromise → Full exposure of 1 million records
 If 1 DEK is breached, → only 100K cases are at risk (90% less damage)
 ```
 
-### 2. Key Split Strategy Types
+<a id="key-split-strategy-types"></a>
+### 2. Key Split Strategy Types { #key-split-strategy-types }
 
+<a id="key-split-strategy-types-is-time-based-segmentation"></a>
 #### is. Time-based segmentation
 
 This method uses different keys depending on when the data was generated.
@@ -171,6 +193,7 @@ March 2026 data: Key ID ghi789... (100K entries)
 → January key (abc123...) leaked: Only 100K January data affected
 ```
 
+<a id="key-split-strategy-types-b-user-group-segmentation"></a>
 #### b. User group segmentation
 
 This method uses different keys based on user attributes.
@@ -202,7 +225,8 @@ This method uses different keys based on user attributes.
 * If a specific user group key is leaked, other group data is safe
 * Differentiate key rotation cycles by customer tier (VIP: 30 days, general: 90 days)
 
-### 3. Key split operation scenario
+<a id="key-split-operation-scenario"></a>
+### 3. Key split operation scenario { #key-split-operation-scenario }
 
 **Scenario: Split 1 million customer data into 10 keys**.
 
@@ -225,8 +249,10 @@ Results
 ✅ Service impact: Minimal
 ```
 
-### 4. Key Partitioning Considerations
+<a id="key-partitioning-considerations"></a>
+### 4. Key Partitioning Considerations { #key-partitioning-considerations }
 
+<a id="key-partitioning-considerations-a-increased-management-complexity"></a>
 #### A. Increased Management Complexity
 
 As the number of partitioned keys grows, management becomes more complex.
@@ -238,17 +264,21 @@ As the number of partitioned keys grows, management becomes more complex.
 3. Query the database to find the count of encrypted records for each Key ID.
 4. Regularly audit each key's creation date, next scheduled rotation, and usage volume.
 
+<a id="key-partitioning-considerations-b-stale-key-cleanup-policy"></a>
 #### B. Stale Key Cleanup Policy
 
 A policy is required to retire unused keys. Identify keys older than a certain period; if no data remains encrypted with a specific key, flag it for deletion and perform periodic cleanup.
 
-### 5. Tips for Choosing a Key Partitioning Strategy
+<a id="tips-for-choosing-a-key-partitioning-strategy"></a>
+### 5. Tips for Choosing a Key Partitioning Strategy { #tips-for-choosing-a-key-partitioning-strategy }
 
 If you are just starting, we recommend **Time-based Partitioning (Monthly)**. As your service scales and data sensitivity increases, you can enhance security by additionally applying **Hash-based Partitioning**.
 
-## Setting Up Automatic Key Rotation
+<a id="setting-up-automatic-key-rotation"></a>
+## Setting Up Automatic Key Rotation { #setting-up-automatic-key-rotation }
 
-### 1. Enabling Auto-Rotation in the Console
+<a id="enabling-auto-rotation-in-the-console"></a>
+### 1. Enabling Auto-Rotation in the Console { #enabling-auto-rotation-in-the-console }
 
 **Step-by-Step Configuration**
 
@@ -259,7 +289,8 @@ If you are just starting, we recommend **Time-based Partitioning (Monthly)**. As
 
 ![console-guide-24](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-24.png)
 
-### 2. How Auto-Rotation Works
+<a id="how-auto-rotation-works"></a>
+### 2. How Auto-Rotation Works { #how-auto-rotation-works }
 
 * **Automatically generates a new key version** when the set period is reached.
 * The existing Key ID is maintained while only the key version increments (0 → 1 → 2 ...).
@@ -270,11 +301,13 @@ If you are just starting, we recommend **Time-based Partitioning (Monthly)**. As
     * Setting the rotation period to '0' disables automatic rotation.
     * The minimum rotation period is 30 days.
 
-## Operating Manual Key Rotation
+<a id="operating-manual-key-rotation"></a>
+## Operating Manual Key Rotation { #operating-manual-key-rotation }
 
 Beyond automatic rotation, immediate manual rotation is required in the following scenarios.
 
-### 1. Scenarios Requiring Emergency Key Rotation
+<a id="scenarios-requiring-emergency-key-rotation"></a>
+### 1. Scenarios Requiring Emergency Key Rotation { #scenarios-requiring-emergency-key-rotation }
 
 * Suspected KEK compromise.
 * Suspected leak of DEK ciphertexts.
@@ -285,7 +318,8 @@ Beyond automatic rotation, immediate manual rotation is required in the followin
 !!! danger "Caution"
     If a plaintext DEK is leaked at the memory or application level, key rotation alone is insufficient. Since data encrypted with the leaked plaintext key can still be decrypted, you must perform a full data re-encryption.
 
-### 2. How to Execute Immediate Rotation
+<a id="how-to-execute-immediate-rotation"></a>
+### 2. How to Execute Immediate Rotation { #how-to-execute-immediate-rotation }
 
 1. Select the target key in the Key Store.
 2. Click Rotate Now in the Key Details pane.
@@ -296,7 +330,8 @@ Beyond automatic rotation, immediate manual rotation is required in the followin
 
 ![console-guide-27](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-27.png)
 
-### 3. Monitoring Key Rotation via API
+<a id="monitoring-key-rotation-via-api"></a>
+### 3. Monitoring Key Rotation via API { #monitoring-key-rotation-via-api }
 
 You can verify changes after a key rotation through the API.
 
@@ -327,12 +362,15 @@ curl -X GET \
 }
 ```
 
-## Cautions
+<a id="cautions"></a>
+## Cautions { #cautions }
 
-### Pre-rotation Checklist
+<a id="pre-rotation-checklist"></a>
+### Pre-rotation Checklist { #pre-rotation-checklist }
 
 If you are currently using a Secure Key Manager symmetric key for **Direct Data Encryption**, you must **migrate to Envelope Encryption before applying key rotation**.
 
+<a id="pre-rotation-checklist-if-data-was-encrypted-directly-with-a-single-key"></a>
 #### If data was encrypted directly with a single key
 
 ```
@@ -345,6 +383,7 @@ Applying key rotation in this state will lead to the following issues:
 2. Existing data remains encrypted with the previous version, but the system attempts to decrypt it using the new version.
 3. Decryption fails for all existing data → Complete service outage.
 
+<a id="pre-rotation-checklist-safe-implementation-methods"></a>
 #### Safe Implementation Methods
 
 **Method 1: Migration to Envelope Encryption (Recommended)**
@@ -361,6 +400,7 @@ If you apply key rotation while maintaining single-key encryption, the following
 * For large datasets, re-encryption can take dozens of hours.
 * Service downtime or performance degradation will occur during the re-encryption process.
 
+<a id="pre-rotation-checklist-checklist"></a>
 #### Checklist
 
 Please verify the following items before applying key rotation:
@@ -373,16 +413,20 @@ Please verify the following items before applying key rotation:
 !!! danger "Caution"
     Before applying key rotation to a production environment, you must validate the entire scenario in a test environment. A single mistake can lead to a critical system failure.
 
-## Conclusion
+<a id="conclusion"></a>
+## Conclusion { #conclusion }
 
 To meet increasing security requirements, this guide has introduced two strategies for strengthening security using Secure Key Manager’s key rotation feature. Depending on your service environment and data characteristics, these can be applied as either mandatory or optional.
 
-## Recommended Approach
+<a id="recommended-approach"></a>
+### Recommended Approach { #recommended-approach }
 
+<a id="recommended-approach-envelope-encryption-mandatory"></a>
 #### 1. Envelope Encryption (Mandatory)
 
 Envelope Encryption is the foundational pattern for key rotation. It makes rotation significantly easier compared to direct single-key encryption and eliminates the need to re-encrypt massive datasets. We strongly recommend implementing Envelope Encryption from the initial system design phase.
 
+<a id="recommended-approach-key-partitioning-optional"></a>
 #### 2. Key Partitioning (Optional)
 
 Key partitioning is a strategy to take security to the next level. However, since it increases management complexity, it can be applied selectively based on service characteristics.
@@ -390,7 +434,8 @@ Key partitioning is a strategy to take security to the next level. However, sinc
 * **Benefits**: Enhanced protection for sensitive information such as PII (Personally Identifiable Information) or financial data; minimized blast radius in the event of a key leak.
 * **Considerations**: Increased management complexity; requires robust key tracking and cleanup policies.
 
-### Expected Benefits
+<a id="expected-benefits"></a>
+### Expected Benefits { #expected-benefits }
 
 Properly utilizing Secure Key Manager’s key rotation feature provides the following benefits:
 
@@ -401,8 +446,9 @@ Properly utilizing Secure Key Manager’s key rotation feature provides the foll
 
 Key rotation is a continuous security process, not a one-time task. By selecting a strategy tailored to your service scale and security needs—and through regular reviews and improvements—you can steadily elevate your security standards.
 
-## References
+<a id="references"></a>
+## References { #references }
 
 * [Secure Key Manager Console Guide](./console-guide)
 * [Secure Key Manager API v1.2 Guide](./api-guide-v1.2)
-* [Envelope Encryption using Symmetric Key Management](./overview/#secure-key-manager)
+* [Envelope Encryption using Symmetric Key Management](./overview/#envelope-encryption-with-symmetric-key-management-of-secure-key-manager)
