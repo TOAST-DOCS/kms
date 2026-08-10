@@ -274,4 +274,4 @@
 ### May 28, 2019 { #may-28-2019 }
 <a id="may-28-2019-release-of-new-service"></a>
 #### Release of New Service
-* Secure Key Manager is a service to let you centrally and securely manage data that can be exposed to security risks when stored in the application server, such as confidential data (database access information, appkey, password, etc.), symmetric key, and asymmetric key. In addition, it controls access so that only the clients that pass authentication can access the data.
+* Secure Key Manager is a service to let you centrally and securely manage data that can be exposed to security risks when stored in the application server, such as confidential data, symmetric key, and asymmetric key. In addition, it controls access so that only the clients that pass authentication can access the data.
