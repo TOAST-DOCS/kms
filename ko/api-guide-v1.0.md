@@ -67,6 +67,7 @@ X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | resultCode | Number | API 호출 결과 코드값 |
@@ -93,6 +94,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/c
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | clientIp | String | API를 호출한 클라이언트의 IP 주소 |
@@ -120,6 +122,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | secret | String | 기밀 데이터 조회 결과 |
@@ -141,6 +144,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 대칭 키로 암호화할 데이터 |
@@ -157,6 +161,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | ciphertext | String | 대칭 키로 데이터를 암호화한 결과 |
@@ -175,6 +180,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "ciphertext": "AAAAABzGwQniNneKXmcOLhWnxEqC1rNY+UdVb3lyeX/4wSrP"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | ciphertext | String | 대칭 키로 복호화할 데이터 |
@@ -191,6 +197,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 대칭 키로 데이터를 복호화한 결과 |
@@ -216,6 +223,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | localKeyPlaintext | String | Base64 인코딩한 AES-256 대칭 키 |
@@ -244,6 +252,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | symmetricKey | String | 대칭 키 데이터(16진수 문자열 형태) |
@@ -272,6 +281,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/s
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | symmetricKey | String | 대칭 키 데이터(16진수 문자열 형태) |
@@ -293,6 +303,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 비대칭 키로 서명할 데이터 |
@@ -309,6 +320,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | signature | String | 비대칭 키로 데이터를 서명한 서명값 |
@@ -329,6 +341,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "signature": "AAAAAGI9zf831DX..."
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 비대칭 키로 검증할 데이터 |
@@ -347,6 +360,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | result | Boolean | 비대칭 키로 데이터와 서명값을 검증한 결과 |
@@ -383,6 +397,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyType | String | 비대칭 키 형태 |
@@ -422,6 +437,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyType | String | 비대칭 키 형태 |

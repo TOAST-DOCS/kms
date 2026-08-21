@@ -67,6 +67,7 @@ X-TOAST-CLIENT-MAC-ADDR: {MAC Address}
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | resultCode | Number | Result code value of API call |
@@ -93,6 +94,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/c
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | clientIp | String | IP address of the client that called API |
@@ -120,6 +122,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | secret | String | Query result of confidential data |
@@ -141,6 +144,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Data to be encrypted with the symmetric key |
@@ -157,6 +161,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | ciphertext | String | Result of data encryption with the symmetric key |
@@ -175,6 +180,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "ciphertext": "AAAAABzGwQniNneKXmcOLhWnxEqC1rNY+UdVb3lyeX/4wSrP"
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | ciphertext | String | Data to be decrypted with the symmetric key |
@@ -191,6 +197,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Result of data decryption with the symmetric key |
@@ -216,6 +223,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | localKeyPlaintext | String | Base64-encoded AES-256 symmetric key |
@@ -244,6 +252,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | symmetricKey | String | Symmetric key data (Hex string form) |
@@ -272,6 +281,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/s
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | symmetricKey | String | Symmetric key data (Hex string form) |
@@ -293,6 +303,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Data to sign with the asymmetric key |
@@ -309,6 +320,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | signature | String | Signature value of signing the data with the asymmetric key |
@@ -329,6 +341,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "signature": "AAAAAGI9zf831DX..."
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Data to be verified with the asymmetric key |
@@ -347,6 +360,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | result | Boolean | Result of verifying data and signature value with the asymmetric key |
@@ -383,6 +397,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | keyType | String | Asymmetric key form |
@@ -421,6 +436,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | keyType | String | Asymmetric key form |

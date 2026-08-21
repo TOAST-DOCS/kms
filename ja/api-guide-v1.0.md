@@ -67,6 +67,7 @@ X-TOAST-CLIENT-MAC-ADDR: {MACアドレス}
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | resultCode | Number | API呼び出し結果コード値 |
@@ -93,6 +94,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/c
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | clientIp | String | APIを呼び出したクライアントのIPアドレス |
@@ -120,6 +122,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | secret | String | 機密データ照会結果 |
@@ -141,6 +144,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 対称鍵で暗号化するデータ |
@@ -157,6 +161,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | ciphertext | String | 対称鍵でデータを暗号化した結果 |
@@ -175,6 +180,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "ciphertext": "AAAAABzGwQniNneKXmcOLhWnxEqC1rNY+UdVb3lyeX/4wSrP"
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | ciphertext | String | 対称鍵で復号するデータ |
@@ -191,6 +197,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 対称鍵でデータを復号した結果 |
@@ -216,6 +223,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | localKeyPlaintext | String | Base64エンコードしたAES-256対称鍵 |
@@ -244,6 +252,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | symmetricKey | String | 対称鍵データ(16進数文字列形式) |
@@ -272,6 +281,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/s
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | symmetricKey | String | 対称鍵データ(16進数文字列形式) |
@@ -293,6 +303,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 非対称鍵で署名するデータ |
@@ -309,6 +320,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | signature | String | 非対称鍵でデータを署名した署名値 |
@@ -329,6 +341,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "signature": "AAAAAGI9zf831DX..."
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 非対称鍵で検証するデータ |
@@ -347,6 +360,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | result | Boolean | 非対称鍵でデータと署名値を検証した結果 |
@@ -383,6 +397,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyType | String | 非対称鍵形式 |
@@ -422,6 +437,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyType | String | 非対称鍵形式 |
