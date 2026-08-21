@@ -3,6 +3,33 @@
 <a id="security-secure-key-manager-release-notes"></a>
 ## Security > Secure Key Manager > 릴리스 노트 { #security-secure-key-manager-release-notes }
 
+{% if "ngsc" in build_flags or "ninc" in build_flags -%}
+### 2026. 07. 24.
+
+#### 신규 기능 추가
+  * 기밀 데이터 수정 API 추가(v1.2)
+    * API를 이용하여 Secure Key Manager에 저장한 기밀 데이터를 수정할 수 있는 기능 추가. 자세한 내용은 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
+
+#### 기능 개선/변경
+  * `APPROVAL MEMBER` 역할 삭제
+    * Secure Key Manager APPROVAL MEMBER 역할을 Secure Key Manager ADMIN 역할로 마이그레이션하여 역할 체계 단순화
+  * 권한 세분화
+    * `SecureKeyManager:API.ADMIN`, `SecureKeyManager:API.VIEWER` 권한을 추가하여 콘솔 및 API 권한을 세분화하여 관리하도록 변경
+  * 키 저장소 인증 방식 결합 옵션 추가
+    * 키 저장소에 활성화된 여러 인증 방법(IPv4 주소, MAC 주소, 클라이언트 인증서)을 결합하는 방식을 선택할 수 있는 기능 추가. 모두 통과(AND, 기본값) 또는 하나만 통과(OR) 중 선택할 수 있으며, 기존 키 저장소는 모두 통과(AND)로 유지됩니다. 자세한 내용은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/console-guide/)를 참고.
+
+### {% if "ngsc" in build_flags %}2026. 01. 27.{% else %}2026. 03. 13.{% endif %}
+
+#### 신규 서비스 출시
+
+- 기밀 데이터, 대칭 키, 비대칭 키와 같이 애플리케이션 서버에 저장할 경우 보안 위험에 노출될 수 있는 데이터를 중앙 집중적으로 안전하게 관리하고, 인증을 통과한 클라이언트만 접근할 수 있게 제어하는 서비스입니다.
+{%- elif "ppp" in build_flags -%}
+### 2026. 07. 24.
+
+#### 신규 서비스 출시
+
+- 기밀 데이터, 대칭 키, 비대칭 키와 같이 애플리케이션 서버에 저장할 경우 보안 위험에 노출될 수 있는 데이터를 중앙 집중적으로 안전하게 관리하고, 인증을 통과한 클라이언트만 접근할 수 있게 제어하는 서비스입니다.
+{%- else -%}
 <a id="june-9-2026"></a>
 ### 2026. 06. 09. { #june-9-2026 }
 <a id="june-9-2026-added-features"></a>
@@ -15,7 +42,7 @@
 <a id="may-27-2026-added-features"></a>
 #### 신규 기능 추가
   * 비대칭 키 표준 스킴 서명/검증 API 추가(v1.3)
-    * 표준 RSA 서명 스킴(RSASSA-PSS, RSASSA-PKCS1-v1_5)에 따라 비대칭 키로 데이터를 서명하고 검증할 수 있는 API 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
+    * 표준 RSA 서명 스킴(RSASSA-PSS{% if "gov" not in build_flags %}, RSASSA-PKCS1-v1_5{% endif %})에 따라 비대칭 키로 데이터를 서명하고 검증할 수 있는 API 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
 <a id="may-27-2026-feature-updates"></a>
 #### 기능 개선/변경
   * 키 저장소 인증 방식 결합 옵션 추가
@@ -39,6 +66,7 @@
   * 기밀 데이터 수정 API 추가(v1.2, v1.3)
     * API를 이용하여 Secure Key Manager에 저장한 기밀 데이터를 수정할 수 있는 기능 추가. 자세한 내용은 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/) 또는 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
 
+{% if "gov" not in build_flags -%}
 <a id="february-10-2026"></a>
 ### 2026. 02. 10. { #february-10-2026 }
 <a id="february-10-2026-new-features"></a>
@@ -48,6 +76,7 @@
   * 키 목록 상세 조회 API 추가
     * API를 이용하여 키의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
 
+{% endif -%}
 <a id="june-24-2025"></a>
 ### 2025. 06. 24. { #june-24-2025 }
 <a id="june-24-2025-feature-updates"></a>
@@ -60,7 +89,7 @@
 <a id="april-28-2025-feature-updates"></a>
 #### 기능 개선/변경
   * 데이터 보관 기한이 3년에서 1년으로 변경
-    * [관련 공지](https://www.nhncloud.com/kr/support/notice/detail/6493)
+    * [관련 공지]({% if "gov" in build_flags %}https://www.gov-nhncloud.com/kr/support/notice/detail/6492{% else %}https://www.nhncloud.com/kr/support/notice/detail/6493{% endif %})
 
 <a id="march-25-2025"></a>
 ### 2025. 03. 25. { #march-25-2025 }
@@ -153,6 +182,11 @@
   * 승인 프로세스 알림(메일) 기능 추가
     * 승인 요청 등록 시 승인 권한을 가진 관리자에게 메일을 전송하는 기능 추가
 
+{% if "gov" in build_flags -%}
+### 2023. 03. 28.
+#### 신규 서비스 출시
+  * 기밀 데이터, 대칭 키, 비대칭 키와 같이 애플리케이션 서버에 저장할 경우 보안 위험에 노출될 수 있는 데이터를 중앙 집중적으로 안전하게 관리하고, 인증을 통과한 클라이언트만 접근할 수 있게 제어하는 서비스입니다.
+{%- else -%}
 <a id="february-28-2023"></a>
 ### 2023. 02. 28. { #february-28-2023 }
 <a id="february-28-2023-bug-fixes"></a>
@@ -274,3 +308,5 @@
 <a id="may-28-2019-release-of-new-service"></a>
 #### 신규 서비스 출시
   * 기밀 데이터, 대칭 키, 비대칭 키와 같이 애플리케이션 서버에 저장할 경우 보안 위험에 노출될 수 있는 데이터를 중앙 집중적으로 안전하게 관리하고, 인증을 통과한 클라이언트만 접근할 수 있게 제어하는 서비스입니다.
+{%- endif %}
+{%- endif %}
