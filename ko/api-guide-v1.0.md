@@ -4,9 +4,7 @@
      else "api-keymanager.ngsc.go.kr" if "ngsc" in build_flags
      else "api-keymanager.ninc.go.kr" if "ninc" in build_flags
      else "api-keymanager.nhncloudservice.com" %}
-{%- set symmetric_key_algorithm = "ARIA-256"
-     if ("gov" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags)
-     else "AES-256" %}
+{%- set symmetric_key_algorithm = "AES-256" if "public" in build_flags else "ARIA-256" %}
 <!-- pre-align:aligned sig=1be9fa970e22 -->
 
 <a id="security-secure-key-manager-api-v10-guide"></a>
@@ -32,9 +30,7 @@ Secure Key Manager API v1.0을 사용하려면 Appkey 또는 프로젝트 통합
 Appkey는 NHN Cloud의 각 서비스별로 발급되는 고유 인증 키이며, 프로젝트 통합 Appkey는 NHN Cloud에서 하나의 프로젝트 내 여러 서비스에 대해 공통으로 사용할 수 있는 인증 키입니다.
 
 {% if "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
-Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey_2)를 참고하세요.
-{%- elif "gov" in build_flags -%}
-Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/public-api/appkey-gov)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey-gov)를 참고하세요.
+Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started#appkey)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started#appkey_2)를 참고하세요.
 {%- else -%}
 Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/public-api/appkey)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey)를 참고하세요.
 {%- endif %}
