@@ -403,6 +403,8 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
                 ... 후략 ...",
         "encodedKey": "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCLB47ax4OVyEOnuDFv9iU2iWTFOHVLpoD+fMVqlPJiiuJSwi5x/zd3LojWuUyr+dZ9Icxl23Alu4GwwKgUi4DL8qo8jD14THJoeUgIZ56wmYMvN+CkNnmkyqcGn6yT+AXtBJVGqS/2lssHLIGELi8XXkWdf6OBfig6HgsJAnix8Z+T/QdikEFUI5ZiuUWyHw2Bag9B4CoPF2EgXfu5HcW4GA4KH2PI92O4vNg8AmFVDk2E+ma2quSau7LjS3KY9s3Sq+JqvTPZmqHQJudv9ZYcnbyDG/
                        ... 후략 ...",
+        "standardEncodedKey": "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCly8DZdZKcu2m4yhb1TNnS9BfhnaasFrRCQIWyxRMRWpUHqrbtWu7CkR3t/fPoeg2QxLPrFxbl89U/dTr5T+7rNAVsAmVk9BmvFS4y3351UZGw8zY5tPQVpydcY+ERM1TYzdpCPaYg+zBJyIFmn9IxA97o+JPvkhqWV7OJGEgt9dG/
+                       ... 후략 ...",
         "keyVersion": 0
     }
 }
@@ -411,7 +413,8 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 |---|---|---|
 | keyType | String | 비대칭 키 형태 |
 | key | String | 개인 키 데이터(16진수 문자열 형태) |
-| encodedKey | String | 개인 키 데이터(Base64 인코딩 형태) |
+| encodedKey | String | 개인 키 데이터 PKCS#1 포멧(Base64 인코딩 형태) |
+| standardEncodedKey | String | 개인 키 데이터 PKCS#8 포멧(Base64 인코딩 형태) |
 | keyVersion | Number | API 요청 처리에 사용한 비대칭 키 버전 |
 
 ### 공개 키 조회
@@ -441,6 +444,8 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
                 ... 후략 ...",
         "encodedKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweO2seDlchDp7gxb/YlNolkxTh1S6aA/nzFapTyYoriUsIucf83dy6I1rlMq/nWfSHMZdtwJbuBsMCoFIuAy/KqPIw9eExyaHlICGeesJmDLzfgpDZ5pMqnBp+sk/gF7QSVRqkv9pbLByyBhC4vF15FnX+jgX4oOh4LCQJ4sfGfk/0HYpBBVCOWYrlFsh8NgWoPQeAqDxdhIF37uR3FuBgOCh9jyPdjuLzYPAJhVQ5NhPpmtqrkmruy40tymPbN0qviar0z2Zqh0Cbnb/WWHJ28gxv+d+iJCXJvm+fIg7hRYJ5C+mun/N6FB8QHv/
                        ... 후략 ...",
+        "standardEncodedKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx+HwA7i9EdEF0H9EWhFuFprsSdKc4hg0u88kcMnag3aO5AsjkGjfGJk9eqksDKIf2xwx9H3esiXNpY63qFYFXA4WNxpf69LTW+9KenoZfE5suqb2kkZ2B4EhNT5Lt2oQbZ3ehx4KKI7xVeP8TTVoy9/h+3
+                       ... 후략 ...",
         "keyVersion": 0
     }
 }
@@ -449,7 +454,8 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 |---|---|---|
 | keyType | String | 비대칭 키 형태 |
 | key | String | 공개 키 데이터(16진수 문자열 형태) |
-| encodedKey | String | 공개 키 데이터(Base64 인코딩 형태) |
+| encodedKey | String | 공개 키 데이터 PKCS#1 포멧(Base64 인코딩 형태) |
+| standardEncodedKey | String | 공개 키 데이터 X.509 SPI 포멧(Base64 인코딩 형태) |
 | keyVersion | Number | API 요청 처리에 사용한 비대칭 키 버전 |
 
 ## 키 추가/삭제
