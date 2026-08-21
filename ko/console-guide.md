@@ -1,3 +1,4 @@
+{%- set gov_img = "" if "public" in build_flags else "-gov" %}
 <!-- pre-align:aligned sig=70259b9e24c2 -->
 
 <a id="security-secure-key-manager-console-user-guide"></a>
@@ -51,10 +52,10 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 ![console-guide-06](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-06.png)
 
 
-![console-guide-07](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-07.png)
+![console-guide-07](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-07$[ gov_img ]$.png)
 
 
-![console-guide-08](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-08.png)
+![console-guide-08](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-08$[ gov_img ]$.png)
 
 
 기밀 데이터를 선택하면 이름, 설명, 데이터를 입력할 수 있고 대칭 키/비대칭 키를 선택하면 이름, 설명, 회전 주기를 입력할 수 있습니다. 필수 데이터를 입력한 후 **추가**를 클릭하면 키를 생성합니다. 생성한 키는 다음 그림과 같이 키 관리 화면에 표시합니다.
@@ -63,13 +64,13 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 
 > [참고]
 >
-> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
+> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
 
 <a id="import-a-key"></a>
 ### 키 가져오기 { #import-a-key }
-Secure Key Manager는 대칭 키(AES-256)를 가져오는 기능을 지원합니다.
+Secure Key Manager는 대칭 키({% if "public" in build_flags %}AES-256{% else %}ARIA-256{% endif %})를 가져오는 기능을 지원합니다.
 
-![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10.png)
+![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10$[ gov_img ]$.png)
 
 **키 데이터** 영역에 키값을 입력하여 업로드할 수 있으며, 업로드 가능한 키의 형태는 다음과 같습니다.
 
@@ -154,23 +155,23 @@ Secure Key Manager는 사용자가 생성한 데이터(키, 인증 정보)의 �
 
 Secure Key Manager에서는 대칭 키/비대칭 키를 회전할 수 있습니다. 다음 그림과 같이 대칭 키/비대칭 키 상세 정보 창에서 자동 회전 주기를 설정할 수 있습니다. 회전 주기를 '0'으로 설정하면 자동 회전을 사용하지 않습니다.
 
-![console-guide-24](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-24.png)
+![console-guide-24](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-24$[ gov_img ]$.png)
 
 회전 주기에 30 이상의 값을 설정하면 다음 회전 일을 표시하며 회전 주기마다 키를 자동으로 회전합니다.
 
-![console-guide-25](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-25.png)
+![console-guide-25](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-25$[ gov_img ]$.png)
 
 대칭 키/비대칭 키 상세 정보 창에서 **즉시 회전**을 클릭하면 키를 바로 회전할 수 있습니다.
 
-![console-guide-26](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-26.png)
+![console-guide-26](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-26$[ gov_img ]$.png)
 
 키를 회전하면 다음 그림과 같이 키 버전 목록에 새로운 버전이 추가됩니다.
 
-![console-guide-27](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-27.png)
+![console-guide-27](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-27$[ gov_img ]$.png)
 
 예외로 키 가져오기를 통해 생성한 키는 Secure Key Manager를 통해 생성한 대칭 키와는 다르게 회전 기능을 제공하지 않습니다. 조회 시 다음과 같이 키 회전 영역이 존재하지 않습니다.
 
-![console-guide-28](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-28.png)
+![console-guide-28](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-28$[ gov_img ]$.png)
 
 <a id="approval-feature"></a>
 ### 승인 기능 { #approval-feature }
@@ -179,7 +180,7 @@ Secure Key Manager에서는 대칭 키/비대칭 키를 회전할 수 있습니�
 #### 승인 기능 활성화
 조직 관리 화면의 거버넌스 설정에서 승인 프로세스 관리 설정을 통해 Secure Key Manager의 승인 기능을 활성화합니다.
 
-![console-guide-29](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-29.png)
+![console-guide-29](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-29$[ gov_img ]$.png)
 
 <a id="approval-feature-set-up-roles-for-approval-feature"></a>
 #### 승인 기능 역할 설정

@@ -8,7 +8,7 @@
 <a id="june-9-2026-added-features"></a>
 #### Added Features
   * Added key store creation/modification/deletion API (v1.3)
-    * Added a feature to create, modify, and delete a key store using API. For more information, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/).
+    * Added a feature to create, modify, and delete a key store using API. For more information, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
 
 <a id="may-27-2026"></a>
 ### May 27, 2026 { #may-27-2026 }
@@ -44,9 +44,9 @@
 <a id="february-10-2026-new-features"></a>
 #### New Features
   * Added API for retrieving detailed key store lists
-    * Added a feature to retrieve detailed key store information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+    * Added a feature to retrieve detailed key store information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.2/).
   * Added API for retrieving detailed key lists
-    * Added a feature to retrieve detailed key information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+    * Added a feature to retrieve detailed key information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.2/).
 
 <a id="june-24-2025"></a>
 ### June 24, 2025 { #june-24-2025 }

@@ -8,7 +8,7 @@
 <a id="june-9-2026-added-features"></a>
 #### 新機能追加
   * キーストアの作成/変更/削除APIを追加(v1.3)
-    * APIを利用してキーストアを作成、変更、削除できる機能を追加しました。詳細については[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)をご参照ください。
+    * APIを利用してキーストアを作成、変更、削除できる機能を追加しました。詳細については[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.3/)をご参照ください。
     
 <a id="may-27-2026"></a>
 ### 2026. 05. 27. { #may-27-2026 }
@@ -35,18 +35,18 @@
 <a id="march-10-2026-added-features"></a>
 #### 新規機能の追加
   * API v1.3の追加
-    * `X-NHN-AUTHORIZATION`ヘッダによるトークン認証方式の追加。詳細は[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)を参照。
+    * `X-NHN-AUTHORIZATION`ヘッダによるトークン認証方式の追加。詳細は[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.3/)を参照。
   * 機密データ修正APIの追加(v1.2、v1.3)
-    * APIを利用してSecure Key Managerに保存した機密データを修正できる機能の追加。詳細は[API v1.2 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)または[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)を参照。
+    * APIを利用してSecure Key Managerに保存した機密データを修正できる機能の追加。詳細は[API v1.2 ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.2/)または[API v1.3 ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.3/)を参照。
     
 <a id="february-10-2026"></a>
 ### 2026. 02. 10. { #february-10-2026 }
 <a id="february-10-2026-new-features"></a>
 #### 新機能の追加
   * キーストアリスト詳細照会APIの追加
-    * APIを利用して、キーストアの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
+    * APIを利用して、キーストアの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.2/)を参照。
   * キーリスト詳細照会APIの追加
-    * APIを利用して、キーの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)を参照。
+    * APIを利用して、キーの詳細情報リストを照会できる機能を追加。詳細は[API v1.0ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.0/)または[API v1.2ガイド](/Security/Secure%20Key%20Manager/ja/api-guide-v1.2/)を参照。
 
 <a id="june-24-2025"></a>
 ### 2025. 06. 24. { #june-24-2025 }

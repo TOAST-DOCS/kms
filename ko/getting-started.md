@@ -1,3 +1,4 @@
+{%- set gov_img = "" if "public" in build_flags else "-gov" %}
 <!-- pre-align:aligned sig=76d6e0cfc969 -->
 
 <a id="security-secure-key-manager-console-user-guide-getting-started"></a>
@@ -49,10 +50,10 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 ![console-guide-06](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-06.png)
 
 
-![console-guide-07](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-07.png)
+![console-guide-07](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-07$[ gov_img ]$.png)
 
 
-![console-guide-08](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-08.png)
+![console-guide-08](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-08$[ gov_img ]$.png)
 
 
 기밀 데이터를 선택하면 이름, 설명, 데이터를 입력할 수 있고 대칭 키/비대칭 키를 선택하면 이름, 설명, 회전 주기를 입력할 수 있습니다. 필수 데이터를 입력한 후 **추가**를 클릭하면 키를 생성합니다. 생성한 키는 다음 그림과 같이 키 관리 화면에 표시합니다.
@@ -61,13 +62,13 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 
 > [참고]
 >
-> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
+> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
 
 <a id="import-a-key"></a>
 ### 키 가져오기 { #import-a-key }
-Secure Key Manager는 대칭 키(AES-256)를 가져오는 기능을 지원합니다.
+Secure Key Manager는 대칭 키({% if "public" in build_flags %}AES-256{% else %}ARIA-256{% endif %})를 가져오는 기능을 지원합니다.
 
-![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10.png)
+![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10$[ gov_img ]$.png)
 
 **키 데이터** 영역에 키값을 입력하여 업로드할 수 있으며, 업로드 가능한 키의 형태는 다음과 같습니다.
 
@@ -152,20 +153,117 @@ Secure Key Manager는 사용자가 생성한 데이터(키, 인증 정보)의 �
 
 Secure Key Manager에서는 대칭 키/비대칭 키를 회전할 수 있습니다. 다음 그림과 같이 대칭 키/비대칭 키 상세 정보 창에서 자동 회전 주기를 설정할 수 있습니다. 회전 주기를 '0'으로 설정하면 자동 회전을 사용하지 않습니다.
 
-![console-guide-24](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-24.png)
+![console-guide-24](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-24$[ gov_img ]$.png)
 
 회전 주기에 30 이상의 값을 설정하면 다음 회전 일을 표시하며 회전 주기마다 키를 자동으로 회전합니다.
 
-![console-guide-25](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-25.png)
+![console-guide-25](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-25$[ gov_img ]$.png)
 
 대칭 키/비대칭 키 상세 정보 창에서 **즉시 회전**을 클릭하면 키를 바로 회전할 수 있습니다.
 
-![console-guide-26](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-26.png)
+![console-guide-26](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-26$[ gov_img ]$.png)
 
 키를 회전하면 다음 그림과 같이 키 버전 목록에 새로운 버전이 추가됩니다.
 
-![console-guide-27](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-27.png)
+![console-guide-27](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-27$[ gov_img ]$.png)
 
 예외로 키 가져오기를 통해 생성한 키는 Secure Key Manager를 통해 생성한 대칭 키와는 다르게 회전 기능을 제공하지 않습니다. 조회 시 다음과 같이 키 회전 영역이 존재하지 않습니다.
 
-![console-guide-28](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-28.png)
+![console-guide-28](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-28$[ gov_img ]$.png)
+{% if "ppp" in build_flags %}
+## API 인증 방법
+Secure Key Manager는 API 호출 및 인증을 위해 User Access Key, Appkey, 프로젝트 통합 Appkey를 지원합니다.
+사용 중인 버전의 API 가이드에서 지원하는 인증 방법을 확인하세요.
+
+### User Access Key
+User Access Key는 NHN Cloud 계정 또는 IAM 계정을 기반으로 발급되는 인증 키로, Secret Access Key와 함께 사용하여 API 요청에 대한 인증 수단으로 활용됩니다. API 요청 시 사용자 단위로 접근 권한을 인증할 수 있으며, 사용자별 세밀한 권한 제어가 가능합니다. 인증된 NHN Cloud 계정 또는 IAM 계정에 부여된 역할 및 권한에 따라 API 호출이 제한되지만, API 버전에 따라 인가 기능이 적용되지 않을 수도 있습니다.
+
+> [주의]
+> * User Access Key와 Secret Access Key는 유효 기간이 없는 고정 키 기반 인증 방식으로 키가 외부에 노출될 경우 해당 계정의 역할 및 권한 범위 내 모든 API가 무단 호출될 수 있습니다.
+> * 키는 외부 저장소 또는 코드에 포함되지 않도록 안전하게 보관하고, 유출이 의심될 경우 즉시 폐기하고 재발급해야 합니다.
+
+#### User Access Key 발급하기
+User Access Key는 NHN Cloud 콘솔의 **API 보안 설정**에서 발급할 수 있습니다.
+
+1) NHN Cloud 콘솔에서 우측 상단의 계정에 마우스 포인터를 올리면 표시되는 드롭다운 메뉴에서 **API 보안 설정**을 클릭합니다.
+
+2) **+ User Access Key 생성**을 클릭합니다.<br>
+![C_userAccessKey_1_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_userAccessKey_1_ko.png)
+
+3) **User Access Key 생성** 모달 창에서 **토큰 유효 시간**을 설정한 뒤 **생성**을 클릭합니다.<br>
+![C_userAccessKey_2_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_userAccessKey_2_ko.png)
+
+4) **User Access Key 발급 완료** 모달 창에서 **Secret Access Key**를 복사한 뒤 **확인**을 클릭합니다.<br>
+![C_userAccessKey_3_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_userAccessKey_3_ko.png)
+
+> [주의]
+> * 모달 창을 닫은 뒤에는 Secret Access Key를 다시 확인할 수 없습니다. Secret Access Key를 잊어버릴 경우 재생성해야 하므로 반드시 복사한 뒤 별도로 관리하세요.
+> * User Access Key 또는 Secret Access Key 중 하나라도 유출되었거나 유출이 의심되는 경우 해당 키를 폐기하고 새로 발급 받아야 합니다.
+
+> [참고]
+> * User Access Key는 NHN Cloud 계정과 IAM 계정당 각각 5개까지 발급할 수 있습니다.
+> * User Access Key ID는 90일마다 변경할 것을 권장합니다.
+
+#### API 호출하기
+User Access Key는 HTTP 요청 헤더에 포함하여 전달합니다. API 호출 시 아래 예시와 같이 헤더에 User Access Key를 설정해 호출하세요.
+
+* HTTP 헤더 형식 예시
+```
+X-TC-AUTHENTICATION-ID: {User Access Key}
+X-TC-AUTHENTICATION-SECRET: {Secret Access Key}
+```
+
+사용자가 HTTP 헤더에 키를 담아 서버에 요청을 보내면 서버는 해당 키의 유효성 및 권한을 확인한 뒤 요청을 승인하거나 거부합니다.
+
+### Appkey
+Appkey는 NHN Cloud의 각 서비스별로 발급되는 고유 인증 키로 API 요청 시 서비스 식별과 유효성 검증에 사용됩니다. 인증을 위한 별도의 사용자 등록, 토큰 요청 또는 갱신 절차 없이 API 요청 시 Appkey만 포함하면 되므로 인증 과정이 비교적 간단합니다.
+
+#### Appkey 확인하기
+Appkey는 서비스별로 발급되며, NHN Cloud 콘솔의 각 서비스 화면에서 확인할 수 있습니다.
+
+1) NHN Cloud 콘솔 우측 상단에서 **URL & Appkey**를 클릭합니다.
+
+2) **URL & Appkey - Secure Key Manager** 모달 창에서 Appkey를 확인하거나 복사한 뒤 **확인**을 클릭합니다.
+
+> [주의]
+> Appkey가 유출되었거나 유출이 의심되는 경우 NHN Cloud 고객 센터로 연락해 주시면 적합한 조치를 안내해 드리겠습니다.
+
+#### API 호출하기
+API 요청 시 Appkey는 path 파라미터로 포함하여 서비스 유효성을 검증합니다. API 요청 시 사용하는 path 형식은 해당 서비스의 API 가이드를 참고하세요.
+
+* 예시
+```
+POST /v1.0/appkeys/{appKey}/
+```
+
+> [주의]
+> Appkey는 유효 기간이 없는 고정 키 기반 인증 방식으로 인가 기능이 없어 키가 외부에 노출될 경우 무단으로 API가 호출될 수 있습니다. 키는 외부 저장소 또는 코드에 포함되지 않도록 안전하게 보관하고, 유출이 의심될 경우 즉시 재발급을 요청해야 합니다. Appkey가 유출되었거나 유출이 의심되는 경우 NHN Cloud 고객 센터로 연락해 주시면 적합한 조치를 안내해 드리겠습니다.
+
+### 프로젝트 통합 Appkey
+프로젝트 통합 Appkey는 NHN Cloud에서 하나의 프로젝트 내 여러 서비스에 대해 공통으로 사용할 수 있는 인증 키입니다. 각 서비스마다 Appkey를 개별로 관리할 필요 없이 프로젝트 통합 Appkey 하나로 해당 프로젝트에서 사용 중인 모든 서비스의 API를 효율적으로 호출할 수 있습니다. 따라서 관리 대상 키의 수를 줄이고, 사용자가 직접 Appkey를 생성하거나 삭제할 수 있어 키 관리가 유연하고 효율적입니다.
+
+#### 프로젝트 통합 Appkey 생성하기
+NHN Cloud 콘솔의 각 프로젝트 화면에서 프로젝트 통합 Appkey를 생성하고 관리할 수 있습니다.
+
+1) NHN Cloud 콘솔에서 프로젝트를 선택한 뒤 **프로젝트 관리** 탭을 클릭합니다.
+
+2) **API 보안 설정**에서 **+ Appkey 생성**을 클릭합니다.<br>
+![C_project_API_security_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_project_API_security_ko.png)
+
+3) **Appkey 생성** 모달 창에서 **Appkey 이름** 입력 필드에 생성할 프로젝트 통합 Appkey의 이름을 입력한 뒤 **확인**을 클릭합니다.<br>
+![C_project_API_security_2_ko](http://static.toastoven.net/prod_kms/2026-07-24-ko/C_project_API_security_2_ko.png)
+
+> [주의]
+> * 프로젝트 통합 Appkey가 외부에 노출될 경우 해당 프로젝트 내 모든 서비스 API가 무단 호출될 수 있으므로 보안 관리에 각별한 주의가 필요합니다. 프로젝트 통합 Appkey를 외부 저장소 또는 코드에 포함하지 않도록 안전하게 보관하고, 유출되었거나 유출이 의심되는 경우 기존 Appkey를 삭제한 뒤 새로운 Appkey를 생성해 교체하세요.
+
+> [참고]
+> * 프로젝트 통합 Appkey는 프로젝트당 최대 3개까지 생성할 수 있습니다.
+
+#### API 호출하기
+API 요청 시 프로젝트 통합 Appkey는 path 파라미터로 포함하여 서비스 유효성을 검증합니다. API 요청 시 사용하는 path 형식은 해당 서비스의 API 가이드를 참고하세요.
+
+* 예시
+```
+POST /v1.0/appkeys/{프로젝트 통합 appKey}/
+```
+{% endif %}
