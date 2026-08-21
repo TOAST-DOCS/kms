@@ -20,7 +20,7 @@ Secure Key Manager는 사용자의 중요 데이터를 안전하게 보관하고
 
 <a id="feature-description"></a>
 ## 기능 설명 { #feature-description }
-Secure Key Manager는 사용자의 중요 데이터를 안전하게 보관하고 접근 권한을 제어하는 기능을 제공합니다. Secure Key Manager로 관리할 수 있는 데이터는 기밀 데이터, 대칭 키, 비대칭 키로 구분할 수 있습니다.
+Secure Key Manager는 사용자의 중요 데이터를 안전하게 보관하고 접근 권한을 제어하는 기능을 제공합니다. Secure Key Manager로 관리할 수 있는 데이터는 기밀 데이터, 대칭 키, 비대칭 키로 구분할 수 있습니다.{% if "gov" in build_flags %} 공공기관용 Secure Key Manager는 국정원 인증심사필 암호화 알고리즘(ARIA, SEED, RSA-PSS) 모듈이 탑재되어 있어 공공기관에서 활용 가능합니다.{% endif %}
 
 <a id="confidential-data-management"></a>
 ### 기밀 데이터 관리 { #confidential-data-management }
