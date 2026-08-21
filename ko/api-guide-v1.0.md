@@ -29,7 +29,7 @@ Secure Key Manager API v1.0을 사용하려면 Appkey 또는 프로젝트 통합
 
 Appkey는 NHN Cloud의 각 서비스별로 발급되는 고유 인증 키이며, 프로젝트 통합 Appkey는 NHN Cloud에서 하나의 프로젝트 내 여러 서비스에 대해 공통으로 사용할 수 있는 인증 키입니다.
 
-{% if "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+{% if "ppp" in build_flags -%}
 Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started#appkey)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started#appkey_2)를 참고하세요.
 {%- else -%}
 Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/public-api/appkey)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey)를 참고하세요.
@@ -50,7 +50,7 @@ Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/pub
 | POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Secure Key Manager에 저장한 비대칭 키로 데이터와 서명을 검증합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Secure Key Manager에 저장한 개인 키를 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Secure Key Manager에 저장한 공개 키를 조회합니다. |
-{%- if not ("ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags) %}
+{%- if "ppp" not in build_flags %}
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores | Secure Key Manager에 저장된 키 저장소들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId} | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
@@ -452,7 +452,7 @@ GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{ke
 | encodedKey | String | 공개 키 데이터(Base64 인코딩 형태) |
 | keyVersion | Number | API 요청 처리에 사용한 비대칭 키 버전 |
 
-{% if not ("ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags) -%}
+{% if "ppp" not in build_flags -%}
 <a id="key-store"></a>
 ## 키 저장소 { #key-store }
 
