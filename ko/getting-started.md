@@ -1,4 +1,4 @@
-{%- set gov_img = "-gov" if "gov" in build_flags or "ppp" in build_flags else "" %}
+{%- set gov_img = "" if "public" in build_flags else "-gov" %}
 <!-- pre-align:aligned sig=76d6e0cfc969 -->
 
 <a id="security-secure-key-manager-console-user-guide-getting-started"></a>
@@ -16,11 +16,6 @@ Secure Key Manager는 키 저장소 단위로 인증 정보와 키를 관리합�
 
 **키 저장소 추가**를 클릭하면 키 저장소를 생성할 수 있는 창이 나타납니다.
 
-{% if "ppp" in build_flags -%}
-![console-guide-02](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-02.png)
-
-이름과 설명을 입력하고 한 개 이상의 인증 방법을 선택한 후 **추가**를 클릭하면 키 저장소를 생성합니다. 생성한 키 저장소는 다음 그림과 같이 키 저장소 목록에 표시합니다.
-{%- else -%}
 ![console-guide-39](http://static.toastoven.net/prod_kms/2026-05-18/console-guide.png)
 
 이름과 설명을 입력하고 한 개 이상의 인증 방법을 선택합니다. **인증 방식 결합** 옵션은 필수값이며, 활성화한 인증 방법이 한 개일 때도 반드시 선택해야 합니다.
@@ -29,7 +24,6 @@ Secure Key Manager는 키 저장소 단위로 인증 정보와 키를 관리합�
 - **하나만 통과(OR)**: 활성화한 인증 방법 중 하나만 통과해도 인증에 성공합니다. 인증 방법을 둘 이상 활성화한 상태에서, 사용 중인 인증 방식을 다른 방식으로 점진적으로 전환할 때 무중단 마이그레이션 용도로 유용합니다.
 
 **추가**를 클릭하면 키 저장소를 생성합니다. 생성한 키 저장소는 다음 그림과 같이 키 저장소 목록에 표시합니다.
-{%- endif %}
 
 ![console-guide-03](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-03.png)
 
@@ -66,15 +60,13 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 
 ![console-guide-09](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-09.png)
 
-{% if not ("gov" in build_flags or "ppp" in build_flags) -%}
 > [참고]
 >
-> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
+> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
 
-{% endif -%}
 <a id="import-a-key"></a>
 ### 키 가져오기 { #import-a-key }
-Secure Key Manager는 대칭 키({% if "gov" in build_flags or "ppp" in build_flags %}ARIA-256{% else %}AES-256{% endif %})를 가져오는 기능을 지원합니다.
+Secure Key Manager는 대칭 키({% if "public" in build_flags %}AES-256{% else %}ARIA-256{% endif %})를 가져오는 기능을 지원합니다.
 
 ![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10$[ gov_img ]$.png)
 

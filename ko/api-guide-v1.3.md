@@ -1,5 +1,10 @@
-{%- set api_domain = "api-keymanager.gov-nhncloudservice.com" if "gov" in build_flags else "api-keymanager.nhncloudservice.com" %}
-{%- set symmetric_key_algorithm = "ARIA-256" if "gov" in build_flags else "AES-256" %}
+{%- set api_domain = "api-keymanager.gov-nhncloudservice.com" if "gov" in build_flags
+     else "api-keymanager.ngoic.com" if "ngoic" in build_flags
+     else "api-keymanager.ngovc.com" if "ngovc" in build_flags
+     else "api-keymanager.ngsc.go.kr" if "ngsc" in build_flags
+     else "api-keymanager.ninc.go.kr" if "ninc" in build_flags
+     else "api-keymanager.nhncloudservice.com" %}
+{%- set symmetric_key_algorithm = "AES-256" if "public" in build_flags else "ARIA-256" %}
 <!-- pre-align:aligned sig=68657d3daf9d -->
 
 <a id="security-secure-key-manager-api-v13-guide"></a>
@@ -41,8 +46,8 @@ User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer �
 | GET    | /keymanager/v1.3/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key                        | Secure Key Manager에 저장한 대칭 키를 조회합니다.                                          |
 | POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign                                | Secure Key Manager에 저장한 비대칭 키로 데이터를 서명합니다.                               |
 | POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify                              | Secure Key Manager에 저장한 비대칭 키로 데이터와 서명을 검증합니다.                        |
-| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard                       | Secure Key Manager에 저장한 비대칭 키로 표준 스킴{% if "gov" not in build_flags %}(RSASSA-PSS, RSASSA-PKCS1-v1_5){% endif %}에 따라 데이터를 서명합니다. |
-| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard                     | Secure Key Manager에 저장한 비대칭 키로 표준 스킴{% if "gov" not in build_flags %}(RSASSA-PSS, RSASSA-PKCS1-v1_5){% endif %}에 따라 데이터와 서명을 검증합니다. |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard                       | Secure Key Manager에 저장한 비대칭 키로 표준 스킴{% if "public" in build_flags %}(RSASSA-PSS, RSASSA-PKCS1-v1_5){% endif %}에 따라 데이터를 서명합니다. |
+| POST   | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard                     | Secure Key Manager에 저장한 비대칭 키로 표준 스킴{% if "public" in build_flags %}(RSASSA-PSS, RSASSA-PKCS1-v1_5){% endif %}에 따라 데이터와 서명을 검증합니다. |
 | GET    | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey                          | Secure Key Manager에 저장한 개인 키를 조회합니다.                                          |
 | GET    | /keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey                           | Secure Key Manager에 저장한 공개 키를 조회합니다.                                          |
 | POST   | /keymanager/v1.3/appkey/{appkey}/keys/{secrets\|symmetric-keys\|asymmetric-keys}/create      | Secure Key Manager에 신규 키를 추가합니다.                                                 |
@@ -447,7 +452,7 @@ POST https://$[ api_domain ]$/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{k
 <a id="sign-with-asymmetric-key-standard-scheme"></a>
 ### 비대칭 키로 서명(표준 스킴) { #sign-with-asymmetric-key-standard-scheme }
 
-Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS{% if "gov" not in build_flags %}, RSASSA-PKCS1-v1_5{% endif %})에 따라 데이터를 서명할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명 스킴을 전달해서 Secure Key Manager에 저장한 비대칭 키로 서명할 수 있습니다.
+Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS{% if "public" in build_flags %}, RSASSA-PKCS1-v1_5{% endif %})에 따라 데이터를 서명할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명 스킴을 전달해서 Secure Key Manager에 저장한 비대칭 키로 서명할 수 있습니다.
 
 ```text
 POST https://$[ api_domain ]$/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/sign-standard
@@ -465,11 +470,11 @@ POST https://$[ api_domain ]$/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{k
 | 이름      | 타입   | 설명                                                          |
 | --------- | ------ | ------------------------------------------------------------- |
 | plaintext | String | 서명할 데이터를 Base64로 인코딩한 문자열, 디코딩 후 64KB 이하 |
-| algorithm | String | 서명 스킴, {% if "gov" in build_flags %}고정값 RSASSA-PSS{% else %}RSASSA-PSS 또는 RSASSA-PKCS1-v1_5 중 하나{% endif %}          |
+| algorithm | String | 서명 스킴, {% if "public" in build_flags %}RSASSA-PSS 또는 RSASSA-PKCS1-v1_5 중 하나{% else %}고정값 RSASSA-PSS{% endif %}          |
 
 [Response Body]
 
-{% if "gov" not in build_flags -%}
+{% if "public" in build_flags -%}
 RSASSA-PSS
 
 {% endif -%}
@@ -489,7 +494,7 @@ RSASSA-PSS
 }
 ```
 
-{% if "gov" not in build_flags -%}
+{% if "public" in build_flags -%}
 RSASSA-PKCS1-v1_5
 
 ```
@@ -512,14 +517,14 @@ RSASSA-PKCS1-v1_5
 | signature     | String | 비대칭 키로 데이터를 서명한 서명값(Base64 인코딩)   |
 | algorithm     | String | 서명에 사용된 스킴, 요청 값과 동일                  |
 | hashAlgorithm | String | 서명에 사용된 해시 알고리즘, 고정값 SHA-256         |
-| mgfAlgorithm  | String | MGF 알고리즘, 고정값 MGF1-SHA-256{% if "gov" not in build_flags %}(RSASSA-PSS 전용){% endif %}  |
-| saltLength    | Number | salt 길이(바이트), 고정값 32{% if "gov" not in build_flags %}(RSASSA-PSS 전용){% endif %}       |
+| mgfAlgorithm  | String | MGF 알고리즘, 고정값 MGF1-SHA-256{% if "public" in build_flags %}(RSASSA-PSS 전용){% endif %}  |
+| saltLength    | Number | salt 길이(바이트), 고정값 32{% if "public" in build_flags %}(RSASSA-PSS 전용){% endif %}       |
 | keyVersion    | Number | API 요청 처리에 사용한 비대칭 키 버전               |
 
 <a id="verify-data-with-asymmetric-key-standard-scheme"></a>
 ### 비대칭 키로 데이터 검증(표준 스킴) { #verify-data-with-asymmetric-key-standard-scheme }
 
-Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS{% if "gov" not in build_flags %}, RSASSA-PKCS1-v1_5{% endif %})에 따라 데이터와 서명을 검증할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명값, 서명 스킴, 키 버전을 전달해서 Secure Key Manager에 저장한 비대칭 키로 데이터가 위변조되지 않았음을 검증할 수 있습니다.
+Secure Key Manager에 생성한 비대칭 키로 표준 RSA 서명 스킴(RSASSA-PSS{% if "public" in build_flags %}, RSASSA-PKCS1-v1_5{% endif %})에 따라 데이터와 서명을 검증할 때 사용합니다. 사용자는 Base64로 인코딩한 데이터와 서명값, 서명 스킴, 키 버전을 전달해서 Secure Key Manager에 저장한 비대칭 키로 데이터가 위변조되지 않았음을 검증할 수 있습니다.
 
 ```text
 POST https://$[ api_domain ]$/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{keyid}/verify-standard
@@ -540,7 +545,7 @@ POST https://$[ api_domain ]$/keymanager/v1.3/appkey/{appkey}/asymmetric-keys/{k
 | ---------- | ------ | ------------------------------------------------------------- |
 | plaintext  | String | 검증할 데이터를 Base64로 인코딩한 문자열, 디코딩 후 64KB 이하 |
 | signature  | String | 검증할 서명값을 Base64로 인코딩한 문자열                      |
-| algorithm  | String | 서명 스킴, {% if "gov" in build_flags %}고정값 RSASSA-PSS{% else %}RSASSA-PSS 또는 RSASSA-PKCS1-v1_5 중 하나{% endif %}          |
+| algorithm  | String | 서명 스킴, {% if "public" in build_flags %}RSASSA-PSS 또는 RSASSA-PKCS1-v1_5 중 하나{% else %}고정값 RSASSA-PSS{% endif %}          |
 | keyVersion | Number | 검증에 사용할 비대칭 키 버전                                  |
 
 [Response Body]
@@ -698,7 +703,7 @@ POST https://$[ api_domain ]$/keymanager/v1.3/appkey/{appkey}/keys/secrets/creat
 <a id="add-keys-add-a-symmetric-key"></a>
 #### 대칭 키 추가
 
-{% if "gov" in build_flags -%}
+{% if "public" not in build_flags -%}
 Secure Key Manager에 ARIA-256 대칭 키를 생성합니다.
 
 {% endif -%}

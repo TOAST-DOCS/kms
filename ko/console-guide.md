@@ -1,4 +1,4 @@
-{%- set gov_img = "-gov" if "gov" in build_flags else "" %}
+{%- set gov_img = "" if "public" in build_flags else "-gov" %}
 <!-- pre-align:aligned sig=70259b9e24c2 -->
 
 <a id="security-secure-key-manager-console-user-guide"></a>
@@ -62,15 +62,13 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 
 ![console-guide-09](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-09.png)
 
-{% if "gov" not in build_flags -%}
 > [참고]
 >
-> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
+> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
 
-{% endif -%}
 <a id="import-a-key"></a>
 ### 키 가져오기 { #import-a-key }
-Secure Key Manager는 대칭 키({% if "gov" in build_flags %}ARIA-256{% else %}AES-256{% endif %})를 가져오는 기능을 지원합니다.
+Secure Key Manager는 대칭 키({% if "public" in build_flags %}AES-256{% else %}ARIA-256{% endif %})를 가져오는 기능을 지원합니다.
 
 ![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10$[ gov_img ]$.png)
 
