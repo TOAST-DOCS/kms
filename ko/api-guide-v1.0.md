@@ -1,3 +1,12 @@
+{%- set api_domain = "api-keymanager.gov-nhncloudservice.com" if "gov" in build_flags
+     else "api-keymanager.ngoic.com" if "ngoic" in build_flags
+     else "api-keymanager.ngovc.com" if "ngovc" in build_flags
+     else "api-keymanager.ngsc.go.kr" if "ngsc" in build_flags
+     else "api-keymanager.ninc.go.kr" if "ninc" in build_flags
+     else "api-keymanager.nhncloudservice.com" %}
+{%- set symmetric_key_algorithm = "ARIA-256"
+     if ("gov" in build_flags or "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags)
+     else "AES-256" %}
 <!-- pre-align:aligned sig=1be9fa970e22 -->
 
 <a id="security-secure-key-manager-api-v10-guide"></a>
@@ -13,7 +22,7 @@ Secure Key Manager는 사용자 데이터에 접근할 수 있는 다양한 API�
 
 | 리전 | 엔드포인트 |
 |---|---|
-| Global | https://api-keymanager.nhncloudservice.com |
+| Global | https://$[ api_domain ]$ |
 
 <a id="authentication-and-authorization"></a>
 ### 인증 및 권한 { #authentication-and-authorization }
@@ -22,7 +31,13 @@ Secure Key Manager API v1.0을 사용하려면 Appkey 또는 프로젝트 통합
 
 Appkey는 NHN Cloud의 각 서비스별로 발급되는 고유 인증 키이며, 프로젝트 통합 Appkey는 NHN Cloud에서 하나의 프로젝트 내 여러 서비스에 대해 공통으로 사용할 수 있는 인증 키입니다.
 
+{% if "ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags -%}
+Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/Security/Secure%20Key%20Manager/ko/getting-started-ppp#appkey_2)를 참고하세요.
+{%- elif "gov" in build_flags -%}
+Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/public-api/appkey-gov)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey-gov)를 참고하세요.
+{%- else -%}
 Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/public-api/appkey)를 참고하세요. 프로젝트 통합 Appkey 생성 및 사용에 대한 자세한 내용은 [프로젝트 통합 Appkey](/nhncloud/ko/public-api/project-integrated-appkey)를 참고하세요.
+{%- endif %}
 
 <a id="list-of-apis"></a>
 ### API 목록 { #list-of-apis }
@@ -33,12 +48,13 @@ Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/pub
 | GET | /keymanager/v1.0/appkey/{appkey}/secrets/{keyid} | Secure Key Manager에 저장한 기밀 데이터를 조회합니다. |
 | POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 암호화합니다. |
 | POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Manager에 저장한 대칭 키로 데이터를 복호화합니다. |
-| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | 클라이언트가 로컬 환경에서 데이터 암/복호화에 사용할 수 있는 AES-256 대칭 키를 생성합니다. |
+| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | 클라이언트가 로컬 환경에서 데이터 암/복호화에 사용할 수 있는 $[ symmetric_key_algorithm ]$ 대칭 키를 생성합니다. |
 | GET | /keymanager/{v1.0\|v1.1}/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Secure Key Manager에 저장한 대칭 키를 조회합니다. |
 | POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Secure Key Manager에 저장한 비대칭 키로 데이터를 서명합니다. |
 | POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Secure Key Manager에 저장한 비대칭 키로 데이터와 서명을 검증합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Secure Key Manager에 저장한 개인 키를 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Secure Key Manager에 저장한 공개 키를 조회합니다. |
+{%- if not ("ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags) %}
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores | Secure Key Manager에 저장된 키 저장소들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId} | Secure Key Manager에 저장된 키 저장소를 상세 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys | Secure Key Manager에 저장된 키 저장소의 키들을 조회합니다. |
@@ -49,6 +65,7 @@ Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](/nhncloud/ko/pub
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue} | Secure Key Manager에 저장된 키 저장소의 MAC 인증 정보를 상세 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보들을 조회합니다. |
 | GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName} | Secure Key Manager에 저장된 키 저장소의 인증서 인증 정보를 상세 조회합니다. |
+{%- endif %}
 
 [API 요청의 HTTP 헤더]
 
@@ -87,7 +104,7 @@ X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
 ## 클라이언트 정보 조회 { #query-client-information }
 API를 호출한 클라이언트 정보를 조회할 때 사용합니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/confirm
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/confirm
 ```
 [Response Body]
 
@@ -116,7 +133,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/c
 ### 기밀 데이터 조회 { #query-confidential-data }
 Secure Key Manager에 저장한 기밀 데이터를 조회할 때 사용합니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/secrets/{keyid}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/secrets/{keyid}
 ```
 
 [Response Body]
@@ -141,7 +158,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
 ### 대칭 키 암호화 { #encrypt-symmetric-keys }
 Secure Key Manager에 생성한 대칭 키로 데이터를 암호화할 때 사용합니다. 사용자는 32KB 이하의 텍스트 데이터를 전달해서 Secure Key Manager에 저장한 대칭 키로 암호화할 수 있습니다.
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
+POST https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
 ```
 
 [Request Body]
@@ -176,7 +193,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
 ### 대칭 키 복호화 { #decrypt-symmetric-keys }
 Secure Key Manager에 생성한 대칭 키로 데이터를 복호화할 때 사용합니다. 사용자는 암호화된 텍스트를 전달해서 Secure Key Manager에 저장한 대칭 키로 복호화할 수 있습니다.
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
+POST https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
 ```
 
 [Request Body]
@@ -208,9 +225,9 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
 
 <a id="generate-local-symmetric-keys-encrypted-with-the-symmetric-key"></a>
 ### 대칭 키로 암호화한 로컬 대칭 키 생성 { #generate-local-symmetric-keys-encrypted-with-the-symmetric-key }
-클라이언트가 로컬 환경에서 사용할 수 있는 AES-256 대칭 키를 생성할 때 사용합니다. localKeyPlaintext는 생성한 대칭 키를 Base64 인코딩한 형태이며 Base64 디코딩 후 바로 사용할 수 있습니다. localKeyCiphertext는 생성한 대칭 키를 Secure Key Manager에 저장한 대칭 키로 암호화한 후 Base64 인코딩한 형태이며 스토리지에 저장할 때 사용합니다. 스토리지에 저장한 대칭 키는 복호화 API를 사용해서 복호화한 후 사용할 수 있습니다.
+클라이언트가 로컬 환경에서 사용할 수 있는 $[ symmetric_key_algorithm ]$ 대칭 키를 생성할 때 사용합니다. localKeyPlaintext는 생성한 대칭 키를 Base64 인코딩한 형태이며 Base64 디코딩 후 바로 사용할 수 있습니다. localKeyCiphertext는 생성한 대칭 키를 Secure Key Manager에 저장한 대칭 키로 암호화한 후 Base64 인코딩한 형태이며 스토리지에 저장할 때 사용합니다. 스토리지에 저장한 대칭 키는 복호화 API를 사용해서 복호화한 후 사용할 수 있습니다.
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
+POST https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
 ```
 
 [Response Body]
@@ -228,19 +245,19 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
 ```
 | 이름 | 타입 | 설명 |
 |---|---|---|
-| localKeyPlaintext | String | Base64 인코딩한 AES-256 대칭 키 |
-| localKeyCiphertext | String | Secure Key Manager에 저장한 대칭 키로 암호화한 후 Base64 인코딩한 AES-256 대칭 키 |
+| localKeyPlaintext | String | Base64 인코딩한 $[ symmetric_key_algorithm ]$ 대칭 키 |
+| localKeyCiphertext | String | Secure Key Manager에 저장한 대칭 키로 암호화한 후 Base64 인코딩한 $[ symmetric_key_algorithm ]$ 대칭 키 |
 | keyVersion | Number | API 요청 처리에 사용한 대칭 키 버전 |
 
 <a id="query-the-symmetric-key"></a>
 ### 대칭 키 조회 { #query-the-symmetric-key }
 
-Secure Key Manager에 저장한 대칭 키(AES-256)를 조회할 수 있습니다.
+Secure Key Manager에 저장한 대칭 키($[ symmetric_key_algorithm ]$)를 조회할 수 있습니다.
 
 <a id="query-the-symmetric-key-v10"></a>
 #### v1.0
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key
 ```
 
 [Response Body]
@@ -261,7 +278,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
 <a id="query-the-symmetric-key-v11"></a>
 #### v1.1
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
+GET https://$[ api_domain ]$/keymanager/v1.1/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -294,7 +311,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/s
 ### 비대칭 키로 서명 { #sign-with-the-asymmetric-key }
 Secure Key Manager에 생성한 비대칭 키로 데이터를 서명할 때 사용합니다. 사용자는 245 Byte 이하의 텍스트 데이터를 전달해서 Secure Key Manager에 저장한 비대칭 키로 서명할 수 있습니다.
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign
+POST https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign
 ```
 
 [Request Body]
@@ -328,7 +345,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
 ### 비대칭 키로 데이터 검증 { #verify-data-with-the-asymmetric-key }
 Secure Key Manager에 생성한 비대칭 키로 데이터를 검증할 때 사용합니다. 사용자는 데이터와 서명값을 전달해서 Secure Key Manager에 저장한 비대칭 키로 데이터가 위변조되지 않았음을 검증할 수 있습니다.
 ```text
-POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify
+POST https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify
 ```
 
 [Request Body]
@@ -368,7 +385,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
 Secure Key Manager에 저장한 비대칭 키 중 개인 키를 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey?keyVersion={keyVersion}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -407,7 +424,7 @@ Secure Key Manager에 저장한 비대칭 키 중 공개 키를 조회할 수 �
 인증에 상관없이 조회할 수 있습니다.
 
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey?keyVersion={keyVersion}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey?keyVersion={keyVersion}
 ```
 
 [Request Parameter]
@@ -439,6 +456,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
 | encodedKey | String | 공개 키 데이터(Base64 인코딩 형태) |
 | keyVersion | Number | API 요청 처리에 사용한 비대칭 키 버전 |
 
+{% if not ("ngoic" in build_flags or "ngovc" in build_flags or "ngsc" in build_flags or "ninc" in build_flags) -%}
 <a id="key-store"></a>
 ## 키 저장소 { #key-store }
 
@@ -446,7 +464,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
 ### 키 저장소 목록 조회 { #query-the-list-of-key-stores }
 Secure Key Manager에 생성한 키 저장소의 ID 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores
 ```
 
 [Response Body]
@@ -472,7 +490,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 키 저장소 목록 상세 조회 { #retrieve-key-store-list-details }
 Secure Key Manager에 생성한 키 저장소의 상세 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores?detail={detail}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores?detail={detail}
 ```
 
 [Request Parameter]
@@ -524,7 +542,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 키 저장소 상세 조회 { #query-the-details-of-the-key-store }
 Secure Key Manager에 생성한 키 저장소 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}
 ```
 
 [Response Body]
@@ -567,7 +585,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 키 목록 조회 { #query-the-list-of-keys }
 Secure Key Manager에 생성한 키의 ID 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys
 ```
 
 [Response Body]
@@ -593,7 +611,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 키 목록 상세 조회 { #retrieve-key-list-details }
 Secure Key Manager에 생성한 키의 상세 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
 ```
 
 [Request Parameter]
@@ -656,7 +674,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 키 상세 조회 { #query-the-details-of-keys }
 Secure Key Manager에 생성한 키 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
 ```
 
 [Response Body]
@@ -704,7 +722,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### IPv4 인증 정보 목록 조회 { #query-the-list-of-ipv4-authentication-information }
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips
 ```
 
 [Response Body]
@@ -730,7 +748,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### IPv4 인증 정보 상세 조회 { #query-the-details-of-ipv4-authentication-information }
 Secure Key Manager에서 설정한 키 저장소의 IPv4 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
 ```
 
 [Request Parameter]
@@ -777,7 +795,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### MAC 인증 정보 목록 조회 { #query-the-list-of-mac-authentication-information }
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs
 ```
 
 [Response Body]
@@ -803,7 +821,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### MAC 인증 정보 상세 조회 { #query-the-details-of-mac-authentication-information }
 Secure Key Manager에서 설정한 키 저장소의 MAC 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
 ```
 
 [Request Parameter]
@@ -850,7 +868,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 인증서 인증 정보 목록 조회 { #query-the-list-of-certificate-authentication-information }
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보 목록을 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates
 ```
 
 [Response Body]
@@ -876,7 +894,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 ### 인증서 인증 정보 상세 조회 { #query-the-details-of-certifacate-authentication-information }
 Secure Key Manager에서 설정한 키 저장소의 인증서 인증 정보를 상세 조회할 수 있습니다.
 ```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
+GET https://$[ api_domain ]$/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
 ```
 
 [Request Parameter]
@@ -921,3 +939,4 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/k
 | creationDatetime | String | 인증서 생성 일시 |
 | lastChangeUser | String | 인증서 마지막 수정 사용자 |
 | lastChangeDatetime | String | 인증서 마지막 수정 일시 |
+{% endif %}
