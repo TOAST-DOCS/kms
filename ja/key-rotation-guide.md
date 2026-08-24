@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=c10e7e66fdb0 -->
+
 # キーローテーションを利用したセキュリティ強化ガイド
 **Security > Secure Key Manager > キーローテーションを利用したセキュリティ強化ガイド**
 
@@ -6,7 +8,8 @@
 !!! tip 「ポイント」
     このガイドは、すでにSecure Key Managerサービスを使用中のユーザーを対象としています。初めて使用する場合は、[Secure Key Managerの概要](./overview)を先に確認してください。
 
-## 用語の整理
+<a id="glossary"></a>
+## 用語の整理 { #glossary }
 
 このガイドで使用する主要な用語をあらかじめ理解しておくと、内容をより容易に把握できます。
 
@@ -18,7 +21,8 @@
 | KEK(key encryption key, キー暗号化キー) | DEKを暗号化するために使用するキーです。Secure Key Managerで管理する対称鍵がこの役割を果たします。エンベロープ暗号化において「金庫」の役割を果たします。 |
 | キー分割(key segmentation) | 全てのデータを1つのキーで暗号化せず、複数のキーに分けて暗号化する戦略です。時間別、地域別、ユーザーグループ別など、様々な基準で分けることができます。「卵を1つのカゴに盛るな」という格言と同じ原理です。 |
 
-## キーローテーションが必要な理由
+<a id="why-key-rotation-is-necessary"></a>
+## キーローテーションが必要な理由 { #why-key-rotation-is-necessary }
 
 暗号化キーを長期間使用する場合、次のようなセキュリティリスクが増加します。
 
@@ -28,11 +32,13 @@
 
 Secure Key Managerのキーローテーション機能を使用すると、キーIDを変更せずにキー値のみを更新できるため、アプリケーションコードを修正することなくセキュリティを強化できます。
 
-## キーローテーション戦略の策定
+<a id="create-a-key-rotation-strategy"></a>
+## キーローテーション戦略の策定 { #create-a-key-rotation-strategy }
 
 キーローテーション戦略は、サービスのビジネス影響度とセキュリティ要件に応じて適切に策定する必要があります。
 
-### 考慮事項
+<a id="considerations"></a>
+### 考慮事項 { #considerations }
 
 * **サービス影響度**: キーローテーションがサービスに及ぼす影響を最小化できる戦略を策定します。
 * **運用複雑度**: 自動ローテーション周期の設定及び再暗号化戦略など、運用可能な範囲を考慮します。
@@ -40,14 +46,17 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 !!! tip 「ポイント」
     最小30日から自動ローテーション周期を設定できます。
 
-## エンベロープ暗号化環境でのキーローテーション
+<a id="key-rotation-in-an-envelope-encryption-environment"></a>
+## エンベロープ暗号化環境でのキーローテーション { #key-rotation-in-an-envelope-encryption-environment }
 
 エンベロープ暗号化(envelope encryption)は、キーローテーションを効率的に実装できる暗号化パターンです。
 
-### エンベロープ暗号化とは？
+<a id="what-is-envelope-encryption"></a>
+### エンベロープ暗号化とは？ { #what-is-envelope-encryption }
 
 エンベロープ暗号化は、データを2段階で暗号化する方法です。一般的な暗号化方式とどのように異なるか比較してみましょう。
 
+<a id="what-is-envelope-encryption-common-encryption-method"></a>
 #### 一般的な暗号化方式
 
 ```
@@ -56,6 +65,7 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 
 この方式の問題点は、キーが流出すると全てのデータが危険にさらされ、キーを変更するには全てのデータを再暗号化する必要があることです。
 
+<a id="what-is-envelope-encryption-envelope-encryption-method"></a>
 #### エンベロープ暗号化方式
 
 ```
@@ -69,6 +79,7 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 * **キー管理の集中化**: 重要なKEKはSecure Key Managerで一元管理され、DEKはデータごとに個別に生成できるため、被害範囲を最小化できます。
 * **監査追跡の強化**: Secure Key Managerが全てのKEK使用履歴を記録するため、キー使用に対する監査追跡が容易です。
 
+<a id="what-is-envelope-encryption-understanding-with-analogies"></a>
 #### 比喩での理解
 
 マンションの玄関の暗証番号を定期的に変更しなければならない状況を考えてみましょう。
@@ -76,19 +87,23 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 * **一般方式**: 玄関ドア(データ)に直接暗証番号(キー)を設定しておく → 暗証番号を変えるには、100世帯のドアの暗証番号を全て再設定しなければならない
 * **エンベロープ方式**: 玄関ドア(データ)は固定された鍵(DEK)でロックし、鍵は小さな保管箱に入れて暗証番号(KEK)で保管 → 暗証番号を変えるには、保管箱の暗証番号だけ変更すればよい
 
-### エンベロープ暗号化がキーローテーションに有利な理由
+<a id="why-envelope-encryption-favors-key-rotation"></a>
+### エンベロープ暗号化がキーローテーションに有利な理由 { #why-envelope-encryption-favors-key-rotation }
 
+<a id="why-envelope-encryption-favors-key-rotation-problems-with-traditional-single-key-encryption"></a>
 #### 従来の単一キー暗号化の問題点
 
 * 単一キーで直接全てのデータを暗号化すると、キーローテーション時に全データを再暗号化する必要があります。
 * 100万件のデータがある場合、キーローテーション時に100万件全てで再暗号化が必要です。
 
+<a id="why-envelope-encryption-favors-key-rotation-workarounds-for-envelope-encryption"></a>
 #### エンベロープ暗号化による解決方法
 
 * **2段階暗号化構造**: データはDEK(data encryption key)で暗号化し、DEKのみKEK(key encryption key)で暗号化します。
 * **KEKローテーションの利点**: KEKをローテーションしても実際のユーザーデータはそのままであり、DEK暗号文のみ処理すれば済みます。
 * **旧バージョンの互換性**: Secure Key Managerは複数バージョンのKEKを同時に管理するため、旧バージョンのKEKで暗号化されたDEK暗号文も自動的に復号できます。
 
+<a id="why-envelope-encryption-favors-key-rotation-real-world-impact"></a>
 #### 実際の効果
 
 ```
@@ -103,7 +118,8 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 
 このような構造のおかげで、エンベロープ暗号化は**キーローテーションの運用負担を最小化**しつつ、**セキュリティレベルを維持**できます。
 
-### エンベロープ暗号化の実装例
+<a id="implementation-example"></a>
+### エンベロープ暗号化の実装例 { #implementation-example }
 
 エンベロープ暗号化形式でSecure Key Managerを利用する場合、次のようなフローにすることを推奨します。
 
@@ -112,12 +128,15 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 !!! danger "注意"
     キーが必要な全てのリクエストに対してSecure Key Manager APIを直接呼び出すと、レスポンス遅延が発生する可能性があります。パフォーマンス最適化のため、適切にキャッシュして使用してください。
 
-## キー分割戦略による被害範囲の最小化
+<a id="minimize-the-damage-with-a-key-splitting-strategy"></a>
+## キー分割戦略による被害範囲の最小化 { #minimize-the-damage-with-a-key-splitting-strategy }
 
 全データを単一キーで暗号化する場合、キー流出時に全てのデータが危険にさらされます。これを防ぐために、キー分割(key segmentation)戦略を使用して被害範囲を最小化できます。
 
-### 1. キー分割の必要性
+<a id="the-need-for-key-segmentation"></a>
+### 1. キー分割の必要性 { #the-need-for-key-segmentation }
 
+<a id="the-need-for-key-segmentation-problems-with-using-a-single-key"></a>
 #### 単一キー使用時の問題点
 
 ```
@@ -128,6 +147,7 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 キー流出時 → 100万件全てが危険にさらされる
 ```
 
+<a id="the-need-for-key-segmentation-when-applying-key-splitting"></a>
 #### キー分割適用時
 
 ```
@@ -138,8 +158,10 @@ Secure Key Managerのキーローテーション機能を使用すると、キ�
 DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 ```
 
-### 2. キー分割戦略のタイプ
+<a id="key-split-strategy-types"></a>
+### 2. キー分割戦略のタイプ { #key-split-strategy-types }
 
+<a id="key-split-strategy-types-is-time-based-segmentation"></a>
 #### A. 時間ベースの分割(time-based segmentation)
 
 データ生成時点に応じて異なるキーを使用する方式です。
@@ -171,6 +193,7 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 → 1月のキー(abc123...)流出時: 1月のデータ10万件のみ影響
 ```
 
+<a id="key-split-strategy-types-b-user-group-segmentation"></a>
 #### B. ユーザーグループベースの分割(user group segmentation)
 
 ユーザー属性に応じて異なるキーを使用する方式です。
@@ -202,7 +225,8 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 * 特定のユーザーグループキー流出時、他のグループデータは安全
 * 顧客ランクごとのキーローテーション周期の差別化(VIP: 30日、一般: 90日)
 
-### 3. キー分割の運用シナリオ
+<a id="key-split-operation-scenario"></a>
+### 3. キー分割の運用シナリオ { #key-split-operation-scenario }
 
 **シナリオ: 100万人の顧客データを10個のキーに分割**
 
@@ -225,8 +249,10 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 ✅ サービス影響: 最小化
 ```
 
-### 4. キー分割時の注意事項
+<a id="key-partitioning-considerations"></a>
+### 4. キー分割時の注意事項 { #key-partitioning-considerations }
 
+<a id="key-partitioning-considerations-a-increased-management-complexity"></a>
 #### A. キー管理の複雑化
 
 分割されたキーが増えるほど管理が複雑になります。
@@ -238,17 +264,21 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 3. 各キーIDについて、データベースで暗号化されたデータ数を照会します。
 4. キーごとの生成日、次回ローテーション予定日、使用データ数を定期的に監査します。
 
+<a id="key-partitioning-considerations-b-stale-key-cleanup-policy"></a>
 #### B. 古いキーの整理ポリシー
 
 使用していないキーを整理するポリシーが必要です。生成されてから一定期間が経過したキーを照会し、該当キーで暗号化されたデータがない場合は削除対象に分類し、定期的に整理作業を行います。
 
-### 5. キー分割戦略選択のヒント
+<a id="tips-for-choosing-a-key-partitioning-strategy"></a>
+### 5. キー分割戦略選択のヒント { #tips-for-choosing-a-key-partitioning-strategy }
 
 初めて導入する場合は、**時間ベースの分割(月別)**から始めることを推奨します。サービス規模が拡大しデータが重要になったら、**ハッシュベースの分割**を追加で適用してセキュリティを強化できます。
 
-## 自動キーローテーション設定
+<a id="setting-up-automatic-key-rotation"></a>
+## 自動キーローテーション設定 { #setting-up-automatic-key-rotation }
 
-### 1. コンソールでの自動ローテーション有効化
+<a id="enabling-auto-rotation-in-the-console"></a>
+### 1. コンソールでの自動ローテーション有効化 { #enabling-auto-rotation-in-the-console }
 
 **ステップ別設定方法**
 
@@ -259,7 +289,8 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 
 ![console-guide-24](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-24.png)
 
-### 2. 自動ローテーションの動作方式
+<a id="how-auto-rotation-works"></a>
+### 2. 自動ローテーションの動作方式 { #how-auto-rotation-works }
 
 * 設定した周期が到来すると**自動的に新しいキーバージョンを生成**
 * 既存のキーIDは維持され、キーバージョンのみ増加(0 → 1 → 2 ...)
@@ -270,11 +301,13 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
     * ローテーション周期を「0」に設定すると、自動ローテーションが無効になります。
     * 最小ローテーション周期は30日です。
 
-## 手動キーローテーション運用
+<a id="operating-manual-key-rotation"></a>
+## 手動キーローテーション運用 { #operating-manual-key-rotation }
 
 自動ローテーション以外に、次のような状況では即時の手動ローテーションが必要です。
 
-### 1. 緊急キーローテーションが必要な場合
+<a id="scenarios-requiring-emergency-key-rotation"></a>
+### 1. 緊急キーローテーションが必要な場合 { #scenarios-requiring-emergency-key-rotation }
 
 * KEK流出の疑いがある場合
 * DEK暗号文流出の疑いがある場合
@@ -285,7 +318,8 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 !!! danger "注意"
     平文DEKがメモリやアプリケーションレベルで流出した場合、キーローテーションだけでは不十分です。すでに流出した平文キーで暗号化されたデータは依然として復号可能であるため、必ずデータの再暗号化(re-encryption)を併せて実行する必要があります。
 
-### 2. 即時ローテーション実行方法
+<a id="how-to-execute-immediate-rotation"></a>
+### 2. 即時ローテーション実行方法 { #how-to-execute-immediate-rotation }
 
 1. キーストアで対象キーを選択します。
 2. **キー詳細情報**ウィンドウで**即時ローテーション**をクリックします。
@@ -296,7 +330,8 @@ DEK 1個流出時 → 10万件のみ危険にさらされる(被害90%減少)
 
 ![console-guide-27](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-27.png)
 
-### 3. APIによるキーローテーションのモニタリング
+<a id="monitoring-key-rotation-via-api"></a>
+### 3. APIによるキーローテーションのモニタリング { #monitoring-key-rotation-via-api }
 
 キーローテーション後の変更事項をAPIで確認できます。
 
@@ -327,12 +362,15 @@ curl -X GET \
 }
 ```
 
-## 注意事項
+<a id="cautions"></a>
+## 注意事項 { #cautions }
 
-### キーローテーション適用前の留意事項
+<a id="pre-rotation-checklist"></a>
+### キーローテーション適用前の留意事項 { #pre-rotation-checklist }
 
 現在、Secure Key Managerの対称鍵を**データを直接暗号化する用途**で使用している場合、**キーローテーションを適用する前に必ずエンベロープ暗号化へ切り替える**必要があります。
 
+<a id="pre-rotation-checklist-if-data-was-encrypted-directly-with-a-single-key"></a>
 #### 単一キーでデータを直接暗号化している場合
 
 ```
@@ -345,6 +383,7 @@ curl -X GET \
 2. 既存データは以前のキーバージョンで暗号化されているが、新しいキーバージョンで復号を試みることになる
 3. 全ての既存データの復号に失敗 → サービス全体の障害
 
+<a id="pre-rotation-checklist-safe-implementation-methods"></a>
 #### 安全な適用方法
 
 **方法 1: エンベロープ暗号化への移行(推奨)**
@@ -361,6 +400,7 @@ curl -X GET \
 * 大量データの場合、再暗号化に数十時間かかる
 * 再暗号化中にサービス中断またはパフォーマンス低下が発生
 
+<a id="pre-rotation-checklist-checklist"></a>
 #### チェックリスト
 
 キーローテーション適用前に必ず以下の事項を確認してください。
@@ -373,16 +413,20 @@ curl -X GET \
 !!! danger "注意"
     本番環境にキーローテーションを適用する前に、必ずテスト環境でシナリオ全体を検証する必要があります。一度のミスで大きな障害が発生する可能性があります。
 
-## 結論
+<a id="conclusion"></a>
+## 結論 { #conclusion }
 
 高まるセキュリティ要件に対応するため、このガイドではSecure Key Managerのキーローテーション機能を活用した2つのセキュリティ強化戦略を紹介しました。サービス環境とデータ特性に応じて、次のように必須または選択的に適用できます。
 
-### 推奨適用方式
+<a id="recommended-approach"></a>
+### 推奨適用方式 { #recommended-approach }
 
+<a id="recommended-approach-envelope-encryption-mandatory"></a>
 #### 1. エンベロープ暗号化(必須)
 
 エンベロープ暗号化は、キーローテーションの基本となるパターンです。単一キーで直接データを暗号化する方式よりキーローテーションがはるかに容易で、大量のデータを再暗号化する必要がありません。最初のシステム設計時からエンベロープ暗号化方式を適用することを強く推奨します。
 
+<a id="recommended-approach-key-partitioning-optional"></a>
 #### 2. キー分割(選択)
 
 キー分割は、セキュリティレベルをさらに一段階高める戦略です。ただし、管理の複雑さが増すため、サービス特性に応じて選択的に適用できます。
@@ -390,7 +434,8 @@ curl -X GET \
 * **適用時のメリット**: 個人情報や金融データなど機密情報の保護強化、キー流出時の被害範囲の最小化
 * **適用時の考慮事項**: 管理の複雑化、キーの追跡及び整理ポリシーが必要
 
-### 期待効果
+<a id="expected-benefits"></a>
+### 期待効果 { #expected-benefits }
 
 Secure Key Managerのキーローテーション機能を適切に活用することで、次のような効果を得ることができます。
 
@@ -401,8 +446,9 @@ Secure Key Managerのキーローテーション機能を適切に活用する�
 
 キーローテーションは一回限りの作業ではなく、継続的なセキュリティプロセスです。サービス規模とセキュリティ要件に合わせて戦略を選択し、定期的な検討と改善を通じてセキュリティレベルを継続的に向上させることができます。
 
-## 参考資料
+<a id="references"></a>
+## 参考資料 { #references }
 
 * [Secure Key Managerコンソールガイド](./console-guide)
 * [Secure Key Manager API v1.2ガイド](./api-guide-v1.2)
-* [対称鍵管理機能を活用したエンベロープ暗号化](./overview/#secure-key-manager)
+* [対称鍵管理機能を活用したエンベロープ暗号化](./overview/#envelope-encryption-with-symmetric-key-management-of-secure-key-manager)

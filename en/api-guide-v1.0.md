@@ -1,17 +1,24 @@
+<!-- machine_translated: true -->
 
-## Security > Secure Key Manager > API v1.0 Guide
+<!-- pre-align:aligned sig=627282543df6 -->
+
+<a id="security-secure-key-manager-api-v10-guide"></a>
+## Security > Secure Key Manager > API v1.0 Guide { #security-secure-key-manager-api-v10-guide }
 
 Secure Key Manager provides various APIs to access user data. Clients must be authenticated via key store to get access to data stored in Secure Kay Manager.
 
-## Secure Key Manager API Common Information
+<a id="secure-key-manager-api-common-information"></a>
+## Secure Key Manager API Common Information { #secure-key-manager-api-common-information }
 
-### API Endpoint
+<a id="api-endpoint"></a>
+### API Endpoint { #api-endpoint }
 
 | Region | Endpoint |
 |---|---|
 | Global | https://api-keymanager.nhncloudservice.com |
 
-### Authentication and Authorization
+<a id="authentication-and-authorization"></a>
+### Authentication and Authorization { #authentication-and-authorization }
 
 An AppKey or a Project Integrated Appkey is required to use the Secure Key Manager API v1.0.
 
@@ -19,7 +26,8 @@ An AppKey is a unique authentication key issued for each individual NHN Cloud se
 
 For more information on checking and using Appkeys, please refer to the [Appkey](/nhncloud/en/public-api/appkey). For more information on creating and using Project Integrated Appkeys, please refer to the [Project Integrated Appkey](/nhncloud/en/public-api/project-integrated-appkey).
 
-### List of APIs
+<a id="list-of-apis"></a>
+### List of APIs { #list-of-apis }
 
 | Method | URI | Description |
 |---|---|---|
@@ -28,22 +36,11 @@ For more information on checking and using Appkeys, please refer to the [Appkey]
 | POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Encrypt data with the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Decrypt data with the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | Create AES-256 symmetric keys that can be used by a client for data encryption/decryption in local environment. |
-| GET | /keymanager/{v1.0\|v1.1}/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Query the symmetric key stored in Secure Key Manager.|
+| GET | /keymanager/{v1.0\|v1.1}/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Query the symmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Sign data with the asymmetric key stored in Secure Key Manager. |
 | POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Verify data and signature with the asymmetric key stored in Secure Key Manager. |
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Query the private key stored in Secure Key Manager. |
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Query the public key stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores | Query the key stores stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId} | Query the details of the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys | Query the keys in the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId} | Query the details of the key in the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips | Query the IPv4 authentication information in the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value} | Query the details of the IPv4 authentication information in the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs | Query the MAC authentication information in the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue} | Query the details of the MAC authentication information in the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates | Query the certificate authentication information in the key store stored in Secure Key Manager. |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName} | Query the details of the certificate authentication information in the key store stored in Secure Key Manager. |
-
 [HTTP Header of API Request]
 
 To use MAC address authentication of Secure Key Manager, you must make a request by setting the client's MAC address in the HTTP header.
@@ -71,13 +68,15 @@ X-TOAST-CLIENT-MAC-ADDR: {MAC Address}
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | resultCode | Number | Result code value of API call |
 | resultMessage | String | Result message of API call |
 | isSuccessful | Boolean | Whether API call is successful or not |
 
-## Query Client Information
+<a id="query-client-information"></a>
+## Query Client Information { #query-client-information }
 This API is used to query information of the client that called API.
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/confirm
@@ -96,15 +95,18 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/c
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | clientIp | String | IP address of the client that called API |
 | clientMacHeader | String |Header value of MAC address of the client that called API |
 | clientSentCertificate | Boolean | Whether the client that called API is using certificate or not |
 
-## Confidential Data
+<a id="confidential-data"></a>
+## Confidential Data { #confidential-data }
 
-### Query Confidential Data
+<a id="query-confidential-data"></a>
+### Query Confidential Data { #query-confidential-data }
 This API is used to query confidential data stored in Secure Key Manager.
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/secrets/{keyid}
@@ -121,13 +123,16 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | secret | String | Query result of confidential data |
 
-## Symmetric Key
+<a id="symmetric-key"></a>
+## Symmetric Key { #symmetric-key }
 
-### Encrypt Symmetric Keys
+<a id="encrypt-symmetric-keys"></a>
+### Encrypt Symmetric Keys { #encrypt-symmetric-keys }
 This API is used to encrypt data with the symmetric key created in Secure Key Manager. A user can pass 32KB or smaller text data, and the data can be encrypted with the symmetric key stored in Secure Key Manager.
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
@@ -140,6 +145,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Data to be encrypted with the symmetric key |
@@ -156,12 +162,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | ciphertext | String | Result of data encryption with the symmetric key |
 | keyVersion | Number | Version of the symmetric key used for processing the API request |
 
-### Decrypt Symmetric Keys
+<a id="decrypt-symmetric-keys"></a>
+### Decrypt Symmetric Keys { #decrypt-symmetric-keys }
 This API is used to decrypt data with the symmetric key created in Secure Key Manager. A use can pass encrypted text, and the text data can be decrypted with the symmetric key stored in Secure Key Manager.
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
@@ -173,6 +181,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "ciphertext": "AAAAABzGwQniNneKXmcOLhWnxEqC1rNY+UdVb3lyeX/4wSrP"
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | ciphertext | String | Data to be decrypted with the symmetric key |
@@ -189,12 +198,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Result of data decryption with the symmetric key |
 | keyVersion | Number | Version of the symmetric key used for processing the API request |
 
-### Generate Local Symmetric Keys Encrypted with the Symmetric Key
+<a id="generate-local-symmetric-keys-encrypted-with-the-symmetric-key"></a>
+### Generate Local Symmetric Keys Encrypted with the Symmetric Key { #generate-local-symmetric-keys-encrypted-with-the-symmetric-key }
 This API is used to create AES-256 symmetric keys that a client can use in local environment. localKeyPlaintext is a base64-encoded form of the generated symmetric key, and it is readily available after base64 decoding. localKeyCiphertext is a base64-encoded form of the generated symmetric key encrypted with the symmetric key stored in Secure Key Manager, and it is used to store data in a storage. The symmetric key stored in storage can be used after being decrypted by using the decryption API.
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
@@ -213,16 +224,19 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | localKeyPlaintext | String | Base64-encoded AES-256 symmetric key |
 | localKeyCiphertext | String | Base64-encoded AES-256 symmetric key encrypted with the symmetric key stored in Secure Key Manager |
 | keyVersion | Number | Version of the symmetric key used for processing the API request |
 
-### Query the Symmetric Key
+<a id="query-the-symmetric-key"></a>
+### Query the Symmetric Key { #query-the-symmetric-key }
 
 Users can query the symmetric key (AES-256) stored in Secure Key Manager.
 
+<a id="query-the-symmetric-key-v10"></a>
 #### v1.0
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key
@@ -239,10 +253,12 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | symmetricKey | String | Symmetric key data (Hex string form) |
 
+<a id="query-the-symmetric-key-v11"></a>
 #### v1.1
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
@@ -266,14 +282,17 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/s
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | symmetricKey | String | Symmetric key data (Hex string form) |
 | keyVersion | Number |  Version of the symmetric key used for processing the API request |
 
-## Asymmetric Key
+<a id="asymmetric-key"></a>
+## Asymmetric Key { #asymmetric-key }
 
-### Sign with the Asymmetric Key
+<a id="sign-with-the-asymmetric-key"></a>
+### Sign with the Asymmetric Key { #sign-with-the-asymmetric-key }
 This API is used to sign data with the asymmetric key created in Secure Key Manager. Users can pass 245 Byte or smaller text data, and the data is signed with the asymmetric key stored in Secure Key Manager.
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign
@@ -285,6 +304,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Data to sign with the asymmetric key |
@@ -301,12 +321,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | signature | String | Signature value of signing the data with the asymmetric key |
 | keyVersion | Number | Version of the asymmetric key used for processing the API request |
 
-### Verify Data with the Asymmetric Key
+<a id="verify-data-with-the-asymmetric-key"></a>
+### Verify Data with the Asymmetric Key { #verify-data-with-the-asymmetric-key }
 This API is used to verify data with the asymmetric key created in Secure Key Manager. Users can pass data and signature value, and use asymmetric keys stored in Secure Key Manager to verify that data has not been forged.
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify
@@ -320,6 +342,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "signature": "AAAAAGI9zf831DX..."
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | plaintext | String | Data to be verified with the asymmetric key |
@@ -338,12 +361,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | result | Boolean | Result of verifying data and signature value with the asymmetric key |
 | keyVersion | Number | Version of the asymmetric key used for processing the API request |
 
-### Query the Private Key
+<a id="query-the-private-key"></a>
+### Query the Private Key { #query-the-private-key }
 
 Users can query the private key among the asymmetric keys stored in Secure Key Manager.
 
@@ -373,6 +398,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | keyType | String | Asymmetric key form |
@@ -380,7 +406,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
 | encodedKey | String | Private key data (Base64-encoded form) |
 | keyVersion | Number | Version of asymmetric key used for processing API requests |
 
-### Query the Public Key
+<a id="query-the-public-key"></a>
+### Query the Public Key { #query-the-public-key }
 
 Users can query the public key among the asymmetric keys stored in Secure Key Manager, regardless of authentication.
 
@@ -410,477 +437,10 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | Name | Type | Description |
 |---|---|---|
 | keyType | String | Asymmetric key form |
 | key | String | Public key data (Hex string form) |
 | encodedKey | String | Public key data (Base64-encoded form) |
 | keyVersion | Number | Version of asymmetric key used for processing API requests |
-
-## Key Store
-
-### Query the List of Key stores
-Users can query the list of IDs for key stores created in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyStoreIdList": [
-            1,
-            2,
-            ...
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| keyStoreIdList | List | List of key store IDs |
-
-### Retrieve Key Store List Details
-You can retrieve a detailed list of key stores created in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores?detail={detail}
-```
-
-[Request Parameter]
-
-| Name | Type | Description |
-|---|---|---|
-| detail | Boolean | Include details (default: false) |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyStoreList": [
-            {
-                "keyStoreId": 1,
-                "name": "key store name",
-                "description": "key store description",
-                "ip4AuthUse": "Y",
-                "macAuthUse": "N",
-                "certificateAuthUse": "Y",
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-02-10T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-02-10T15:00:00.000"
-            },
-            ...
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| keyStoreList | List | Key store list details |
-| keyStoreId | Number | Key store ID |
-| name | String | Key store name |
-| description | String | Key store description |
-| ip4AuthUse | String | Whether to use IPv4 authentication for the key store (Y/N) |
-| macAuthUse | String | Whether to use MAC authentication for the key store (Y/N) |
-| certificateAuthUse | String | Whether to use certificate authentication for the key store (Y/N) |
-| creationUser | String | User who created the key store |
-| creationDatetime | String | Creation date and time of the key store |
-| lastChangeUser | String | User who last modified the key store |
-| lastChangeDatetime | String | Last modification date and time of the key store |
-
-### Query the Details of the Key Store
-Users can query detailed information about the key store created in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyStoreId": 1,
-        "name": "Key store name",
-        "description": "Key store description",
-        "ip4AuthUse": "Y",
-        "macAuthUse": "N",
-        "certificateAuthUse": "Y",
-        "creationUser": "SECURE_KEY_MANAGER",
-        "creationDatetime": "2025-01-25T12:00:00",
-        "lastChangeUser": "SECURE_KEY_MANAGER",
-        "lastChangeDatetime": "2025-01-30T15:00:00.000"
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| keyStoreId | Number | Key store ID |
-| name | String | Key store name |
-| description | String | Key store descriptions |
-| ip4AuthUse | String | Whether IPv4 authentication is enabled for the key store or not (Y/N) |
-| macAuthUse | String | Whether MAC authentication is enabled for the key store or not (Y/N) |
-| certificateAuthUse | String | Whether the certificate authentication is enabled for the key store or not (Y/N) |
-| creationUser | String | User who created the key store |
-| creationDatetime | String | Key store creation date and time |
-| lastChangeUser | String | Key store last modified user |
-| lastChangeDatetime | String | Key store last modified date and time |
-
-## Key
-
-### Query the List of Keys
-Users can query the list of key IDs created in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyIdList": [
-            "035a0ffa16a64bbf8171c4bdcea37bbf",
-            "04fde6d8ee604cbe8fa7abe135a7dc3e",
-            ...
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| keyIdList | List | Key ID list |
-
-### Retrieve Key List Details
-You can retrieve a detailed list of keys created in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
-```
-
-[Request Parameter]
-
-| Name | Type | Description |
-|---|---|---|
-| detail | Boolean | Whether to include detailed information (default: false) |
-| type | String | Key type filter (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY, default: all, multiple selections not allowed) |
-| name | String | Key name filter (maximum 100 characters) |
-| status | String | Key status filter (active/inactive, default: all) |
-| pageNumber | Number | Page number (default: 1, must be a positive integer) |
-| pageSize | Number | Page size (default: 10, 10-100) |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyList": [
-            {
-                "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
-                "name": "key name",
-                "description": "key description",
-                "keyType": "SYMMETRIC_KEY",
-                "currentKeyValueVersion": 2,
-                "autoRotationPeriod": 0,
-                "nextAutoRotationDate": null,
-                "lastAccessDatetime": "2025-02-10T15:13:13.377",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-02-10T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-02-10T15:00:00.000"
-            },
-            ...
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| keyList | List | Key list details |
-| keyId | String | Key ID |
-| name | String | Key name |
-| description | String | Key description |
-| keyType | String | Key type (SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | Number | Current key version |
-| autoRotationPeriod | Number | Key rotation period |
-| nextAutoRotationDate | String | Next scheduled key rotation date |
-| lastAccessDatetime | String | Last accessed date and time of the key |
-| deletionDatetime | String | Scheduled deletion date and time of the key |
-| creationUser | String | User who created the key |
-| creationDatetime | String | Creation date and time of the key |
-| lastChangeUser | String | User who last modified the key |
-| lastChangeDatetime | String | Last modification date and time of the key |
-
-### Query the details of keys
-Users can query detailed information about the key created in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
-        "name": "Key name",
-        "description": "Key descriptions",
-        "keyType": "SYMMETRIC_KEY",
-        "currentKeyValueVersion": 2,
-        "autoRotationPeriod": 0,
-        "nextAutoRotationDate": null,
-        "lastAccessDatetime": "2021-12-13T15:13:13.377",
-        "deletionDatetime": null,
-        "creationUser": "SECURE_KEY_MANAGER",
-        "creationDatetime": "2025-01-25T12:00:00",
-        "lastChangeUser": "SECURE_KEY_MANAGER",
-        "lastChangeDatetime": "2025-01-30T15:00:00.000"
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| keyId | String | Key ID |
-| name | String | Key name |
-| description | String | Key descriptions |
-| keyType | String | Key type(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | Number | Current key version |
-| autoRotationPeriod | Number | Key rotation cycle |
-| nextAutoRotationDate | String | Key next rotation date |
-| lastAccessDatetime | String | Key last used date and time |
-| creationUser | String | User who created the key |
-| creationDatetime | String | Key creation date and time |
-| lastChangeUser | String | Key last modified user |
-| lastChangeDatetime | String | Key last modified date and time |
-
-## Authentication Information
-
-### Query the List of IPv4 Authentication Information
-Users can query the list of IPv4 authentication information in the key store configured in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "ipv4List": [
-            "127.0.0.1",
-            "127.0.0.2",
-            ...
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| ipv4List | List | IPv4 authentication information list |
-
-### Query the details of IPv4 Authentication Information
-Users can query detailed information about the IPv4 authentication in the key store configured in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
-```
-
-[Request Parameter]
-
-| Name | Type | Description |
-|---|---|---|
-| ipv4Value | String | IPv4 address to retrieve |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "ipv4List": [
-            {
-                "value": "127.0.0.1",
-                "description": "IPv4 descriptions",
-                "lastAccessDatetime": "2025-01-25T13:00:00",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-01-25T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-01-30T15:00:00.000"
-            }
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| ipv4List | List | IPv4 authentication information list |
-| value | String | IPv4 value |
-| description | String | IPv4 descriptions |
-| lastAccessDatetime | String | IPv4 last used date and time |
-| deletionDatetime | String | IPv4 deletion scheduled date and time |
-| creationUser | String | User who created the IPv4 |
-| creationDatetime | String | IPv4 creation date and time |
-| lastChangeUser | String | IPv4 last modified user |
-| lastChangeDatetime | String | IPv4 last modified date and time |
-
-### Query the List of MAC Authentication Information
-Users can query the list of MAC authentication information in the key store configured in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "macList": [
-            "aa:aa:aa:aa:aa:aa",
-            "bb:bb:bb:bb:bb:bb",
-            ...
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| macList | List | MAC authentication information list |
-
-### Query the details of MAC Authentication Information
-Users can query detailed information about the MAC authentication in the key store configured in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
-```
-
-[Request Parameter]
-
-| Name | Type | Description |
-|---|---|---|
-| macValue | String | MAC address to retrieve |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "macList": [
-            {
-                "value": "aa:aa:aa:aa:aa:aa",
-                "description": "MAC descriptions",
-                "lastAccessDatetime": "2025-01-25T13:00:00",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-01-25T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-01-30T15:00:00.000"
-            }
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| macList | List | MAC authentication information list |
-| value | String | MAC value |
-| description | String | MAC descriptions |
-| lastAccessDatetime | String | MAC last used date and time |
-| deletionDatetime | String | MAC deletion scheduled date and time |
-| creationUser | String | User who created the MAC |
-| creationDatetime | String | MAC creation date and time |
-| lastChangeUser | String | MAC last modified user |
-| lastChangeDatetime | String | MAC last modified date and time |
-
-### Query the List of Certificate Authentication Information
-Users can query the list of the certifacate authentication information in the key store configured in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "certificateList": [
-            "certificate1",
-            "certificate2",
-            ...
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| certificateList | List | Certifacate authentication information list |
-
-### Query the details of Certifacate Authentication Information
-Users can query detailed information about the certifacate authentication in the key store configured in Secure Key Manager.
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
-```
-
-[Request Parameter]
-
-| Name | Type | Description |
-|---|---|---|
-| certificateName | String | Certificate name to retrieve |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "certificateList": [
-            {
-                "name": "certificate1",
-                "password": "password1",
-                "description": "Certificate descriptions",
-                "expirationDate": "2029-07-21T10:26:47",
-                "lastAccessDatetime": "2025-01-25T13:00:00",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-01-25T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-01-30T15:00:00.000"
-            }
-        ]
-    }
-}
-```
-| Name | Type | Description |
-|---|---|---|
-| certificateList | List | Certificate authentication information list |
-| name | String | Certificate name |
-| password | String | Certificate password |
-| description | String | Certificate descriptions |
-| lastAccessDatetime | String | Certificate last used date and time |
-| deletionDatetime | String | Certificate deletion scheduled date and time |
-| creationUser | String | User who created the certificate |
-| creationDatetime | String | Certificate creation date and time |
-| lastChangeUser | String | Certificate last modified user |
-| lastChangeDatetime | String | Certificate last modified date and time |
