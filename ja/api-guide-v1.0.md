@@ -1,17 +1,24 @@
+<!-- machine_translated: true -->
 
-## Security > Secure Key Manager > API v1.0ガイド
+<!-- pre-align:aligned sig=627282543df6 -->
+
+<a id="security-secure-key-manager-api-v10-guide"></a>
+## Security > Secure Key Manager > API v1.0ガイド { #security-secure-key-manager-api-v10-guide }
 
 Secure Key Managerは、ユーザーデータにアクセスできる多様なAPIを提供します。クライアントは鍵の保存場所に設定した認証をパスした後に、Secure Key Managerに保存したデータを使用できます。
 
-## Secure Key Manager API共通情報
+<a id="secure-key-manager-api-common-information"></a>
+## Secure Key Manager API共通情報 { #secure-key-manager-api-common-information }
 
-### APIエンドポイント
+<a id="api-endpoint"></a>
+### APIエンドポイント { #api-endpoint }
 
 | リージョン | エンドポイント |
 |---|---|
 | Global | https://api-keymanager.nhncloudservice.com |
 
-### 認証および権限
+<a id="authentication-and-authorization"></a>
+### 認証および権限 { #authentication-and-authorization }
 
 Secure Key Manager API v1.0を使用するにはAppkeyまたはプロジェクト統合Appkeyが必要です。
 
@@ -19,31 +26,21 @@ Appkeyは、NHN Cloudの各サービスごとに発行される固有の認証�
 
 Appkeyの確認及び使用に関する詳細は、[Appkey](/nhncloud/ja/public-api/appkey)を参照してください。プロジェクト統合Appkeyの作成及び使用に関する詳細は、[プロジェクト統合Appkey](/nhncloud/ja/public-api/project-integrated-appkey)を参照してください。
 
-### APIリスト
+<a id="list-of-apis"></a>
+### APIリスト { #list-of-apis }
 
 | Method | URI | 説明 |
 |---|---|---|
-| GET | /keymanager/v1.0/appkey/{appkey}/confirm | APIを呼び出したクライアント情報を提供します。|
-| GET | /keymanager/v1.0/appkey/{appkey}/secrets/{keyid} | Secure Key Managerに保存した機密データを照会します。|
-| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Managerに保存した対称鍵でデータを暗号化します。|
-| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Managerに保存した対称鍵でデータを復号します。|
-| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | クライアントがローカル環境でデータの暗号化/復号に使用できるAES-256対称鍵を作成します。|
+| GET | /keymanager/v1.0/appkey/{appkey}/confirm | APIを呼び出したクライアント情報を提供します。 |
+| GET | /keymanager/v1.0/appkey/{appkey}/secrets/{keyid} | Secure Key Managerに保存した機密データを照会します。 |
+| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt | Secure Key Managerに保存した対称鍵でデータを暗号化します。 |
+| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt | Secure Key Managerに保存した対称鍵でデータを復号します。 |
+| POST | /keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key | クライアントがローカル環境でデータの暗号化/復号に使用できる AES-256 対称鍵を生成します。 |
 | GET | /keymanager/{v1.0\|v1.1}/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key | Secure Key Managerに保存した対称鍵を照会します。 |
-| POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Secure Key Managerに保存した非対称鍵でデータを署名します。|
-| POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Secure Key Managerに保存した非対称鍵でデータと署名を検証します。|
-| GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Secure Key Managerに保存した秘密鍵を照会します。 |
+| POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign | Secure Key Managerに保存した非対称鍵でデータに署名します。 |
+| POST | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify | Secure Key Managerに保存した非対称鍵でデータと署名を検証します。 |
+| GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/privateKey | Secure Key Managerに保存した個人キーを照会します。 |
 | GET | /keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/publicKey | Secure Key Managerに保存した公開鍵を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores | Secure Key Managerに保存されたキーストアを照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId} | Secure Key Managerに保存されたキーストアの詳細を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys | Secure Key Managerに保存されたキーストアのキーを照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId} | Secure Key Managerに保存されたキーストアキーの詳細を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips | Secure Key Managerに保存されたキーストアのIPv4認証情報を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value} | Secure Key Managerに保存されたキーストアのIPv4認証情報の詳細を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs | Secure Key Managerに保存されたキーストアのMAC認証情報を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue} | Secure Key Managerに保存されたキーストアのMAC認証情報の詳細を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates | Secure Key Managerに保存されたキーストアの証明書認証情報を照会します。 |
-| GET | /keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName} | Secure Key Managerに保存されたキーストアの証明書認証情報の詳細を照会します。 |
-
 [APIリクエストのHTTPヘッダ]
 
 Secure Key ManagerのMACアドレス認証を使用するには、HTTPヘッダにクライアントMACアドレスを設定してリクエストする必要があります。
@@ -71,13 +68,15 @@ X-TOAST-CLIENT-MAC-ADDR: {MACアドレス}
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | resultCode | Number | API呼び出し結果コード値 |
 | resultMessage | String | API呼び出し結果メッセージ |
 | isSuccessful | Boolean | API呼び出し成否 |
 
-## クライアント情報照会
+<a id="query-client-information"></a>
+## クライアント情報照会 { #query-client-information }
 APIを呼び出したクライアント情報を照会する時に使用します。
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/confirm
@@ -96,15 +95,18 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/c
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | clientIp | String | APIを呼び出したクライアントのIPアドレス |
 | clientMacHeader | String |APIを呼び出したクライアントのMACアドレスヘッダ値 |
 | clientSentCertificate | Boolean | APIを呼び出したクライアントが証明書を使用しているかどうか |
 
-## 機密データ
+<a id="confidential-data"></a>
+## 機密データ { #confidential-data }
 
-### 機密データ照会
+<a id="query-confidential-data"></a>
+### 機密データ照会 { #query-confidential-data }
 Secure Key Managerに保存した機密データを照会する時に使用します。
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/secrets/{keyid}
@@ -121,13 +123,16 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | secret | String | 機密データ照会結果 |
 
-## 対称鍵
+<a id="symmetric-key"></a>
+## 対称鍵 { #symmetric-key }
 
-### 対称鍵暗号化
+<a id="encrypt-symmetric-keys"></a>
+### 対称鍵暗号化 { #encrypt-symmetric-keys }
 Secure Key Managerに作成した対称鍵でデータを暗号化する時に使用します。ユーザーは32KB以下のテキストデータを転送して、Secure Key Managerに保存した対称鍵で暗号化できます。
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/encrypt
@@ -140,6 +145,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 対称鍵で暗号化するデータ |
@@ -156,12 +162,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | ciphertext | String | 対称鍵でデータを暗号化した結果 |
 | keyVersion | Number | APIリクエスト処理に使用した対称鍵バージョン |
 
-### 対称鍵復号
+<a id="decrypt-symmetric-keys"></a>
+### 対称鍵復号 { #decrypt-symmetric-keys }
 Secure Key Managerに作成した対称鍵でデータを復号する時に使用します。ユーザーは暗号化されたテキストを転送して、Secure Key Managerに保存した対称鍵で復号できます。
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/decrypt
@@ -173,6 +181,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "ciphertext": "AAAAABzGwQniNneKXmcOLhWnxEqC1rNY+UdVb3lyeX/4wSrP"
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | ciphertext | String | 対称鍵で復号するデータ |
@@ -189,12 +198,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 対称鍵でデータを復号した結果 |
 | keyVersion | Number | APIリクエスト処理に使用した対称鍵バージョン |
 
-### 対称鍵で暗号化したローカル対称鍵作成
+<a id="generate-local-symmetric-keys-encrypted-with-the-symmetric-key"></a>
+### 対称鍵で暗号化したローカル対称鍵作成 { #generate-local-symmetric-keys-encrypted-with-the-symmetric-key }
 クライアントがローカル環境で使用できるAES-256対称鍵を作成する時に使用します。localKeyPlaintextは、作成した対称鍵をBase64エンコードした形式で、Base64エンコード後すぐに使用できます。localKeyCiphertextは、作成した対称鍵をSecure Key Managerに保存した対称鍵で暗号化した後にBase64エンコードした形式で、ストレージに保存する時に使用します。ストレージに保存した対称鍵は、復号APIを使用して復号した後に使用できます。
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/create-local-key
@@ -213,16 +224,19 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | localKeyPlaintext | String | Base64エンコードしたAES-256対称鍵 |
 | localKeyCiphertext | String | Secure Key Managerに保存した対称鍵で暗号化した後、Base64エンコードしたAES-256対称鍵 |
 | keyVersion | Number | APIリクエスト処理に使用した対称鍵バージョン |
 
-### 対称鍵照会
+<a id="query-the-symmetric-key"></a>
+### 対称鍵照会 { #query-the-symmetric-key }
 
 Secure Key Managerに保存した対称鍵(AES-256)を照会できます。
 
+<a id="query-the-symmetric-key-v10"></a>
 #### v1.0
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key
@@ -239,10 +253,12 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/s
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | symmetricKey | String | 対称鍵データ(16進数文字列形式) |
 
+<a id="query-the-symmetric-key-v11"></a>
 #### v1.1
 ```text
 GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/symmetric-keys/{keyid}/symmetric-key?keyVersion={keyVersion}
@@ -266,14 +282,17 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.1/appkey/{appkey}/s
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | symmetricKey | String | 対称鍵データ(16進数文字列形式) |
 | keyVersion | Number | APIリクエスト処理に使用した対称鍵バージョン |
 
-## 非対称鍵
+<a id="asymmetric-key"></a>
+## 非対称鍵 { #asymmetric-key }
 
-### 非対称鍵で署名
+<a id="sign-with-the-asymmetric-key"></a>
+### 非対称鍵で署名 { #sign-with-the-asymmetric-key }
 Secure Key Managerに作成した非対称鍵で、データを署名する時に使用します。ユーザーは245Byte以下のテキストデータを転送して、Secure Key Managerに保存した非対称鍵で署名できます。
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/sign
@@ -285,6 +304,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "plaintext": "data"
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 非対称鍵で署名するデータ |
@@ -301,12 +321,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | signature | String | 非対称鍵でデータを署名した署名値 |
 | keyVersion | Number | APIリクエスト処理に使用した非対称鍵バージョン |
 
-### 非対称鍵でデータ検証
+<a id="verify-data-with-the-asymmetric-key"></a>
+### 非対称鍵でデータ検証 { #verify-data-with-the-asymmetric-key }
 Secure Key Managerに作成した非対称鍵で、データを検証する時に使用します。ユーザーはデータと署名値を転送して、Secure Key Managerに保存した非対称鍵でデータが改ざんされていないかを検証できます。
 ```text
 POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/asymmetric-keys/{keyid}/verify
@@ -320,6 +342,7 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     "signature": "AAAAAGI9zf831DX..."
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | plaintext | String | 非対称鍵で検証するデータ |
@@ -338,12 +361,14 @@ POST https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | result | Boolean | 非対称鍵でデータと署名値を検証した結果 |
 | keyVersion | Number | APIリクエスト処理に使用した非対称鍵バージョン |
 
-### 秘密鍵照会
+<a id="query-the-private-key"></a>
+### 秘密鍵照会 { #query-the-private-key }
 
 Secure Key Managerに保存した非対称鍵のうち、秘密鍵を照会できます。
 
@@ -373,6 +398,7 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyType | String | 非対称鍵形式 |
@@ -380,7 +406,8 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
 | encodedKey | String | 秘密鍵データ(Base64エンコード形式) |
 | keyVersion | Number | APIリクエスト処理に使用した非対称鍵のバージョン |
 
-### 公開鍵照会
+<a id="query-the-public-key"></a>
+### 公開鍵照会 { #query-the-public-key }
 
 Secure Key Managerに保存した非対称鍵のうち、公開鍵を照会できます。
 認証に関係なく照会できます。
@@ -411,477 +438,10 @@ GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/a
     }
 }
 ```
+
 | 名前 | タイプ | 説明 |
 |---|---|---|
 | keyType | String | 非対称鍵形式 |
 | key | String | 公開鍵データ(16進数文字列形式) |
 | encodedKey | String | 公開鍵データ(Base64エンコード形式) |
 | keyVersion | Number | APIリクエスト処理に使用した非対称鍵のバージョン |
-
-## キーストア
-
-### キーストアリスト照会
-Secure Key Managerに作成したキーストアのIDリストを照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyStoreIdList": [
-            1,
-            2,
-            ...
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| keyStoreIdList | List | キーストアIDリスト |
-
-### キーストアリスト詳細照会
-Secure Key Managerに作成したキーストアの詳細情報リストを照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores?detail={detail}
-```
-
-[Request Parameter]
-
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| detail | Boolean | 詳細情報の包含有無(デフォルト値: false) |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyStoreList": [
-            {
-                "keyStoreId": 1,
-                "name": "キーストア名",
-                "description": "キーストアの説明",
-                "ip4AuthUse": "Y",
-                "macAuthUse": "N",
-                "certificateAuthUse": "Y",
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-02-10T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-02-10T15:00:00.000"
-            },
-            ...
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| keyStoreList | List | キーストア詳細情報リスト |
-| keyStoreId | Number | キーストアID |
-| name | String | キーストア名 |
-| description | String | キーストアの説明 |
-| ip4AuthUse | String | キーストアIPv4認証の使用有無(Y/N) |
-| macAuthUse | String | キーストアMAC認証の使用有無(Y/N) |
-| certificateAuthUse | String | キーストア証明書認証の使用有無(Y/N) |
-| creationUser | String | キーストア作成ユーザー |
-| creationDatetime | String | キーストア作成日時 |
-| lastChangeUser | String | キーストア最終修正ユーザー |
-| lastChangeDatetime | String | キーストア最終修正日時 |
-
-### キーストア詳細照会
-Secure Key Managerに作成したキーストア情報を詳細照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyStoreId": 1,
-        "name": "キーストア名",
-        "description": "キーストアの説明",
-        "ip4AuthUse": "Y",
-        "macAuthUse": "N",
-        "certificateAuthUse": "Y",
-        "creationUser": "SECURE_KEY_MANAGER",
-        "creationDatetime": "2025-01-25T12:00:00",
-        "lastChangeUser": "SECURE_KEY_MANAGER",
-        "lastChangeDatetime": "2025-01-30T15:00:00.000"
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| keyStoreId | Number | キーストアID |
-| name | String | キーストア名 |
-| description | String | キーストアの説明 |
-| ip4AuthUse | String | キーストアIPv4認証の使用有無(Y/N) |
-| macAuthUse | String | キーストアMAC認証の使用有無(Y/N) |
-| certificateAuthUse | String | キーストア証明書認証の使用有無(Y/N) |
-| creationUser | String | キーストア作成ユーザー |
-| creationDatetime | String | キーストア作成日時 |
-| lastChangeUser | String | キーストアの最終修正ユーザー |
-| lastChangeDatetime | String | キーストアの最終修正日時 |
-
-## キー
-
-### キーリスト照会
-Secure Key Managerに作成したキーのIDリストを照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyIdList": [
-            "035a0ffa16a64bbf8171c4bdcea37bbf",
-            "04fde6d8ee604cbe8fa7abe135a7dc3e",
-            ...
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| keyIdList | List | キーIDリスト |
-
-### キーリスト詳細照会
-Secure Key Managerに作成したキーの詳細情報リストを照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys?detail={detail}&type={type}&name={name}&status={status}&pageNumber={pageNumber}&pageSize={pageSize}
-```
-
-[Request Parameter]
-
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| detail | Boolean | 詳細情報の包含有無(デフォルト値: false) |
-| type | String | キータイプフィルタ(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY、デフォルト値: all、複数選択不可) |
-| name | String | キー名フィルタ(最大100文字) |
-| status | String | キー状態フィルタ(active/inactive、デフォルト値: all) |
-| pageNumber | Number | ページ番号(デフォルト値: 1、正の数) |
-| pageSize | Number | ページサイズ(デフォルト値: 10、10～100) |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyList": [
-            {
-                "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
-                "name": "キー名",
-                "description": "キーの説明",
-                "keyType": "SYMMETRIC_KEY",
-                "currentKeyValueVersion": 2,
-                "autoRotationPeriod": 0,
-                "nextAutoRotationDate": null,
-                "lastAccessDatetime": "2025-02-10T15:13:13.377",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-02-10T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-02-10T15:00:00.000"
-            },
-            ...
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| keyList | List | キー詳細情報リスト |
-| keyId | String | キーID |
-| name | String | キー名 |
-| description | String | キーの説明 |
-| keyType | String | キータイプ(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | Number | 現在のキーバージョン |
-| autoRotationPeriod | Number | キーローテーション周期 |
-| nextAutoRotationDate | String | 次回キーローテーション日 |
-| lastAccessDatetime | String | キー最終使用日時 |
-| deletionDatetime | String | キー削除予定日時 |
-| creationUser | String | キー作成ユーザー |
-| creationDatetime | String | キー作成日時 |
-| lastChangeUser | String | キー最終修正ユーザー |
-| lastChangeDatetime | String | キー最終修正日時 |
-
-### キー詳細照会
-Secure Key Managerに作成したキー情報を詳細に照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/keys/{keyId}
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "keyId": "035a0ffa16a64bbf8171c4bdcea37bbf",
-        "name": "キー名",
-        "description": "キーの説明",
-        "keyType": "SYMMETRIC_KEY",
-        "currentKeyValueVersion": 2,
-        "autoRotationPeriod": 0,
-        "nextAutoRotationDate": null,
-        "lastAccessDatetime": "2021-12-13T15:13:13.377",
-        "deletionDatetime": null,
-        "creationUser": "SECURE_KEY_MANAGER",
-        "creationDatetime": "2025-01-25T12:00:00",
-        "lastChangeUser": "SECURE_KEY_MANAGER",
-        "lastChangeDatetime": "2025-01-30T15:00:00.000"
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| keyId | String | キーID |
-| name | String | キー名 |
-| description | String | キーの説明 |
-| keyType | String | キータイプ(SECRET/SYMMETRIC_KEY/ASYMMETRIC_KEY) |
-| currentKeyValueVersion | Number | 現在キーバージョン |
-| autoRotationPeriod | Number | キーのローテーション周期 |
-| nextAutoRotationDate | String | 次のキーのローテーション日 |
-| lastAccessDatetime | String | キーの最終使用日時 |
-| creationUser | String | キー作成ユーザー |
-| creationDatetime | String | キー作成日時 |
-| lastChangeUser | String | キー最終修正ユーザー |
-| lastChangeDatetime | String | キー最終修正日時 |
-
-## 認証情報
-
-### IPv4認証情報リスト照会
-Secure Key Managerで設定したキーストアのIPv4認証情報リストを照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "ipv4List": [
-            "127.0.0.1",
-            "127.0.0.2",
-            ...
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| ipv4List | List | IPv4認証情報リスト |
-
-### IPv4認証情報詳細照会
-Secure Key Managerで設定したキーストアのIPv4認証情報を詳細照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/ips?value={ipv4Value}
-```
-
-[Request Parameter]
-
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| ipv4Value | String | 照会対象のIPv4アドレス |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "ipv4List": [
-            {
-                "value": "127.0.0.1",
-                "description": "IPv4の説明",
-                "lastAccessDatetime": "2025-01-25T13:00:00",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-01-25T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-01-30T15:00:00.000"
-            }
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| ipv4List | List | IPv4認証情報リスト |
-| value | String | IPv4値 |
-| description | String | IPv4説明 |
-| lastAccessDatetime | String | IPv4最終使用日時 |
-| deletionDatetime | String | IPv4削除予定日時 |
-| creationUser | String | IPv4作成ユーザー |
-| creationDatetime | String | IPv4作成日時 |
-| lastChangeUser | String | IPv4最終修正ユーザー |
-| lastChangeDatetime | String | IPv4最終修正日時 |
-
-### MAC認証情報リスト照会
-Secure Key Managerで設定したキーストアのMAC認証情報リストを照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "macList": [
-            "aa:aa:aa:aa:aa:aa",
-            "bb:bb:bb:bb:bb:bb",
-            ...
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| macList | List | MAC認証情報リスト |
-
-### MAC認証情報詳細照会
-Secure Key Managerで設定したキーストアのMAC認証情報を詳細照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/macs?value={macValue}
-```
-
-[Request Parameter]
-
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| macValue | String | 照会対象のMACアドレス |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "macList": [
-            {
-                "value": "aa:aa:aa:aa:aa:aa",
-                "description": "MAC説明",
-                "lastAccessDatetime": "2025-01-25T13:00:00",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-01-25T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-01-30T15:00:00.000"
-            }
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| macList | List | MAC認証情報リスト |
-| value | String | MAC値 |
-| description | String | MAC説明 |
-| lastAccessDatetime | String | MAC最終使用日時 |
-| deletionDatetime | String | MAC削除予定日時 |
-| creationUser | String | MAC作成ユーザー |
-| creationDatetime | String | MAC作成日時 |
-| lastChangeUser | String | MAC最終修正ユーザー |
-| lastChangeDatetime | String | MAC最終修正日時 |
-
-### 証明書認証情報リスト照会
-Secure Key Managerで設定したキーストアの証明書認証情報リストを照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates
-```
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "certificateList": [
-            "certificate1",
-            "certificate2",
-            ...
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| certificateList | List | 証明書認証情報リスト |
-
-### 証明書認証情報詳細照会
-Secure Key Managerで設定したキーストアの証明書認証情報を詳細に照会できます。
-```text
-GET https://api-keymanager.nhncloudservice.com/keymanager/v1.0/appkey/{appkey}/keystores/{keyStoreId}/certificates?value={certificateName}
-```
-
-[Request Parameter]
-
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| certificateName | String | 照会対象の証明書名 |
-
-[Response Body]
-```
-{
-    "header": {
-        ...
-    },
-     "body": {
-        "certificateList": [
-            {
-                "name": "certificate1",
-                "password": "password1",
-                "description": "証明書説明",
-                "expirationDate": "2029-07-21T10:26:47",
-                "lastAccessDatetime": "2025-01-25T13:00:00",
-                "deletionDatetime": null,
-                "creationUser": "SECURE_KEY_MANAGER",
-                "creationDatetime": "2025-01-25T12:00:00",
-                "lastChangeUser": "SECURE_KEY_MANAGER",
-                "lastChangeDatetime": "2025-01-30T15:00:00.000"
-            }
-        ]
-    }
-}
-```
-| 名前 | タイプ | 説明 |
-|---|---|---|
-| certificateList | List | 証明書認証情報リスト |
-| name | String | 証明書名 |
-| password | String | 証明書パスワード |
-| description | String | 証明書説明 |
-| lastAccessDatetime | String | 証明書最終使用日時 |
-| deletionDatetime | String | 証明書削除予定日時 |
-| creationUser | String | 証明書作成ユーザー |
-| creationDatetime | String | 証明書作成日時 |
-| lastChangeUser | String | 証明書最終修正ユーザー |
-| lastChangeDatetime | String | 証明書最終修正日時 |

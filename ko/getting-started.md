@@ -1,10 +1,14 @@
-## Security > Secure Key Manager > 콘솔 사용 가이드 > 시작하기
+<!-- pre-align:aligned sig=76d6e0cfc969 -->
+
+<a id="security-secure-key-manager-console-user-guide-getting-started"></a>
+## Security > Secure Key Manager > 콘솔 사용 가이드 > 시작하기 { #security-secure-key-manager-console-user-guide-getting-started }
 
 시작하기에서는 Secure Key Manager를 사용하는 데 필요한 기본적인 내용을 설명합니다.
 
 ![getting-started](http://static.toastoven.net/prod_kms/2024-02-27-ko/getting-started.png)
 
-## 키 저장소 생성
+<a id="create-a-key-store"></a>
+## 키 저장소 생성 { #create-a-key-store }
 Secure Key Manager는 키 저장소 단위로 인증 정보와 키를 관리합니다. 키 저장소가 없으면 다음과 같은 화면이 나타납니다.
 
 ![console-guide-01](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-01.png)
@@ -26,12 +30,14 @@ Secure Key Manager는 키 저장소 단위로 인증 정보와 키를 관리합�
 
 ![console-guide-04](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-04.png)
 
-### 키 저장소 상세 정보
+<a id="key-store-details"></a>
+### 키 저장소 상세 정보 { #key-store-details }
 
 키 저장소 우측 상단의 더보기 버튼을 클릭하여, 상세 정보 메뉴를 통해 선택한 키 저장소의 상세 정보를 확인할 수 있습니다.
 ![console-guide-43](http://static.toastoven.net/prod_kms/2024-02-27-ko/console-guide-01.png)
 
-## 키 생성
+<a id="create-a-key"></a>
+## 키 생성 { #create-a-key }
 Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이터는 문자열 데이터를 저장하고 API를 사용한 조회 기능을 제공합니다. 대칭 키는 API를 사용한 데이터 암/복호화 기능을 제공합니다. 비대칭 키는 API를 사용한 데이터 서명/검증 기능을 제공합니다. 사용자는 사용 목적에 맞는 키 유형을 선택한 후 키를 생성할 수 있습니다.
 
 **키 관리** 메뉴를 클릭하면 다음 그림과 같이 키를 관리할 수 있는 화면을 표시합니다.
@@ -57,7 +63,8 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 >
 > NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
 
-### 키 가져오기
+<a id="import-a-key"></a>
+### 키 가져오기 { #import-a-key }
 Secure Key Manager는 대칭 키(AES-256)를 가져오는 기능을 지원합니다.
 
 ![console-guide-10](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-10.png)
@@ -70,10 +77,12 @@ Secure Key Manager는 대칭 키(AES-256)를 가져오는 기능을 지원합니
 
 위와 같은 32개의 Hex String을 쉼표(`,`) 또는 공백(` `)을 구분자로 구분하여 입력하여 키를 업로드합니다.
 
-## 인증 정보 등록
+<a id="register-authentication-information"></a>
+## 인증 정보 등록 { #register-authentication-information }
 Secure Key Manager에서 생성한 키는 인증에 성공한 클라이언트만 사용할 수 있습니다. 클라이언트 인증에 사용하는 인증 정보는 **IPv4 주소 관리**, **MAC 주소 관리**, **인증서 관리** 메뉴에서 등록합니다.
 
-### IPv4 주소 등록
+<a id="register-ipv4-address"></a>
+### IPv4 주소 등록 { #register-ipv4-address }
 **IPv4 주소 관리**를 클릭하면 다음 그림과 같이 클라이언트 인증에 사용하는 IPv4 주소 관리 화면이 나타납니다.
 
 ![console-guide-11](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-11.png)
@@ -90,7 +99,8 @@ IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 �
 
 ![console-guide-13](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-13.png)
 
-### MAC 주소 등록
+<a id="register-mac-address"></a>
+### MAC 주소 등록 { #register-mac-address }
 **MAC 주소 관리**를 클릭하면 클라이언트 인증에 사용하는 MAC 주소 관리 화면이 나타납니다.
 ![console-guide-14](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-14.png)
 
@@ -102,7 +112,8 @@ IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 �
 
 ![console-guide-16](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-16.png)
 
-### 클라이언트 인증서 등록
+<a id="register-client-certificates"></a>
+### 클라이언트 인증서 등록 { #register-client-certificates }
 **인증서 관리**를 클릭하면 클라이언트 인증에 사용하는 인증서 관리 화면이 나타납니다.
 
 ![console-guide-17](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-17.png)
@@ -115,12 +126,14 @@ IPv4는 IP 형식뿐만 아니라, CIDR 표기법을 통한 IPv4의 대역을 �
 
 ![console-guide-19](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-19.png)
 
-## 사용자 데이터 관리
+<a id="manage-user-data"></a>
+## 사용자 데이터 관리 { #manage-user-data }
 Secure Key Manager는 사용자가 생성한 데이터(키, 인증 정보)의 상세 정보를 제공합니다. 사용자 데이터 목록에서 **상세 정보 아이콘**을 클릭하면 다음 그림과 같이 상세 정보를 표시합니다.
 
 ![console-guide-20](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-20.png)
 
-### 사용자 데이터 삭제
+<a id="delete-user-data"></a>
+### 사용자 데이터 삭제 { #delete-user-data }
 
 사용자가 생성한 데이터의 초기 상태는 **사용 중**입니다. 불필요한 데이터를 삭제하려면 다음 그림과 같이 **상세 정보** 창에서 **삭제 요청**을 클릭합니다.
 
@@ -134,7 +147,8 @@ Secure Key Manager는 사용자가 생성한 데이터(키, 인증 정보)의 �
 
 ![console-guide-23](http://static.toastoven.net/prod_kms/2023-03-28-ko/console-guide-23.png)
 
-### 대칭 키/비대칭 키 회전
+<a id="rotate-symmetricasymmetric-keys"></a>
+### 대칭 키/비대칭 키 회전 { #rotate-symmetricasymmetric-keys }
 
 Secure Key Manager에서는 대칭 키/비대칭 키를 회전할 수 있습니다. 다음 그림과 같이 대칭 키/비대칭 키 상세 정보 창에서 자동 회전 주기를 설정할 수 있습니다. 회전 주기를 '0'으로 설정하면 자동 회전을 사용하지 않습니다.
 

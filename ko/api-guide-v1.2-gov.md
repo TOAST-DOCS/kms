@@ -79,6 +79,7 @@ X-TOAST-CLIENT-MAC-ADDR: {MAC 주소}
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | resultCode | Number | API 호출 결과 코드값 |
@@ -104,6 +105,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | clientIp | String | API를 호출한 클라이언트의 IP 주소 |
@@ -129,6 +131,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | secret | String | 기밀 데이터 조회 결과 |
@@ -146,6 +149,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     "secretValue": "data"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | secretValue | String | 변경할 기밀 데이터 내용 |
@@ -169,6 +173,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyId | String | 키 ID |
@@ -195,6 +200,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "plaintext": "data"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 대칭 키로 암호화할 데이터 |
@@ -211,6 +217,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | ciphertext | String | 대칭 키로 데이터를 암호화한 결과 |
@@ -228,6 +235,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "ciphertext": "AAAAABzGwQniNneKXmcOLhWnxEqC1rNY+UdVb3lyeX/4wSrP"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | ciphertext | String | 대칭 키로 복호화할 데이터 |
@@ -244,6 +252,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 대칭 키로 데이터를 복호화한 결과 |
@@ -268,6 +277,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | localKeyPlaintext | String | Base64 인코딩한 ARIA-256 대칭 키 |
@@ -300,6 +310,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | symmetricKey | String | 대칭 키 데이터(16진수 문자열 형태) |
@@ -319,6 +330,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "plaintext": "data"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 비대칭 키로 서명할 데이터 |
@@ -335,6 +347,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | signature | String | 비대칭 키로 데이터를 서명한 서명값 |
@@ -354,6 +367,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "signature": "AAAAAGI9zf831DX..."
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | plaintext | String | 비대칭 키로 검증할 데이터 |
@@ -372,6 +386,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | result | Boolean | 비대칭 키로 데이터와 서명값을 검증한 결과 |
@@ -403,15 +418,19 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
                 ... 후략 ...",
         "encodedKey": "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCLB47ax4OVyEOnuDFv9iU2iWTFOHVLpoD+fMVqlPJiiuJSwi5x/zd3LojWuUyr+dZ9Icxl23Alu4GwwKgUi4DL8qo8jD14THJoeUgIZ56wmYMvN+CkNnmkyqcGn6yT+AXtBJVGqS/2lssHLIGELi8XXkWdf6OBfig6HgsJAnix8Z+T/QdikEFUI5ZiuUWyHw2Bag9B4CoPF2EgXfu5HcW4GA4KH2PI92O4vNg8AmFVDk2E+ma2quSau7LjS3KY9s3Sq+JqvTPZmqHQJudv9ZYcnbyDG/
                        ... 후략 ...",
+        "standardEncodedKey": "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCly8DZdZKcu2m4yhb1TNnS9BfhnaasFrRCQIWyxRMRWpUHqrbtWu7CkR3t/fPoeg2QxLPrFxbl89U/dTr5T+7rNAVsAmVk9BmvFS4y3351UZGw8zY5tPQVpydcY+ERM1TYzdpCPaYg+zBJyIFmn9IxA97o+JPvkhqWV7OJGEgt9dG/
+                       ... 후략 ...",
         "keyVersion": 0
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyType | String | 비대칭 키 형태 |
 | key | String | 개인 키 데이터(16진수 문자열 형태) |
-| encodedKey | String | 개인 키 데이터(Base64 인코딩 형태) |
+| encodedKey | String | 개인 키 데이터 PKCS#1 포맷(Base64 인코딩 형태) |
+| standardEncodedKey | String | 개인 키 데이터 PKCS#8 포맷(Base64 인코딩 형태) |
 | keyVersion | Number | API 요청 처리에 사용한 비대칭 키 버전 |
 
 ### 공개 키 조회
@@ -441,15 +460,19 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
                 ... 후략 ...",
         "encodedKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweO2seDlchDp7gxb/YlNolkxTh1S6aA/nzFapTyYoriUsIucf83dy6I1rlMq/nWfSHMZdtwJbuBsMCoFIuAy/KqPIw9eExyaHlICGeesJmDLzfgpDZ5pMqnBp+sk/gF7QSVRqkv9pbLByyBhC4vF15FnX+jgX4oOh4LCQJ4sfGfk/0HYpBBVCOWYrlFsh8NgWoPQeAqDxdhIF37uR3FuBgOCh9jyPdjuLzYPAJhVQ5NhPpmtqrkmruy40tymPbN0qviar0z2Zqh0Cbnb/WWHJ28gxv+d+iJCXJvm+fIg7hRYJ5C+mun/N6FB8QHv/
                        ... 후략 ...",
+        "standardEncodedKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx+HwA7i9EdEF0H9EWhFuFprsSdKc4hg0u88kcMnag3aO5AsjkGjfGJk9eqksDKIf2xwx9H3esiXNpY63qFYFXA4WNxpf69LTW+9KenoZfE5suqb2kkZ2B4EhNT5Lt2oQbZ3ehx4KKI7xVeP8TTVoy9/h+3
+                       ... 후략 ...",
         "keyVersion": 0
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyType | String | 비대칭 키 형태 |
 | key | String | 공개 키 데이터(16진수 문자열 형태) |
-| encodedKey | String | 공개 키 데이터(Base64 인코딩 형태) |
+| encodedKey | String | 공개 키 데이터 PKCS#1 포맷(Base64 인코딩 형태) |
+| standardEncodedKey | String | 공개 키 데이터 X.509 SPI 포맷(Base64 인코딩 형태) |
 | keyVersion | Number | API 요청 처리에 사용한 비대칭 키 버전 |
 
 ## 키 추가/삭제
@@ -472,6 +495,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "secretValue" : "data"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 키를 저장할 키 저장소 이름 |
@@ -492,6 +516,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyId | String | 생성된 키 ID |
@@ -514,6 +539,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "autoRotationPeriod" : 0
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 키를 저장할 키 저장소 이름 |
@@ -534,6 +560,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyId | String | 생성된 키 ID |
@@ -554,6 +581,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "autoRotationPeriod" : 0
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 키를 저장할 키 저장소 이름 |
@@ -574,6 +602,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyId | String | 생성된 키 ID |
@@ -603,6 +632,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
 }
 
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyId | String | 생성된 키 ID |
@@ -629,6 +659,7 @@ DELETE https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{ap
 }
 
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyId | String | 생성된 키 ID |
@@ -654,6 +685,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "description" : "Description #1"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | IPv4 주소를 저장할 키 저장소 이름 |
@@ -673,6 +705,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | value | String | 생성된 IPv4 주솟값 |
@@ -692,6 +725,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "description" : "Description #1"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | MAC 주소를 저장할 키 저장소 이름 |
@@ -711,6 +745,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | value | String | 생성된 MAC 주솟값 |
@@ -732,6 +767,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "description" : "Description #1"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 인증서를 저장할 키 저장소 이름 |
@@ -753,6 +789,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | name | String | 생성된 인증서 이름 |
@@ -778,6 +815,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     "value" : "127.0.0.1"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | IPv4 주소를 삭제 요청할 키 저장소 이름 |
@@ -796,6 +834,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | value | String | 삭제 요청한 IPv4 주솟값 |
@@ -814,6 +853,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     "value" : "aa:aa:aa:aa:aa:aa"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | MAC 주소를 삭제 요청할 키 저장소 이름 |
@@ -832,6 +872,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | value | String | 삭제 요청한 MAC 주솟값 |
@@ -850,6 +891,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     "name" : "Certificate Name #1"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 인증서를 삭제 요청할 키 저장소 이름 |
@@ -868,6 +910,7 @@ PUT https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | name | String | 삭제 요청한 인증서 이름 |
@@ -890,6 +933,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "value" : "127.0.0.1"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | IPv4 주소를 즉시 삭제할 키 저장소 이름 |
@@ -908,6 +952,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | value | String | 삭제한 IPv4 주솟값 |
@@ -926,6 +971,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "value" : "aa:aa:aa:aa:aa:aa"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | MAC 주소를 즉시 삭제할 키 저장소 이름 |
@@ -944,6 +990,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | value | String | 삭제한 MAC 주솟값 |
@@ -962,6 +1009,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     "name" : "Certificate Name #1"
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreName | String | 인증서를 즉시 삭제할 키 저장소 이름 |
@@ -980,6 +1028,7 @@ POST https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appk
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | name | String | 삭제한 인증서 이름 |
@@ -1008,6 +1057,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreIdList | List | 키 저장소 ID 목록 |
@@ -1049,6 +1099,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreList | List | 키 저장소 상세 정보 목록 |
@@ -1089,6 +1140,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyStoreId | Number | 키 저장소 ID |
@@ -1125,6 +1177,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyIdList | List | 키 ID 목록 |
@@ -1174,6 +1227,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyList | List | 키 상세 정보 목록 |
@@ -1220,6 +1274,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | keyId | String | 키 ID |
@@ -1258,6 +1313,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | ipv4List | List | IPv4 인증 정보 목록 |
@@ -1296,6 +1352,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | ipv4List | List | IPv4 인증 정보 목록 |
@@ -1329,6 +1386,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | macList | List | MAC 인증 정보 목록 |
@@ -1367,6 +1425,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | macList | List | MAC 인증 정보 목록 |
@@ -1400,6 +1459,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | certificateList | List | 인증서 인증 정보 목록 |
@@ -1440,6 +1500,7 @@ GET https://api-keymanager.gov-nhncloudservice.com/keymanager/v1.2/appkey/{appke
     }
 }
 ```
+
 | 이름 | 타입 | 설명 |
 |---|---|---|
 | certificateList | List | 인증서 인증 정보 목록 |

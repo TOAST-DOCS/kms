@@ -1,5 +1,10 @@
 ## Security > Secure Key Manager > 릴리스 노트
 
+### 2026. 08. 25.
+#### 기능 개선/변경
+  * 비대칭 키 조회 시 표준 필드(standardEncodedKey) 추가
+    * 공개 키의 경우 `X.509 SPI`, 개인 키의 경우 `PKCS#8` 포맷의 필드 추가
+
 ### 2026. 06. 09.
 #### 신규 기능 추가
   * 키 저장소 생성/수정/삭제 API 추가(v1.3)
@@ -30,7 +35,7 @@
 ### 2025. 06. 24.
 #### 기능 개선/변경
   * 신규 오류 메시지 추가
-    * 유효하지 않은 URI로 API 요청 시 오류 메시지 추가. 자세한 내용은 [문제 해결 가이드](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-url-not-found)를 참고.
+    * 유효하지 않은 URI로 API 요청 시 오류 메시지 추가. 자세한 내용은 [문제 해결 가이드](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-call-failure-returns-url-not-found-error-message)를 참고.
 
 ### 2025. 04. 28.
 #### 기능 개선/변경
@@ -65,7 +70,7 @@
 #### 신규 기능 추가
   * 인증 정보 등록/삭제 API 추가
     * API를 이용해 키를 사용하기 위한 인증 정보를 등록하거나 삭제할 수 있는 기능 추가
-    * API를 이용해 인증 정보를 추가하거나 삭제하려면 **User Access Key ID**와 **Secret Access Key** 필요. 자세한 내용은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/getting-started-gov/#api)를 참고.
+    * API를 이용해 인증 정보를 추가하거나 삭제하려면 **User Access Key ID**와 **Secret Access Key** 필요. 자세한 내용은 [User Access Key](/nhncloud/ko/public-api/user-access-key-gov)를 참고.
 
 ### 2024. 02. 27.
 #### 신규 기능 추가
@@ -80,7 +85,7 @@
 #### 신규 기능 추가
   * 키 추가/삭제 API 추가
     * API를 이용해 키를 추가하거나 삭제할 수 있는 기능 추가
-    * API를 이용해 키를 추가하거나 삭제하려면 **User Access Key ID**와 **Secret Access Key** 필요. 자세한 내용은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/getting-started-gov/#api)를 참고.
+    * API를 이용해 키를 추가하거나 삭제하려면 **User Access Key ID**와 **Secret Access Key** 필요. 자세한 내용은 [User Access Key](/nhncloud/ko/public-api/user-access-key-gov)를 참고.
 
 ### 2023. 09. 26.
 #### 기능 개선/변경
@@ -106,4 +111,4 @@
 
 ### 2023. 03. 28.
 #### 신규 서비스 출시
-  * 기밀 데이터(데이터베이스 접속 정보, 앱키, 비밀번호 등), 대칭 키, 비대칭 키와 같이 애플리케이션 서버에 저장할 경우 보안 위험에 노출될 수 있는 데이터를 중앙 집중적으로 안전하게 관리하고, 인증을 통과한 클라이언트만 접근할 수 있게 제어하는 서비스입니다.
+  * 기밀 데이터, 대칭 키, 비대칭 키와 같이 애플리케이션 서버에 저장할 경우 보안 위험에 노출될 수 있는 데이터를 중앙 집중적으로 안전하게 관리하고, 인증을 통과한 클라이언트만 접근할 수 있게 제어하는 서비스입니다.
