@@ -8,18 +8,18 @@
 <a id="june-9-2026-added-features"></a>
 #### Added Features
   * Added key store creation/modification/deletion API (v1.3)
-    * Added a feature to create, modify, and delete a key store using API. For more information, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/).
+    * Added a feature to create, modify, and delete a key store using API. For more information, see [API v1.3 Guide](./api-guide-v1.3/).
 
 <a id="may-27-2026"></a>
 ### May 27, 2026 { #may-27-2026 }
 <a id="may-27-2026-added-features"></a>
 #### Added Features
 * Added asymmetric key standard scheme signing/verification API (v1.3)
-    * Added an API to sign and verify data with an asymmetric key according to standard RSA signing schemes (RSASSA-PSS, RSASSA-PKCS1-v1_5). For more information, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+    * Added an API to sign and verify data with an asymmetric key according to standard RSA signing schemes (RSASSA-PSS, RSASSA-PKCS1-v1_5). For more information, see [API v1.3 Guide](./api-guide-v1.3/).
 <a id="may-27-2026-feature-updates"></a>
 #### Feature Updates
   * Added key store authentication method combination option
-    * Added a feature to select the method for combining multiple authentication methods (IPv4 address, MAC address, client certificate) enabled in the key store. Users can select either all pass (AND, default) or any pass (OR). Existing key stores remain configured as all pass (AND). For more information, see [Console User Guide](/Security/Secure%20Key%20Manager/en/console-guide/).
+    * Added a feature to select the method for combining multiple authentication methods (IPv4 address, MAC address, client certificate) enabled in the key store. Users can select either all pass (AND, default) or any pass (OR). Existing key stores remain configured as all pass (AND). For more information, see [Console User Guide](./console-guide/).
 
 <a id="april-14-2026"></a>
 ### April 14, 2026 { #april-14-2026 }
@@ -35,25 +35,25 @@
 <a id="march-10-2026-added-features"></a>
 #### Added Features
   * Added API v1.3
-    * Added a token authentication method via the `X-NHN-AUTHORIZATION` header. For details, see [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+    * Added a token authentication method via the `X-NHN-AUTHORIZATION` header. For details, see [API v1.3 Guide](./api-guide-v1.3/).
   * Added a confidential data editing API (v1.2, v1.3)
-    * Added a feature to edit confidential data stored in Secure Key Manager using the API. For details, see [API v1.2 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.2/) or [API v1.3 Guide](/Security/Secure%20Key%20Manager/en/api-guide-v1.3/).
+    * Added a feature to edit confidential data stored in Secure Key Manager using the API. For details, see [API v1.2 Guide](./api-guide-v1.2/) or [API v1.3 Guide](./api-guide-v1.3/).
 
 <a id="february-10-2026"></a>
 ### February 10, 2026 { #february-10-2026 }
 <a id="february-10-2026-new-features"></a>
 #### New Features
   * Added API for retrieving detailed key store lists
-    * Added a feature to retrieve detailed key store information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+    * Added a feature to retrieve detailed key store information via API. For more information, refer to the [API v1.0 Guide](./api-guide-v1.0/) or [API v1.2 Guide](./api-guide-v1.2/).
   * Added API for retrieving detailed key lists
-    * Added a feature to retrieve detailed key information via API. For more information, refer to the [API v1.0 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) or [API v1.2 Guide](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/).
+    * Added a feature to retrieve detailed key information via API. For more information, refer to the [API v1.0 Guide](./api-guide-v1.0/) or [API v1.2 Guide](./api-guide-v1.2/).
 
 <a id="june-24-2025"></a>
 ### June 24, 2025 { #june-24-2025 }
 <a id="june-24-2025-feature-updates"></a>
 #### Feature Updates
   * Added new error message
-    * Added an error message for API requests with invalid URIs. For more information, see the [Troubleshooting Guide](/Security/Secure%20Key%20Manager/en/troubleshooting-guide/#api-call-failure-returns-url-not-found-error-message).
+    * Added an error message for API requests with invalid URIs. For more information, see the [Troubleshooting Guide](./troubleshooting-guide/#api-call-failure-returns-url-not-found-error-message).
 
 <a id="april-28-2025"></a>
 ### April 28, 2025 { #april-28-2025 }

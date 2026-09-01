@@ -63,7 +63,7 @@ Secure Key Manager는 키를 3가지 유형으로 구분합니다. 기밀 데이
 
 > [참고]
 >
-> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](https://docs.nhncloud.com/ko/Storage/NAS/ko/console-guide/#_2)를 참고하십시오.
+> NAS 서비스에서 암호화 스토리지 생성 시 설정한 키 저장소에 대칭 키가 저장됩니다. 자세한 내용은 [NAS 사용자 가이드](/Storage/NAS/ko/console-guide/#storage-nas-console-user-guide)를 참고하십시오.
 
 <a id="import-a-key"></a>
 ### 키 가져오기 { #import-a-key }

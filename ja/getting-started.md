@@ -62,7 +62,7 @@ Secure Key Managerは、キーを3つのタイプに区分します。機密デ�
 
 > [参考]
 >
-> NASサービスで暗号化ストレージを作成する際に設定したキーストアに対称鍵が保存されます。詳細は[NASユーザーガイド](https://docs.nhncloud.com/ja/Storage/NAS/ja/console-guide/#_2)を参照してください。
+> NASサービスで暗号化ストレージを作成する際に設定したキーストアに対称鍵が保存されます。詳細は[NASユーザーガイド](/Storage/NAS/ja/console-guide/#storage-nas-console-user-guide)を参照してください。
 
 <a id="import-a-key"></a>
 ### キーのインポート { #import-a-key }
