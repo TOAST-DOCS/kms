@@ -8,18 +8,18 @@
 <a id="june-9-2026-added-features"></a>
 #### 신규 기능 추가
   * 키 저장소 생성/수정/삭제 API 추가(v1.3)
-    * API를 이용하여 키 저장소를 생성, 수정, 삭제할 수 있는 기능 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
+    * API를 이용하여 키 저장소를 생성, 수정, 삭제할 수 있는 기능 추가. 자세한 내용은 [API v1.3 가이드](./api-guide-v1.3/)를 참고.
 
 <a id="may-27-2026"></a>
 ### 2026. 05. 27. { #may-27-2026 }
 <a id="may-27-2026-added-features"></a>
 #### 신규 기능 추가
   * 비대칭 키 표준 스킴 서명/검증 API 추가(v1.3)
-    * 표준 RSA 서명 스킴(RSASSA-PSS, RSASSA-PKCS1-v1_5)에 따라 비대칭 키로 데이터를 서명하고 검증할 수 있는 API 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
+    * 표준 RSA 서명 스킴(RSASSA-PSS, RSASSA-PKCS1-v1_5)에 따라 비대칭 키로 데이터를 서명하고 검증할 수 있는 API 추가. 자세한 내용은 [API v1.3 가이드](./api-guide-v1.3/)를 참고.
 <a id="may-27-2026-feature-updates"></a>
 #### 기능 개선/변경
   * 키 저장소 인증 방식 결합 옵션 추가
-    * 키 저장소에 활성화된 여러 인증 방법(IPv4 주소, MAC 주소, 클라이언트 인증서)을 결합하는 방식을 선택할 수 있는 기능 추가. 모두 통과(AND, 기본값) 또는 하나만 통과(OR) 중 선택할 수 있으며, 기존 키 저장소는 모두 통과(AND)로 유지됩니다. 자세한 내용은 [콘솔 사용 가이드](/Security/Secure%20Key%20Manager/ko/console-guide/)를 참고.
+    * 키 저장소에 활성화된 여러 인증 방법(IPv4 주소, MAC 주소, 클라이언트 인증서)을 결합하는 방식을 선택할 수 있는 기능 추가. 모두 통과(AND, 기본값) 또는 하나만 통과(OR) 중 선택할 수 있으며, 기존 키 저장소는 모두 통과(AND)로 유지됩니다. 자세한 내용은 [콘솔 사용 가이드](./console-guide/)를 참고.
 
 <a id="april-14-2026"></a>
 ### 2026. 04. 14. { #april-14-2026 }
@@ -35,25 +35,25 @@
 <a id="march-10-2026-added-features"></a>
 #### 신규 기능 추가
   * API v1.3 추가
-    * `X-NHN-AUTHORIZATION` 헤더를 통한 토큰 인증 방식 추가. 자세한 내용은 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
+    * `X-NHN-AUTHORIZATION` 헤더를 통한 토큰 인증 방식 추가. 자세한 내용은 [API v1.3 가이드](./api-guide-v1.3/)를 참고.
   * 기밀 데이터 수정 API 추가(v1.2, v1.3)
-    * API를 이용하여 Secure Key Manager에 저장한 기밀 데이터를 수정할 수 있는 기능 추가. 자세한 내용은 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/) 또는 [API v1.3 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.3/)를 참고.
+    * API를 이용하여 Secure Key Manager에 저장한 기밀 데이터를 수정할 수 있는 기능 추가. 자세한 내용은 [API v1.2 가이드](./api-guide-v1.2/) 또는 [API v1.3 가이드](./api-guide-v1.3/)를 참고.
 
 <a id="february-10-2026"></a>
 ### 2026. 02. 10. { #february-10-2026 }
 <a id="february-10-2026-new-features"></a>
 #### 신규 기능 추가
   * 키 저장소 목록 상세 조회 API 추가
-    * API를 이용하여 키 저장소의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
+    * API를 이용하여 키 저장소의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](./api-guide-v1.0/) 또는 [API v1.2 가이드](./api-guide-v1.2/)를 참고.
   * 키 목록 상세 조회 API 추가
-    * API를 이용하여 키의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.0/) 또는 [API v1.2 가이드](/Security/Secure%20Key%20Manager/ko/api-guide-v1.2/)를 참고.
+    * API를 이용하여 키의 상세 정보 목록을 조회할 수 있는 기능 추가. 자세한 내용은 [API v1.0 가이드](./api-guide-v1.0/) 또는 [API v1.2 가이드](./api-guide-v1.2/)를 참고.
 
 <a id="june-24-2025"></a>
 ### 2025. 06. 24. { #june-24-2025 }
 <a id="june-24-2025-feature-updates"></a>
 #### 기능 개선/변경
   * 신규 오류 메시지 추가
-    * 유효하지 않은 URI로 API 요청 시 오류 메시지 추가. 자세한 내용은 [문제 해결 가이드](/Security/Secure%20Key%20Manager/ko/troubleshooting-guide/#api-call-failure-returns-url-not-found-error-message)를 참고.
+    * 유효하지 않은 URI로 API 요청 시 오류 메시지 추가. 자세한 내용은 [문제 해결 가이드](./troubleshooting-guide/#api-call-failure-returns-url-not-found-error-message)를 참고.
 
 <a id="april-28-2025"></a>
 ### 2025. 04. 28. { #april-28-2025 }
